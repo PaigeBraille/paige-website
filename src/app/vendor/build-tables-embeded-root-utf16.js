@@ -52793,17 +52793,17 @@ run();
 
 
 
-this.liblouisBuilds = this.liblouisBuilds || {};
+// this.liblouisBuilds = this.liblouisBuilds || {};
 
-var version;
-try {
-	version = Module.ccall('lou_version', 'string', [], []);
-} catch(e) {
-	version = "unknown";
-}
+// var version;
+// try {
+// 	version = Module.ccall('lou_version', 'string', [], []);
+// } catch(e) {
+// 	version = "unknown";
+// }
 
-this.liblouisBuilds[version] = this.liblouisBuilds[version] || [];
-this.liblouisBuilds[version].push(Module);
+// this.liblouisBuilds[version] = this.liblouisBuilds[version] || [];
+// this.liblouisBuilds[version].push(Module);
 
 
   return liblouisBuild;
