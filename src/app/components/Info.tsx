@@ -38,21 +38,15 @@ function EmojiPoint(props: { children: React.ReactNode , emoji: string}) {
 
 export default function Info() {
   return (
-    <section className="flex flex-col bg-white gap-4 p-6 lg:p-12">
+    <section className="flex flex-col bg-white gap-4 p-4 lg:p-12">
       <div>
-        <Header css="mb-6">Background</Header>
+        <Header css="pt-4 pb-6">We are building Paige: The world's first low-cost, multiline braille display.</Header>
         <ul className="text-sm md:text-base">
           <EmojiPoint emoji="👉">
             Worldwide, 43 million people are blind, with 174,000 people in the
             UK.
           </EmojiPoint>
           <EmojiPoint emoji="🖐️">The RNIB estimates that 15% of these people use braille.</EmojiPoint>
-          <EmojiPoint emoji="🔊">
-            The United Nations Convention on the Rights of Persons with
-            Disabilities (CRPD) defines braille as a means of communication and
-            therefore essential in education, freedom of expression, access to
-            information and social inclusion.
-          </EmojiPoint>
           <EmojiPoint emoji="💸">
             People access digital braille using displays which are prohibitively
             expensive, costing up to £9,000, and are limited to a single line of
@@ -67,7 +61,7 @@ export default function Info() {
       </div>
 
       <div>
-      <Header css="mb-6">Solution</Header>
+      <Header css="mb-6">Our Solution</Header>
         <ul className="text-sm md:text-base">
           <Tick>
             By reducing the cost per braille character, our display can deliver

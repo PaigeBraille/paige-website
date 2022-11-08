@@ -1,11 +1,14 @@
 import React from "react";
+import Contact from "./components/Contact";
 import Demo from "./components/Demo";
+import Footer from "./components/Footer";
 import Info from "./components/Info";
 import PaigeHeader from "./components/PaigeHeader";
 import Partners from "./components/partners/Partners";
 import Quote from "./components/Quote";
 import People from "./components/team/People";
 import Device from "./img/device.png";
+
 export function App() {
   return (
     <div
@@ -25,13 +28,12 @@ export function App() {
           width: "100%",
         }}
       >
-        <Demo />
         <Info />
       </div>
-      <div className="bg-primary w-full flex justify-center mb-8 lg:mb-12 pt-6">
-      <img src={Device} style={{ height: "300px", width: "auto" }} />
+      <div className="bg-primary w-full flex justify-center pt-6">
+        <img src={Device} style={{ height: "300px", width: "auto" }} />
       </div>
-      
+
       <div
         style={{
           maxWidth: "1400px",
@@ -40,10 +42,13 @@ export function App() {
           width: "100%",
         }}
       >
+        <Demo />
         <Quote />
         <People />
       </div>
       <Partners />
+      <Contact />
+      <Footer />
     </div>
   );
 }

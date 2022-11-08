@@ -21,7 +21,7 @@ export default function Quote() {
         I'm still in awe of the readability of your prototype
         </p>
       </blockquote>
-      <div className="flex justify-center items-center mt-6 flex-wrap gap-3">
+      <div className="flex justify-center items-center mt-4 flex-wrap gap-3">
         <img
           className="w-8 h-8 rounded-full"
           src={sean}

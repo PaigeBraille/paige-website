@@ -17,7 +17,7 @@ export default function Partners() {
     <div className="p-8 lg:p-12 bg-primary flex flex-col gap-12 flex-wrap">
       <div>
         <Header color="text-white">Testing at</Header>
-        <div className="flex gap-8 justify-center p-6">
+        <div className="flex gap-8 justify-center p-6 flex-wrap">
           <PartnerImage src={NCW} />
           <PartnerImage src={Braillists} />
         </div>
