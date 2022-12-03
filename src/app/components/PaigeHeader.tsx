@@ -80,7 +80,7 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
         </div>
       </nav>
 
-      <h1 className="text-3xl md:text-4xl text-start mt:6 md:mt-12 px-8 sm:px-16 leading-tight tracking-tight sm:w-3xl">
+      <h1 className="text-3.5xl text-start mt:6 md:mt-12 px-4 sm:px-8 sm:px-16 leading-tight tracking-tight sm:w-3xl">
         <span className="font-extrabold text-primary">Paige</span> is {text}{" "}
       </h1>
     </section>
