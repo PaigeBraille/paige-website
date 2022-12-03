@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./font/Header";
+import Graphic from "../svg/graphic-1.svg";
+import Graphic2 from "../svg/graphic-2.svg";
 
 function Tick(props: { children: React.ReactNode }) {
   const tick = (
@@ -19,34 +21,49 @@ function Tick(props: { children: React.ReactNode }) {
 
   return (
     <li className="flex items-start mb-2">
-      {tick}{props.children}
+      {tick}
+      {props.children}
     </li>
   );
 }
 
-function EmojiPoint(props: { children: React.ReactNode , emoji: string}) {
+function EmojiPoint(props: { children: React.ReactNode; emoji: string }) {
   const point = (
     <span className="flex-shrink-0 w-7 h-7 text-green-500">{props.emoji}</span>
   );
 
   return (
     <li className="flex items-start mb-2">
-      {point}{props.children}
+      {point}
+      {props.children}
     </li>
   );
 }
 
 export default function Info() {
   return (
-    <section className="flex flex-col bg-white gap-4 p-4 lg:p-12">
-      <div>
-        <Header css="pt-4 pb-6">We are building Paige: The world's first low-cost, multiline braille display.</Header>
+    <section className="flex flex-col bg-white gap-4 px-2 sm:px-8 my-8 sm:my-16">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between w-full text-white bg-primary rounded-lg">
+          <div className="inline-flex flex-col gap-4 max-w-xs p-4 sm:p-12 ">
+            <Header css="text-center sm:text-start grow" color="white">
+              Meet Paige
+            </Header>
+            <span>
+              We are building the world's first low-cost, multiline braille
+              display.
+            </span>
+          </div>
+          <Graphic className="block sm:inline-flex" />
+        </div>
         <ul className="text-sm md:text-base">
           <EmojiPoint emoji="👉">
             Worldwide, 43 million people are blind, with 174,000 people in the
             UK.
           </EmojiPoint>
-          <EmojiPoint emoji="🖐️">The RNIB estimates that 15% of these people use braille.</EmojiPoint>
+          <EmojiPoint emoji="🖐️">
+            The RNIB estimates that 15% of these people use braille.
+          </EmojiPoint>
           <EmojiPoint emoji="💸">
             People access digital braille using displays which are prohibitively
             expensive, costing up to £9,000, and are limited to a single line of
@@ -60,8 +77,19 @@ export default function Info() {
         </ul>
       </div>
 
-      <div>
-      <Header css="mb-6">Our Solution</Header>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between w-full bg-gray-100 rounded-lg">
+          <Graphic2 className="block sm:inline my-auto mx-4" />
+          <div className="inline-flex flex-col gap-4 max-w-xs text-start sm:text-end p-4 sm:p-12 ">
+            <Header css="text-center sm:text-end grow" color="white">
+              Braille matters
+            </Header>
+            <span>
+              Braille is literacy and the Paige team is dedicated to achieving
+              affordable access to braille worldwide.
+            </span>
+          </div>
+        </div>
         <ul className="text-sm md:text-base">
           <Tick>
             By reducing the cost per braille character, our display can deliver
@@ -87,10 +115,6 @@ export default function Info() {
           <Tick>
             We receive social entrepreneurship support from UnLtd and are
             supported by a design for manufacture and IP firm.
-          </Tick>
-          <Tick>
-            Braille is literacy and the Paige team is dedicated to achieving
-            affordable access to braille worldwide.
           </Tick>
         </ul>
       </div>

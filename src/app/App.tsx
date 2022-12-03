@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Contact from "./components/Contact";
 import Demo from "./components/Demo";
 import Footer from "./components/Footer";
@@ -10,6 +10,13 @@ import People from "./components/team/People";
 import Device from "./img/device.png";
 
 export function App() {
+  const aboutRef = useRef(null);
+  const testimonialRef = useRef(null);
+  const translateRef = useRef(null);
+  const teamRef = useRef(null);
+  const partnersRef = useRef(null);
+  const contactRef = useRef(null);
+
   return (
     <div
       style={{
@@ -18,9 +25,37 @@ export function App() {
         minHeight: "100vh",
       }}
     >
-      <PaigeHeader />
+      <PaigeHeader
+        links={[
+          {
+            name: "About",
+            location: aboutRef,
+          },
+          {
+            name: "Translate",
+            location: translateRef,
+          },
+          {
+            name: "Testimonials",
+            location: testimonialRef,
+          },
+          {
+            name: "Team",
+            location: teamRef,
+          },
+          {
+            name: "Partners",
+            location: partnersRef,
+          },
+          {
+            name: "Contact",
+            location: contactRef,
+          }
+        ]}
+      />
 
       <div
+        ref={aboutRef}
         style={{
           maxWidth: "1400px",
           margin: "auto",
@@ -42,12 +77,24 @@ export function App() {
           width: "100%",
         }}
       >
-        <Demo />
-        <Quote />
-        <People />
+        <span ref={translateRef}>
+          <Demo />
+        </span>
+
+        <span ref={testimonialRef}>
+          <Quote />
+        </span>
+        <span ref={teamRef}>
+          <People />
+        </span>
       </div>
-      <Partners />
-      <Contact />
+      <span ref={partnersRef}>
+        <Partners />
+      </span>
+      <span ref={contactRef}>
+        <Contact />
+      </span>
+
       <Footer />
     </div>
   );

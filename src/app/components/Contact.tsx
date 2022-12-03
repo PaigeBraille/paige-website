@@ -67,7 +67,7 @@ export default function Contact() {
               type="email"
               name="email"
               id="email"
-              placeholder="donald@duck.com"
+              placeholder="email@domain.com"
               required
             />
           </div>
@@ -77,7 +77,7 @@ export default function Contact() {
               type="text"
               id="name"
               name="name"
-              placeholder="Donald Duck"
+              placeholder="Your name"
               required
             />
           </div>
