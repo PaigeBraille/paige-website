@@ -71,7 +71,7 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
             className={`${showMenu ? "" : "hidden"} w-full md:block md:w-auto`}
             id="navbar-default"
           >
-            <ul className="flex flex-col border border-gray-100 rounded-lg mb-6 md:mb-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
+            <ul className="flex flex-col border border-gray-300 p-4 md:p-0 rounded-lg mb-6 md:mb-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 bg-gray-50 md:bg-white">
               {props.links.map((l) => {
                 return <NavLink {...l} key={l.name} />;
               })}
