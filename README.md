@@ -6,7 +6,7 @@
 ## Development
 
 - Run `npm install` to install dependencies
-- Run `npm run start` to run webite locally
+- Run `npm run start` to run website locally
 
 ## Codebase
 
