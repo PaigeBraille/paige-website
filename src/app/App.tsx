@@ -1,22 +1,38 @@
-import React, { useRef } from "react";
-import Contact from "./components/Contact";
-import Demo from "./components/Demo";
+import React from "react";
 import Footer from "./components/Footer";
-import Info from "./components/Info";
 import PaigeHeader from "./components/PaigeHeader";
-import Partners from "./components/partners/Partners";
-import Quote from "./components/Quote";
-import People from "./components/team/People";
-import Device from "./img/device.png";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import About from "./pages/About";
+import Testimonials from "./pages/Testimonials";
+import Resources from "./pages/Resources";
+import Translate from "./pages/Translate";
+import Products from "./pages/Products";
+import Home from "./pages/Home";
+
+const WEB_LINKS = [
+  {
+    name: "About",
+    location: "about",
+  },
+  {
+    name: "Testimonials",
+    location: "testimonials",
+  },
+  {
+    name: "Resources",
+    location: "resources",
+  },
+  {
+    name: "Translate",
+    location: "translate",
+  },
+  {
+    name: "Products",
+    location: "products",
+  },
+];
 
 export function App() {
-  const aboutRef = useRef(null);
-  const testimonialRef = useRef(null);
-  const translateRef = useRef(null);
-  const teamRef = useRef(null);
-  const partnersRef = useRef(null);
-  const contactRef = useRef(null);
-
   return (
     <div
       style={{
@@ -25,77 +41,18 @@ export function App() {
         minHeight: "100vh",
       }}
     >
-      <PaigeHeader
-        links={[
-          {
-            name: "About",
-            location: aboutRef,
-          },
-          {
-            name: "Translate",
-            location: translateRef,
-          },
-          {
-            name: "Testimonials",
-            location: testimonialRef,
-          },
-          {
-            name: "Team",
-            location: teamRef,
-          },
-          {
-            name: "Partners",
-            location: partnersRef,
-          },
-          {
-            name: "Contact",
-            location: contactRef,
-          }
-        ]}
-      />
-
-      <div
-        ref={aboutRef}
-        style={{
-          maxWidth: "1400px",
-          margin: "auto",
-          padding: "6px",
-          width: "100%",
-        }}
-      >
-        <Info />
-      </div>
-      <div className="bg-primary w-full flex justify-center pt-6">
-        <img src={Device} style={{ height: "300px", width: "auto" }} />
-      </div>
-
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "auto",
-          padding: "6px",
-          width: "100%",
-        }}
-      >
-        <span ref={translateRef}>
-          <Demo />
-        </span>
-
-        <span ref={testimonialRef}>
-          <Quote />
-        </span>
-        <span ref={teamRef}>
-          <People />
-        </span>
-      </div>
-      <span ref={partnersRef}>
-        <Partners />
-      </span>
-      <span ref={contactRef}>
-        <Contact />
-      </span>
-
-      <Footer />
+      <BrowserRouter>
+        <PaigeHeader links={WEB_LINKS} />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="testimonials" element={<Testimonials />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="translate" element={<Translate />} />
+          <Route path="products" element={<Products />} />
+        </Routes>
+        <Footer links={WEB_LINKS} />
+      </BrowserRouter>
     </div>
   );
 }

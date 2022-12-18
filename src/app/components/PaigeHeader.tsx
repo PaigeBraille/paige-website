@@ -1,47 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Paige from "../svg/paige.svg";
 
 export type NavLinkInfo = {
   name: string;
-  location: React.MutableRefObject<any>;
+  location: string;
 };
 
 function NavLink(props: NavLinkInfo) {
   return (
     <li key={props.name}>
-      <a
-        onClick={() => props.location?.current?.scrollIntoView()}
-        className="block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
+      <Link
+        to={props.location}
+        className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
       >
         {props.name}
-      </a>
+      </Link>
     </li>
   );
 }
 
 export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [text, setText] = useState("braille");
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (text === "braille") {
-        setText("affordable");
-      } else if (text === "affordable") {
-        setText("everyone");
-      } else {
-        setText("braille");
-      }
-    }, 3000);
-  }, [text]);
 
   return (
     <section className="bg-white flex justify-top flex-col max-w-5xl mx-auto">
       <nav className="px-4">
         <div className="flex flex-wrap items-center justify-between">
-          <a href="#" className="flex items-center text-primary pr-2">
+          <Link to="/" className="flex items-center text-primary pr-2">
             <Paige />
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -79,10 +67,6 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
           </div>
         </div>
       </nav>
-
-      <h1 className="text-3.5xl text-start mt:6 md:mt-12 px-4 sm:px-8 sm:px-16 leading-tight tracking-tight sm:w-3xl">
-        <span className="font-extrabold text-primary">Paige</span> is {text}{" "}
-      </h1>
     </section>
   );
 }

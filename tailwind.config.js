@@ -10,7 +10,7 @@ module.exports = {
       sans: ["'Inter'", "ui-sans-serif"],
     },
     fontSize: {
-      xs: ".6rem",
+      xs: ".65rem",
       sm: ".8rem",
       base: "1rem",
       lg: "1.2rem",
