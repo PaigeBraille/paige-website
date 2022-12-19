@@ -1,6 +1,6 @@
 import React from "react";
 import FAQ from "../components/FAQ";
-import People from "../components/team/People";
+import People from "../components/People";
 
 const HeroText = () => {
   return (

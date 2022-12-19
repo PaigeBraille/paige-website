@@ -1,6 +1,6 @@
 import React from "react";
 import SpeechBubble from "../svg/speechBubble.svg";
-import Header from "./font/Header";
+import Heading from "./Heading";
 
 const TESTIMONIALS = [
   {
@@ -8,35 +8,35 @@ const TESTIMONIALS = [
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Adam Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Sam Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Amy Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Helen Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Katie Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
   {
-    name: "Bob Bobson",
+    name: "Andy Bobson",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
 ];
 
 const TestimonialsSection = () => {
   return (
-    <div className="flex flex-col gap-6 max-w-5xl mx-auto px-4 sm:px-8">
-      <Header>Reading together</Header>
+    <div className="flex flex-col gap-6 w-full px-4 sm:p-0">
+      <Heading>Reading together</Heading>
       <div className="overflow-x-auto pb-4">
         <div className="flex flex-row gap-12">
         {TESTIMONIALS.map((t) => {

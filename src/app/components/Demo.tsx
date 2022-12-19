@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Arrow from "../svg/arrow.svg";
 import "../vendor/build-tables-embeded-root-utf16";
 import "../vendor/easy-api";
-import Header from "./font/Header";
 
 export default function Demo() {
   const [english, setEnglish] = useState("");

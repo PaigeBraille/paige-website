@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "./font/Header";
+import Heading from "./Heading";
 
 const FAQ = () => {
   const [activeQuestion, setActiveQuestion] = useState(null);
@@ -28,7 +28,7 @@ const FAQ = () => {
 
   return (
     <div className="mb-6">
-        <Header css="text-start w-full p-4 md:p-6 bg-green-100 rounded-t-lg">FAQ</Header>
+        <Heading css="text-start w-full p-4 md:p-6 bg-green-100 rounded-t-lg">FAQ</Heading>
     <div className="flex flex-col gap-4 border-2 border-gray-300 p-4 md:p-6">
       {questions.map((q, index) => (
         <div key={q.question} className="flex items-start flex-col">
