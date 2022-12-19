@@ -1,6 +1,5 @@
 import React from "react";
 import Demo from "../components/Demo";
-import Info from "../components/Info";
 import Device from "../img/device.png";
 
 export default function Translate() {

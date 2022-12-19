@@ -1,5 +1,4 @@
 import React from "react";
-import Info from "../components/Info";
 import Device from "../img/device.png";
 
 export default function Products() {

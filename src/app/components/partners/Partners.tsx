@@ -1,38 +1,26 @@
 import React from "react";
 import Header from "../font/Header";
-import Braillists from "../../img/braillists.png";
-import NCW from "../../img/NCW.png";
-import Imperial from "../../img/imperial.png";
-import Kilimanjaro from "../../img/kbt.png";
-import Unltd from "../../img/unltd.png";
-import BEIBF from "../../img/eibc.png";
-import RPD from "../../img/rpd.png";
-
-function PartnerImage(props: { src: any }) {
-  return <img src={props.src} className="object-contain w-24"/>;
-}
+import P1 from "../../svg/partners/1.svg";
+import P2 from "../../svg/partners/2.svg";
+import P3 from "../../svg/partners/3.svg";
+import P4 from "../../svg/partners/4.svg";
+import P5 from "../../svg/partners/5.svg";
+import P6 from "../../svg/partners/6.svg";
+import P7 from "../../svg/partners/7.svg";
 
 export default function Partners() {
   return (
-    <div className="p-8 lg:p-12 bg-primary flex flex-col gap-12 flex-wrap">
-      <div>
-        <Header color="text-white">Testing at</Header>
-        <div className="flex gap-8 justify-center p-6 flex-wrap">
-          <PartnerImage src={NCW} />
-          <PartnerImage src={Braillists} />
+    <div className="p-8 bg-white flex flex-col gap-8 max-w-5xl mx-auto">
+        <Header>Thanks to</Header>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center p-6 flex-wrap">
+          <P1 />
+          <P2 />
+          <P3 />
+          <P4 />
+          <P5 />
+          <P6 />
+          <P7 />
         </div>
-      </div>
-
-      <div>
-        <Header color="text-white">Supported by</Header>
-        <div className="flex gap-8 justify-center p-6 flex-wrap">
-          <PartnerImage src={Imperial} />
-          <PartnerImage src={Kilimanjaro} />
-          <PartnerImage src={Unltd} />
-          <PartnerImage src={BEIBF} />
-          <PartnerImage src={RPD} />
-        </div>
-      </div>
     </div>
   );
 }
