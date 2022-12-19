@@ -90,7 +90,7 @@ export default function Contact() {
         </div>
         <button
           type="submit"
-          className="py-2 px-3 text-sm font-medium text-center text-white rounded-sm bg-primary sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300"
+          className="py-2 px-3 text-sm font-medium text-center text-white rounded-sm bg-primary w-full sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300"
         >
           Send message
         </button>
