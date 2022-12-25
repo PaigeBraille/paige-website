@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "./components/Footer";
-import PaigeHeader from "./components/PaigeHeader";
+import PaigeHeader, { NavLinkInfo } from "./components/PaigeHeader";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import About from "./pages/About";
 import Testimonials from "./pages/Testimonials";
@@ -9,7 +9,7 @@ import Translate from "./pages/Translate";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
 
-const WEB_LINKS = [
+const WEB_LINKS: NavLinkInfo[] = [
   {
     name: "About",
     location: "about",
@@ -24,7 +24,8 @@ const WEB_LINKS = [
   },
   {
     name: "Translate",
-    location: "translate",
+    location: "https://paigetranslate.netlify.app/",
+    isExternal: true
   },
   {
     name: "Products",
@@ -48,7 +49,7 @@ export function App() {
           <Route path="about" element={<About />} />
           <Route path="testimonials" element={<Testimonials />} />
           <Route path="resources" element={<Resources />} />
-          <Route path="translate" element={<Translate />} />
+          {/* <Route path="translate" element={<Translate />} /> */}
           <Route path="products" element={<Products />} />
         </Routes>
         <Footer links={WEB_LINKS} />

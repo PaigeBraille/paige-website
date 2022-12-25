@@ -5,17 +5,27 @@ import Paige from "../svg/paige.svg";
 export type NavLinkInfo = {
   name: string;
   location: string;
+  isExternal?: boolean;
 };
 
 function NavLink(props: NavLinkInfo) {
   return (
     <li key={props.name}>
-      <Link
-        to={props.location}
-        className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
-      >
-        {props.name}
-      </Link>
+      {props.isExternal ? (
+        <a
+          href={props.location}
+          className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
+        >
+          {props.name}
+        </a>
+      ) : (
+        <Link
+          to={props.location}
+          className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
+        >
+          {props.name}
+        </Link>
+      )}
     </li>
   );
 }

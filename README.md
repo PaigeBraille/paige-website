@@ -1,5 +1,7 @@
 # Paige Website
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0a277fe1-cde2-4001-b2e5-690cec1aaf81/deploy-status)](https://app.netlify.com/sites/paige/deploys)
+
 - Currently at https://paige.netlify.app
 - Autodeploys to Netlify on push to the `main` branch
 
