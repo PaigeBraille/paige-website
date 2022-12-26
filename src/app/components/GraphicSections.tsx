@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "./Heading";
 import Graphic from "../svg/graphic-1.svg";
 import Graphic2 from "../svg/graphic-2.svg";
+import { Link } from "react-router-dom";
 
 export function GraphicSection1() {
   return (
@@ -16,9 +17,12 @@ export function GraphicSection1() {
               We are building the world's first low-cost, multiline braille
               display.
             </span>
-            <button className="rounded-sm px-4 py-2 font-bold text-primary bg-white hover:bg-blue-100 focus:outline-none focus:shadow-outline text-center sm:w-2/3">
+            <Link
+              className="rounded-sm px-4 py-2 font-bold text-primary bg-white hover:bg-blue-100 focus:outline-none focus:shadow-outline text-center sm:w-2/3"
+              to="/about"
+            >
               Learn more
-            </button>
+            </Link>
           </div>
           <Graphic className="block sm:inline-flex w-auto my-auto" />
         </div>
@@ -41,9 +45,12 @@ export function GraphicSection2() {
               Braille is literacy and the Paige team is dedicated to achieving
               affordable access to braille worldwide.
             </span>
-            <button className="rounded-sm px-4 py-2 font-bold text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:shadow-outline text-center sm:w-2/3 sm:ml-auto">
+            <Link
+              className="rounded-sm px-4 py-2 font-bold text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:shadow-outline text-center sm:w-2/3 sm:ml-auto"
+              to="/about"
+            >
               Learn more
-            </button>
+            </Link>
           </div>
         </div>
       </div>
