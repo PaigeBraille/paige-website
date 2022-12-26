@@ -11,7 +11,7 @@ export default function WriteWithUs() {
       <div className="flex flex-col gap-6 items-center sm:items-start">
         <Heading css="sm:text-start">Write with us</Heading>
         <span>{WRITE_WITH_US_CONTENT}</span>
-        <a className="border-2 rounded-sm border-gray-700 px-4 py-2 text-center w-full sm:w-fit" href="https://paigetranslate.netlify.app/" target="_blank">
+        <a className="border-2 rounded-sm border-gray-700 px-4 py-2 text-center w-full sm:w-fit" href="https://paigetranslate.netlify.app/">
           Translation tool
         </a>
       </div>
