@@ -14,14 +14,14 @@ function NavLink(props: NavLinkInfo) {
       {props.isExternal ? (
         <a
           href={props.location}
-          className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
+          className="text-sm sm:text-xs block md:py-2 text-primary rounded md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 cursor-pointer font-light"
         >
           {props.name}
         </a>
       ) : (
         <Link
           to={props.location}
-          className="text-sm sm:text-xs block md:py-2 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 cursor-pointer"
+          className="text-sm sm:text-xs block md:py-2 text-primary rounded md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 cursor-pointer font-light"
         >
           {props.name}
         </Link>
