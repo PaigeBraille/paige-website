@@ -35,7 +35,7 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
 
   return (
     <section className="bg-white flex justify-top flex-col max-w-5xl mx-auto">
-      <nav className="px-4">
+      <nav className="px-8">
         <div className="flex flex-wrap items-center justify-between">
           <Link to="/" className="flex items-center text-primary pr-2">
             <Paige />

@@ -10,28 +10,28 @@ const FAQ = () => {
 
   const questions = [
     {
-      question: "Better ways to help visually impaired people",
-      answer: "Paige can help visually impaired people by allowing them to easily produce written braille documents, which can be used to read and write independently and access written information more easily.",
+      question: "What are you working on?",
+      answer: "Our first product, Paige Connect, is getting ready for certification! It is an upgrade for existing braille writers which produces digital copies of the braille that is embossed on paper. A web app is hosted locally on Paige Connect and can be accessed wirelessly using any browser on a phone, tablet, or laptop. This enables collaboration with sighted peers, parents, and teachers. We are also developing a multiline paperless alternative to existing braille writers, which is currently under testing with users.",
     },
     {
-      question: "Is Paige and affordable device",
+      question: "Can I help test Paige?",
       answer:
-        "Yes it is very affordable because A B C.",
+        "Yes! Reach out at hello@paigebraille.com if you want to have a say in the technology created for you.",
     },
     {
-        question: "When will it be available",
+        question: "Got another question?",
         answer:
-          "Paige will be available when we do X Y and Z probably in 2023",
+          "You can ask any questions you have about Paige at hello@paigebraille.com.",
       },
     // Add more questions here...
   ];
 
   return (
     <div className="mb-6">
-        <Heading css="text-start w-full p-4 md:p-6 bg-green-100 rounded-t-lg">FAQ</Heading>
-    <div className="flex flex-col gap-4 border-2 border-gray-300 p-4 md:p-6">
+        <Heading css="text-start w-full px-4 md:px-6 py-4 bg-green-100 rounded-t-lg">FAQ</Heading>
+    <div className="flex flex-col border-2 border-gray-300 border-t-0 rounded-b-lg divide-y-2">
       {questions.map((q, index) => (
-        <div key={q.question} className="flex items-start flex-col">
+        <div key={q.question} className="flex items-start flex-col p-4 md:p-4">
           <div
             className="flex flex-row justify-between cursor-pointer w-full gap-2"
             onClick={() => handleClick(index)}

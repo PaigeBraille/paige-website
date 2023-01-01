@@ -1,5 +1,5 @@
 import React from "react";
-import Contact from "../components/Contact";
+// import Contact from "../components/Contact";
 import {
   GraphicSection1,
   GraphicSection2,
@@ -18,7 +18,7 @@ export default function Home() {
       <GraphicSection2 />
       <WriteWithUs />
       <Partners />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   );
 }

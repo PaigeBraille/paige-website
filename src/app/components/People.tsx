@@ -28,31 +28,73 @@ function TeamMember(props: {
 
 export default function People() {
   return (
-    <section className="bg-white py-8 px-4 mx-auto text-center lg:py-12 lg:px-12">
-      <div className="mx-auto pb-6 px-6 lg:px-12">
-        <Heading css="mb-2">Meet our team</Heading>
+    <section className="bg-white py-8 mx-auto text-center lg:py-12">
+      <div className="pb-0">
+        <Heading css="text-2xl text-start font-bold px-4 md:px-6 py-4 bg-blue-800 text-white text-bold rounded-t-lg tracking-tight leading-tight">Meet our team</Heading>
       </div>
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <TeamMember
-          imageSrc={Ian}
-          heading={"Dr. Ian Radcliffe"}
-          caption={"Teaching Fellow at Imperial College London"}
-        />
-        <TeamMember
-          imageSrc={Sean}
-          heading={"Sean Randall"}
-          caption={"Accessibility Specialist at New College Worcester"}
-        />
-        <TeamMember
-          imageSrc={Pascal}
-          heading={"Paschal Egan"}
-          caption={"Electronics Engineer at Imperial College London"}
-        />
-        <TeamMember
-          imageSrc={Jaime}
-          heading={"Jaime Aguilera"}
-          caption={"Co-founder of InAGlobe"}
-        />
+      <div className="border-x-2 border-gray-300 flex flex-col pt-6">
+        <div className="grid gap-8 pb-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <TeamMember
+            imageSrc={Ian}
+            heading={"Gregory Hargraves"}
+            caption={"Founder"}
+          />
+          <TeamMember
+            imageSrc={Sean}
+            heading={"Carolina Gomes"}
+            caption={"Electronics"}
+          />
+          <TeamMember
+            imageSrc={Pascal}
+            heading={"Sergi Gosalvez"}
+            caption={"User Experience"}
+          />
+          <TeamMember
+            imageSrc={Jaime}
+            heading={"Nina Moutonnet"}
+            caption={"Communications"}
+          />
+          <TeamMember
+            imageSrc={Jaime}
+            heading={"Javi Tarraga"}
+            caption={"Branding"}
+          />
+          <TeamMember
+            imageSrc={Jaime}
+            heading={"Fran Capacete"}
+            caption={"Graphics"}
+          />
+          <TeamMember
+            imageSrc={Jaime}
+            heading={"Nina Rimsky"}
+            caption={"Software"}
+          />
+          <TeamMember
+            imageSrc={Jaime}
+            heading={"Bennedict Carling"}
+            caption={"Firmware"}
+          />
+        </div>
+      </div>
+      <div className=" flex flex-col pt-6 border-2 border-gray-300 rounded-b-lg ">
+        <p className="md:w-2/3 flex p-2 md:p-6 text-base text-left">Paige is committed to serving braille communities worldwide. We are supported by individuals and institutions well placed in the world of braille and entrepreneurship to achieve this goal:</p>
+        <div className="grid gap-8 pb-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+          <TeamMember
+            imageSrc={Ian}
+            heading={"Sean Randall"}
+            caption={"Accessibility Specialist at NCW "}
+          />
+          <TeamMember
+            imageSrc={Sean}
+            heading={"Suparna Biswas"}
+            caption={"Chief Executive Officer at Kilimanjaro Blind Trust"}
+          />
+          <TeamMember
+            imageSrc={Pascal}
+            heading={"Jaime Aguilera"}
+            caption={"Co-Founder of Inaglobe"}
+          />
+        </div>
       </div>
     </section>
   );
