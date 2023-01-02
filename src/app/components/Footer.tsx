@@ -16,6 +16,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
           <h5 className="mb-4 font-bold">Web</h5>
           <ul className="mb-4">
+            <li className="mt-2">
+              <Link to="/" className="hover:underline">
+                Home
+              </Link>
+            </li>
             {props.links.map((l) => {
               return (
                 <li key={l.name} className="mt-2">

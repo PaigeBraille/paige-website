@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#307fe2'
+        primary: '#2A7DE1',
+        paigedarkblue: '#0E2F7F'
       }
     },
     fontFamily: {

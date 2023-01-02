@@ -19,6 +19,7 @@ const TESTIMONIALS = [
     name: "Lynn Cox",
     text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
   },
+  // Add more testimonials here
 ];
 
 const TestimonialsSection = () => {
@@ -30,7 +31,7 @@ const TestimonialsSection = () => {
         {TESTIMONIALS.map((t) => {
           return (
             <div
-              className="flex flex-col gap-2 relative overflow-y-clip h-44 rounded-b-lg"
+              className="flex flex-col gap-2 relative overflow-y-clip h-36 rounded-b-lg"
               key={t.name}
             >
               <SpeechBubble className="absolute top-0 left-0" />

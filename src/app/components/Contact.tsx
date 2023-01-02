@@ -48,6 +48,9 @@ function Label(
 }
 
 export default function Contact() {
+  // Configured to work with Netlify Forms 
+  // See https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/
+  // Works with the form code in index.html
   return (
     <section className="bg-white flex flex-col lg:pb-8 mx-auto max-w-screen-md gap-3 px-4 sm:p-0">
       <Heading>Get in touch</Heading>

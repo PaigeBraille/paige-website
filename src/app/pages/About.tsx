@@ -5,7 +5,7 @@ import People from "../components/People";
 const HeroText = () => {
   return (
     <div className="bg-white flex justify-between items-end py-6 md:py-12">
-      <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3">
+      <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-light">
         <span className="font-extrabold text-primary">Paige</span> was founded
         by a group of four Imperial College London engineers trying to
         understand the difficulties visually impaired face when accessing
