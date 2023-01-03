@@ -24,7 +24,7 @@ const TESTIMONIALS = [
 
 const TestimonialsSection = () => {
   return (
-    <div className="flex flex-col sm:ml-12 gap-6 w-full px-4 sm:p-0">
+    <div className="flex flex-col gap-6 w-full px-4 sm:px-8">
       <Heading css="text-center sm:text-start grow"> Reading together</Heading>
       <div className="overflow-x-auto pb-4">
         <div className="flex flex-row gap-4">

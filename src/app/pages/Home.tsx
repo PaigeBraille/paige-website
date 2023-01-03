@@ -11,7 +11,7 @@ import WriteWithUs from "../components/WriteWithUs";
 
 export default function Home() {
   return (
-    <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 py-6">
+    <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 py-6 overflow-clip">
       <PaigeIs />
       <GraphicSection1 />
       <TestimonialsSection />
