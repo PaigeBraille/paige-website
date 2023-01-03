@@ -10,7 +10,7 @@ import P7 from "../svg/partners/7.svg";
 
 export default function Partners() {
   return (
-    <div className="bg-white flex flex-col gap-8 border-t-2 p-6 border-gray-300 w-full">
+    <div className="bg-white flex flex-col gap-8 border-t p-6 border-paigedarkgrey w-full">
         <span>Thanks to:</span>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center p-2 sm:p-6 flex-wrap items-center align-center">
           <P1 />

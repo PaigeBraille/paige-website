@@ -14,7 +14,7 @@ export default function PaigeIs() {
   }, [idx]);
 
   return (
-    <h1 className="text-3.5xl text-center mt:6 md:mt-12 px-4 sm:px-8 sm:px-16 leading-tight tracking-tight sm:w-3xl">
+    <h1 className=" text-xl py-24 md:text-5xl font-extralight text-center md:pt-36 md:pb-40 px-4 sm:px-16 leading-tight tracking-tight">
       <span className="font-extrabold text-primary">Paige</span> is {COMPLETIONS[idx]}
     </h1>
   );

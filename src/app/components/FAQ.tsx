@@ -40,10 +40,10 @@ const FAQ = () => {
 
   return (
     <div className="mb-6">
-      <Heading css="text-start w-full px-4 md:px-6 py-4 bg-green-100 rounded-t-lg">
+      <Heading css="text-start w-full px-4 md:px-6 py-4 bg-paigelightgreen rounded-t-lg">
         FAQ
       </Heading>
-      <div className="flex flex-col border-2 border-gray-300 border-t-0 rounded-b-lg divide-y-2">
+      <div className="flex flex-col border border-paigedarkgrey border-t-0 rounded-b-lg divide-y divide-paigedarkgrey">
         {questions.map((q, index) => (
           <div
             key={q.question}
@@ -53,11 +53,7 @@ const FAQ = () => {
               className="flex flex-row justify-between cursor-pointer w-full gap-2 items-center"
               onClick={() => handleClick(index)}
             >
-              <span
-                className={`inline-flex md:text-xl font-bold leading-tight tracking-tight ${
-                  index === activeQuestion ? "text-primary" : "text-black"
-                }`}
-              >
+              <span className="inline-flex md:text-xl font-bold leading-tight tracking-tight">
                 {q.question}
               </span>
               <span className="text-gray-600 inline-flex text-lg md:text-2xl">

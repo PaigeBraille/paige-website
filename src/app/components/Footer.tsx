@@ -13,7 +13,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           </Link>
           <p>© Paige 2022. All rights reserved.</p>
         </div>
-        <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
+        <div className="w-full md:w-1/4  text-center md:text-left md:border-l md:border-white p-2">
           <h5 className="mb-4 font-bold">Web</h5>
           <ul className="mb-4">
             <li className="mt-2">
@@ -63,11 +63,6 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             <li className="mt-2">
               <a href="#" className="hover:underline">
                 Twitter
-              </a>
-            </li>
-            <li className="mt-2">
-              <a href="#" className="hover:underline">
-                Facebook
               </a>
             </li>
             <li className="mt-2">

@@ -5,7 +5,7 @@ import People from "../components/People";
 const HeroText = () => {
   return (
     <div className="bg-white flex justify-between items-end py-6 md:py-12">
-      <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-light">
+      <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-extralight">
         <span className="font-extrabold text-primary">Paige</span> was founded
         by a group of four Imperial College London engineers trying to
         understand the difficulties visually impaired face when accessing
@@ -17,13 +17,13 @@ const HeroText = () => {
 
 const MissionItem = (props: { title: string; text: string; idx: number }) => {
   return (
-    <div className="border-x-2 border-gray-300 flex flex-col gap-6">
+    <div className="border-x border-paigedarkgrey flex flex-col gap-6">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center">
         <h3 className="md:w-1/2 text-xl md:text-xl font-bold md:mr-6 leading-tight mt-4 p-2 md:p-6 tracking-tight text-primary">{props.title}</h3>
         <p className="md:w-1/2 flex p-2 md:p-6 text-sm">{props.text}</p>
       </div>
-      <div className="border-b-2 border-gray-300 flex items-center relative">
-        <div className="bg-blue-500 text-white rounded-full h-8 w-8 flex items-center justify-center absolute -top-4 left-4">
+      <div className="border-b border-paigedarkgrey flex items-center relative">
+        <div className="bg-primary text-white rounded-full h-8 w-8 flex items-center justify-center absolute -top-4 left-4">
           {props.idx}
         </div>
       </div>

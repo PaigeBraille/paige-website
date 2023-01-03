@@ -15,16 +15,16 @@ const TESTIMONIALS = [
     name: "Braille User",
     text: "I remember far more of what I actively read in braille than I do when listening. ",
   },
-  {
-    name: "Lynn Cox",
-    text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
-  },
+  // {
+  //   name: "Lynn Cox",
+  //   text: "I recently purchased the XYZ product and I have to say, I am thoroughly impressed. ",
+  // },
   // Add more testimonials here
 ];
 
 const TestimonialsSection = () => {
   return (
-    <div className="flex flex-col gap-6 w-full px-4 sm:p-0">
+    <div className="flex flex-col sm:ml-12 gap-6 w-full px-4 sm:p-0">
       <Heading css="text-center sm:text-start grow"> Reading together</Heading>
       <div className="overflow-x-auto pb-4">
         <div className="flex flex-row gap-4">

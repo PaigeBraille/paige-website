@@ -1,9 +1,14 @@
 import React from "react";
 import Heading from "./Heading";
-import Ian from "../img/ian.jpeg";
 import Jaime from "../img/jaime.png";
-import Pascal from "../img/pascal.jpeg";
+import Suparna from "../img/suparna.png";
 import Sean from "../img/sean.jpeg";
+import Greg from "../img/greg.png";
+import Carolina from "../img/carolina.png";
+import Sergi from "../img/sergi.png";
+import Nina from "../img/nina.png";
+import NinaR from "../img/ninarimsky.png";
+import Ben from "../img/ben.png";
 
 function TeamMember(props: {
   heading: string;
@@ -11,7 +16,7 @@ function TeamMember(props: {
   imageSrc: any;
 }) {
   return (
-    <div className="text-center text-gray-500 text-sm leading-snug">
+    <div className="text-center font-light text-sm leading-snug">
       <img
         className="w-16 h-16 rounded-full m-auto mb-2"
         src={props.imageSrc}
@@ -32,29 +37,29 @@ export default function People() {
       <div className="pb-0">
         <Heading css="text-2xl text-start font-bold px-4 md:px-6 py-4 bg-paigedarkblue text-white text-bold rounded-t-lg tracking-tight leading-tight">Meet our team</Heading>
       </div>
-      <div className="border-x-2 border-gray-300 flex flex-col">
+      <div className="border-x border-paigedarkgrey flex flex-col">
         <div className="grid gap-8 px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <TeamMember
-            imageSrc={Ian}
+            imageSrc={Greg}
             heading={"Gregory Hargraves"}
             caption={"Founder"}
           />
           <TeamMember
-            imageSrc={Sean}
+            imageSrc={Carolina}
             heading={"Carolina Gomes"}
             caption={"Electronics"}
           />
           <TeamMember
-            imageSrc={Pascal}
+            imageSrc={Sergi}
             heading={"Sergi Gosalvez"}
             caption={"User Experience"}
           />
           <TeamMember
-            imageSrc={Jaime}
+            imageSrc={Nina}
             heading={"Nina Moutonnet"}
             caption={"Communications"}
           />
-          <TeamMember
+          {/* <TeamMember
             imageSrc={Jaime}
             heading={"Javi Tarraga"}
             caption={"Branding"}
@@ -63,34 +68,34 @@ export default function People() {
             imageSrc={Jaime}
             heading={"Fran Capacete"}
             caption={"Graphics"}
-          />
+          /> */}
           <TeamMember
-            imageSrc={Jaime}
+            imageSrc={NinaR}
             heading={"Nina Rimsky"}
             caption={"Software"}
           />
           <TeamMember
-            imageSrc={Jaime}
+            imageSrc={Ben}
             heading={"Benedict Carling"}
             caption={"Firmware"}
           />
         </div>
       </div>
-      <div className="flex flex-col border-2 border-gray-300 rounded-b-lg ">
+      <div className="flex flex-col border border-paigedarkgrey rounded-b-lg ">
         <p className="md:w-2/3 flex p-2 md:p-6 text-lg text-left font-light">Paige is committed to serving braille communities worldwide. We are supported by individuals and institutions well placed in the world of braille and entrepreneurship to achieve this goal:</p>
         <div className="grid gap-8 px-4 py-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
           <TeamMember
-            imageSrc={Ian}
+            imageSrc={Sean}
             heading={"Sean Randall"}
             caption={"Accessibility Specialist at NCW "}
           />
           <TeamMember
-            imageSrc={Sean}
+            imageSrc={Suparna}
             heading={"Suparna Biswas"}
             caption={"Chief Executive Officer at Kilimanjaro Blind Trust"}
           />
           <TeamMember
-            imageSrc={Pascal}
+            imageSrc={Jaime}
             heading={"Jaime Aguilera"}
             caption={"Co-Founder of Inaglobe"}
           />

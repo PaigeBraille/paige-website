@@ -4,8 +4,8 @@ import PaigeHeader, { NavLinkInfo } from "./components/PaigeHeader";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import About from "./pages/About";
 // import Testimonials from "./pages/Testimonials";
-// import Resources from "./pages/Resources";
-import Products from "./pages/Products";
+import Resources from "./pages/Resources";
+// import Products from "./pages/Products";
 import Home from "./pages/Home";
 
 const WEB_LINKS: NavLinkInfo[] = [
@@ -17,19 +17,19 @@ const WEB_LINKS: NavLinkInfo[] = [
   //   name: "Testimonials",
   //   location: "testimonials",
   // },
-  // {
-  //   name: "Resources",
-  //   location: "resources",
-  // },
+  {
+    name: "Resources",
+    location: "resources",
+  },
   {
     name: "Translate",
     location: "https://paigetranslate.netlify.app/",
     isExternal: true
   },
-  {
-    name: "Products",
-    location: "products",
-  },
+  // {
+  //   name: "Products",
+  //   location: "products",
+  // },
 ];
 
 export function App() {
@@ -46,9 +46,9 @@ export function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          {/* <Route path="testimonials" element={<Testimonials />} />
-          <Route path="resources" element={<Resources />} /> */}
-          <Route path="products" element={<Products />} />
+          {/* <Route path="testimonials" element={<Testimonials />} /> */}
+          <Route path="resources" element={<Resources />} />
+          {/* <Route path="products" element={<Products />} /> */}
         </Routes>
         <Footer links={WEB_LINKS} />
       </BrowserRouter>

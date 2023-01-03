@@ -4,7 +4,10 @@ module.exports = {
     extend: {
       colors: {
         primary: '#2A7DE1',
-        paigedarkblue: '#0E2F7F'
+        paigedarkblue: '#0E2F7F',
+        paigedarkgrey: '#171D1C',
+        paigelightgreen: '#E2EFDE',
+        paigeyellow: '#F5B700'
       }
     },
     fontFamily: {
