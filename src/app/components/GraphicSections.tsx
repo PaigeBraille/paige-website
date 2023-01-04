@@ -21,7 +21,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     ),
     heading: "Meet Paige",
     text: "Paige was founded by a group of four Imperial College London engineers trying to understand the difficulties visually impaired face when accessing braille, but now we are more than that. ",
-    colorScheme: "GREEN",
+    colorScheme: "BLUE",
     linkTo: "/about",
   },
   {
@@ -32,7 +32,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     ),
     heading: "Braille matters",
     text: "The United Nations Convention on the Rights of Persons with Disabilities (CRPD) defines braille as a means of communication and therefore essential in freedom of expression and access to information. Worldwide, 340 million people are blind or partially sighted and this figure is set to rise due to an ageing population. ",
-    colorScheme: "BLUE",
+    colorScheme: "GREEN",
     linkTo: "/resources",
   },
 ];
