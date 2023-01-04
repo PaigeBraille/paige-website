@@ -8,7 +8,7 @@ const HeroText = () => {
       <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-extralight">
         <span className="font-extrabold text-primary">Paige</span> was founded
         by a group of four Imperial College London engineers trying to
-        understand the difficulties visually impaired face when accessing
+        understand the difficulties blind and partially sighted face when accessing
         braille, but now we are more than that.
       </h1>
     </div>
