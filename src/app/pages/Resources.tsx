@@ -7,9 +7,9 @@ import {
 
 const ResourceText = () => {
   return (
-    <div className="bg-white flex justify-between items-end py-6 md:py-12">
+    <div className="bg-white flex justify-between items-end py-6 px-4 md:py-12">
       <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-extralight">
-        There are so many cool organisation and <span className="font-light text-primary">resources</span> out there for the visually impaired community, that we thought we'd share our favourites with you.
+        There are so many cool organisations and <span className="font-light text-primary">resources</span> out there for the visually impaired community, that we thought we'd share our favourites with you.
       </h1>
     </div>
   );
@@ -17,7 +17,7 @@ const ResourceText = () => {
 
 export default function Resources() {
   return (
-    <div className="mx-auto max-w-5xl px-4 md:px-6">
+    <div className="mx-auto max-w-5xl md:px-6">
         <ResourceText />
         <ResourceSection1 />
         <ResourceSection2 />

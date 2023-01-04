@@ -22,7 +22,7 @@ export function ResourceSection1() {
               Learn more
             </a>
           </div>
-          <RNIB className="block sm:inline-flex w-1/3 my-0 md:w-1/6 md:my-auto md:mr-20" />
+          <RNIB className="block sm:inline-flex w-20 h-20 my-6 md:w-32 md:h-32 md:my-auto md:mr-20" />
         </div>
       </div>
     </section>

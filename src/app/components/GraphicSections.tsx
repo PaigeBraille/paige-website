@@ -58,7 +58,7 @@ function GenericGraphicSection(props: GraphicSectionProps) {
             <span>{props.text}</span>
             {props.linkTo && (
               <Link
-                className={`rounded-sm px-4 py-2 font-bold focus:outline-none focus:shadow-outline text-center xl:w-64 ${
+                className={`rounded-sm px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit ${
                   props.colorScheme === "BLUE"
                     ? "text-primary bg-white hover:bg-blue-100"
                     : "text-white bg-green-900 hover:bg-green-800"

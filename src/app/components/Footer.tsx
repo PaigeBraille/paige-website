@@ -56,17 +56,17 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           <h5 className="mb-4 font-bold">Social</h5>
           <ul className="mb-4">
             <li className="mt-2">
-              <a href="#" className="hover:underline">
+              <a href="https://www.instagram.com/paigebraille/" className="hover:underline">
                 Instagram
               </a>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:underline">
+              <a href="https://twitter.com/paigebraille" className="hover:underline">
                 Twitter
               </a>
             </li>
             <li className="mt-2">
-              <a href="#" className="hover:underline">
+              <a href="https://www.linkedin.com/company/paige-braille/" className="hover:underline">
                 LinkedIn
               </a>
             </li>
