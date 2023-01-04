@@ -3,7 +3,7 @@ import Heading from "./Heading";
 import BrailleGraphic from "../img/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  " We have included a tool on our web that allows you to generate .brf documents in UEB grade one and two. Check it out! ";
+  " We have included a tool that allows you to generate .brf documents in UEB grade one and two. Check it out! ";
 
 export default function WriteWithUs() {
   return (
