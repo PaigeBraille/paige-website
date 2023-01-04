@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Resources from "./pages/Resources";
 // import Products from "./pages/Products";
 import Home from "./pages/Home";
+import ScrollToTop from "./helpers/ScrollToTop";
 
 const WEB_LINKS: NavLinkInfo[] = [
   {
@@ -24,7 +25,7 @@ const WEB_LINKS: NavLinkInfo[] = [
   {
     name: "Translate",
     location: "https://paigetranslate.netlify.app/",
-    isExternal: true
+    isExternal: true,
   },
   // {
   //   name: "Products",
@@ -42,6 +43,7 @@ export function App() {
       }}
     >
       <BrowserRouter>
+        <ScrollToTop />
         <PaigeHeader links={WEB_LINKS} />
         <Routes>
           <Route index element={<Home />} />
