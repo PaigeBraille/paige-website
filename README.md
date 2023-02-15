@@ -8,8 +8,8 @@
 ## Development
 
 - Run `npm install` to install dependencies
-- Run `npm run start` to run website locally
+- Run `npm run dev` to run website locally
 
 ## Codebase
 
-- Uses [Parcel](https://parceljs.org) + [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org) + [Tailwind](https://tailwindcss.com)
+- Uses [Next.js](https://nextjs.org/) + [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org) + [Tailwind](https://tailwindcss.com)
