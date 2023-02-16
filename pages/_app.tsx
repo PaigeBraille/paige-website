@@ -2,13 +2,19 @@
 
 import { Wrapper } from "@/components/Wrapper";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <Wrapper>
-      <Component {...pageProps} />
-    </Wrapper>
+    <>
+      <Head>
+        <title>Paige Braille</title>
+      </Head>
+      <Wrapper>
+        <Component {...pageProps} />
+      </Wrapper>
+    </>
   );
 }
 
