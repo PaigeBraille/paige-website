@@ -13,3 +13,7 @@
 ## Codebase
 
 - Uses [Next.js](https://nextjs.org/) + [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org) + [Tailwind](https://tailwindcss.com)
+
+## Add new testimonial
+
+Add a new `<testimonialname>.md` to `content/testimonials` and add any images to `public/testimonial-imgs`, then redeploy

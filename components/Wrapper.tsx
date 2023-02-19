@@ -5,15 +5,15 @@ import PaigeHeader, { NavLinkInfo } from "./PaigeHeader";
 const WEB_LINKS: NavLinkInfo[] = [
   {
     name: "About",
-    location: "about",
+    location: "/about",
   },
-  // {
-  //   name: "Testimonials",
-  //   location: "testimonials",
-  // },
+  {
+    name: "Testimonials",
+    location: "/testimonials",
+  },
   {
     name: "Resources",
-    location: "resources",
+    location: "/resources",
   },
   {
     name: "Translate",
