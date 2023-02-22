@@ -9,8 +9,7 @@ const questions: FAQuestion[] = [
   {
     question: "How does Paige Connect work?",
     answer: [],
-    fragment: <HowTo />
-
+    fragment: <HowTo />,
   },
   {
     question: "When will Paige Connect be available?",
@@ -70,8 +69,8 @@ const ProductSection = () => {
               more effectively with sighted peers, parents, and teachers.
             </p>
             <p>
-              Paige Connect's web app is hosted locally on the device and can be
-              accessed wirelessly from any browser on your phone, tablet, or
+              The Paige Connect web app is hosted locally on the device and can
+              be accessed wirelessly from any browser on your phone, tablet, or
               laptop. This feature allows you to work more efficiently and with
               greater ease, making it an excellent choice for professionals and
               students alike.
@@ -85,7 +84,7 @@ const ProductSection = () => {
           ></iframe>
         </div>
       </div>
-      <FAQ questions={questions}/>
+      <FAQ questions={questions} />
     </div>
   );
 };
