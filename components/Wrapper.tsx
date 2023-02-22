@@ -20,10 +20,10 @@ const WEB_LINKS: NavLinkInfo[] = [
     location: "https://paigetranslate.netlify.app/",
     isExternal: true,
   },
-  // {
-  //   name: "Products",
-  //   location: "products",
-  // },
+  {
+    name: "Products",
+    location: "/products",
+  },
 ];
 
 export function Wrapper(props: { children?: ReactNode }) {

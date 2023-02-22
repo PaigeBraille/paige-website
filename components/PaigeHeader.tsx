@@ -36,7 +36,7 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
 
   return (
     <section className="bg-white flex justify-top flex-col max-w-5xl mx-auto">
-      <nav className="px-8">
+      <nav className="px-4 md:px-8">
         <div className="flex flex-wrap items-center justify-between">
           <Link href="/" className="flex items-center text-primary pr-2">
             <Logo />
@@ -44,7 +44,7 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-primary rounded-lg md:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+            className="inline-flex items-center ml-3 text-sm text-primary rounded-lg md:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={() => {

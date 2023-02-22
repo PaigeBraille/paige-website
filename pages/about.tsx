@@ -1,6 +1,31 @@
+import Heading from "@/components/Heading";
 import React from "react";
-import FAQ from "../components/FAQ";
+import FAQ, { FAQuestion } from "../components/FAQ";
 import People from "../components/People";
+
+const questions: FAQuestion[] = [
+  {
+    question: "What are you working on?",
+    answer: [
+      "Our first product, Paige Connect, is getting ready for certification! It is an upgrade for existing braille writers which produces digital copies of the braille that is embossed on paper.",
+      "A web app is hosted locally on Paige Connect and can be accessed wirelessly using any browser on a phone, tablet, or laptop. This enables collaboration with sighted peers, parents, and teachers.",
+      "We are also developing a multiline paperless alternative to existing braille writers, which is currently under testing with users.",
+    ],
+  },
+  {
+    question: "Can I help test Paige?",
+    answer: [
+      "Yes! Reach out at hello@paigebraille.com if you want to have a say in the technology created for you.",
+    ],
+  },
+  {
+    question: "Got another question?",
+    answer: [
+      "You can ask any questions you have about Paige at hello@paigebraille.com.",
+    ],
+  },
+  // Add more questions here...
+];
 
 const HeroText = () => {
   return (
@@ -64,7 +89,12 @@ export default function About() {
       <HeroText />
       <MissionSection />
       <People />
-      <FAQ />
+      <div className="mb-6">
+        <Heading css="text-start w-full px-4 md:px-6 py-4 bg-paigelightgreen rounded-t-lg">
+          FAQ
+        </Heading>
+        <FAQ questions={questions} />
+      </div>
     </div>
   );
 }
