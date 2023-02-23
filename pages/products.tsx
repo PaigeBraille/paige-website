@@ -4,6 +4,7 @@ import device from "../public/device2.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
+import NewsletterSection from "../components/NewsletterSection";
 
 const questions: FAQuestion[] = [
   {
@@ -96,6 +97,9 @@ export default function Products() {
         <HeroSection />
       </div>
       <ProductSection />
+      <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
+        <NewsletterSection />
+      </div>
     </div>
   );
 }
