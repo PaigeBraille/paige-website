@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script async src="/scripts/ml.js"></script>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
