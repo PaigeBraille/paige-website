@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import device from "../public/device2.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
+import SubscribePopup from "@/components/SubscribePopup";
 
 const questions: FAQuestion[] = [
   {
@@ -27,7 +28,7 @@ const questions: FAQuestion[] = [
   // Add more questions here...
 ];
 
-const HeroSection = () => {
+const HeroSection = (props: { onClickJoin: () => void }) => {
   return (
     <div className="flex flex-col sm:flex-row sm:justify-between h-96">
       <div className="flex flex-col justify-center items-start ml-4 md:ml-8 text-start gap-1">
@@ -37,7 +38,10 @@ const HeroSection = () => {
         <h2 className="text-gray-900 font-light mb-6 sm:mb-12 sm:text-lg">
           Coming soon
         </h2>
-        <button className="bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg">
+        <button
+          className="bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
+          onClick={props.onClickJoin}
+        >
           Join the Waitlist
         </button>
       </div>
@@ -91,15 +95,23 @@ const ProductSection = () => {
 };
 
 export default function Products() {
+  const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <div className="relative">
       <div className="max-w-5xl mx-auto flex flex-col">
-        <HeroSection />
+        <HeroSection onClickJoin={() => setShowSubscribe(true)} />
       </div>
       <ProductSection />
       <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
-        <NewsletterSection />
+        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
       </div>
+      {showSubscribe && (
+        <SubscribePopup
+          onDismiss={() => {
+            setShowSubscribe(false);
+          }}
+        />
+      )}
     </div>
   );
 }

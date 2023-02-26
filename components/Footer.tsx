@@ -11,13 +11,25 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           <Logo className="inline-block h-auto" alt="Paige Logo" />
         </Link>
         <p className="mb-4">© Paige 2022. All rights reserved.</p>
-        {/* <div className="flex flex-col gap-2 items-center md:items-start overflow-clip">
-          <p className="font-medium">Subscribe to our newsletter:</p>
+        <form
+          className="flex flex-col gap-2 items-center md:items-start overflow-clip"
+          name="footer-subscribe"
+          method="POST"
+          data-netlify="true"
+          action="/success"
+        >
+          <label className="font-medium" htmlFor="email">
+            Subscribe to our newsletter:
+          </label>
+          <input type="hidden" name="form-name" value="footer-subscribe" />
           <input
+            type="text"
+            name="email"
+            id="email"
             placeholder="Enter email here"
-            className="py-1 px-2 font-light"
+            className="py-1 px-2 font-light text-black outline-none"
           />
-        </div> */}
+        </form>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Web</h5>

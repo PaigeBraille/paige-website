@@ -1,7 +1,7 @@
 import React from "react";
 import Graphic1 from "../public/svg/graphic-1.svg";
 
-export default function NewsletterSection() {
+export default function NewsletterSection(props: {onClickSubscribe: () => void}) {
   return (
     <div className="flex flex-col md:flex-row bg-primary px-4 pt-4 md:p-8 justify-between relative overflow-visible gap-4 rounded-md">
       <div className="flex flex-col justify-between md:w-1/2 gap-4">
@@ -11,7 +11,7 @@ export default function NewsletterSection() {
         </h2>
         <button
           className="ml-onclick-form font-bold text-primary bg-white px-8 py-2 bg-white text-sm mr-auto rounded cursor-pointer"
-          onClick={() => ml("show", "yzlLlG", true)}
+          onClick={props.onClickSubscribe}
         >
           Subscribe
         </button>
