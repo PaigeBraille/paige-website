@@ -6,7 +6,7 @@ export default function SubscribePopup(props: { onDismiss: () => void }) {
     >
       <div className="relative w-screen p-4 md:p-8">
         <form
-          className="flex flex-col gap-4 bg-blue-100 p-20 rounded shadow-xl max-w-sm mx-auto border border-primary"
+          className="flex flex-col gap-2 md:gap-4 bg-blue-100 p-4 md:p-8 lg:p-20 rounded shadow-xl max-w-sm mx-auto border border-primary leading-tight"
           name="footer-subscribe"
           method="POST"
           data-netlify="true"
