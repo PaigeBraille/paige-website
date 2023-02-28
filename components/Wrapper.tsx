@@ -17,8 +17,7 @@ const WEB_LINKS: NavLinkInfo[] = [
   },
   {
     name: "Translate",
-    location: "https://paigetranslate.netlify.app/",
-    isExternal: true,
+    location: "/translate",
   },
   {
     name: "Products",
