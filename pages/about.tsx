@@ -1,4 +1,5 @@
-import Heading from "@/components/Heading";
+import Heading from "../components/Heading";
+import { Wrapper } from "../components/Wrapper";
 import React from "react";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import People from "../components/People";
@@ -85,16 +86,18 @@ const MissionSection = () => {
 
 export default function About() {
   return (
-    <div className="mx-auto max-w-5xl px-4 md:px-6">
-      <HeroText />
-      <MissionSection />
-      <People />
-      <div className="mb-6">
-        <Heading css="text-start w-full px-4 md:px-6 py-4 bg-paigelightgreen rounded-t-lg">
-          FAQ
-        </Heading>
-        <FAQ questions={questions} />
+    <Wrapper>
+      <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <HeroText />
+        <MissionSection />
+        <People />
+        <div className="mb-6">
+          <Heading css="text-start w-full px-4 md:px-6 py-4 bg-paigelightgreen rounded-t-lg">
+            FAQ
+          </Heading>
+          <FAQ questions={questions} />
+        </div>
       </div>
-    </div>
+    </Wrapper>
   );
 }

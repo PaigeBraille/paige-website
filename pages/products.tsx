@@ -5,7 +5,8 @@ import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
-import SubscribePopup from "@/components/SubscribePopup";
+import SubscribePopup from "../components/SubscribePopup";
+import { Wrapper } from "../components/Wrapper";
 
 const questions: FAQuestion[] = [
   {
@@ -97,21 +98,23 @@ const ProductSection = () => {
 export default function Products() {
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
-    <div className="relative">
-      <div className="max-w-5xl mx-auto flex flex-col">
-        <HeroSection onClickJoin={() => setShowSubscribe(true)} />
+    <Wrapper>
+      <div className="relative">
+        <div className="max-w-5xl mx-auto flex flex-col">
+          <HeroSection onClickJoin={() => setShowSubscribe(true)} />
+        </div>
+        <ProductSection />
+        <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
+          <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
+        </div>
+        {showSubscribe && (
+          <SubscribePopup
+            onDismiss={() => {
+              setShowSubscribe(false);
+            }}
+          />
+        )}
       </div>
-      <ProductSection />
-      <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
-        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
-      </div>
-      {showSubscribe && (
-        <SubscribePopup
-          onDismiss={() => {
-            setShowSubscribe(false);
-          }}
-        />
-      )}
-    </div>
+    </Wrapper>
   );
 }

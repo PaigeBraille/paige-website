@@ -2,6 +2,7 @@ import Heading from "@/components/Heading";
 import Image from "next/image";
 import Link from "next/link";
 import { Post, getPostBySlug, getAllPosts } from "../../lib/testimonials";
+import { Wrapper } from "../../components/Wrapper";
 
 type Props = {
   post: Post;
@@ -15,23 +16,27 @@ type Params = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <div className="max-w-5xl mx-auto p-4 md:px-8">
-      <Link href="/testimonials" className="text-primary text-xs font-light">
-        ← Go back
-      </Link>
-      <Heading css="text-start">{post.title}</Heading>
-      <p className="text-xs font-light">{post.date}</p>
-      <div className="py-4 md:py-8">
-        <Image
-          src={post.coverImage}
-          alt={post.title}
-          width={640}
-          height={360}
-        //   className="mx-auto"
+    <Wrapper>
+      <div className="max-w-5xl mx-auto p-4 md:px-8">
+        <Link href="/testimonials" className="text-primary text-xs font-light">
+          ← Go back
+        </Link>
+        <Heading css="text-start">{post.title}</Heading>
+        <p className="text-xs font-light">{post.date}</p>
+        <div className="py-4 md:py-8">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            width={640}
+            height={360}
+          />
+        </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
+          className="testimonial-post"
         />
       </div>
-      <div dangerouslySetInnerHTML={{ __html: post.content ?? "" }} className="testimonial-post"/>
-    </div>
+    </Wrapper>
   );
 }
 
