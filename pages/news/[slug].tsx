@@ -5,13 +5,13 @@ import { getPostBySlug, getAllPosts, PostProps, SlugParams } from "../../lib/pos
 import { Wrapper } from "../../components/Wrapper";
 import path from "path";
 
-const postsDirectory = path.join(process.cwd(), "content/testimonials");
+const postsDirectory = path.join(process.cwd(), "content/news");
 
 export default function BlogPost({ post }: PostProps) {
   return (
     <Wrapper>
       <div className="max-w-5xl mx-auto p-4 md:px-8">
-        <Link href="/testimonials" className="text-primary text-xs font-light">
+        <Link href="/about" className="text-primary text-xs font-light">
           ← Go back
         </Link>
         <Heading css="text-start">{post.title}</Heading>

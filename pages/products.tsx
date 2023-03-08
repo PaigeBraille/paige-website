@@ -90,7 +90,9 @@ const ProductSection = () => {
           ></iframe>
         </div>
       </div>
+      <div className="border-t border-paigedarkgrey">
       <FAQ questions={questions} />
+      </div>
     </div>
   );
 };

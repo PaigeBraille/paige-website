@@ -22,18 +22,21 @@ html, body {
   font-weight: 800;
   margin-bottom: 1rem;
   color: #2A7DE1;
+  line-height: 1.8rem;
 }
 
 .testimonial-post > h2 {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: .8rem;
+  line-height: 1.6rem;
 }
 
 .testimonial-post > h3 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: .6rem;
+  line-height: 1.4rem;
 }
 
 .testimonial-post > p {

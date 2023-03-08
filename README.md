@@ -23,3 +23,7 @@
 ## Add new testimonial
 
 Add a new `<testimonialname>.md` to `content/testimonials` and add any images to `public/testimonial-imgs`, then redeploy
+
+## Add a new News article
+
+Add a new `<article>.md` to `content/news` and add any images to `public/news-imgs`, then redeploy

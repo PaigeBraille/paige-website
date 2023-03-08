@@ -7,8 +7,6 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkHtml from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "content/testimonials");
-
 export type Post = {
   slug: string;
   title: string;
@@ -18,7 +16,22 @@ export type Post = {
   excerpt?: string;
 };
 
-export const getAllPosts = (): Post[] => {
+export type PostsProps = {
+  posts: Post[];
+};
+
+export type PostProps = {
+  post: Post;
+};
+
+export type SlugParams = {
+  params: {
+    slug: string;
+  };
+};
+
+
+export const getAllPosts = (postsDirectory: string): Post[] => {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPosts = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, "");
@@ -36,7 +49,7 @@ export const getAllPosts = (): Post[] => {
   return allPosts;
 };
 
-export function getPostBySlug(slug: string) {
+export function getPostBySlug(slug: string, postsDirectory: string) {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);

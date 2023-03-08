@@ -1,12 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Post } from "lib/testimonials";
+import { PostProps } from "@/lib/posts";
 
-type Props = {
-  post: Post;
-};
-
-export default function TestimonialPost({ post }: Props) {
+export default function TestimonialPost({ post }: PostProps) {
   return (
     <div className="flex flex-col md:flex-row gap-4">
       <div className="flex md:w-1/2 md:h-full">
