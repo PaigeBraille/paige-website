@@ -10,7 +10,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <Link href="/">
           <Logo className="inline-block h-auto" alt="Paige Logo" />
         </Link>
-        <p className="mb-4">© Paige 2022. All rights reserved.</p>
+        <p className="mb-4">Contact us at: hello@paigebraille.com</p>
         <form
           className="flex flex-col gap-2 items-center md:items-start overflow-clip"
           name="footer-subscribe"
@@ -30,6 +30,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             className="py-1 px-2 font-light text-black outline-none"
           />
         </form>
+        <p className="mb-4 mt-4">© Paige 2022. All rights reserved.</p>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Web</h5>

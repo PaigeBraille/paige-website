@@ -54,13 +54,13 @@ export default function About({ posts }: PostsProps) {
         <HeroText />
         <MissionSection />
         <People />
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <Heading css="text-start w-full px-4 md:px-6 py-4 bg-paigelightgreen md:rounded-t-lg">
             FAQ
           </Heading>
 
           <FAQ questions={questions} />
-        </div>
+        </div> */}
         <NewsSection posts={posts} />
       </div>
     </Wrapper>

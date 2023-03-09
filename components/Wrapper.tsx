@@ -8,19 +8,19 @@ const WEB_LINKS: NavLinkInfo[] = [
     location: "/about",
   },
   {
-    name: "Testimonials",
+    name: "Stories",
     location: "/testimonials",
   },
+  // {
+  //   name: "Resources",
+  //   location: "/resources",
+  // },
+  // {
+  //   name: "Translate",
+  //   location: "/translate",
+  // },
   {
-    name: "Resources",
-    location: "/resources",
-  },
-  {
-    name: "Translate",
-    location: "/translate",
-  },
-  {
-    name: "Products",
+    name: "Buy",
     location: "/products",
   },
 ];

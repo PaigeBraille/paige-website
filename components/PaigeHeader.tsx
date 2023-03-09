@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Link from "next/link";
-import Logo from "../public/svg/paige.svg";
+import Logo from "../public/svg/Paige_logo.svg";
 
 export type NavLinkInfo = {
   name: string;

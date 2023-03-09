@@ -3,6 +3,7 @@ import Heading from "./Heading";
 import Link from "next/link";
 import Graphic1 from "../public/svg/graphic-1.svg";
 import Graphic2 from "../public/svg/graphic-2.svg";
+import Graphic3 from "../public/svg/graphic-2.svg";
 
 export type GraphicSectionProps = {
   graphic: React.ReactNode;
@@ -30,6 +31,15 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     text: "The United Nations Convention on the Rights of Persons with Disabilities (CRPD) defines braille as a means of communication and therefore essential in freedom of expression and access to information. Worldwide, 340 million people are blind or partially sighted and this figure is set to rise due to an ageing population. ",
     colorScheme: "GREEN",
     linkTo: "/resources",
+  },
+  {
+  graphic: (
+    <Graphic3 className="overflow-visible inline-flex h-64 xl:absolute xl:-right-6 xl:-bottom-14 xl:h-96" />
+  ),
+  heading: "Order Paige Connect",
+  text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
+  colorScheme: "GREEN",
+  linkTo: "/products",
   },
 ];
 
@@ -78,4 +88,8 @@ export function GraphicSection1() {
 
 export function GraphicSection2() {
   return <GenericGraphicSection {...GRAPHIC_SECTIONS[1]} />;
+}
+
+export function GraphicSection3() {
+  return <GenericGraphicSection {...GRAPHIC_SECTIONS[2]} />;
 }

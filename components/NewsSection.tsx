@@ -9,7 +9,7 @@ export default function NewsSection({ posts }: PostsProps) {
       <Heading css="text-2xl font-bold px-4 md:px-6 py-4 bg-paigeyellow text-bold md:rounded-t-lg tracking-tight leading-tight text-start">
         News
       </Heading>
-      <div className="flex flex-col gap-6 md:flex-row p-6 md:border-x md:border-b border-paigedarkgrey">
+      <div className="flex flex-col gap-6 md:flex-row p-6 md:border-x md:border-b rounded-b-lg border-paigedarkgrey">
         <div className="flex flex-col gap-4 md:w-2/3">
           <Image
             src={posts[0].coverImage}
