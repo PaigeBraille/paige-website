@@ -11,6 +11,7 @@ export type GraphicSectionProps = {
   heading: string;
   text: string;
   colorScheme: "GREEN" | "BLUE" | "DARKBLUE";
+  overflows: boolean;
   linkTo?: string;
 };
 
@@ -23,6 +24,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     text: "Paige was founded by a group of four Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
     colorScheme: "DARKBLUE",
     linkTo: "/about",
+    overflows: true
   },
   {
     graphic: (
@@ -32,15 +34,17 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     text: "The United Nations Convention on the Rights of Persons with Disabilities (CRPD) defines braille as a means of communication and therefore essential in freedom of expression and access to information. Worldwide, 340 million people are blind or partially sighted and this figure is set to rise due to an ageing population. ",
     colorScheme: "GREEN",
     linkTo: "/resources",
+    overflows: true
   },
   {
   graphic: (
-    <Graphic3 className="overflow-visible inline-flex h-64 xl:absolute xl:right-5 xl:bottom-2" />
+    <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />
   ),
   heading: "New product: Paige Connect",
   text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
   colorScheme: "BLUE",
   linkTo: "/products",
+  overflows: false
   },
 ];
 
@@ -57,7 +61,7 @@ function GenericGraphicSection(props: GraphicSectionProps) {
               : "bg-paigedarkblue"
           }`}
         >
-          <div className="inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 xl:mr-96 relative sm:px-4 xl:px-6">
+          <div className={`inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 relative sm:px-4 xl:px-6 ${props.overflows ? "xl:mr-96 " : 'xl:m-0'}`}>
             <Heading
               css="text-center sm:text-start grow"
               color={props.colorScheme === "GREEN" ? undefined

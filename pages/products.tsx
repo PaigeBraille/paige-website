@@ -31,12 +31,12 @@ const questions: FAQuestion[] = [
 
 const HeroSection = (props: { onClickJoin: () => void }) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-between h-96">
-      <div className="flex flex-col justify-center items-start ml-4 md:ml-8 text-start gap-1">
+    <div className="flex flex-col sm:flex-row gap-6 sm:gap-0 sm:justify-between">
+      <div className="flex flex-col justify-center items-start text-start gap-1 px-6">
         <Heading css="text-primary text-start text-xl lg:text-4xl leading-none">
           Paige Connect
         </Heading>
-        <h2 className="text-gray-900 font-light mb-6 sm:mb-12 sm:text-lg">
+        <h2 className="text-gray-900 font-light mb-6 lg:mb-12 lg:text-lg">
           Coming soon
         </h2>
         <button
@@ -48,7 +48,7 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
       </div>
       <div className="flex flex-col justify-center items-end">
         <Image
-          className=" object-right overflow-clip overscroll-none xl:h-80 w-auto xl:absolute"
+          className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
           src={device}
           alt="Paige Connect Device"
         />
