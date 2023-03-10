@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/device2.png";
+import device from "../public/paigeconnect.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
@@ -48,7 +48,7 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
       </div>
       <div className="flex flex-col justify-center items-end">
         <Image
-          className="object-scale-down object-right overflow-clip overscroll-none w-64 md:w-96 xl:absolute xl:right-0 xl:top-0"
+          className=" object-right overflow-clip overscroll-none xl:h-80 w-auto xl:absolute"
           src={device}
           alt="Paige Connect Device"
         />
@@ -83,7 +83,7 @@ const ProductSection = () => {
             </p>
           </div>
           <iframe
-            src="https://player.vimeo.com/video/558179147?h=855e29fb55&title=0&byline=0&portrait=0"
+            src="https://player.vimeo.com/video/806437026?portrait=0h=2b6f921de3"
             height="360"
             allow="autoplay; fullscreen; picture-in-picture"
             className="lg:w-1/2"

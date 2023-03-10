@@ -3,13 +3,14 @@ import Heading from "./Heading";
 import Link from "next/link";
 import Graphic1 from "../public/svg/graphic-1.svg";
 import Graphic2 from "../public/svg/graphic-2.svg";
-import Graphic3 from "../public/svg/graphic-2.svg";
+import Graphic3 from "../public/svg/Paige_Icon01_white.svg";
+
 
 export type GraphicSectionProps = {
   graphic: React.ReactNode;
   heading: string;
   text: string;
-  colorScheme: "GREEN" | "BLUE";
+  colorScheme: "GREEN" | "BLUE" | "DARKBLUE";
   linkTo?: string;
 };
 
@@ -20,7 +21,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     ),
     heading: "Meet Paige",
     text: "Paige was founded by a group of four Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
-    colorScheme: "BLUE",
+    colorScheme: "DARKBLUE",
     linkTo: "/about",
   },
   {
@@ -34,11 +35,11 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
   },
   {
   graphic: (
-    <Graphic3 className="overflow-visible inline-flex h-64 xl:absolute xl:-right-6 xl:-bottom-14 xl:h-96" />
+    <Graphic3 className="overflow-visible inline-flex h-64 xl:absolute xl:right-5 xl:bottom-2" />
   ),
-  heading: "Order Paige Connect",
+  heading: "New product: Paige Connect",
   text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
-  colorScheme: "GREEN",
+  colorScheme: "BLUE",
   linkTo: "/products",
   },
 ];
@@ -51,23 +52,31 @@ function GenericGraphicSection(props: GraphicSectionProps) {
           className={`flex flex-col lg:flex-row items-center justify-between w-full xl:rounded-lg xl:overflow-visible relative gap-4 xl:gap-0 px-4 py-8  ${
             props.colorScheme === "BLUE"
               ? "bg-primary text-white "
-              : "bg-paigelightgreen"
+              : props.colorScheme === "GREEN" 
+              ? " bg-paigelightgreen"
+              : "bg-paigedarkblue"
           }`}
         >
           <div className="inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 xl:mr-96 relative sm:px-4 xl:px-6">
             <Heading
               css="text-center sm:text-start grow"
-              color={props.colorScheme === "BLUE" ? "white" : undefined}
+              color={props.colorScheme === "GREEN" ? undefined
+              : "text-white" }
             >
               {props.heading}
             </Heading>
-            <span>{props.text}</span>
+            <span className={props.colorScheme === "GREEN" 
+              ? undefined
+              : "text-white"}
+            >
+              {props.text}
+            </span>
             {props.linkTo && (
               <Link
                 className={`rounded-sm px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit ${
-                  props.colorScheme === "BLUE"
-                    ? "text-primary bg-white hover:bg-blue-100"
-                    : "text-white bg-green-900 hover:bg-green-800"
+                  props.colorScheme === "GREEN"
+                    ? "text-white bg-green-900 hover:bg-green-800"
+                    : "text-primary bg-white hover:bg-blue-100"
                 }`}
                 href={props.linkTo}
               >

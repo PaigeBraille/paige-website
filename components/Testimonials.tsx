@@ -5,6 +5,10 @@ import SpeechBubble from "../public/svg/speechBubble.svg";
 
 const TESTIMONIALS = [
   {
+    name: "Wendy Eaton",
+    text: " As a sonsory needs service it would be very good to use in our schools - About Paige Connect ",
+  },
+  {
     name: "Sean Randall",
     text: "Paige connects the braille learner to a sighted family member or teacher like nothing seen before. ",
   },
@@ -14,7 +18,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Braille User",
-    text: "I remember far more of what I actively read in braille than I do when listening. ",
+    text: "Oh my gosh! ... my wife can view what I'm typing! - About Paige Connect ",
   },
   // Add more testimonials here
 ];
@@ -44,6 +48,12 @@ const TestimonialsSection = () => {
           })}
         </div>
       </div>
+        <a
+          className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
+          href="/testimonials"
+        >
+          Read full stories
+        </a>
     </div>
   );
 };

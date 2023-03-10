@@ -28,17 +28,17 @@ export default function MissionSection() {
 
       <MissionItem
         title="We want to make braille affordable for everyone"
-        text="At Paige, we believe that braille is a fundamental tool for literacy and communication for people who are visually impaired. That's why we are committed to making braille technology more affordable and accessible for everyone."
+        text="At Paige, we believe that braille is a fundamental tool for literacy and communication for people who are visually impaired."
         idx={1}
       />
       <MissionItem
         title="We want to help people communicate better"
-        text="Communication is the act of giving, receiving, and sharing information and it is not possible without mutually understood signs or symbols. Our technology focuses on enabling communication and collaboration with sighted peers, parents, and teachers."
+        text="Our technology focuses on enabling communication and collaboration with sighted peers, parents, and teachers."
         idx={2}
       />
       <MissionItem
         title="We want to engage with the braille community"
-        text="As engineers without lived experience of sight loss, it is crucial that we work in close collaboration with people who use braille to ensure they have a say in the technology created for them and that the resulting design serves them in their daily lives."
+        text="It is crucial that we work in close collaboration with people who use braille to ensure they have a say in the technology created for them and that the resulting design serves them in their daily lives."
         idx={3}
       />
     </div>

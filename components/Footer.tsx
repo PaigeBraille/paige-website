@@ -30,7 +30,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             className="py-1 px-2 font-light text-black outline-none"
           />
         </form>
-        <p className="mb-4 mt-4">© Paige 2022. All rights reserved.</p>
+        <p className="mb-4 mt-4">© Paige Braille Ltd 2023. All rights reserved. Company no. 14311624.</p>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Web</h5>
@@ -68,6 +68,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           <li className="mt-2">
             <a href="#" className="hover:underline">
               Privacy Policy
+            </a>
+          </li>
+          <li className="mt-2">
+            <a href="#" className="hover:underline">
+              Careers
             </a>
           </li>
           <li className="mt-2">

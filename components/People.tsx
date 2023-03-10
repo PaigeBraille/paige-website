@@ -59,7 +59,7 @@ export default function People() {
           <TeamMember
             imageSrc={Nina}
             heading={"Nina Moutonnet"}
-            caption={"Developer"}
+            caption={"Development"}
           />
           <TeamMember
             imageSrc={NinaR}
