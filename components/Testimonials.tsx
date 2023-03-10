@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Heading from "./Heading";
 import SpeechBubble from "../public/svg/speechBubble.svg";
+import Link from "next/link";
 
 const TESTIMONIALS = [
   {
@@ -35,9 +36,7 @@ const TestimonialsSection = () => {
                 className="flex flex-col gap-2 relative overflow-y-clip h-36 rounded-b-lg"
                 key={t.name}
               >
-                <SpeechBubble
-                  className="absolute top-0 left-0"
-                />
+                <SpeechBubble className="absolute top-0 left-0" />
                 <h3 className="z-10 w-52 mt-8 mx-6 font-bold">{t.name}</h3>
                 <blockquote className="z-10 w-52 mx-6 text-sm">
                   {t.text}
@@ -48,12 +47,12 @@ const TestimonialsSection = () => {
           })}
         </div>
       </div>
-        <a
-          className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
-          href="/testimonials"
-        >
-          Read full stories
-        </a>
+      <Link
+        className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
+        href="/testimonials"
+      >
+        Read full stories
+      </Link>
     </div>
   );
 };
