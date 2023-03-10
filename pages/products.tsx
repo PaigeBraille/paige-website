@@ -91,7 +91,7 @@ const ProductSection = () => {
         </div>
       </div>
       <div className="border-t border-paigedarkgrey">
-      <FAQ questions={questions} />
+        <FAQ questions={questions} />
       </div>
     </div>
   );
@@ -109,13 +109,13 @@ export default function Products() {
         <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
           <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
         </div>
-        {showSubscribe && (
-          <SubscribePopup
-            onDismiss={() => {
-              setShowSubscribe(false);
-            }}
-          />
-        )}
+
+        <SubscribePopup
+          togglePopup={() => {
+            setShowSubscribe(!showSubscribe);
+          }}
+          isVisible={showSubscribe}
+        />
       </div>
     </Wrapper>
   );
