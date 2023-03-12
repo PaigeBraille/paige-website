@@ -14,9 +14,18 @@ export default function TestimonialPost({ post }: PostProps) {
         />
       </div>
       <div className="flex flex-col gap-2 p-4 bg-blue-50 rounded-lg md:w-1/2">
-        <h2 className="text-xl font-bold tracking-tight">{post.title}</h2>
+        <h2 className="text-xl font-bold tracking-tight" id={post.title}>
+          {post.title}
+        </h2>
         <p className="text-sm mb-auto">{post.excerpt}</p>
-        <Link href={`/testimonials/${post.slug}`} className="text-xs border border-black rounded px-4 py-2 mr-auto">Read full story</Link>
+        <Link
+          href={`/testimonials/${post.slug}`}
+          className="text-xs border border-black rounded px-4 py-2 mr-auto"
+          role="button"
+          aria-labelledby={post.title}
+        >
+          Read full story
+        </Link>
       </div>
     </div>
   );

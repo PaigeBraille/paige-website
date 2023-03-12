@@ -5,7 +5,6 @@ import Graphic1 from "../public/svg/graphic-1.svg";
 import Graphic2 from "../public/svg/graphic-2.svg";
 import Graphic3 from "../public/svg/Paige_Icon01_white.svg";
 
-
 export type GraphicSectionProps = {
   graphic: React.ReactNode;
   heading: string;
@@ -24,7 +23,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     text: "Paige was founded by a group of four Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
     colorScheme: "DARKBLUE",
     linkTo: "/about",
-    overflows: true
+    overflows: true,
   },
   {
     graphic: (
@@ -34,17 +33,15 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     text: "The United Nations Convention on the Rights of Persons with Disabilities (CRPD) defines braille as a means of communication and therefore essential in freedom of expression and access to information. Worldwide, 340 million people are blind or partially sighted and this figure is set to rise due to an ageing population. ",
     colorScheme: "GREEN",
     linkTo: "/resources",
-    overflows: true
+    overflows: true,
   },
   {
-  graphic: (
-    <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />
-  ),
-  heading: "New product: Paige Connect",
-  text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
-  colorScheme: "BLUE",
-  linkTo: "/products",
-  overflows: false
+    graphic: <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />,
+    heading: "New product: Paige Connect",
+    text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
+    colorScheme: "BLUE",
+    linkTo: "/products",
+    overflows: false,
   },
 ];
 
@@ -56,31 +53,41 @@ function GenericGraphicSection(props: GraphicSectionProps) {
           className={`flex flex-col lg:flex-row items-center justify-between w-full xl:rounded-lg xl:overflow-visible relative gap-4 xl:gap-0 px-4 py-8  ${
             props.colorScheme === "BLUE"
               ? "bg-primary text-white "
-              : props.colorScheme === "GREEN" 
+              : props.colorScheme === "GREEN"
               ? " bg-paigelightgreen"
               : "bg-paigedarkblue"
           }`}
         >
-          <div className={`inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 relative sm:px-4 xl:px-6 ${props.overflows ? "xl:mr-96 " : 'xl:m-0'}`}>
+          <div
+            className={`inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 relative sm:px-4 xl:px-6 ${
+              props.overflows ? "xl:mr-96 " : "xl:m-0"
+            }`}
+          >
             <Heading
               css="text-center sm:text-start grow"
-              color={props.colorScheme === "GREEN" ? undefined
-              : "text-white" }
+              color={props.colorScheme === "GREEN" ? undefined : "text-white"}
             >
               {props.heading}
             </Heading>
-            <span className={props.colorScheme === "GREEN" 
-              ? undefined
-              : "text-white"}
+            <span
+              className={
+                props.colorScheme === "GREEN" ? undefined : "text-white"
+              }
             >
               {props.text}
             </span>
             {props.linkTo && (
               <Link
                 className={`rounded-sm px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit ${
-                  props.colorScheme === "GREEN"
-                    ? "text-white bg-green-900 hover:bg-green-800"
-                    : "text-primary bg-white hover:bg-blue-100"
+                  props.colorScheme === "GREEN" &&
+                  "text-white bg-green-900 hover:bg-green-800"
+                } ${
+                  props.colorScheme === "DARKBLUE" &&
+                  "text-paigedarkblue bg-white hover:bg-blue-100"
+                } ${
+                  props.colorScheme === "BLUE" &&
+                  "text-primary bg-white hover:bg-blue-100"
+                }
                 }`}
                 href={props.linkTo}
               >

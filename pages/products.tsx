@@ -47,11 +47,11 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         </button>
       </div>
       <iframe
-            src="https://www.youtube-nocookie.com/embed/vf-0M0ug554" 
-            title="YouTube video player" 
-            allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            height="360"
-            className="lg:w-1/2 mx-6"
+        src="https://www.youtube-nocookie.com/embed/vf-0M0ug554"
+        title="Paige Connect Demo Video"
+        allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        height="360"
+        className="lg:w-1/2 mx-6"
       ></iframe>
     </div>
   );
@@ -84,9 +84,10 @@ const ProductSection = () => {
           </div>
           <div className="flex flex-col justify-center items-end">
             <Image
-            className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
-            src={device}
-            alt="Paige Connect Device"
+              className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
+              src={device}
+              alt="Paige Connect Device"
+              aria-details="Paige connect device positioned underneath a brailler machine. "
             />
           </div>
         </div>
