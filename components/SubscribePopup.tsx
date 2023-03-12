@@ -25,8 +25,11 @@ export default function SubscribePopup(props: {
             e.stopPropagation();
           }}
         >
-          <label className="font-medium text-primary" htmlFor="email">
-            Subscribe to our newsletter
+          <label className="font-extrabold text-primary" htmlFor="email">
+            Join the Paige community
+          </label>
+          <label className="font-light text-primary text-sm" htmlFor="email">
+            Subscribe to be the first to know about new product launches and offers!
           </label>
           <input type="hidden" name="form-name" value="footer-subscribe" />
           <input
@@ -43,6 +46,9 @@ export default function SubscribePopup(props: {
           >
             Subscribe
           </button>
+          <label className="font-extralight text-primary text-xs" htmlFor="email">
+          We use email and targeted online advertising to send you product and services updates, promotional offers and other marketing communications. Joining the waitlist is non-commital and you may unsubscribe at any time.
+          </label>
         </form>
       </div>
     </div>

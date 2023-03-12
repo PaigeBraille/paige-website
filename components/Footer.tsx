@@ -71,14 +71,14 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             </a>
           </li>
           <li className="mt-2">
-            <a href="#" className="hover:underline">
+            <Link href="/careers" className="hover:underline">
               Careers
-            </a>
+            </Link>
           </li>
           <li className="mt-2">
-            <a href="#" className="hover:underline">
+            <Link href="/products" className="hover:underline">
               FAQ
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

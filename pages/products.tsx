@@ -46,13 +46,13 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
           Join the Waitlist
         </button>
       </div>
-      <div className="flex flex-col justify-center items-end">
-        <Image
-          className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
-          src={device}
-          alt="Paige Connect Device"
-        />
-      </div>
+      <iframe
+            src="https://www.youtube-nocookie.com/embed/vf-0M0ug554" 
+            title="YouTube video player" 
+            allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            height="360"
+            className="lg:w-1/2 mx-6"
+      ></iframe>
     </div>
   );
 };
@@ -82,15 +82,16 @@ const ProductSection = () => {
               students alike.
             </p>
           </div>
-          <iframe
-            src="https://player.vimeo.com/video/806437026?portrait=0h=2b6f921de3"
-            height="360"
-            allow="autoplay; fullscreen; picture-in-picture"
-            className="lg:w-1/2"
-          ></iframe>
+          <div className="flex flex-col justify-center items-end">
+            <Image
+            className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
+            src={device}
+            alt="Paige Connect Device"
+            />
+          </div>
         </div>
       </div>
-      <div className="border-t border-paigedarkgrey">
+      <div className="border-t border-paigedarkgrey pb-4">
         <FAQ questions={questions} />
       </div>
     </div>
