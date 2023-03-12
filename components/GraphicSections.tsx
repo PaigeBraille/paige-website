@@ -21,7 +21,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
       <Graphic1 className="overflow-visible inline-flex h-64 xl:absolute xl:-right-14 xl:-bottom-6 xl:h-96" />
     ),
     heading: "Meet Paige",
-    text: "Paige was founded by a group of four Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
+    text: "Paige was founded by a group of five Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
     colorScheme: "DARKBLUE",
     linkTo: "/about",
     overflows: true
@@ -40,7 +40,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
   graphic: (
     <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />
   ),
-  heading: "New product: Paige Connect",
+  heading: "Paige Connect",
   text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
   colorScheme: "BLUE",
   linkTo: "/products",
