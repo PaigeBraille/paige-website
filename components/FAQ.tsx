@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faChevronDown, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faChevronDown,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Register font awesome icons
 library.add(faChevronDown);
 library.add(faChevronLeft);
-
 
 export type FAQuestion = {
   question: string; // Question
@@ -24,45 +25,46 @@ const FAQ = (props: { questions: FAQuestion[] }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <ul className="flex flex-col">
       {props.questions.map((q, index) => (
-        <div
+        <li
           key={q.question}
           className="flex items-start flex-col px-4 py-4 gap-2 md:border-x border-b border-paigedarkgrey"
         >
           <div
             className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
             onClick={() => handleClick(index)}
+            aria-label={q.question}
           >
-            <span className="inline-flex md:text-xl font-bold leading-tight tracking-tight">
+            <h3 className="inline-flex md:text-xl font-bold leading-tight tracking-tight">
               {q.question}
-            </span>
+            </h3>
             <span className="text-gray-600 inline-flex text-lg md:text-2xl">
-              {index === activeQuestion ? <FontAwesomeIcon icon={faChevronDown} size="xs"/> : <FontAwesomeIcon icon={faChevronLeft} size="xs"/>}
+              {index === activeQuestion ? (
+                <FontAwesomeIcon icon={faChevronDown} size="xs" />
+              ) : (
+                <FontAwesomeIcon icon={faChevronLeft} size="xs" />
+              )}
             </span>
           </div>
-          {index === activeQuestion && (
-            <div
-              key={q.question}
-              className={`text-sm ${
-                index === activeQuestion
-                  ? "flex w-full flex-col gap-2"
-                  : "hidden"
-              }`}
-            >
-              {q.answer.map((a) => {
-                return (
-                  <span key={a} className="block">
-                    {a}
-                  </span>
-                );
-              })}
-              {q.fragment}
-            </div>
-          )}
-        </div>
+          <div
+            key={q.question}
+            className={`text-sm  ${
+              index === activeQuestion ? "flex w-full flex-col gap-2 visible" : "hidden"
+            }`}
+          >
+            {q.answer.map((a) => {
+              return (
+                <p key={a} className="block">
+                  {a}
+                </p>
+              );
+            })}
+            {q.fragment}
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
