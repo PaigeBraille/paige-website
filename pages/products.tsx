@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/paigeconnect.png";
+import device from "../public/paigeconnectboard1.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
@@ -84,7 +84,7 @@ const ProductSection = () => {
           </div>
           <div className="flex flex-col justify-center items-end">
             <Image
-              className="object-right object-contain md:h-48 lg:h-64 xl:h-72 w-auto"
+              className="object-right object-contain md:h-48 lg:h-64 xl:h-64 w-auto"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device positioned underneath a brailler machine. "
