@@ -7,23 +7,22 @@ const WEB_LINKS: NavLinkInfo[] = [
     name: "About",
     location: "/about",
   },
-  // {
-  //   name: "Testimonials",
-  //   location: "testimonials",
-  // },
   {
-    name: "Resources",
-    location: "/resources",
-  },
-  {
-    name: "Translate",
-    location: "https://paigetranslate.netlify.app/",
-    isExternal: true,
+    name: "Stories",
+    location: "/testimonials",
   },
   // {
-  //   name: "Products",
-  //   location: "products",
+  //   name: "Resources",
+  //   location: "/resources",
   // },
+  // {
+  //   name: "Translate",
+  //   location: "/translate",
+  // },
+  {
+    name: "Buy",
+    location: "/products",
+  },
 ];
 
 export function Wrapper(props: { children?: ReactNode }) {

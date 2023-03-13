@@ -4,8 +4,8 @@ import Image from "next/image";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  " We have included a tool that allows you to generate .brf documents in UEB grade one and two. Check it out! ";
-
+  "We have included a tool that translates print into braille and allows you to generate braille files in Universal English Braille Grade 1 and 2. Check it out! ";
+  
 export default function WriteWithUs() {
   return (
     <div className="flex flex-col lg:flex-row gap-6 justify-center md:justify-between w-full px-4 sm:px-8">

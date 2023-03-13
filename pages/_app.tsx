@@ -1,9 +1,7 @@
-// pages/_app.tsx
-
-import { Wrapper } from "@/components/Wrapper";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/globals.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -11,9 +9,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>Paige Braille</title>
       </Head>
-      <Wrapper>
-        <Component {...pageProps} />
-      </Wrapper>
+
+      <Component {...pageProps} />
     </>
   );
 }

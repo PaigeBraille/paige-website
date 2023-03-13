@@ -1,3 +1,4 @@
+import { Wrapper } from "../components/Wrapper";
 import React from "react";
 import {
   ResourceSection1,
@@ -20,11 +21,13 @@ const ResourceText = () => {
 
 export default function Resources() {
   return (
-    <div className="mx-auto max-w-5xl md:px-6">
-      <ResourceText />
-      <ResourceSection1 />
-      <ResourceSection2 />
-      <ResourceSection3 />
-    </div>
+    <Wrapper>
+      <div className="mx-auto max-w-5xl md:px-6">
+        <ResourceText />
+        <ResourceSection1 />
+        <ResourceSection2 />
+        <ResourceSection3 />
+      </div>
+    </Wrapper>
   );
 }
