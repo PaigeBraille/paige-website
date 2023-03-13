@@ -37,8 +37,8 @@ const questions: FAQuestion[] = [
 
 const HeroSection = (props: { onClickJoin: () => void }) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-6 sm:gap-0 sm:justify-between">
-      <div className="flex flex-col justify-center items-start text-start gap-1 px-6">
+    <div className="flex flex-col md:flex-row gap-6 sm:justify-between relative max-w-screen px-4 sm:px-8">
+      <div className="flex flex-col justify-center items-start text-start gap-1 sm:w-3/5">
         <Heading css="text-primary text-start text-xl lg:text-4xl leading-none">
           Paige Connect
         </Heading>
@@ -56,9 +56,8 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         src="https://www.youtube-nocookie.com/embed/vf-0M0ug554"
         title="Paige Connect Demo Video"
         allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        height="360"
-        className="lg:w-1/2 mx-6"
-      ></iframe>
+        className="w-full h-28 sm:h-36 lg:h-56 xl:h-62 2xl:h-72"
+      />
     </div>
   );
 };
@@ -72,10 +71,18 @@ const ProductSection = () => {
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="lg:w-1/2 flex flex-col gap-4 text-sm">
             <p>
-            Braille writers are mechanical devices that have been used for over 70 years to create braille. While they remain reliable, we want to modernise this iconic braille tool. We are building Paige Connect, an affordable upgrade for existing braille writers.
+              Braille writers are mechanical devices that have been used for
+              over 70 years to create braille. While they remain reliable, we
+              want to modernise this iconic braille tool. We are building Paige
+              Connect, an affordable upgrade for existing braille writers.
             </p>
             <p>
-            Paige Connect is a small device that attaches underneath the braille writer and allows it to connect to a phone, tablet, or laptop. Once connected, the braille writer can be used as a keyboard, enabling users to type braille into a web app. The web app also includes software that translates braille into print for collaboration with sighted peers, parents, and teachers.
+              Paige Connect is a small device that attaches underneath the
+              braille writer and allows it to connect to a phone, tablet, or
+              laptop. Once connected, the braille writer can be used as a
+              keyboard, enabling users to type braille into a web app. The web
+              app also includes software that translates braille into print for
+              collaboration with sighted peers, parents, and teachers.
             </p>
           </div>
           <div className="flex flex-col justify-center items-end">
@@ -92,7 +99,9 @@ const ProductSection = () => {
         <FAQ questions={questions} />
       </div>
       <p className="text-xs pb-2">
-        *Paige Connect is not manufactured or endorsed by Perkins School for the Blind and Paige Braille is not affiliated with Perkins School for the Blind in any way.
+        *Paige Connect is not manufactured or endorsed by Perkins School for the
+        Blind and Paige Braille is not affiliated with Perkins School for the
+        Blind in any way.
       </p>
     </div>
   );
