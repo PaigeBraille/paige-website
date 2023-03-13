@@ -17,11 +17,11 @@ export default function NewsSection({ posts }: PostsProps) {
             width={640}
             height={360}
           />
-          <h2 className="text-xl font-bold tracking-tight leading-tight">
+          <h2 className="text-xl font-bold tracking-tight leading-tight" id={posts[0].title}>
             {posts[0].title}
           </h2>
           <p className="text-sm">{posts[0].excerpt}</p>
-          <Link href={`/news/${posts[0].slug}`} className="text-xs border border-black rounded px-4 py-2 mr-auto">Read full article</Link>
+          <Link href={`/news/${posts[0].slug}`} className="text-xs border border-black rounded px-4 py-2 mr-auto" aria-labelledby={posts[0].title}>Read full article</Link>
         </div>
         <div className="flex flex-col gap-2">
           <h3 className="bg-paigeyellow font-bold tracking-tight leading-tight px-4 py-2">
@@ -30,7 +30,7 @@ export default function NewsSection({ posts }: PostsProps) {
           <ul className="flex flex-col gap-2">
             {posts.map((p: Post) => {
               return (
-                <li key={p.title} className="bg-yellow-100 px-4 py-2 text-sm">
+                <li key={p.title} className="bg-yellow-50 px-4 py-2 text-sm font-medium hover:text-paigedarkblue hover:underline">
                   <Link href={`/news/${p.slug}`}>{p.title}</Link>
                 </li>
               );
