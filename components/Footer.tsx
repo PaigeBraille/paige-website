@@ -61,9 +61,9 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <h5 className="mb-4 font-bold">Legal</h5>
         <ul className="mb-4">
           <li className="mt-2">
-            <a href="#" className="hover:underline">
+            <Link href="/privacy-policy.pdf" className="hover:underline">
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li className="mt-2">
             <Link href="/careers" className="hover:underline">

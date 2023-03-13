@@ -6,6 +6,7 @@ import Icon3 from "../public/svg/Paige_Icon03.svg";
 const HowToSection = (props: {
   number: number;
   image: React.ReactNode;
+  title: string;
   instructionText: string;
 }) => {
   return (
@@ -16,6 +17,7 @@ const HowToSection = (props: {
         </div>
         {props.image}
       </div>
+      <div className="font-semibold text-left text-sm">{props.title}</div>
       <div className="text-left text-sm">{props.instructionText}</div>
     </div>
   );
@@ -27,19 +29,22 @@ const HowTo = () => {
       <HowToSection
         number={1}
         image={<Icon1 />}
-        instructionText="Unscrew the base of your brailler and replace it with Paige Connect."
+        title="Set up:"
+        instructionText="Unscrew the base of your braille writer and replace it with Paige Connect."
       />
       <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
       <HowToSection
         number={2}
         image={<Icon2 />}
-        instructionText="Plug it in and connect to the web app tapping the NFC tag."
+        title="Scan to read:"
+        instructionText="Plug it in and connect to the web app by scanning the QR code."
       />
       <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
       <HowToSection
         number={3}
         image={<Icon3 />}
-        instructionText="Start sharing! Sighted children or adults can see the print translation as you are brailling."
+        title="Write together:"
+        instructionText="Start sharing! Sighted children or adults can see the print translation as you are embossing braille."
       />
     </div>
   );

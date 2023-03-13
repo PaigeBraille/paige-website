@@ -17,13 +17,19 @@ const questions: FAQuestion[] = [
   {
     question: "When will Paige Connect be available?",
     answer: [
-      "Reach out at hello@paigebraille.com to find out more information about the release timeline.",
+      "Subscribe to our newletter to be the first to know when Paige Connect is available.",
     ],
   },
   {
-    question: "Who is it intended for?",
+    question: "Who is Paige Connect intended for?",
     answer: [
-      "It is intended for partially or non sighted people who use an electronic brailler.",
+      "It is intended for blind and partially sighted people who already use or want to learn braille on a braille writer. As it allows users to integrate the classic braille tool with modern technology, providing a seamless transition between paper and digital documents. It also translates braille into print for collaboration with sighted peers, parents, and teachers.",
+    ],
+  },
+  {
+    question: "Is Paige Connect compatible with any device?",
+    answer: [
+      "Paige Connect is compatible with a range of devices, including phones, tablets, and laptops. Our web app opens in any browser including Chrome, Safari, and Firefox. This compatibility makes the upgrade accessible to a wide range of users, regardless of their preferred device or browser.",
     ],
   },
   // Add more questions here...
@@ -66,20 +72,10 @@ const ProductSection = () => {
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="lg:w-1/2 flex flex-col gap-4 text-sm">
             <p>
-              Are you tired of being restricted by the limitations of
-              traditional braille writers? Look no further than Paige Connect!
-              Our innovative device is the perfect upgrade for your existing
-              braille writer, allowing you to produce digital copies of your
-              embossed braille on paper. With Paige Connect, you can take your
-              braille writing to the next level, allowing you to collaborate
-              more effectively with sighted peers, parents, and teachers.
+            Braille writers are mechanical devices that have been used for over 70 years to create braille. While they remain reliable, we want to modernise this iconic braille tool. We built Paige Connect, an affordable upgrade for existing braille writers.
             </p>
             <p>
-              The Paige Connect web app is hosted locally on the device and can
-              be accessed wirelessly from any browser on your phone, tablet, or
-              laptop. This feature allows you to work more efficiently and with
-              greater ease, making it an excellent choice for professionals and
-              students alike.
+            Paige Connect is a small device that attaches underneath the braille writer and allows it to connect to a phone, tablet, or laptop. Once connected, the braille writer can be used as a keyboard, enabling users to type braille into a web app. The web app also includes software that translates braille into print for collaboration with sighted peers, parents, and teachers.
             </p>
           </div>
           <div className="flex flex-col justify-center items-end">

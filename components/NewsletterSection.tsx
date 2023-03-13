@@ -3,10 +3,10 @@ import Graphic1 from "../public/svg/graphic-1.svg";
 
 export default function NewsletterSection(props: {onClickSubscribe: () => void}) {
   return (
-    <div className="flex flex-col md:flex-row bg-primary px-4 pt-4 md:p-8 justify-between relative overflow-visible gap-4 rounded-md">
+    <div className="flex flex-col md:flex-row bg-primary px-4 pt-4 md:p-8 mt-8 justify-between relative overflow-visible gap-4 rounded-md">
       <div className="flex flex-col justify-between md:w-1/2 gap-4">
         <h2 className="font-bold text-white tracking-tight leading-tight text-xl md:text-2xl">
-          Do you want to be up to date with new news? Subscribe to our
+          Stay up to date by subscribing to our
           newsletter!
         </h2>
         <button
