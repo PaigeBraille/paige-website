@@ -21,7 +21,5 @@ This month we launched our website, socials and newsletter on World Braille Day.
 
 **Thank you**
 
-We are proud to announce that we have received a Young Innovators Award from Innovate UK which will support us over the next year. 
-
-Innovate UK is the UK’s innovation agency, and the Young Innovators programme nurtures the innovators of tomorrow to help tackle some of society’s most significant challenges. The programme’s insight and expertise will help us to put Paige Connect in the hands of braille users!
+We are proud to announce that we have received a Young Innovators Award from Innovate UK which will support us over the next year. Innovate UK is the UK’s innovation agency, and the Young Innovators programme nurtures the innovators of tomorrow to help tackle some of society’s most significant challenges.
 

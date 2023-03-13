@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/paigeconnect.png";
+import device from "../public/paigeconnectboard1.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
@@ -72,7 +72,7 @@ const ProductSection = () => {
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="lg:w-1/2 flex flex-col gap-4 text-sm">
             <p>
-            Braille writers are mechanical devices that have been used for over 70 years to create braille. While they remain reliable, we want to modernise this iconic braille tool. We built Paige Connect, an affordable upgrade for existing braille writers.
+            Braille writers are mechanical devices that have been used for over 70 years to create braille. While they remain reliable, we want to modernise this iconic braille tool. We are building Paige Connect, an affordable upgrade for existing braille writers.
             </p>
             <p>
             Paige Connect is a small device that attaches underneath the braille writer and allows it to connect to a phone, tablet, or laptop. Once connected, the braille writer can be used as a keyboard, enabling users to type braille into a web app. The web app also includes software that translates braille into print for collaboration with sighted peers, parents, and teachers.
@@ -80,7 +80,7 @@ const ProductSection = () => {
           </div>
           <div className="flex flex-col justify-center items-end">
             <Image
-              className="object-right object-contain md:h-48 lg:h-64 xl:h-64 w-auto"
+              className="object-right object-contain ml-8 md:h-48 lg:h-48 xl:h-48 w-auto"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device positioned underneath a brailler machine. "
@@ -88,9 +88,12 @@ const ProductSection = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-paigedarkgrey pb-4">
+      <div className="border-t border-paigedarkgrey">
         <FAQ questions={questions} />
       </div>
+      <p className="text-xs pb-2">
+        *Paige Connect is not manufactured or endorsed by Perkins School for the Blind and Paige Braille is not affiliated with Perkins School for the Blind in any way.
+      </p>
     </div>
   );
 };

@@ -14,7 +14,7 @@ export default function SubscribePopup(props: {
           Close
         </button>
         <form
-          className={`flex flex-col gap-2 md:gap-4 bg-blue-100 p-4 md:p-8 lg:p-12 rounded shadow-xl max-w-sm mx-auto border border-primary leading-tight ${
+          className={`flex flex-col gap-2 md:gap-4 bg-paigelightgreen p-4 md:p-8 lg:p-12 rounded shadow-xl max-w-sm mx-auto border border-primary leading-tight ${
             props.isVisible ? "opacity-100" : "opacity-0"
           } transition-opacity duration-700`}
           name="footer-subscribe"
@@ -25,10 +25,10 @@ export default function SubscribePopup(props: {
             e.stopPropagation();
           }}
         >
-          <label className="font-extrabold text-primary" htmlFor="email">
+          <label className="font-extrabold text-paigedarkblue" htmlFor="email">
             Join the Paige community
           </label>
-          <span className="font-light text-primary text-sm">
+          <span className="font-light text-paigedarkblue text-sm">
             Subscribe to be the first to know about new product launches and
             offers!
           </span>
@@ -42,12 +42,12 @@ export default function SubscribePopup(props: {
             tabIndex={0}
           />
           <button
-            className="bg-primary text-white font-medium rounded-sm py-1 px-4 text-sm hover:bg-blue-400"
+            className="bg-paigedarkblue text-white font-medium rounded-sm py-1 px-4 text-sm hover:bg-blue-400"
             type="submit"
           >
             Subscribe
           </button>
-          <span className="font-extralight text-primary text-xs">
+          <span className="font-extralight text-paigedarkblue text-xs">
            By clicking join the waitlist you agree to having your data handled in accordance to our privacy policy. After signing up we will keep you informed as we develop our product and let you know when we’re ready. Joining the waitlist is non-commital and you may unsubscribe at any time.
           </span>
         </form>
