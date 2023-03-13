@@ -7,7 +7,7 @@ import Link from "next/link";
 const TESTIMONIALS = [
   {
     name: "Wendy Eaton",
-    text: " As a sonsory needs service it would be very good to use in our schools - About Paige Connect ",
+    text: " As a sensory needs service it would be very good to use in our schools ",
   },
   {
     name: "Sean Randall",
@@ -19,7 +19,11 @@ const TESTIMONIALS = [
   },
   {
     name: "Braille User",
-    text: "Oh my gosh! ... my wife can view what I'm typing! - About Paige Connect ",
+    text: "Oh my gosh! ... my wife can view what I'm typing! ",
+  },
+  {
+    name: "Braille User",
+    text: "I remember far more of what I actively read in braille than I do when listening. ",
   },
   // Add more testimonials here
 ];
