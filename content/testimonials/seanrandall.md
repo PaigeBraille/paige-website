@@ -20,7 +20,7 @@ That Paige Connect is such a simple idea. It really just does one thing, but in 
  
 **How would you use it?**
 
-At home, I’d use it so my  sighted daughter an view what I'm writing in braille or to write notes that I can store digitally to refer back to later. Professionally, I’d use Paige Connect so I could read what my student was writing through the web app without having to wait for the paper copy.
+At home, I’d use it so my sighted daughter can view what I'm writing in braille or to write notes that I can store digitally to refer back to later. Professionally, I’d use Paige Connect so I could read what my student was writing through the web app without having to wait for the paper copy.
  
 **What would you say to anyone interested in getting one?**
 
