@@ -48,9 +48,11 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         <Heading css="text-primary text-start text-xl lg:text-4xl leading-none">
           Paige Connect
         </Heading>
-        <h2 className="text-gray-900 font-light mb-6 lg:mb-12 lg:text-lg">
+        <h2 className="text-gray-900 mb-2 font-light lg:text-lg">
           Coming soon
         </h2>
+        <p className="text-gray-900 text-sm font-extralight">£100.00 + Shipping </p>
+        <p className="text-gray-900 italic font-thin text-xs mb-6 lg:mb-12">Approximate pricing subject to change.</p>
         <button
           className="bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
           onClick={props.onClickJoin}
@@ -96,7 +98,7 @@ const ProductSection = () => {
               className="object-right object-contain ml-8 md:h-40 lg:h-44 xl:h-36 w-auto"
               src={device}
               alt="Paige Connect Device"
-              aria-details="Paige connect device positioned underneath a brailler machine. "
+              aria-details="Paige connect device that fits underneath a braille writer. "
             />
           </div>
         </div>
