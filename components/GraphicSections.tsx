@@ -36,9 +36,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     overflows: true,
   },
   {
-    graphic: (
-      <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />
-    ),
+    graphic: <Graphic3 className="overflow-visible inline-flex h-48 sm:h-64" />,
     heading: "Paige Connect",
     text: "With Paige Connect, you can take your braille writing to the next level, allowing you to collaborate more effectively with sighted peers, parents, and teachers. ",
     colorScheme: "BLUE",
@@ -92,6 +90,8 @@ function GenericGraphicSection(props: GraphicSectionProps) {
                 }
                 }`}
                 href={props.linkTo}
+                aria-label={"Learn more about " + props.heading}
+                role="button"
               >
                 Learn more
               </Link>
