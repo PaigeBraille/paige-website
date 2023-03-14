@@ -1,8 +1,8 @@
 ---
 title: Wendy Eaton
-date: '2022-03-02'
+date: '08-03-2023'
 coverImage: '/testimonial-imgs/localofferlogo.svg'
-excerpt: '"If you are working in a school with a student it will save you so much time, you can just use the app to read what has been brailled in print – no more transcribing underneath a line of braille! You also don’t need to know braille to use it, so if the usual TA is off sick anyone can retrieve the students work."'
+excerpt: '"If you are working in a school with a student it will save you so much time, you can just use the app to read what has been brailled in print – no more transcribing underneath a line of braille!"'
 ---
 # My story
 

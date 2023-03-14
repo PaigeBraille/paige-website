@@ -1,6 +1,6 @@
 ---
 title: Sean Randall
-date: '2022-03-08'
+date: '08-03-2023'
 coverImage: '/testimonial-imgs/ncwlogo.png'
 excerpt: '"Paige Connect is such a simple idea. It really just does one thing, but in doing it well, Paige Connect will open doors to education, potentially for thousands of people."'
 ---

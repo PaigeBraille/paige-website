@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/paigeconnectboard1.png";
+import device from "../public/board.png";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
@@ -15,21 +15,27 @@ const questions: FAQuestion[] = [
     fragment: <HowTo />,
   },
   {
-    question: "When will Paige Connect be available?",
+    question: "Why use Paige Connect?",
     answer: [
-      "Subscribe to our newletter to be the first to know when Paige Connect is available.",
-    ],
-  },
-  {
-    question: "Who is Paige Connect intended for?",
-    answer: [
-      "It is intended for blind and partially sighted people who already use or want to learn braille on a braille writer. As it allows users to integrate the classic braille tool with modern technology, providing a seamless transition between paper and digital documents. It also translates braille into print for collaboration with sighted peers, parents, and teachers.",
+      "Paige Connect has several advantages. It allows users to integrate the classic braille tool with modern technology, providing a seamless transition between paper and digital documents. It also translates braille into print for collaboration with sighted peers, parents, and teachers.",
     ],
   },
   {
     question: "Is Paige Connect compatible with any device?",
     answer: [
       "Paige Connect is compatible with a range of devices, including phones, tablets, and laptops. Our web app opens in any browser including Chrome, Safari, and Firefox. This compatibility makes the upgrade accessible to a wide range of users, regardless of their preferred device or browser.",
+    ],
+  },
+  {
+    question: "How much will Paige Connect cost?",
+    answer: [
+      "At Paige, we believe that braille is a fundamental tool for literacy and communication. That's why we are committed to making braille technology more affordable and accessible for everyone. As engineers we work hard to ensure Paige Connect can be delivered at an affordable price whilst ensuring robustness and a seamless user experience.",
+    ],
+  },
+  {
+    question: "When will Paige Connect be available?",
+    answer: [
+      "Subscribe to our newletter to be the first to know when Paige Connect is available.",
     ],
   },
   // Add more questions here...
@@ -87,7 +93,7 @@ const ProductSection = () => {
           </div>
           <div className="flex flex-col justify-center items-end">
             <Image
-              className="object-right object-contain ml-8 md:h-48 lg:h-48 xl:h-48 w-auto"
+              className="object-right object-contain ml-8 md:h-40 lg:h-44 xl:h-36 w-auto"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device positioned underneath a brailler machine. "

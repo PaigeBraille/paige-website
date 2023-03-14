@@ -1,7 +1,7 @@
 ---
 title: 'January: Paige Connect, socials and support!'
 altText: 'Hello' 
-date: '2023-01-18'
+date: '14-03-2023'
 coverImage: '/news-imgs/team-jan.jpg'
 excerpt: 'We made significant strides towards our first product, Paige Connect, an affordable upgrade for existing braille writers. Subscribe to our newsletter to learn more!'
 ---
@@ -9,7 +9,7 @@ excerpt: 'We made significant strides towards our first product, Paige Connect, 
 
 We are excited to share with you the progress we made in the past month and the developments we have in store for you.
 
-**Team Spotlight**
+**Meet the team**
 
 Paige was founded by a group of five Imperial College London engineers alongside braille experts and advocates trying to understand the difficulties blind and partially sighted people face when accessing braille. We are building Paige Connect, an affordable upgrade for existing braille writers.
 
