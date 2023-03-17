@@ -22,6 +22,8 @@ export default function Partners() {
         <P5 />
         <P6 />
         <P7 />
+        <P8 />
+        <P9 />
       </div>
     </div>
   );
