@@ -95,7 +95,7 @@ const ProductSection = () => {
           </div>
           <div className="flex flex-col justify-center items-end">
             <Image
-              className="object-right object-contain ml-8 md:h-40 lg:h-44 xl:h-36 w-auto"
+              className="object-right object-contain ml-8 md:h-40 lg:h-44 xl:h-44 w-auto"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device that fits underneath a braille writer. "
