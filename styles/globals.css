@@ -9,7 +9,8 @@ html {
   position: relative;
 }
 
-html, body {
+html,
+body {
   font-size: 24px;
 }
 
@@ -17,7 +18,7 @@ html, body {
   font-size: 21px;
 }
 
-.testimonial-post > h1 {
+.testimonial-post>h1 {
   font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: 1rem;
@@ -25,20 +26,20 @@ html, body {
   line-height: 1.8rem;
 }
 
-.testimonial-post > h2 {
+.testimonial-post>h2 {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: .8rem;
   line-height: 1.6rem;
 }
 
-.testimonial-post > h3 {
+.testimonial-post>h3 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: .6rem;
   line-height: 1.4rem;
 }
 
-.testimonial-post > p {
+.testimonial-post>p {
   margin-bottom: 1rem;
 }

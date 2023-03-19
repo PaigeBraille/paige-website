@@ -51,8 +51,12 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         <h2 className="text-gray-900 mb-2 font-light lg:text-lg">
           Coming soon
         </h2>
-        <p className="text-gray-900 text-sm font-extralight">£100.00 + Shipping </p>
-        <p className="text-gray-900 italic font-thin text-xs mb-6 lg:mb-12">Approximate pricing subject to change.</p>
+        <p className="text-gray-900 text-sm font-extralight">
+          £100.00 + Shipping{" "}
+        </p>
+        <p className="text-gray-900 italic font-thin text-xs mb-6 lg:mb-12">
+          Approximate pricing subject to change.
+        </p>
         <button
           className="bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
           onClick={props.onClickJoin}
@@ -60,12 +64,20 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
           Join the Waitlist
         </button>
       </div>
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/vf-0M0ug554"
-        title="Paige Connect Demo Video"
-        allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        className="w-full h-28 sm:h-36 lg:h-56 xl:h-62 2xl:h-72"
-      />
+      <div className="w-full md:w-1/2">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{ paddingTop: "56.25%" }}
+        >
+          <iframe
+            className="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/vf-0M0ug554?controls=0&rel=0&showinfo=0&loop=1&autoplay=1"
+            title="Paige Connect"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
     </div>
   );
 };
@@ -99,6 +111,7 @@ const ProductSection = () => {
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device that fits underneath a braille writer. "
+              width={700}
             />
           </div>
         </div>

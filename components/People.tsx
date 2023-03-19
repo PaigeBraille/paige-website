@@ -22,6 +22,8 @@ function TeamMember(props: {
         className="w-16 h-16 rounded-full m-auto mb-2"
         src={props.imageSrc}
         alt={props.heading}
+        width={96}
+        height={96}
       />
       <h3 className="mb-1 text-lg font-bold tracking-tight text-gray-900 leading-tight">
         {props.heading}
