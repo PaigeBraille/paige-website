@@ -8,7 +8,7 @@ export default function TestimonialPost({ post }: PostProps) {
       <div className="flex md:w-1/2 md:h-full">
         <Image
           src={post.coverImage}
-          alt={post.title}
+          alt={post.alt}
           width={640}
           height={360}
         />

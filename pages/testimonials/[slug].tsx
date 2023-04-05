@@ -19,7 +19,7 @@ export default function BlogPost({ post }: PostProps) {
         <div className="py-4 md:py-8">
           <Image
             src={post.coverImage}
-            alt={post.title}
+            alt={post.alt}
             width={640}
             height={360}
           />

@@ -10,6 +10,7 @@ import remarkHtml from "remark-html";
 export type Post = {
   slug: string;
   title: string;
+  alt: string;
   date: string;
   coverImage: string;
   content?: string;
@@ -41,6 +42,7 @@ export const getAllPosts = (postsDirectory: string): Post[] => {
     return {
       slug,
       title: data.title,
+      alt: data.alt,
       date: data.date,
       coverImage: data.coverImage,
       excerpt: data.excerpt,
@@ -62,6 +64,7 @@ export function getPostBySlug(slug: string, postsDirectory: string) {
   return {
     slug: slug,
     title: data.title,
+    alt: data.alt,
     date: data.date,
     coverImage: data.coverImage,
     content: htmlContent.toString(),

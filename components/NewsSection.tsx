@@ -13,7 +13,7 @@ export default function NewsSection({ posts }: PostsProps) {
         <div className="flex flex-col gap-4 md:w-2/3">
           <Image
             src={posts[0].coverImage}
-            alt={posts[0].title}
+            alt={posts[0].alt}
             width={640}
             height={360}
           />

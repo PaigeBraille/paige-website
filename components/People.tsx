@@ -1,15 +1,12 @@
 import React from "react";
 import Heading from "./Heading";
 import Image from "next/image";
-import Jaime from "../public/jaime.png";
-import Suparna from "../public/suparna.png";
 import Sean from "../public/sean.jpeg";
 import Greg from "../public/greg.png";
 import Carolina from "../public/carolina.png";
 import Sergi from "../public/sergi.png";
 import Nina from "../public/nina.png";
 import NinaR from "../public/ninarimsky.png";
-import Ben from "../public/ben.png";
 
 function TeamMember(props: {
   heading: string;
@@ -42,7 +39,7 @@ export default function People() {
         </Heading>
       </div>
       <div className="flex flex-col md:border-x md:border-b md:border-paigedarkgrey rounded-b-lg">
-        <div className="grid gap-8 md:px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <TeamMember
             imageSrc={Greg}
             heading={"Gregory Hargraves"}
@@ -56,7 +53,7 @@ export default function People() {
           <TeamMember
             imageSrc={Sergi}
             heading={"Sergio Gosalvez"}
-            caption={"User Experience"}
+            caption={"Operations"}
           />
           <TeamMember
             imageSrc={Nina}
@@ -69,14 +66,9 @@ export default function People() {
             caption={"Software"}
           />
           <TeamMember
-            imageSrc={Ben}
-            heading={"Benedict Carling"}
-            caption={"Firmware"}
-          />
-          <TeamMember
             imageSrc={Sean}
             heading={"Sean Randall"}
-            caption={"Communications"}
+            caption={"Accessibility"}
           />
         </div>
       </div>

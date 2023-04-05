@@ -1,8 +1,8 @@
 ---
 title: 'January: Paige Connect, socials and support!'
-altText: 'Hello' 
+alt: 'Members of the Paige team (left to right, Sergio Gosalvez, Nina Moutonnet, Gregory Hargraves) standing outside City Hall, London, Newham. In the background is the London cable car and Royal Docks waterfront.'
 date: '14-03-2023'
-coverImage: '/news-imgs/team-jan.jpg'
+coverImage: '/news-imgs/news_jan.jpg'
 excerpt: 'We made significant strides towards our first product, Paige Connect, an affordable upgrade for existing braille writers. Subscribe to our newsletter to learn more!'
 ---
 # Hello, we are Paige!
@@ -22,4 +22,6 @@ This month we launched our website, socials and newsletter on World Braille Day.
 **Thank you**
 
 We are proud to announce that we have received a Young Innovators Award from Innovate UK which will support us over the next year. Innovate UK is the UK’s innovation agency, and the Young Innovators programme nurtures the innovators of tomorrow to help tackle some of society’s most significant challenges.
+
+For in person demonstrations of Paige Connect or to find out more please contact us at <hello@paigbraille.com> or visit our website at [paigebraille.com](https://paigebraille.com/)
 
