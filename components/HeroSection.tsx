@@ -12,12 +12,12 @@ export default function HeroSection() {
           className="max-h-96 object-contain overflow-clip"
         />
       </div>
-      <div className="flex flex-col gap-4 text-center xl:w-3/5 xl:text-start p-4 xl:pr-10 xl:pt-12">
+      <div className="flex flex-col gap-4 text-center xl:w-3/5 xl:text-start p-4 xl:pr-10 xl:pt-20">
         <h1 className="leading-tight text-xl font-bold tracking-tight font-extrabold">
           What is Paige Connect?
         </h1>
         <p className="text-gray-600">
-          An affordable adaptation for existing braille writers that allows sighted children or adults to see the print translation as you are embossing braille.
+          An adaptation for braille writers that lets you share the print translation.
         </p>
         <Link
           href="/products"
