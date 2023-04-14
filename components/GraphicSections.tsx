@@ -21,7 +21,7 @@ const GRAPHIC_SECTIONS: GraphicSectionProps[] = [
     ),
     heading: "Meet Paige",
     text: "Paige was founded by a group of five Imperial College London engineers trying to understand the difficulties blind and partially sighted people face when accessing braille, but now we are more than that. ",
-    colorScheme: "DARKBLUE",
+    colorScheme: "BLUE",
     linkTo: "/about",
     overflows: true,
   },
