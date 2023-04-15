@@ -13,7 +13,6 @@ export default function HeroSection() {
           loop
           controls={false}
           preload="auto"
-          poster={"hero_connect.png"}
           className="shadow-none"
         >
           Video of paige connect showing the braille writer and the print
