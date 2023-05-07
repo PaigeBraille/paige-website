@@ -8,7 +8,7 @@ export default function HeroSection() {
           src="animation.gif"
           alt="Animation of paige connect showing the braille writer and the print translation in the accompanying app"
           height="400"
-          className="object-contain bg-white"
+          className="object-contain bg-white gif"
         />
       </div>
       <div className="flex flex-col gap-4 text-center lg:text-start p-4 lg:pr-10 lg:pt-32">

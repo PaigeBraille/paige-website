@@ -43,3 +43,9 @@ body {
 .testimonial-post>p {
   margin-bottom: 1rem;
 }
+
+.gif {
+  border: none;
+  outline: none;
+  background: transparent;
+}
