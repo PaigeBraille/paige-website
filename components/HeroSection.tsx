@@ -5,7 +5,7 @@ export default function HeroSection() {
     <div className="flex flex-col gap-4 w-full lg:flex-row">
       <div className="flex lg:max-w-1/3 justify-center">
         <img
-          src="hero-video.gif"
+          src="animation.gif"
           alt="Animation of paige connect showing the braille writer and the print translation in the accompanying app"
           height="400"
           className="object-contain"
