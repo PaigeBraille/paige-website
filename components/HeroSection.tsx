@@ -3,12 +3,12 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <div className="flex flex-col gap-4 w-full lg:flex-row">
-      <div className="flex lg:max-w-1/3 justify-center">
+      <div className="flex lg:max-w-1/3 justify-center bg-white">
         <img
           src="animation.gif"
           alt="Animation of paige connect showing the braille writer and the print translation in the accompanying app"
           height="400"
-          className="object-contain"
+          className="object-contain bg-white"
         />
       </div>
       <div className="flex flex-col gap-4 text-center lg:text-start p-4 lg:pr-10 lg:pt-32">
