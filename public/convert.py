@@ -20,13 +20,19 @@ def convert_mp4_to_gif(input_file, output_file, start_time=0, duration=None, fps
     # Save frames as images
     frames = [Image.fromarray(frame) for frame in clip.iter_frames(fps=fps)]
 
-    # Optimize and save the GIF
-    frames[0].save(output_file, format="GIF", save_all=True, append_images=frames[1:], loop=0, duration=int(1000/fps), disposal=2, optimize=True)
+    # Fill transparent parts with white
+    for i, frame in enumerate(frames):
+        if frame.mode == "RGBA":
+            white_background = Image.new("RGBA", frame.size, "WHITE")
+            frames[i] = Image.alpha_composite(white_background, frame).convert("RGB")
+
+    # Optimize and save the GIF with disposal method set to 1
+    frames[0].save(output_file, format="GIF", save_all=True, append_images=frames[1:], loop=0, duration=int(1000/fps), disposal=1, optimize=True)
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python convert_mp4_to_gif.py input.mp4 output.gif")
+        print("Usage: python convert.py input.mp4 output.gif")
         sys.exit(1)
 
     input_file = sys.argv[1]
@@ -35,7 +41,7 @@ if __name__ == "__main__":
     # You can customize the following parameters as needed
     start_time = 0  # Start time in seconds
     duration = None  # Duration in seconds, set to None to use the whole video
-    fps = 30  # Frames per second
+    fps = 15  # Frames per second
     resize_scale = 1  # Resize scale, set to 1 for no resizing
 
     convert_mp4_to_gif(input_file, output_file, start_time, duration, fps, resize_scale)
