@@ -41,7 +41,7 @@ if __name__ == "__main__":
     # You can customize the following parameters as needed
     start_time = 0  # Start time in seconds
     duration = None  # Duration in seconds, set to None to use the whole video
-    fps = 15  # Frames per second
-    resize_scale = 1  # Resize scale, set to 1 for no resizing
+    fps = 10  # Frames per second
+    resize_scale = 0.9  # Resize scale, set to 1 for no resizing
 
     convert_mp4_to_gif(input_file, output_file, start_time, duration, fps, resize_scale)
