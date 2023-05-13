@@ -1,5 +1,5 @@
 ---
-title: 'February: the Braillists and social enterpreneurs at UnLtd!'
+title: 'February: Support from Unltd'
 alt: 'UnLtd London office exterior street view on a sunny day.'
 date: '5-03-2023'
 coverImage: '/news-imgs/news_feb.jpeg'

@@ -1,5 +1,5 @@
 ---
-title: 'March: Sean Randall, testing Paige Connect at New College Worcester and Social Enterprise Award'
+title: 'March: Testing at New College Worcester'
 alt: 'Shows New College Worcester teacher, Sean Randall, and a young student playing with LEGO Braille Bricks. '
 date: '13-04-2023'
 coverImage: '/news-imgs/news_march.jpeg'

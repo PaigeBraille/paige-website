@@ -1,5 +1,5 @@
 ---
-title: 'January: Paige Connect, socials and support!'
+title: 'January: Paige Connect and World Braille Day'
 alt: 'Members of the Paige team (left to right, Sergio Gosalvez, Nina Moutonnet, Gregory Hargraves) standing outside City Hall, London, Newham. In the background is the London cable car and Royal Docks waterfront.'
 date: '14-03-2023'
 coverImage: '/news-imgs/news_jan.jpg'
