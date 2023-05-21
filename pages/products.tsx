@@ -7,6 +7,8 @@ import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
 import SubscribePopup from "../components/SubscribePopup";
 import { Wrapper } from "../components/Wrapper";
+import { useEffect } from "react";
+import { logPageView } from '../lib/analytics';
 
 const questions: FAQuestion[] = [
   {
@@ -129,6 +131,10 @@ const ProductSection = () => {
 };
 
 export default function Products() {
+  useEffect(() => {
+    logPageView();
+  }, []);
+  
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>

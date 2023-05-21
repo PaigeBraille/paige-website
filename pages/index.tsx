@@ -9,8 +9,14 @@ import Partners from "../components/Partners";
 import TestimonialsSection from "../components/Testimonials";
 import WriteWithUs from "../components/WriteWithUs";
 import HeroSection from "../components/HeroSection";
+import { useEffect } from "react";
+import { logPageView } from '../lib/analytics';
 
 export default function Home() {
+  useEffect(() => {
+    logPageView();
+  }, []);
+  
   return (
     <Wrapper>
       <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 py-6 overflow-clip">

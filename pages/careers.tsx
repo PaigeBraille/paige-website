@@ -1,5 +1,7 @@
 import { Wrapper } from "../components/Wrapper";
 import React from "react";
+import { useEffect } from "react";
+import { logPageView } from '../lib/analytics';
 
 const ResourceText = () => {
   return (
@@ -13,6 +15,10 @@ const ResourceText = () => {
 };
 
 export default function Resources() {
+  useEffect(() => {
+    logPageView();
+  }, []);
+  
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
