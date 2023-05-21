@@ -8,11 +8,11 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     if (!window.GA_INITIALIZED) {
-      initGA();
-      window.GA_INITIALIZED = true;
-    }
-    logPageView();
-  }, []);
+        initGA();
+        window.GA_INITIALIZED = true;
+      }
+      logPageView();
+    }, []);
   
   return (
     <>
