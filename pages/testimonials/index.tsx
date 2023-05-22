@@ -19,6 +19,13 @@ export default function Testimonials({ posts }: PostsProps) {
           ))}
         </div>
       </div>
+      <div className="flex items-center justify-center h-screen m-4">
+      <iframe
+        id="iframe"
+        src="https://www.instagram.com/paigebraille/embed"
+        className="rounded-lg w-full h-full"
+      />
+    </div>
     </Wrapper>
   );
 }
