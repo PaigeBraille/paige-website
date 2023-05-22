@@ -18,14 +18,14 @@ export default function Testimonials({ posts }: PostsProps) {
             <TestimonialPost key={post.slug} post={post} />
           ))}
         </div>
+        <div className="flex h-64 md:h-screen pt-8">
+          <iframe
+            id="iframe"
+            src="https://www.instagram.com/paigebraille/embed"
+            className="rounded-lg w-full h-full"
+          />
+        </div>
       </div>
-      <div className="flex items-center justify-center h-screen m-4">
-      <iframe
-        id="iframe"
-        src="https://www.instagram.com/paigebraille/embed"
-        className="rounded-lg w-full h-full"
-      />
-    </div>
     </Wrapper>
   );
 }
