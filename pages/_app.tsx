@@ -6,7 +6,7 @@ import ReactGA from 'react-ga';
 import "../styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-ReactGA.initialize("YOUR_TRACKING_ID");
+ReactGA.initialize('G-01J74RK5B9');
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
