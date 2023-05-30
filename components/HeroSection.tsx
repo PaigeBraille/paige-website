@@ -1,18 +1,18 @@
 import Image from "next/image";
-import HeroImage from "../public/hero_connect.png";
+import HeroImage from "../public/hero.png";
 import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="flex flex-col gap-4 w-full xl:flex-row">
-      <div className="flex min-w-1/2">
+    <div className="flex flex-col gap-4 xl:my-10 w-full xl:flex-row">
+      <div className="basis-3/5 min-w-1/2">
         <Image
           src={HeroImage}
-          alt="Hero Image"
-          className="max-h-96 object-contain overflow-clip"
+          alt="Paige Connect web app showing translated braille."
+          className="max-h-72 object-contain overflow-clip"
         />
       </div>
-      <div className="flex flex-col gap-4 text-center xl:w-3/5 xl:text-start p-4 xl:pr-10 xl:pt-32">
+      <div className="flex basis-2/5 flex-col gap-4 text-center xl:text-start px-10 xl:pt-24">
         <h1 className="leading-tight text-xl font-bold tracking-tight font-extrabold">
           What is Paige Connect?
         </h1>

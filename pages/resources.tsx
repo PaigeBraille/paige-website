@@ -5,8 +5,6 @@ import {
   ResourceSection2,
   ResourceSection3,
 } from "../components/ResourcesLinks";
-import { useEffect } from "react";
-import { logPageView } from '../lib/analytics';
 
 const ResourceText = () => {
   return (
@@ -22,9 +20,6 @@ const ResourceText = () => {
 };
 
 export default function Resources() {
-  useEffect(() => {
-    logPageView();
-  }, []);
   
   return (
     <Wrapper>

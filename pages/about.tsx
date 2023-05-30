@@ -7,8 +7,6 @@ import path from "path";
 import { getAllPosts, PostsProps } from "@/lib/posts";
 import MissionSection from "@/components/MissionSection";
 import NewsSection from "@/components/NewsSection";
-import { useEffect } from "react";
-import { logPageView } from '../lib/analytics';
 
 const questions: FAQuestion[] = [
   {
@@ -50,9 +48,6 @@ const HeroText = () => {
 };
 
 export default function About({ posts }: PostsProps) {
-  useEffect(() => {
-    logPageView();
-  }, []);
 
   return (
     <Wrapper>

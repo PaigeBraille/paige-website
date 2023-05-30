@@ -9,13 +9,8 @@ import Partners from "../components/Partners";
 import TestimonialsSection from "../components/Testimonials";
 import WriteWithUs from "../components/WriteWithUs";
 import HeroSection from "../components/HeroSection";
-import { useEffect } from "react";
-import { logPageView } from '../lib/analytics';
 
 export default function Home() {
-  useEffect(() => {
-    logPageView();
-  }, []);
   
   return (
     <Wrapper>
