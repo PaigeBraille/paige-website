@@ -14,8 +14,9 @@ export default function NewsSection({ posts }: PostsProps) {
           <Image
             src={posts[0].coverImage}
             alt={posts[0].alt}
-            width={640}
-            height={360}
+            width={500}
+            height={300}
+            quality={40}
           />
           <h2 className="text-xl font-bold tracking-tight leading-tight" id={posts[0].title}>
             {posts[0].title}

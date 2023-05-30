@@ -34,11 +34,11 @@ const TestimonialsSection = () => {
       <Heading css="text-center sm:text-start grow"> Reading together</Heading>
       <div className="overflow-x-auto pb-4">
         <div className="flex flex-row gap-4">
-          {TESTIMONIALS.map((t) => {
+          {TESTIMONIALS.map((t, i) => {
             return (
               <div
                 className="flex flex-col gap-2 relative overflow-y-clip h-36 rounded-b-lg"
-                key={t.name}
+                key={i}
               >
                 <SpeechBubble className="absolute top-0 left-0" />
                 <h3 className="z-10 w-52 mt-8 mx-6 font-bold">{t.name}</h3>

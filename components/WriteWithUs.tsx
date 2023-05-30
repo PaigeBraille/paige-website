@@ -24,6 +24,9 @@ export default function WriteWithUs() {
           src={graphic}
           className="max-w-64 sm:max-w-xs md:max-w-sm"
           alt="Paige Device"
+          height={240}
+          quality={25}
+          width={400}
         />
       </div>
     </div>

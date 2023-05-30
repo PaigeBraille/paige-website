@@ -63,6 +63,7 @@ export function ResourceSection2() {
             className="block sm:inline-flex w-1/2 my-6 md:w-1/5 md:my-auto md:mr-20"
             src={nvAccessLogo}
             alt={"NV Access logo."}
+            height={100}
           />
         </div>
       </div>
@@ -98,6 +99,7 @@ export function ResourceSection3() {
             className="block sm:inline-flex w-1/2 my-6 md:w-1/5 md:my-auto md:mr-20"
             src={aphLogo}
             alt={"American Printing House logo."}
+            height={100}
           />
         </div>
       </div>

@@ -20,8 +20,9 @@ export default function BlogPost({ post }: PostProps) {
           <Image
             src={post.coverImage}
             alt={post.alt}
-            width={640}
-            height={360}
+            width={500}
+            height={300}
+            quality={40}
           />
         </div>
         <div
