@@ -42,7 +42,7 @@ export default function About({ posts, instagram }: AboutProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const posts = getAllPosts(postsDirectory);
   const instagram = await getInstagramPosts();
   return { props: { posts, instagram } };
