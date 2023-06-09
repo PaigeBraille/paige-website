@@ -2,11 +2,9 @@ import { Wrapper } from "../components/Wrapper";
 import React from "react";
 import People from "../components/People";
 import path from "path";
-import { getAllPosts, Post } from "../lib/posts";
+import { getAllPosts, Post, PostsProps } from "../lib/posts";
 import MissionSection from "../components/MissionSection";
 import NewsSection from "../components/NewsSection";
-import { getInstagramPosts, InstagramPost } from "../lib/instagram";
-import InstagramFeed from "../components/InstagramFeed";
 
 const postsDirectory = path.join(process.cwd(), "content/news");
 
@@ -23,12 +21,7 @@ const HeroText = () => {
   );
 };
 
-type AboutProps = {
-  posts: Post[];
-  instagram: InstagramPost[];
-};
-
-export default function About({ posts, instagram }: AboutProps) {
+export default function About({ posts }: PostsProps) {
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-4 md:px-6">
@@ -36,14 +29,12 @@ export default function About({ posts, instagram }: AboutProps) {
         <MissionSection />
         <People />
         <NewsSection posts={posts} />
-        <InstagramFeed posts={instagram} />
       </div>
     </Wrapper>
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const posts = getAllPosts(postsDirectory);
-  const instagram = await getInstagramPosts();
-  return { props: { posts, instagram } };
+  return { props: { posts } };
 }
