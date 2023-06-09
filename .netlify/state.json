@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "City of Westminster",
+			"country": {
+				"code": "GB",
+				"name": "United Kingdom"
+			},
+			"subdivision": {
+				"code": "ENG",
+				"name": "England"
+			},
+			"timezone": "Europe/London",
+			"latitude": 51.5245,
+			"longitude": -0.1567
+		},
+		"timestamp": 1686340824286
+	}
+}
