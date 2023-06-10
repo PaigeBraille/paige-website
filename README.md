@@ -10,6 +10,14 @@
 - Run `npm install` to install dependencies
 - Run `npm run dev` to run website locally
 
+### Test Instagram feed locally
+
+Create a `.env.local` file with the following contents:
+
+```
+INSTAGRAM_ACCESS_TOKEN=<oauth token generated from facebook developer portal>
+```
+
 ## Codebase
 
 - Uses [Next.js](https://nextjs.org/) + [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org) + [Tailwind](https://tailwindcss.com)
@@ -27,3 +35,4 @@ Add a new `<testimonialname>.md` to `content/testimonials` and add any images to
 ## Add a new News article
 
 Add a new `<article>.md` to `content/news` and add any images to `public/news-imgs`, then redeploy
+

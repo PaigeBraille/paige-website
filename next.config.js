@@ -5,5 +5,7 @@ module.exports = {
             use: ["@svgr/webpack"]
         });
         return config;
-    }
+    }, images: {
+        domains: ['scontent.cdninstagram.com'],
+    },
 };

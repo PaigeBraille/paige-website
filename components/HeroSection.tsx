@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="flex flex-col gap-4 xl:my-10 w-full xl:flex-row">
+    <div className="flex flex-col gap-4 w-full lg:flex-row justify-center items-center lg:justify-between xl:py-12">
       <div className="basis-3/5 min-w-1/2">
         <Image
           src={HeroImage}
@@ -13,7 +13,7 @@ export default function HeroSection() {
           height={500}
         />
       </div>
-      <div className="flex basis-2/5 flex-col gap-4 text-center xl:text-start px-10 xl:pt-24">
+      <div className="flex basis-2/5 flex-col gap-4 text-center lg:text-start px-10">
         <h1 className="leading-tight text-xl font-bold tracking-tight font-extrabold">
           What is Paige Connect?
         </h1>
@@ -22,7 +22,7 @@ export default function HeroSection() {
         </p>
         <Link
           href="/products"
-          className="bg-primary text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto xl:mr-auto xl:ml-0 hover:bg-blue-900"
+          className="bg-primary text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto lg:mr-auto lg:ml-0 hover:bg-blue-700"
         >
           Find out more
         </Link>
