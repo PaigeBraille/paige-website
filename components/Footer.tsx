@@ -10,7 +10,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <Link href="/">
           <Logo className="inline-block h-auto" alt="Paige Logo" />
         </Link>
-        <p className="mb-4">Contact us at: hello@paigebraille.com</p>
+        <p className="mb-4">Contact us at: <a className="text-white" href = "mailto: hello@paigebraille.com">hello@paigebraille.com</a></p>
         <form
           className="flex flex-col gap-2 items-center md:items-start overflow-clip"
           name="footer-subscribe"
