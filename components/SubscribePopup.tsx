@@ -42,7 +42,7 @@ export default function SubscribePopup(props: {
             tabIndex={0}
           />
           <button
-            className="bg-white text-primary plausible-event-name=Signup font-medium rounded-sm py-1 px-4 text-sm hover:bg-blue-400"
+            className="bg-white text-primary  font-medium rounded-sm py-1 px-4 text-sm hover:bg-blue-400"
             type="submit"
           >
             Subscribe

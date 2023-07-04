@@ -58,7 +58,7 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
           Approximate pricing subject to change.
         </p>
         <button
-          className="bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
+          className="plausible-event-name=Join+the+waitlist bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
           onClick={props.onClickJoin}
         >
           Join the Waitlist
