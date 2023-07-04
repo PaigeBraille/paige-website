@@ -14,6 +14,10 @@ const TESTIMONIALS = [
     text: "Paige connects the braille learner to a sighted family member or teacher like nothing seen before. ",
   },
   {
+    name: "Brian Mac Donald",
+    text: "We applaud the Paige Connect team for inventing this amazing device. ",
+  },
+  {
     name: "Suparna Biswas",
     text: "We are very proud to be associated with such a committed and innovative team. ",
   },
