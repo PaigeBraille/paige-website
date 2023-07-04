@@ -2,7 +2,7 @@
 title: 'June: Big Education Challenge'
 alt: 'Sergio Gosalvez standing outside City Hall, London, Newham. He is smiling and wearing a white shirt. '
 date: '04-07-2023'
-coverImage: '/news-imgs/news_june.png'
+coverImage: '/news-imgs/news_june.jpg'
 excerpt: ' We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI). '
 ---
 
