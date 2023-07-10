@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/board.png";
+import device from "../public/board2.jpg";
 import Heading from "../components/Heading";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
@@ -8,63 +8,74 @@ import NewsletterSection from "../components/NewsletterSection";
 import SubscribePopup from "../components/SubscribePopup";
 import { Wrapper } from "../components/Wrapper";
 
-const questions: FAQuestion[] = [
-  {
-    question: "How does Paige Connect work?",
-    answer: [],
-    fragment: <HowTo />,
-  },
-  {
-    question: "Why use Paige Connect?",
-    answer: [
-      "Paige Connect has several advantages. It allows users to integrate the classic braille tool with modern technology, providing a seamless transition between paper and digital documents. It also translates braille into print for collaboration with sighted peers, parents, and teachers.",
-    ],
-  },
-  {
-    question: "Is Paige Connect compatible with any device?",
-    answer: [
-      "Paige Connect is compatible with a range of devices, including phones, tablets, and laptops. Our web app opens in any browser including Chrome, Safari, and Firefox. This compatibility makes the upgrade accessible to a wide range of users, regardless of their preferred device or browser.",
-    ],
-  },
-  {
-    question: "How much will Paige Connect cost?",
-    answer: [
-      "At Paige, we believe that braille is a fundamental tool for literacy and communication. That's why we are committed to making braille technology more affordable and accessible for everyone. As engineers we work hard to ensure Paige Connect can be delivered at an affordable price whilst ensuring robustness and a seamless user experience.",
-    ],
-  },
-  {
-    question: "When will Paige Connect be available?",
-    answer: [
-      "Subscribe to our newletter to be the first to know when Paige Connect is available.",
-    ],
-  },
-  // Add more questions here...
-];
+
+const FeatureItem = (props: { title: string; text: string; idx: number }) => {
+  return (
+    <div className="md:border-x border-paigedarkgrey flex flex-col gap-6">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
+        <h3 className="md:w-1/2 text-xl md:text-xl font-bold md:mr-6 leading-tight mt-4 p-2 md:p-6 tracking-tight text-paigedarkgrey">
+          {props.title}
+        </h3>
+        <p className="md:w-1/2 flex p-2 md:p-6 text-sm">{props.text}</p>
+      </div>
+      <div className="border-b border-paigedarkgrey flex items-center relative px-4">
+        <div className="bg-paigeyellow text-paigedarkgrey rounded-full h-8 w-8 flex items-center justify-center absolute -top-4 left-4">
+          {props.idx}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function FeatureSection() {
+  return (
+    <div className="pb-6">
+      <Heading css="text-2xl font-bold px-4 md:px-6 py-4 bg-paigeyellow text-paigedarkgrey text-bold md:rounded-t-lg tracking-tight leading-tight text-start">
+        Features
+      </Heading>
+
+      <FeatureItem
+        title="Communication"
+        text="Paige Connect is powered by Liblouis, the braille translator created by the community."
+        idx={1}
+      />
+      <FeatureItem
+        title="Literacy"
+        text="Paige Connect retrofits to classic braille writers to foster and develop literacy skills."
+        idx={2}
+      />
+      <FeatureItem
+        title="Accessing Information"
+        text="Paige Connect creates braille files that can be stored, downloaded, and shared."
+        idx={3}
+      />
+      <FeatureItem
+        title="Technology"
+        text="Paige Connect can be navigated with a screen reader on any device and browser."
+        idx={4}
+      />
+    </div>
+  );
+}
 
 const HeroSection = (props: { onClickJoin: () => void }) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 sm:justify-between relative max-w-screen px-4 sm:px-8">
       <div className="flex flex-col justify-center items-start text-start gap-1 sm:w-3/5">
-        <Heading css="text-primary text-start text-xl lg:text-4xl leading-none">
+        <Heading css="text-primary text-start lg:text-4xl leading-none">
           Paige Connect
         </Heading>
-        <h2 className="text-gray-900 mb-2 font-light lg:text-lg">
-          Coming soon
-        </h2>
-        <p className="text-gray-900 text-sm font-extralight">
-          £100.00 + Shipping{" "}
-        </p>
-        <p className="text-gray-900 italic font-thin text-xs mb-6 lg:mb-12">
-          Approximate pricing subject to change.
+        <p className="text-gray-900 text-xl font-extralight">
+          £200.00
         </p>
         <button
-          className="plausible-event-name=Join+the+waitlist bg-primary text-white font-medium rounded-sm py-2 px-4 mr-auto text-sm lg:text-lg"
+          className="plausible-event-name=Join+the+waitlist bg-primary text-white font-medium rounded-sm py-2 px-4 mt-4 mr-auto sm:mt-12 lg:mt-20 text-sm lg:text-lg"
           onClick={props.onClickJoin}
         >
-          Join the Waitlist
+          Join the waitlist
         </button>
       </div>
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-2/3">
         <div
           className="relative w-full overflow-hidden"
           style={{ paddingTop: "56.25%" }}
@@ -84,47 +95,52 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
 
 const ProductSection = () => {
   return (
-    <div className="max-w-5xl mx-auto gap-4 flex flex-col p-4 md:p-8">
-      <Heading css="text-start">Products</Heading>
-      <div className="border-primary border-t-2 py-4">
-        <h2 className="text-primary text-lg font-light mb-4">Paige Connect</h2>
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="lg:w-1/2 flex flex-col gap-4 text-sm">
-            <p>
-              Braille writers are mechanical devices that have been used for
-              over 70 years to create braille. While they remain reliable, we
-              want to modernise this iconic braille tool. We are building Paige
-              Connect, an affordable upgrade for existing braille writers.
-            </p>
-            <p>
-              Paige Connect is a small device that attaches underneath the
-              braille writer and allows it to connect to a phone, tablet, or
-              laptop. Once connected, the braille writer can be used as a
-              keyboard, enabling users to type braille into a web app. The web
-              app also includes software that translates braille into print for
-              collaboration with sighted peers, parents, and teachers.
-            </p>
+    <section className="flex flex-col bg-white gap-4 w-full">
+      <div className="flex flex-col gap-6">
+        <div
+          className={`flex flex-col lg:flex-row items-center justify-between w-full sm:rounded-lg sm:overflow-visible relative gap-4 xl:gap-0 px-4 py-8 bg-primary text-white `}
+        >
+          <div
+            className={`inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 relative sm:px-4 xl:px-6 xl:m-0`}
+          >
+            <Heading
+              css="text-center sm:text-start grow"
+              color="text-white"
+            >
+              Braille for everyone
+            </Heading>
+            <span
+              className={
+                `text-white`
+              }
+            >
+              From the kitchen table to the classroom, we make braille accessible and affordable for everyone.
+            </span>
+            <span
+              className={
+                `text-white`
+              }
+            >
+              Paige Connect transforms the classic braille writer, letting you view the print translation instantly on any device.
+            </span>
           </div>
-          <div className="flex flex-col justify-center items-end">
-            <Image
-              className="object-right object-contain ml-8 md:h-40 lg:h-44 xl:h-44 w-auto"
+          <Image
+              className="object-right w-auto xl:w-1/2 rounded-lg"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device that fits underneath a braille writer. "
               width={700}
             />
-          </div>
         </div>
       </div>
-      <div className="border-t border-paigedarkgrey">
-        <FAQ questions={questions} />
-      </div>
-      <p className="text-xs pb-2">
-        *Paige Connect is not manufactured or endorsed by Perkins School for the
-        Blind and Paige Braille is not affiliated with Perkins School for the
-        Blind in any way.
-      </p>
-    </div>
+    </section>
+    
+    //   <p className="text-xs pb-2">
+    //     *Paige Connect is not manufactured or endorsed by Perkins School for the
+    //     Blind and Paige Braille is not affiliated with Perkins School for the
+    //     Blind in any way.
+    //   </p>
+    // </div>
   );
 };
 
@@ -133,15 +149,12 @@ export default function Products() {
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
-      <div className="relative">
-        <div className="max-w-5xl mx-auto flex flex-col">
+      <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 pt-6 overflow-clip">
           <HeroSection onClickJoin={() => setShowSubscribe(true)} />
-        </div>
         <ProductSection />
-        <div className="max-w-5xl mx-auto flex flex-col bg-white p-4 md:p-8">
-          <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
-        </div>
-
+        <HowTo />
+        <FeatureSection />
+        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
         <SubscribePopup
           togglePopup={() => {
             setShowSubscribe(!showSubscribe);

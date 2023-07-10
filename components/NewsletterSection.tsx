@@ -1,9 +1,9 @@
 import React from "react";
-import Graphic1 from "../public/svg/graphic-1.svg";
+import Graphic4 from "../public/svg/graphic-4.svg";
 
 export default function NewsletterSection(props: {onClickSubscribe: () => void}) {
   return (
-    <div className="flex flex-col md:flex-row bg-primary px-4 pt-4 md:p-8 mt-8 justify-between relative overflow-visible gap-4 rounded-md">
+    <div className="flex flex-col md:flex-row bg-paigedarkblue px-4 pt-4 md:p-8 sm:my-8 justify-between relative overflow-visible gap-4 xl:rounded-lg">
       <div className="flex flex-col justify-between md:w-1/2 gap-4">
         <h2 className="font-bold text-white tracking-tight leading-tight text-xl md:text-2xl">
           Stay up to date by subscribing to our
@@ -16,7 +16,7 @@ export default function NewsletterSection(props: {onClickSubscribe: () => void})
           Subscribe
         </button>
       </div>
-      <Graphic1 className="object-right w-48 mx-auto md:w-72 lg:w-96 md:absolute md:-bottom-4 md:-right-12 lg:-bottom-5 lg:-right-5" />
+      <Graphic4 className="overflow-visible inline-flex h-64 xl:absolute xl:right-2 -bottom-0 xl:h-64" />
     </div>
   );
 }
