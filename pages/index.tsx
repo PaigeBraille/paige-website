@@ -3,7 +3,6 @@ import React from "react";
 import {
   GraphicSection1,
   GraphicSection2,
-  GraphicSection3,
 } from "../components/GraphicSections";
 import Partners from "../components/Partners";
 import TestimonialsSection from "../components/Testimonials";

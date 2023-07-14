@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import device from "../public/board2.jpg";
 import Heading from "../components/Heading";
-import FAQ, { FAQuestion } from "../components/FAQ";
 import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
 import SubscribePopup from "../components/SubscribePopup";
@@ -144,13 +143,13 @@ const ProductSection = () => {
   );
 };
 
-export default function Products() {
+export default function Buy() {
   
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
       <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 pt-6 overflow-clip">
-          <HeroSection onClickJoin={() => setShowSubscribe(true)} />
+        <HeroSection onClickJoin={() => setShowSubscribe(true)} />
         <ProductSection />
         <HowTo />
         <FeatureSection />

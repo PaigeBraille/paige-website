@@ -11,7 +11,7 @@ import Graphic3 from "../../public/svg/graphic-3.svg";
 
 const postsDirectory = path.join(process.cwd(), "content/testimonials");
 
-export default function Testimonials({
+export default function Stories({
   posts,
   instagram,
 }: {
@@ -21,7 +21,7 @@ export default function Testimonials({
   return (
     <Wrapper>
       <div className="max-w-5xl mx-auto p-4 md:px-8 flex flex-col gap-4">
-      <InstagramFeed posts={instagram} />
+        <InstagramFeed posts={instagram} />
         <Heading css="text-start leading-tight">Stories</Heading>
         <div className="flex flex-col gap-4">
           {posts.map((post) => (

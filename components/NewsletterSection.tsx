@@ -10,7 +10,7 @@ export default function NewsletterSection(props: {onClickSubscribe: () => void})
           newsletter!
         </h2>
         <button
-          className="plausible-event-name=Join+the+newsletter ml-onclick-form font-bold text-primary bg-white px-8 py-2 bg-white text-sm mr-auto rounded cursor-pointer"
+          className="plausible-event-name=Join+the+newsletter ml-onclick-form font-bold text-primary bg-white px-8 py-2 bg-white text-sm mr-auto rounded-sm cursor-pointer"
           onClick={props.onClickSubscribe}
         >
           Subscribe

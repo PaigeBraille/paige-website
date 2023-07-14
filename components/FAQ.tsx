@@ -29,7 +29,7 @@ const FAQ = (props: { questions: FAQuestion[] }) => {
       {props.questions.map((q, index) => (
         <li
           key={q.question}
-          className="flex items-start flex-col px-4 py-4 gap-2 md:border-x border-b border-paigedarkgrey"
+          className="flex items-start flex-col px-4 py-4 gap-2 border-b border-paigedarkgrey"
         >
           <div
             className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
