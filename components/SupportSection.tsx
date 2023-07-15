@@ -72,21 +72,21 @@ export const Swap = () => {
         <SupportSection
           number={1}
           image={Swap1}
-          alt="Hello"
+          alt="Upturned braille writer having its base unscrewed."
           instructionText="Unscrew the base of your braille writer"
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={2}
           image={Swap2}
-          alt="Hello2"
+          alt="Upturned braille writer with Paige Connect board."
           instructionText="Replace it with Paige Connect."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={3}
           image={Swap3}
-          alt="Hello3"
+          alt="Braille writer with a USB cable sitting on a desk."
           instructionText="Plug in the USB cable."
         />
       </div>
@@ -101,21 +101,21 @@ export const Connect = () => {
           <SupportSection
             number={1}
             image={Connect1}
-            alt="Hello"
+            alt="Screenshot of 'Paige' appearing as a Wi-Fi network."
             instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={Connect2}
-            alt="Hello2"
+            alt="Screenshot of the Paige Connect set up wizard."
             instructionText="Follow the instructions."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={3}
             image={Connect3}
-            alt="Hello3"
+            alt="Braille writer sitting next to a laptop on a desk."
             instructionText="If Paige no longer appears as a Wi-Fi network, your Paige Connect is ready to use."
           />
         </div>
@@ -130,14 +130,14 @@ export const Connect = () => {
           <SupportSection
             number={1}
             image={Share1}
-            alt="Hello"
+            alt="Braille writer with a person pressing the keys."
             instructionText="To start writing a file press and hold new line on your braille writer until you hear a single beep."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={Share2}
-            alt="Hello2"
+            alt="Screenshot of the Paige Connect web app's main tab."
             instructionText="You can connect to the app at anytime by typing http://yourname.local into your browser."
             
           />
@@ -145,7 +145,7 @@ export const Connect = () => {
           <SupportSection
             number={3}
             image={Share3}
-            alt="Hello3"
+            alt="Screenshot of the Paige Connect web app's files tab."
             instructionText="To end a file press and hold new line on your braille writer until you hear two beeps."
           />
         </div>
@@ -160,21 +160,21 @@ export const Connect = () => {
           <SupportSection
             number={1}
             image={Update1}
-            alt="Hello"
+            alt="Download icon showing a cloud and downfacing arrow."
             buttons=<DownloadSection />
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={Update2}
-            alt="Hello2"
+            alt="Screenshot of the Paige Connect web app's update interface pop up."
             instructionText="To update the interface press the Update Interface button. Select the file (index.html.gz) and click update."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={3}
             image={Update3}
-            alt="Hello3"
+            alt="Screenshot of the Paige Connect web app's update firmware pop up."
             instructionText="To update the firmware, press the Update Firmware button. Select the file (firmware.bin) and click update."
           />
         </div>
