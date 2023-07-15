@@ -71,7 +71,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             </Link>
           </li>
           <li className="mt-2">
-            <Link href="/products" className="hover:underline">
+            <Link href="/buy" className="hover:underline">
               FAQ
             </Link>
           </li>
