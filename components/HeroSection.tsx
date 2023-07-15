@@ -21,7 +21,7 @@ export default function HeroSection() {
           An adaptation for braille writers that lets you share the print translation.
         </p>
         <Link
-          href="/products"
+          href="/buy"
           className="bg-primary plausible-event-name=To+buy text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto lg:mr-auto lg:ml-0 hover:bg-blue-700"
         >
           Find out more
