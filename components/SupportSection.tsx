@@ -80,7 +80,7 @@ export const Swap = () => {
           number={2}
           image={Swap2}
           alt="Upturned braille writer with Paige Connect board."
-          instructionText="Replace it with Paige Connect."
+          instructionText="Replace it with the Paige Connect board, only tightening all screws at the end."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
@@ -109,7 +109,7 @@ export const Connect = () => {
             number={2}
             image={Connect2}
             alt="Screenshot of the Paige Connect set up wizard."
-            instructionText="Follow the instructions."
+            instructionText="Follow the instructions and give your board a unique name."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
@@ -131,14 +131,14 @@ export const Connect = () => {
             number={1}
             image={Share1}
             alt="Braille writer with a person pressing the keys."
-            instructionText="To start writing a file press and hold new line on your braille writer until you hear a single beep."
+            instructionText="Press and hold new line on your braille writer to start a file (one beep) and save a file (two beeps)."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={Share2}
             alt="Screenshot of the Paige Connect web app's main tab."
-            instructionText="You can connect to the app at anytime by typing http://yourname.local into your browser."
+            instructionText="Connect to the web app by typing http://name.local into your browser (using your boards name)."
             
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
@@ -146,7 +146,7 @@ export const Connect = () => {
             number={3}
             image={Share3}
             alt="Screenshot of the Paige Connect web app's files tab."
-            instructionText="To end a file press and hold new line on your braille writer until you hear two beeps."
+            instructionText="You can delete and download files in the files tab of the web app."
           />
         </div>
       </section>
