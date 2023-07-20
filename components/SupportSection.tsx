@@ -3,9 +3,12 @@ import Image from "next/image";
 import Swap1 from "../public/support-imgs/swap-1.jpg";
 import Swap2 from "../public/support-imgs/swap-2.jpg";
 import Swap3 from "../public/support-imgs/swap-3.jpg";
-import Connect1 from "../public/support-imgs/connect-1.png";
-import Connect2 from "../public/support-imgs/connect-2.png";
-import Connect3 from "../public/support-imgs/connect-3.jpg";
+import ConnectA1 from "../public/support-imgs/connect-1.png";
+import ConnectA2 from "../public/support-imgs/connect-2.png";
+// import ConnectA3 from "../public/support-imgs/connect-2.jpg";
+import ConnectB1 from "../public/support-imgs/connect-1.png";
+import ConnectB2 from "../public/support-imgs/connect-b-2.png";
+import ConnectB3 from "../public/support-imgs/connect-b-3.png";
 import Share1 from "../public/support-imgs/share-1.jpg";
 import Share2 from "../public/support-imgs/share-2.png";
 import Share3 from "../public/support-imgs/share-3.png";
@@ -18,21 +21,21 @@ function DownloadSection(){
   return(
     <div className="flex mt-4 justify-center">
       <a 
-        className="mr-2 bg-primary hover:bg-paigedarkblue text-white font-bold py-2 px-4 rounded-sm"
+        className=" bg-primary hover:bg-paigedarkblue text-white font-bold py-2 px-20 rounded-sm"
         href="https://github.com/PaigeBraille/paige-web-app/releases"
         target="_blank"
         rel="noreferrer"
       >
-        Download Interface
+        Download Software
       </a>
-      <a 
+      {/* <a 
         className="bg-primary hover:bg-paigedarkblue text-white font-bold py-2 px-4 rounded-sm"
         href="https://github.com/PaigeBraille/paige-firmware/releases"
         target="_blank"
         rel="noreferrer"
       >
         Download Firmware 
-      </a>
+      </a> */}
     </div>
   );
 }
@@ -73,7 +76,7 @@ export const Swap = () => {
           number={1}
           image={Swap1}
           alt="Upturned braille writer having its base unscrewed."
-          instructionText="Unscrew the base of your braille writer"
+          instructionText="Unscrew the base of your braille writer."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
@@ -94,29 +97,58 @@ export const Swap = () => {
   );
 };
 
-export const Connect = () => {
+export const ConnectA = () => {
     return (
       <section className="bg-white py-2 mx-6 sm:mx-0 text-center">
         <div className="flex flex-wrap">
           <SupportSection
             number={1}
-            image={Connect1}
+            image={ConnectA1}
             alt="Screenshot of 'Paige' appearing as a Wi-Fi network."
             instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
-            image={Connect2}
+            image={ConnectA2}
             alt="Screenshot of the Paige Connect set up wizard."
-            instructionText="Follow the instructions and give your board a unique name."
+            instructionText="Connect to the web app by typing http://192.168.0.1 into your browser."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={3}
-            image={Connect3}
+            image={ConnectA2}
             alt="Braille writer sitting next to a laptop on a desk."
-            instructionText="If Paige no longer appears as a Wi-Fi network, your Paige Connect is ready to use."
+            instructionText="Please note that you will not be connected to internet."
+          />
+        </div>
+      </section>
+    );
+  };
+
+  export const ConnectB = () => {
+    return (
+      <section className="bg-white py-2 mx-6 sm:mx-0 text-center">
+        <div className="flex flex-wrap">
+          <SupportSection
+            number={1}
+            image={ConnectB1}
+            alt="Screenshot of 'Paige' appearing as a Wi-Fi network."
+            instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
+          />
+          <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+          <SupportSection
+            number={2}
+            image={ConnectB2}
+            alt="Screenshot of the Paige Connect set up wizard."
+            instructionText="Set your Wi-Fi network and password in the Settings tab and press the restart button. If succesful, Paige should no longer appear as a Wi-Fi network."
+          />
+          <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+          <SupportSection
+            number={3}
+            image={ConnectB3}
+            alt="Braille writer sitting next to a laptop on a desk."
+            instructionText="Connect to the web app by typing http://paige.local into your browser."
           />
         </div>
       </section>
@@ -138,7 +170,7 @@ export const Connect = () => {
             number={2}
             image={Share2}
             alt="Screenshot of the Paige Connect web app's main tab."
-            instructionText="Connect to the web app by typing http://name.local into your browser (using your boards name)."
+            instructionText="The print translation will be displayed in the Home tab of the web app."
             
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
@@ -146,7 +178,7 @@ export const Connect = () => {
             number={3}
             image={Share3}
             alt="Screenshot of the Paige Connect web app's files tab."
-            instructionText="You can delete and download files in the files tab of the web app."
+            instructionText="You can delete and download files in the Files tab of the web app."
           />
         </div>
       </section>

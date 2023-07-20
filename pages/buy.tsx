@@ -124,7 +124,7 @@ const ProductSection = () => {
             </span>
           </div>
           <Image
-              className="object-right w-auto xl:w-1/2 rounded-lg"
+              className="w-auto md:w-1/2 object-contain object-right min-h-0  rounded-lg"
               src={device}
               alt="Paige Connect Device"
               aria-details="Paige connect device that fits underneath a braille writer. "
@@ -148,12 +148,12 @@ export default function Buy() {
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
-      <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-16 sm:px-6 pt-6 overflow-clip">
+      <div className="max-w-5xl mx-auto mb-6 flex flex-col gap-12 sm:gap-16 sm:px-6 pt-6 overflow-clip">
         <HeroSection onClickJoin={() => setShowSubscribe(true)} />
         <ProductSection />
         <HowTo />
         <FeatureSection />
-        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
+        {/* <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} /> */}
         <SubscribePopup
           togglePopup={() => {
             setShowSubscribe(!showSubscribe);
