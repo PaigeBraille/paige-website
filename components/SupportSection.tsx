@@ -104,21 +104,21 @@ export const ConnectA = () => {
           <SupportSection
             number={1}
             image={ConnectA1}
-            alt="Screenshot of 'Paige' appearing as a Wi-Fi network."
+            alt="Wi-Fi symbol."
             instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={ConnectA2}
-            alt="Screenshot of the Paige Connect set up wizard."
+            alt="Screenshot of the Paige Connect web app open in a browser."
             instructionText="Connect to the web app by typing http://192.168.0.1 into your browser."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={3}
             image={ConnectA2}
-            alt="Braille writer sitting next to a laptop on a desk."
+            alt="Screenshot of the Paige Connect web app open in a browser."
             instructionText="Please note that you will not be connected to internet."
           />
         </div>
@@ -133,21 +133,21 @@ export const ConnectA = () => {
           <SupportSection
             number={1}
             image={ConnectB1}
-            alt="Screenshot of 'Paige' appearing as a Wi-Fi network."
+            alt="Wi-Fi symbol."
             instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={2}
             image={ConnectB2}
-            alt="Screenshot of the Paige Connect set up wizard."
+            alt="Screenshot of the Paige Connect web app open in a browser with the Settings tab selected"
             instructionText="Set your Wi-Fi network and password in the Settings tab and press the restart button. If succesful, Paige should no longer appear as a Wi-Fi network."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
           <SupportSection
             number={3}
             image={ConnectB3}
-            alt="Braille writer sitting next to a laptop on a desk."
+            alt="Screenshot of the Paige Connect web app open in a browser."
             instructionText="Connect to the web app by typing http://paige.local into your browser."
           />
         </div>
@@ -169,7 +169,7 @@ export const ConnectA = () => {
           <SupportSection
             number={2}
             image={Share2}
-            alt="Screenshot of the Paige Connect web app's main tab."
+            alt="Screenshot of the Paige Connect web app open in a browser."
             instructionText="The print translation will be displayed in the Home tab of the web app."
             
           />
@@ -177,7 +177,7 @@ export const ConnectA = () => {
           <SupportSection
             number={3}
             image={Share3}
-            alt="Screenshot of the Paige Connect web app's files tab."
+            alt="Screenshot of the Paige Connect web app open in a browser with the Files tab selected."
             instructionText="You can delete and download files in the Files tab of the web app."
           />
         </div>
