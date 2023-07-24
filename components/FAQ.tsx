@@ -36,10 +36,10 @@ const FAQ = (props: { questions: FAQuestion[] }) => {
             onClick={() => handleClick(index)}
             aria-label={q.question}
           >
-            <h3 className="inline-flex md:text-xl font-bold leading-tight tracking-tight">
+            <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
               {q.question}
             </h3>
-            <span className="text-gray-600 inline-flex text-lg md:text-2xl">
+            <span className="text-gray-600 inline-flex text-xl md:text-2xl">
               {index === activeQuestion ? (
                 <FontAwesomeIcon icon={faChevronDown} size="xs" />
               ) : (

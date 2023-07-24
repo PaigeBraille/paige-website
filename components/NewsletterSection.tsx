@@ -3,9 +3,9 @@ import Graphic4 from "../public/svg/graphic-4.svg";
 
 export default function NewsletterSection(props: {onClickSubscribe: () => void}) {
   return (
-    <div className="flex flex-col md:flex-row bg-paigedarkblue px-4 pt-4 md:p-8 sm:my-8 justify-between relative overflow-visible gap-4 sm:rounded-lg">
+    <div className="flex flex-col md:flex-row bg-paigedarkblue px-6 pt-4 md:p-12 sm:my-4 justify-between relative overflow-visible gap-4 sm:rounded-lg">
       <div className="flex flex-col justify-between md:w-1/2 gap-4">
-        <h2 className="font-bold text-white tracking-tight leading-tight text-xl md:text-2xl">
+        <h2 className="font-bold text-white tracking-tight leading-tight text-xl md:text-xl">
           Stay up to date by subscribing to our
           newsletter!
         </h2>

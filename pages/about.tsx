@@ -24,7 +24,7 @@ const HeroText = () => {
 export default function About({ posts }: PostsProps) {
   return (
     <Wrapper>
-      <div className="mx-auto max-w-5xl md:px-4 md:px-6">
+      <div className="mx-auto max-w-5xl md:px-6">
         <HeroText />
         <MissionSection />
         <People />

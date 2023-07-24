@@ -24,21 +24,19 @@ export default function Stories({
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
-      <div className="max-w-5xl mx-auto p-4 md:px-8 flex flex-col gap-4">
+      <div className="max-w-5xl mx-auto md:px-6 flex flex-col">
         <InstagramFeed posts={instagram} />
-        <Heading css="text-start leading-tight">Stories</Heading>
-        <div className="flex flex-col gap-4">
-          {posts.map((post) => (
-            <TestimonialPost key={post.slug} post={post} />
-          ))}
+        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
+          <Heading css="text-start leading-tight text-paigedarkgrey">Stories</Heading>
         </div>
-        <NewsletterSection2 onClickSubscribe={() => setShowSubscribe(true)} />
-        <SubscribePopup
-          togglePopup={() => {
-            setShowSubscribe(!showSubscribe);
-          }}
-          isVisible={showSubscribe}
-        />
+        <div className="px-6 md:px-0">
+          <div className="flex flex-col gap-4">
+            {posts.map((post) => (
+              <TestimonialPost key={post.slug} post={post} />
+            ))}
+          </div>
+          <NewsletterSection2 onClickSubscribe={() => setShowSubscribe(true)} />
+        </div>
         {/* <div className="flex flex-col">
           <Heading css="text-grey text-center text-lg lg:text-3xl leading-none mt-8 sm:mt-12">
             Do you want to tell us your story?<br></br>
@@ -47,6 +45,12 @@ export default function Stories({
           <Graphic3 className="overflow-visible -mb-4 mt-8 h-48 sm:h-64" />
         </div> */}
       </div>
+      <SubscribePopup
+          togglePopup={() => {
+            setShowSubscribe(!showSubscribe);
+          }}
+          isVisible={showSubscribe}
+        />
     </Wrapper>
   );
 }
