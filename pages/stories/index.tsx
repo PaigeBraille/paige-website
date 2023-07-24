@@ -7,7 +7,7 @@ import { Wrapper } from "../../components/Wrapper";
 import path from "path";
 import { getInstagramPosts, InstagramPost } from "../../lib/instagram";
 import InstagramFeed from "../../components/InstagramFeed";
-import NewsletterSection from "../../components/NewsletterSection";
+import NewsletterSection2 from "../../components/NewsletterSection2";
 import SubscribePopup from "../../components/SubscribePopup";
 import Graphic3 from "../../public/svg/graphic-3.svg";
 
@@ -32,7 +32,7 @@ export default function Stories({
             <TestimonialPost key={post.slug} post={post} />
           ))}
         </div>
-        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
+        <NewsletterSection2 onClickSubscribe={() => setShowSubscribe(true)} />
         <SubscribePopup
           togglePopup={() => {
             setShowSubscribe(!showSubscribe);

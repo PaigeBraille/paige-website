@@ -59,7 +59,10 @@ const SupportSection = (props: {
             className=" w-full object-contain min-h-0"
             alt={props.alt}
             src={props.image}
+            width={500}
+            height={300}
             quality={40}
+
         />
       </div>
       <div className="text-left text-sm text-paigedarkgrey">{props.instructionText}</div>

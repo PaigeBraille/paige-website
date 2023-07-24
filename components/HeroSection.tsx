@@ -11,6 +11,7 @@ export default function HeroSection() {
           alt="Paige Connect web app showing translated braille."
           className="max-h-72 object-contain overflow-clip"
           height={500}
+          priority
         />
       </div>
       <div className="flex basis-2/5 flex-col gap-4 text-center lg:text-start px-10">
