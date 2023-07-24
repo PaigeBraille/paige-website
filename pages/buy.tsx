@@ -129,6 +129,7 @@ const ProductSection = () => {
               alt="Paige Connect Device"
               aria-details="Paige connect device that fits underneath a braille writer. "
               width={700}
+              priority
             />
         </div>
       </div>
