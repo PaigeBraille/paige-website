@@ -2,7 +2,7 @@ import { Wrapper } from "../components/Wrapper";
 import React from "react";
 import path from "path";
 import Heading from "../components/Heading";
-import {Swap, ConnectA, ConnectB, Share, Update} from "../components/SupportSection";
+import {Swap, ConnectA, ConnectB, Share, Update, Name} from "../components/SupportSection";
 import FAQ, { FAQuestion } from "../components/FAQ";
 import ManualSection from "../components/ManualSection";
 
@@ -32,6 +32,11 @@ const questions: FAQuestion[] = [
       question: "Update",
       answer: [],
       fragment:  <Update />,
+    },
+    {
+      question: "Name",
+      answer: [],
+      fragment:  <Name />,
     },
     // Add more questions here...
   ];

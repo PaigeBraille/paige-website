@@ -1,8 +1,8 @@
 import React, { ReactHTMLElement } from "react";
 import Image from "next/image";
 import Swap1 from "../public/support-imgs/swap-1.jpg";
-import Swap2 from "../public/support-imgs/swap-2.jpg";
-import Swap3 from "../public/support-imgs/swap-3.jpg";
+import Swap2 from "../public/support-imgs/swap-2.jpeg";
+import Swap3 from "../public/support-imgs/swap-3.jpeg";
 import ConnectA1 from "../public/support-imgs/connect-1.png";
 import ConnectA2 from "../public/support-imgs/connect-2.png";
 // import ConnectA3 from "../public/support-imgs/connect-2.jpg";
@@ -15,6 +15,9 @@ import Share3 from "../public/support-imgs/share-3.png";
 import Update1 from "../public/support-imgs/update-1.png";
 import Update2 from "../public/support-imgs/update-2.png";
 import Update3 from "../public/support-imgs/update-3.png";
+import Name1 from "../public/support-imgs/name-1.png";
+import Name2 from "../public/support-imgs/name-2.png";
+import Name3 from "../public/support-imgs/name-3.jpg";
 
 
 function DownloadSection(){
@@ -165,7 +168,7 @@ export const ConnectA = () => {
           <SupportSection
             number={1}
             image={Share1}
-            alt="Braille writer with a person pressing the keys."
+            alt="Braille writer with a person pressing the new line key."
             instructionText="Press and hold new line on your braille writer to start a file (one beep) and save a file (two beeps)."
           />
           <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
@@ -211,6 +214,35 @@ export const ConnectA = () => {
             image={Update3}
             alt="Screenshot of the Paige Connect web app's update firmware pop up."
             instructionText="To update the firmware, press the Update Firmware button. Select the file (firmware.bin) and click update."
+          />
+        </div>
+      </section>
+    );
+  };
+
+  export const Name = () => {
+    return (
+      <section className="bg-white py-2 mx-6 sm:mx-0 text-center">
+        <div className="flex flex-wrap">
+          <SupportSection
+            number={1}
+            image={Name1}
+            alt="Screenshot of the Paige Connect web app open in a browser with the Settings tab selected."
+            instructionText="If you have more than one board you can give each a unique name in the Settings tab and restart."
+          />
+          <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+          <SupportSection
+            number={2}
+            image={Name2}
+            alt="Screenshot of the Paige Connect web app open in a browser."
+            instructionText="You can then follow the manual replacing Paige with the name you have chosen."
+          />
+          <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+          <SupportSection
+            number={3}
+            image={Name3}
+            alt="Braille writer with a person pressing the back space key."
+            instructionText="If you forget the name of your board, holding down back space on your braille writer for ten seconds will re-name your board as Paige."
           />
         </div>
       </section>
