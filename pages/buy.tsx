@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import device from "../public/board2.jpg";
+import device from "../public/paige-connect.jpg";
 import Heading from "../components/Heading";
 import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
