@@ -60,9 +60,19 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Legal</h5>
         <ul className="mb-4">
+        <li className="mt-2">
+            <Link href="/Return & Refund Policy.pdf" className="hover:underline">
+              Returns
+            </Link>
+          </li>
           <li className="mt-2">
             <Link href="/privacy-policy.pdf" className="hover:underline">
               Privacy Policy
+            </Link>
+          </li>
+          <li className="mt-2">
+            <Link href="/Terms of Service.pdf" className="hover:underline">
+              Terms of Service 
             </Link>
           </li>
           <li className="mt-2">
@@ -70,11 +80,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               Careers
             </Link>
           </li>
-          <li className="mt-2">
+          {/* <li className="mt-2">
             <Link href="/buy" className="hover:underline">
               FAQ
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
