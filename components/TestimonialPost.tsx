@@ -20,7 +20,7 @@ export default function TestimonialPost({ post }: PostProps) {
         </h2>
         <p className="text-sm mb-auto">{post.excerpt}</p>
         <Link
-          href={`/testimonials/${post.slug}`}
+          href={`/stories/${post.slug}`}
           className="text-xs border border-black rounded px-4 py-2 mr-auto"
           role="button"
           aria-labelledby={post.title}

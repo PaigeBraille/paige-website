@@ -29,17 +29,17 @@ const FAQ = (props: { questions: FAQuestion[] }) => {
       {props.questions.map((q, index) => (
         <li
           key={q.question}
-          className="flex items-start flex-col px-4 py-4 gap-2 md:border-x border-b border-paigedarkgrey"
+          className="flex items-start flex-col px-4 py-4 gap-2 border-b border-paigedarkgrey"
         >
           <div
             className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
             onClick={() => handleClick(index)}
             aria-label={q.question}
           >
-            <h3 className="inline-flex md:text-xl font-bold leading-tight tracking-tight">
+            <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
               {q.question}
             </h3>
-            <span className="text-gray-600 inline-flex text-lg md:text-2xl">
+            <span className="text-gray-600 inline-flex text-xl md:text-2xl">
               {index === activeQuestion ? (
                 <FontAwesomeIcon icon={faChevronDown} size="xs" />
               ) : (

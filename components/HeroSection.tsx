@@ -11,6 +11,7 @@ export default function HeroSection() {
           alt="Paige Connect web app showing translated braille."
           className="max-h-72 object-contain overflow-clip"
           height={500}
+          priority
         />
       </div>
       <div className="flex basis-2/5 flex-col gap-4 text-center lg:text-start px-10">
@@ -21,8 +22,8 @@ export default function HeroSection() {
           An adaptation for braille writers that lets you share the print translation.
         </p>
         <Link
-          href="/products"
-          className="bg-primary text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto lg:mr-auto lg:ml-0 hover:bg-blue-700"
+          href="/buy"
+          className="bg-primary plausible-event-name=To+buy text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto lg:mr-auto lg:ml-0 hover:bg-blue-700"
         >
           Find out more
         </Link>

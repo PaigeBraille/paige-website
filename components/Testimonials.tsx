@@ -14,6 +14,10 @@ const TESTIMONIALS = [
     text: "Paige connects the braille learner to a sighted family member or teacher like nothing seen before. ",
   },
   {
+    name: "Brian Mac Donald",
+    text: "We applaud the Paige Connect team for inventing this amazing device. ",
+  },
+  {
     name: "Suparna Biswas",
     text: "We are very proud to be associated with such a committed and innovative team. ",
   },
@@ -53,7 +57,7 @@ const TestimonialsSection = () => {
       </div>
       <Link
         className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
-        href="/testimonials"
+        href="/stories"
       >
         Read full stories
       </Link>

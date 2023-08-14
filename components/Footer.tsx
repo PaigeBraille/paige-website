@@ -10,7 +10,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <Link href="/">
           <Logo className="inline-block h-auto" alt="Paige Logo" />
         </Link>
-        <p className="mb-4">Contact us at: hello@paigebraille.com</p>
+        <p className="mb-4">Contact us at: <a className="text-white" href = "mailto: hello@paigebraille.com">hello@paigebraille.com</a></p>
         <form
           className="flex flex-col gap-2 items-center md:items-start overflow-clip"
           name="footer-subscribe"
@@ -60,9 +60,19 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Legal</h5>
         <ul className="mb-4">
+        <li className="mt-2">
+            <Link href="/Return & Refund Policy.pdf" className="hover:underline">
+              Returns
+            </Link>
+          </li>
           <li className="mt-2">
             <Link href="/privacy-policy.pdf" className="hover:underline">
               Privacy Policy
+            </Link>
+          </li>
+          <li className="mt-2">
+            <Link href="/Terms of Service.pdf" className="hover:underline">
+              Terms of Service 
             </Link>
           </li>
           <li className="mt-2">
@@ -70,11 +80,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               Careers
             </Link>
           </li>
-          <li className="mt-2">
-            <Link href="/products" className="hover:underline">
+          {/* <li className="mt-2">
+            <Link href="/buy" className="hover:underline">
               FAQ
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
