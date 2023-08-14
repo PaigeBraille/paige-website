@@ -18,6 +18,8 @@ Create a `.env.local` file with the following contents:
 INSTAGRAM_ACCESS_TOKEN=<oauth token generated from facebook developer portal>
 ```
 
+https://developers.facebook.com/apps/3154264864876865/instagram-basic-display/basic-display/
+
 ## Codebase
 
 - Uses [Next.js](https://nextjs.org/) + [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org) + [Tailwind](https://tailwindcss.com)
