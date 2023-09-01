@@ -22,7 +22,7 @@ export default function BlogPost({ post }: PostProps) {
             alt={post.alt}
             width={500}
             height={300}
-            quality={40}
+            quality={30}
           />
         </div>
         <div

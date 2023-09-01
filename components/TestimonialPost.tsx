@@ -11,7 +11,7 @@ export default function TestimonialPost({ post }: PostProps) {
           alt={post.alt}
           width={500}
           height={300}
-          quality={40}
+          quality={25}
         />
       </div>
       <div className="flex flex-col gap-2 p-4 bg-blue-50 rounded-lg md:w-1/2">

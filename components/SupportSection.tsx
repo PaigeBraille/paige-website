@@ -64,7 +64,7 @@ const SupportSection = (props: {
             src={props.image}
             width={500}
             height={300}
-            quality={40}
+            quality={25}
 
         />
       </div>
