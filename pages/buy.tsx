@@ -81,7 +81,7 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         >
           <iframe
             className="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/rnK82sIc45Q?controls=0&rel=0&showinfo=0&loop=1&autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/vf-0M0ug554?controls=0&rel=0&showinfo=0&loop=1&autoplay=1&mute=1"
             title="Paige Connect in action translating embossed braille."
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
