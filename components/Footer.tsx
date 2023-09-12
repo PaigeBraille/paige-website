@@ -124,7 +124,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           </li>
           <li className="mt-2">
             <Link href="https://drive.google.com/drive/folders/1AqTR1wjvtb7O3ZdATcOG1L05cEgAxj9O?usp=drive_link" target="_blank" rel="noreferrer"className="hover:underline">
-              Press Pack
+              Press
             </Link>
           </li>
         </ul>
