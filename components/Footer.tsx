@@ -122,6 +122,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               YouTube
             </a> 
           </li>
+          <li className="mt-2">
+            <Link href="https://drive.google.com/drive/folders/1AqTR1wjvtb7O3ZdATcOG1L05cEgAxj9O?usp=drive_link" target="_blank" rel="noreferrer"className="hover:underline">
+              Press Pack
+            </Link>
+          </li>
         </ul>
       </div>
     </footer>
