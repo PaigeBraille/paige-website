@@ -1,18 +1,17 @@
 ---
-title: Sean Randall
+title: Speak what you write!
 alt: 'New College Worcester logo.'
-date: '08-03-2023'
+date: '11-09-2023'
 coverImage: '/testimonial-imgs/sean.PNG'
-excerpt: '"Paige Connect is such a simple idea. It really just does one thing, but in doing it well, Paige Connect will open doors to education, potentially for thousands of people."'
-time: ''
-people: ''
-skills: ''
+excerpt: 'Hear your screen reader speak what you type with Paige Connect'
+time: '15 min'
+people: '1'
+skills: 'Technology - using technology with as much independence as possible.'
 ---
-# My story
 
-**Who are you?**
+**How to prepare?**
 
-I am Sean Randall, a totally-blind braille-loving teacher at a school for the blind and visually-impaired. I teach IT and support students with accessibility.
+Colons can be used to align columns.
 
 **How did you first hear about Paige Connect?**
 

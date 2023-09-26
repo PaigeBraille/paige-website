@@ -4,6 +4,9 @@ alt: 'UnLtd London office exterior street view on a sunny day.'
 date: '5-03-2023'
 coverImage: '/news-imgs/news_feb.jpeg'
 excerpt: 'We reached out  to the braille community to present the idea of Paige Connect. Subscribe to our newsletter to learn more!'
+time: ''
+people: ''
+skills: ''
 ---
 # We reached out to the braille community to present the idea of Paige Connect.
 

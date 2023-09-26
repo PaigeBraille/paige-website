@@ -15,6 +15,9 @@ export type Post = {
   coverImage: string;
   content?: string;
   excerpt?: string;
+  time?: string,
+  people?: string,
+  skills?: string;
 };
 
 export type PostsProps = {
@@ -38,7 +41,7 @@ export const getAllPosts = (postsDirectory: string): Post[] => {
     const slug = fileName.replace(/\.md$/, "");
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+    const { data} = matter(fileContents);
     return {
       slug,
       title: data.title,
@@ -46,6 +49,9 @@ export const getAllPosts = (postsDirectory: string): Post[] => {
       date: data.date,
       coverImage: data.coverImage,
       excerpt: data.excerpt,
+      time: data.time,
+      people: data.people,
+      skills: data.skills,
     };
   });
   return allPosts;
@@ -68,5 +74,8 @@ export function getPostBySlug(slug: string, postsDirectory: string) {
     date: data.date,
     coverImage: data.coverImage,
     content: htmlContent.toString(),
+    time: data.time,
+    people: data.people,
+    skills: data.skills,
   };
 }

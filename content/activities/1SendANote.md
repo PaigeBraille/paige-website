@@ -1,12 +1,12 @@
 ---
-title: Wendy Eaton
+title: Send a note
 alt: 'East Sussex logo.'
 date: '08-03-2023'
 coverImage: '/testimonial-imgs/wendy.jpg'
-excerpt: '"If you are working in a school with a student it will save you so much time, you can just use the app to read what has been brailled in print – no more transcribing underneath a line of braille!"'
-time: ''
-people: ''
-skills: ''
+excerpt: 'Write a note on your braille writer and send it to a friend'
+time: '10 min'
+people: '1'
+skills: 'Accessing Information - access, produce and manage information independently.'
 ---
 # My story
 

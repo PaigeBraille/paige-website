@@ -4,6 +4,9 @@ alt: 'Shows New College Worcester teacher, Sean Randall, and a young student pla
 date: '13-04-2023'
 coverImage: '/news-imgs/news_march.jpeg'
 excerpt: 'Students at New College Worcester spent a week using Paige Connect. Subscribe to our newsletter to learn more!'
+time: ''
+people: ''
+skills: ''
 ---
 
 # Students at New College Worcester spent a week using Paige Connect!

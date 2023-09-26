@@ -4,6 +4,9 @@ alt: 'Blue anechoic chamber with antenna for CE and UKCA regulatory testing. '
 date: '12-06-2023'
 coverImage: '/news-imgs/news_may.jpeg'
 excerpt: 'Paige Connect is getting ready for CE and UKCA marking. '
+time: ''
+people: ''
+skills: ''
 ---
 
 # Paige Connect is getting ready for CE and UKCA marking. 
