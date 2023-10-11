@@ -5,6 +5,7 @@ import Heading from "../components/Heading";
 import HowTo from "../components/HowTo";
 import NewsletterSection from "../components/NewsletterSection";
 import SubscribePopup from "../components/SubscribePopup";
+import Link from "next/link";
 import { Wrapper } from "../components/Wrapper";
 
 
@@ -122,6 +123,14 @@ const ProductSection = () => {
             >
               Paige Connect transforms the classic braille writer, letting you view the print translation instantly on any device.
             </span>
+            <Link
+                className="rounded-sm font-bold text-primary bg-white hover:bg-blue-100 px-4 py-2 text-center  w-full sm:w-fit sm:mt-4"
+                target="_blank" 
+                rel="noreferrer"
+                href="https://calendly.com/sergio-paige/paige-connect-demo"
+            >
+                Book a demo
+            </Link>
           </div>
           <Image
               className="w-auto md:w-1/2 object-contain object-right min-h-0  rounded-lg"
