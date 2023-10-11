@@ -17,7 +17,7 @@ export type Post = {
   excerpt?: string;
   time?: string,
   people?: string,
-  skills?: string;
+  skills: string;
 };
 
 export type PostsProps = {

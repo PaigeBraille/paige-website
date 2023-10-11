@@ -1,31 +1,32 @@
 ---
-title: Send a note
+title: Write a note and send it
 alt: 'East Sussex logo.'
 date: '08-03-2023'
-coverImage: '/testimonial-imgs/wendy.jpg'
+coverImage: '/activities-imgs/SendANote.png'
 excerpt: 'Write a note on your braille writer and send it to a friend'
-time: '10 min'
+time: '15 min'
 people: '1'
-skills: 'Accessing Information - access, produce and manage information independently.'
+skills: '1,3'
 ---
-# My story
 
-**Who are you?**
 
-Technical resource officer at the East Sussex Sensory Needs Service.
+**How to Prepare:**
 
-**How did you first hear about Paige Connect?**
+- Braille writer with Paige Connect
+- A phone, tablet, or laptop
+- An email account
 
-The Braillists Foundation forum.
+**Step by Step:**
 
-**What were your first impressions?**
+1. Write a note with your braille writer. Remember to press and hold new line on your braille writer to start a file (one beep) and save a file (two beeps).  
+2. Open the Paige web app on your device.
+3. Navigate to the Files tab.
+4. Download the note you want to send.
+5. Open your email client.
+6. Attach the downloaded .txt or .brf file to the email or paste the content into the text entry box.
+7. Send the email!
 
-Very good, definitely fills a gap in the market.
+**Tips:**
 
-**How would you use it?**
-
-As a service we would use it in schools so the teacher can see what the student is embossing with their braille writer.
-
-**What would you say to anyone interested in getting one?**
-
-If you are working in a school with a student it will save you so much time, you can just use the app to view what has been brailled by the student – no more transcribing underneath a line of braille! You also don’t need to know braille to use it, so if the usual TA is off sick anyone can retrieve the students work.
+- Double-check the content of your note before sending it.
+- If you encounter any difficulties or need additional guidance, visit our [support section](https://paigebraille.com/support) for comprehensive instructions.

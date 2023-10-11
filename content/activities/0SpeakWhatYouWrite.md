@@ -2,29 +2,27 @@
 title: Speak what you write!
 alt: 'New College Worcester logo.'
 date: '11-09-2023'
-coverImage: '/testimonial-imgs/sean.PNG'
+coverImage: '/activities-imgs/SpeakWhatYouWrite.png'
 excerpt: 'Hear your screen reader speak what you type with Paige Connect'
-time: '15 min'
+time: '10 min'
 people: '1'
-skills: 'Technology - using technology with as much independence as possible.'
+skills: '1,3'
 ---
 
-**How to prepare?**
+**How to prepare:**
 
-Colons can be used to align columns.
+- Braille writer with Paige Connect
+- A phone, tablet or laptop
+- Ensure your screen reader software is installed and configured on your device
 
-**How did you first hear about Paige Connect?**
+**Step by step:**
 
- I’ve watched the ideas for Paige Connect grow from the design stages with great excitement, and am hugely pleased to see a product come to market that’s going to be so useful to many, many people.
+1. Open the Paige web app on your device.
+2. Turn on your screen reader if it's not already active.
+3. Navigate to the print output window within the Paige web app.
+4. Start writing a file by long-pressing the new line key on your braille writer.
+5. As you type, listen to your screen reader, which will speak out loud what you write!
  
-**What were your first impressions?**
+**Tips:** 
 
-That Paige Connect is such a simple idea. It really just does one thing, but in doing it well, Paige Connect will open doors to education, potentially for thousands of people.
- 
-**How would you use it?**
-
-At home, I’d use it so my sighted daughter can view what I'm writing in braille or to write notes that I can store digitally to refer back to later. Professionally, I’d use Paige Connect so I could read what my student was writing through the web app without having to wait for the paper copy.
- 
-**What would you say to anyone interested in getting one?**
-
-If you are supporting a young person in their learning, needing to learn braille yourself as an adult, or an accomplished braillist with a braille writer you want to make a little smarter, Paige Connect could be the product for you.
+- If you encounter any difficulties or need additional guidance, visit our [support section](https://paigebraille.com/support) for comprehensive instructions.
