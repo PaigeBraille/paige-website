@@ -5,7 +5,7 @@ import Link from "next/link";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  "We have included a tool that translates print into braille and allows you to generate braille files in Universal English Braille Grade 1 and 2. Check it out! ";
+  "How to use Paige Connect, including playful instructions and ideas for activities.";
   
 export default function WriteWithUs() {
   return (
