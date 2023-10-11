@@ -1,6 +1,6 @@
 ---
 title: Speak what you write!
-alt: 'New College Worcester logo.'
+alt: 'Screenshot of the Paige Connect web app open with the print output window selected.'
 date: '11-09-2023'
 coverImage: '/activities-imgs/SpeakWhatYouWrite.png'
 excerpt: 'Hear your screen reader speak what you type with Paige Connect'

@@ -5,7 +5,7 @@ import Link from "next/link";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  "How to use Paige Connect, including playful instructions and ideas for activities.";
+  "How to get started with Paige Connect, including playful instructions and ideas for activities. We support the Curriculum Framework for Children and Young People with Vision Impairment (CFVI), enabling teachers to create playful braille lesson plans.";
   
 export default function WriteWithUs() {
   return (

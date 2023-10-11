@@ -11,8 +11,8 @@ export default function ActivitiesPost({ post }: PostProps) {
         <Image
           src={post.coverImage}
           alt={post.alt}
-          width={400}
-          height={250}
+          width={500}
+          height={300}
           quality={25}
         />
       </div>

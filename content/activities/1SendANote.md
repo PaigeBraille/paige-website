@@ -1,6 +1,6 @@
 ---
 title: Write a note and send it
-alt: 'East Sussex logo.'
+alt: 'Screenshot of the by the Files tab from the Paige Connect web app open. A file is selected and downloading.'
 date: '08-03-2023'
 coverImage: '/activities-imgs/SendANote.png'
 excerpt: 'Write a note on your braille writer and send it to a friend'
