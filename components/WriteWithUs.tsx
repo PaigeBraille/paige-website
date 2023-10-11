@@ -1,6 +1,7 @@
 import React from "react";
 import Heading from "./Heading";
 import Image from "next/image";
+import Link from "next/link";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
@@ -12,12 +13,12 @@ export default function WriteWithUs() {
       <div className="flex flex-col gap-6 items-center sm:items-start">
         <Heading css="sm:text-start">Write with us</Heading>
         <span>{WRITE_WITH_US_CONTENT}</span>
-        <a
+        <Link
           className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
-          href="https://paigetranslate.netlify.app/"
+          href="/activities"
         >
-          Translation tool
-        </a>
+          Activities
+        </Link>
       </div>
       <div>
         <Image

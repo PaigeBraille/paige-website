@@ -4,6 +4,9 @@ alt: 'Sergio Gosalvez standing outside City Hall, London, Newham. He is smiling 
 date: '04-07-2023'
 coverImage: '/news-imgs/news_june.jpg'
 excerpt: ' We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI). '
+time: ''
+people: ''
+skills: ''
 ---
 
 # We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI).

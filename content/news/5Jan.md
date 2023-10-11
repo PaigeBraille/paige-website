@@ -4,6 +4,9 @@ alt: 'Members of the Paige team (left to right, Sergio Gosalvez, Nina Moutonnet,
 date: '14-03-2023'
 coverImage: '/news-imgs/news_jan.jpg'
 excerpt: 'We made significant strides towards our first product, Paige Connect, an affordable upgrade for existing braille writers. Subscribe to our newsletter to learn more!'
+time: ''
+people: ''
+skills: ''
 ---
 # Hello, we are Paige!
 

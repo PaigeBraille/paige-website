@@ -31,14 +31,6 @@ function DownloadSection(){
       >
         Download Software
       </a>
-      {/* <a 
-        className="bg-primary hover:bg-paigedarkblue text-white font-bold py-2 px-4 rounded-sm"
-        href="https://github.com/PaigeBraille/paige-firmware/releases"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Download Firmware 
-      </a> */}
     </div>
   );
 }

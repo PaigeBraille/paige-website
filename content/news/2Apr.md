@@ -4,6 +4,9 @@ alt: 'Exterior view of the National Braille Press building in Boston. '
 date: '13-05-2023'
 coverImage: '/news-imgs/news_apr.jpg'
 excerpt: 'Paige Connect has been awarded The Touch of Genius Prize for Innovation!'
+time: ''
+people: ''
+skills: ''
 ---
 
 # Paige Connect has been awarded The Touch of Genius Prize for Innovation!
