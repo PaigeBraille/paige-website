@@ -11,7 +11,7 @@ skills: ''
 
 # We are sending out our first Paige Connect boards to local offers and charities
 
-It's been an exciting .three months, and we're thrilled to bring you the latest updates on Paige Connect – a revolutionary tool to learn braille explained [in this video](https://www.youtube.com/watch?v=rnK82sIc45Q). Here's a recap of our recent progress and the exciting news we've been waiting to share.
+It's been an exciting three months, and we're thrilled to bring you the latest updates on Paige Connect – a revolutionary tool to learn braille explained [in this video](https://www.youtube.com/watch?v=rnK82sIc45Q). Here's a recap of our recent progress and the exciting news we've been waiting to share.
 
 **Progress**
 
@@ -22,6 +22,6 @@ We are also excited to announce that we will be showcasing Paige Connect at Sigh
 
 **Thank you**
 
-We recently had the privilege of presenting Paige Connect to the VI Tech Network. The response from Qualified Teachers of the Visually Impaired (QTVIs) has been outstanding. In fact, the response has been so overwhelming we are now faced with a wonderful challenge: we have more requests for trialling Paige Connect than we initilly anticipated.
+We recently had the privilege of presenting Paige Connect to the VI Tech Network. The response from Qualified Teachers of the Visually Impaired (QTVIs) has been outstanding. In fact, the response has been so overwhelming we are now faced with a wonderful challenge: we have more requests for trialling Paige Connect than we initially anticipated.
 
 Sign up to our newsletter to be updated on the progress of Paige Connect as we move closer to a wider launch in the new year. If you have any questions, please don't hesitate to reach out to us at <hello@paigbraille.com>.
