@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
+import Login from "../components/Login"; // Import the Login component
+import ProgressBar from "../components/ProgressBar";
 import next from "next";
 
 type BrailleMapping = {
@@ -18,6 +20,8 @@ type TextBoxProps = {
   setPrintText: (text: string) => void;
   alphabetToBraille: BrailleMapping;
   setAlphabetToBraille: React.Dispatch<React.SetStateAction<BrailleMapping>>;
+  currentLevel: number;
+  incrementLevel: () => void;
 };
 
 const TextBox = ({
@@ -27,20 +31,53 @@ const TextBox = ({
   setPrintText,
   alphabetToBraille,
   setAlphabetToBraille,
+  currentLevel,
+  incrementLevel,
 }: TextBoxProps) => {
   const [brailleText, setBrailleText] = useState("");
 
-  // Define the difficulty level (adjust as needed)
-  const difficultyLevel = 0.1;
+  function allLettersIntroduced(level: number) {
+    const alphabet = "abcklmuvxdfnpyeioszhjrtwgq";
+    const sectionArray = Array.from(alphabet.slice(0, 26 * level));
+    console.log(sectionArray);
+    return sectionArray.every(letter => alphabetToBraille[letter].introducedCount > 1);
+  }  
+
 
   const getRandomSuggestion = (alphabetToBraille: BrailleMapping) => {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const alphabet = "abcklmuvxdfnpyeioszhjrtwgq";
+    // If all letters have been introduced four times, increment the level
+    if (allLettersIntroduced(difficultyLevels[currentLevel])) {
+      // All letters meet the condition
+      console.log("All letters have introducedCount >= 4");
+      incrementLevel();
+    } else {
+      console.log("Not all letters meet the condition");
+    }
     // Use the difficulty level to control randomness
     let letter = alphabet.charAt(
-      Math.floor(Math.random() * alphabet.length * difficultyLevel)
+      Math.floor(Math.random() * alphabet.length * difficultyLevels[currentLevel])
     );
     return { letter, braille: alphabetToBraille[letter].braille, introducedCount: alphabetToBraille[letter].introducedCount };
   };
+
+  const difficultyLevels: number[] = [
+    3 / 26,
+    6 / 26,
+    9 / 26,
+    11 / 26,
+    13 / 26,
+    14 / 26,
+    16 / 26,
+    18 / 26,
+    19 / 26,
+    21 / 26,
+    23 / 26,
+    24 / 26,
+    25 / 26,
+    26 / 26,
+  ];
+  
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     var newText = e.target.value;
@@ -59,7 +96,8 @@ const TextBox = ({
 
         const letter = newSuggestion.letter.toLowerCase();
         if (alphabetToBraille[letter].introducedCount >= 1) {
-          // If the letter has been introduced 5 times, print only the letter
+          // Increase the introducedCount for the letter
+          alphabetToBraille[letter].introducedCount++;
           setPrintText(`${letter}`);
         } else {
           setPrintText(`${letter} is ${alphabetToBraille[letter].braille}`);
@@ -68,36 +106,42 @@ const TextBox = ({
           // Update the state to reflect the increased count
           setAlphabetToBraille({ ...alphabetToBraille });
         }
-      }, 2000);
+      }, 1000);
     } else {
       // If the input is incorrect, show a "Try Again" message
       setPrintText("Try Again!");
       setTimeout(() => {
         setPrintText(`${nextSuggestion.letter} is ${nextSuggestion.braille}`);
-      }, 2000);
+      }, 1000);
     }
   };
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <div style={{ flex: 1 }}>
-          <h2>Braille</h2>
-          <textarea
-            rows={4}
-            cols={25}
-            value={brailleText}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <h2>Print</h2>
-          <textarea rows={4} cols={25} value={printText} readOnly />
-        </div>
+    <div className="flex flex-col md:flex-row justify-between py-6 md:py-8">
+      <div className="w-full sm:w-1/2 p-4">
+        <h2 className="tracking-tight leading-tight mb-2 ">Braille</h2>
+        <textarea
+          rows={4}
+          cols={25}
+          value={brailleText}
+          onChange={handleInputChange}
+          className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+        />
+      </div>
+      <div className="w-full sm:w-1/2 p-4">
+        <h2 className="tracking-tight leading-tight mb-2">Print</h2>
+        <textarea
+          rows={4}
+          cols={25}
+          value={printText}
+          readOnly
+          className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+        />
       </div>
     </div>
   );
 };
+
 
 export default function Learn() {
   // Initialize nextSuggestion to a non-random value initially
@@ -136,6 +180,23 @@ export default function Learn() {
     z: { braille: "⠵", introducedCount: 0 },
   });
 
+  const [currentLevel, setCurrentLevel] = useState(0);
+  
+
+  const incrementLevel = () => {
+    setCurrentLevel(currentLevel + 1);
+  };
+  
+
+  // Add a state to track if the user is authenticated
+  const [authenticated, setAuthenticated] = useState(false);
+
+  // Define a function to set the authenticated state
+  const handleAuthentication = (value: boolean) => {
+    setAuthenticated(value);
+  };
+
+
   useEffect(() => {
     setPrintText(`${nextSuggestion.letter} is ${nextSuggestion.braille}`);
   }, []);
@@ -143,19 +204,30 @@ export default function Learn() {
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify between items-end py-6 md:py-12 px-4">
+        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
           <Heading css="text-start leading-tight text-primary">Learn</Heading>
         </div>
-        <TextBox
-          nextSuggestion={nextSuggestion}
-          setNextSuggestion={setNextSuggestion}
-          printText={printText}
-          setPrintText={setPrintText}
-          alphabetToBraille={alphabetToBraille}
-          setAlphabetToBraille={setAlphabetToBraille}
-        />
+        {authenticated ? (
+          <>
+            <ProgressBar currentLevel={currentLevel} totalLevels={14} />
+            <TextBox
+              nextSuggestion={nextSuggestion}
+              setNextSuggestion={setNextSuggestion}
+              printText={printText}
+              setPrintText={setPrintText}
+              alphabetToBraille={alphabetToBraille}
+              setAlphabetToBraille={setAlphabetToBraille}
+              currentLevel={currentLevel}
+              incrementLevel={incrementLevel}
+            />
+          </>
+        ) : (
+          // Render the Login component when not authenticated
+          <Login setAuthenticated={handleAuthentication} />
+        )}
       </div>
     </Wrapper>
+
   );
 }
 
