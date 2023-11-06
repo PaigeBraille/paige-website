@@ -15,6 +15,10 @@ const WEB_LINKS: NavLinkInfo[] = [
     name: "Support",
     location: "/support",
   },
+  {
+    name: "Learn",
+    location: "/learn",
+  },
   // {
   //   name: "Translate",
   //   location: "/translate",
