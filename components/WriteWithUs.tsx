@@ -15,7 +15,7 @@ export default function WriteWithUs() {
         <span>{WRITE_WITH_US_CONTENT}</span>
         <Link
           className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
-          href="/activities"
+          href="/translate_2"
         >
           Activities
         </Link>
