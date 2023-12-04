@@ -24,7 +24,6 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const key = e.key.toLowerCase();
-    setInputText(" ");
     if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
       setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
       setPressedKeys((prevKeys) => [...prevKeys, key]);
@@ -49,12 +48,24 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
     if (["l"].includes(key)) {
       setPaigePressed((prevValue) => prevValue | (1 << 5));
     }
+    // Handle special keys
+    if (key === " ") {
+      // Append a space
+      setInputText((prevText) => prevText + " ");
+    } else if (key === "backspace") {
+      // Remove the last character
+      setInputText((prevText) => prevText.slice(0, -1));
+    } else if (key === "enter") {
+      // Append a newline character
+      setInputText((prevText) => prevText + "\n");
+    }
   };
 
 
   useEffect(() => {
     if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
-      setInputText(protocolAscii(paige_pressed));
+      // Append the new character to the existing input text
+      setInputText((prevText) => prevText + protocolAscii(paige_pressed));
       // Clear pressed keys after sending the string
       setPressedKeys([]);
       setPaigePressed(0);
@@ -79,7 +90,7 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
   return (
     <div className="flex flex-col justify-between py-6 md:py-8">
       <div className="w-full p-4">
-        <h2 className="tracking-tight leading-tight mb-2">Input Text</h2>
+        <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
         <textarea
           rows={4}
           cols={25}
@@ -99,12 +110,12 @@ export default function Learn() {
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-primary">Learn</Heading>
+        <div className="bg-white flex justify-between items-end pb-4 pt-6 md:pt-12 px-4">
+          <Heading css="text-start leading-tight text-primary">Translate</Heading>
         </div>
         <TextBox setPrintText={setPrintText}/>
         <div className="w-full p-4">
-          <h2 className="tracking-tight leading-tight mb-2">Mapped Number</h2>
+          <h2 className="tracking-tight leading-tight mb-2">ASCII</h2>
           <textarea
             rows={4}
             cols={25}
