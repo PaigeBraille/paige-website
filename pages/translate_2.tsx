@@ -2,16 +2,93 @@ import React, { useState, useEffect } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
 
+//Translate 
+import { translateToPrint, backtranslateToASCII } from "../components/TranslationUtils";
+
+type BrailleMapping = {
+  [key: string]: {
+    braille: string;
+  };
+};
+
 type TextBoxProps = {
-  setPrintText: (text: string) => void;
+  setPrintText: React.Dispatch<React.SetStateAction<string>>;
 };
 
 
 const TextBox = ({ setPrintText }: TextBoxProps) => {
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState<string>("");
   const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
   const [pressedKeys, setPressedKeys] = useState<string[]>([]);
   const [paige_pressed, setPaigePressed] = useState<number>(0);
+
+    // Initialize and declare the ASCII to Braille map
+    const [alphabetToBraille, setAlphabetToBraille] = useState<BrailleMapping>({
+      ' ': { braille: "⠀" },
+      '!': { braille: "⠮" },
+      '"': { braille: "⠐" },
+      '#': { braille: "⠼" },
+      '$': { braille: "⠫" },
+      '%': { braille: "⠩" },
+      '&': { braille: "⠯" },
+      '\'': { braille: "⠄" },
+      '(': { braille: "⠷" },
+      ')': { braille: "⠾" },
+      '*': { braille: "⠡" },
+      '+': { braille: "⠬" },
+      ',': { braille: "⠠" },
+      '-': { braille: "⠤" },
+      '.': { braille: "⠨" },
+      '/': { braille: "⠌" },
+      '0': { braille: "⠴" },
+      '1': { braille: "⠂" },
+      '2': { braille: "⠆" },
+      '3': { braille: "⠒" },
+      '4': { braille: "⠲" },
+      '5': { braille: "⠢" },
+      '6': { braille: "⠖" },
+      '7': { braille: "⠶" },
+      '8': { braille: "⠦" },
+      '9': { braille: "⠔" },
+      ':': { braille: "⠱" },
+      ';': { braille: "⠰" },
+      '<': { braille: "⠣" },
+      '=': { braille: "⠿" },
+      '>': { braille: "⠜" },
+      '?': { braille: "⠹" },
+      '@': { braille: "⠈" },
+      'a': { braille: "⠁" },
+      'b': { braille: "⠃" },
+      'c': { braille: "⠉" },
+      'd': { braille: "⠙" },
+      'e': { braille: "⠑" },
+      'f': { braille: "⠋" },
+      'g': { braille: "⠛" },
+      'h': { braille: "⠓" },
+      'i': { braille: "⠊" },
+      'j': { braille: "⠚" },
+      'k': { braille: "⠅" },
+      'l': { braille: "⠇" },
+      'm': { braille: "⠍" },
+      'n': { braille: "⠝" },
+      'o': { braille: "⠕" },
+      'p': { braille: "⠏" },
+      'q': { braille: "⠟" },
+      'r': { braille: "⠗" },
+      's': { braille: "⠎" },
+      't': { braille: "⠞" },
+      'u': { braille: "⠥" },
+      'v': { braille: "⠧" },
+      'w': { braille: "⠺" },
+      'x': { braille: "⠭" },
+      'y': { braille: "⠽" },
+      'z': { braille: "⠵" },
+      '[': { braille: "⠪" },
+      '\\': { braille: "⠳" },
+      ']': { braille: "⠻" },
+      '^': { braille: "⠘" },
+      '_': { braille: "⠸" },
+    });
 
 
 
@@ -52,24 +129,51 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
     if (key === " ") {
       // Append a space
       setInputText((prevText) => prevText + " ");
+      setPrintText((prevText: string) => prevText + " ");
     } else if (key === "backspace") {
       // Remove the last character
       setInputText((prevText) => prevText.slice(0, -1));
+      setPrintText((prevText: string) => prevText.slice(0, -1));
     } else if (key === "enter") {
       // Append a newline character
       setInputText((prevText) => prevText + "\n");
+      setPrintText((prevText: string) => prevText + "\n");
     }
   };
 
 
   useEffect(() => {
-    if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
-      // Append the new character to the existing input text
-      setInputText((prevText) => prevText + protocolAscii(paige_pressed));
-      // Clear pressed keys after sending the string
-      setPressedKeys([]);
-      setPaigePressed(0);
-    }
+    const handleKeyPress = async () => {
+      if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
+        // Append the new character to the existing input text
+        const updatedInputText = inputText + protocolAscii(paige_pressed);
+        try {
+          const translation = await backtranslateToASCII(updatedInputText);
+          if (translation !== null) {
+            // Display the equivalent Braille Unicode in the input text
+            const brailleText = updatedInputText
+            .split('')
+            .map(char => alphabetToBraille[char]?.braille || char)  // Use Braille mapping
+            .join('');
+            setPrintText(translation);
+            setInputText(brailleText);  // Update input text after translation
+            console.log("Success");
+            console.log(translation);
+          } else {
+            console.error('Translation failed.');
+            console.log("Fail");
+          }
+        } catch (error) {
+          console.error('Error during translation:', error);
+          console.log("Fail");
+        }
+        // Clear pressed keys after sending the string
+        setPressedKeys([]);
+        setPaigePressed(0);
+      }
+    };
+  
+    handleKeyPress();
   }, [pressedKeys,keyPressedMap, setInputText, setPrintText]);
 
   const protocolAscii = (key: number): string => {
@@ -115,12 +219,11 @@ export default function Learn() {
         </div>
         <TextBox setPrintText={setPrintText}/>
         <div className="w-full p-4">
-          <h2 className="tracking-tight leading-tight mb-2">ASCII</h2>
+          <h2 className="tracking-tight leading-tight mb-2">Print</h2>
           <textarea
             rows={4}
             cols={25}
             value={printText}
-            readOnly
             className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
           />
         </div>
