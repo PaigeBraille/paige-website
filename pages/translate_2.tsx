@@ -13,10 +13,11 @@ type BrailleMapping = {
 
 type TextBoxProps = {
   setPrintText: React.Dispatch<React.SetStateAction<string>>;
+  selectedTable: string;
 };
 
 
-const TextBox = ({ setPrintText }: TextBoxProps) => {
+const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
   const [inputText, setInputText] = useState<string>("");
   const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
   const [pressedKeys, setPressedKeys] = useState<string[]>([]);
@@ -148,7 +149,7 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
         // Append the new character to the existing input text
         const updatedInputText = inputText + protocolAscii(paige_pressed);
         try {
-          const translation = await backtranslateToASCII(updatedInputText);
+          const translation = await backtranslateToASCII(updatedInputText, selectedTable);
           if (translation !== null) {
             // Display the equivalent Braille Unicode in the input text
             const brailleText = updatedInputText
@@ -157,8 +158,6 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
             .join('');
             setPrintText(translation);
             setInputText(brailleText);  // Update input text after translation
-            console.log("Success");
-            console.log(translation);
           } else {
             console.error('Translation failed.');
             console.log("Fail");
@@ -167,7 +166,7 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
           console.error('Error during translation:', error);
           console.log("Fail");
         }
-        // Clear pressed keys after sending the string
+        // Clear pressed keys
         setPressedKeys([]);
         setPaigePressed(0);
       }
@@ -192,18 +191,16 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-between py-6 md:py-8">
-      <div className="w-full p-4">
-        <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
+    <div className="w-full sm:w-1/2 p-4">
+      <h2 className="tracking-tight leading-tight mb-2 ">Braille</h2>
         <textarea
-          rows={4}
+          rows={6}
           cols={25}
           value={inputText}
           onKeyDown={handleKeyDown}
           onKeyUp={handleKeyUp}
           className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
         />
-      </div>
     </div>
   );
 };
@@ -211,21 +208,41 @@ const TextBox = ({ setPrintText }: TextBoxProps) => {
 export default function Learn() {
   const [printText, setPrintText] = useState("");
 
+  const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g2'); // Initial table
+
+  const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTable(event.target.value);
+  };
+
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify-between items-end pb-4 pt-6 md:pt-12 px-4">
+        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
           <Heading css="text-start leading-tight text-primary">Translate</Heading>
+          <select
+            id="translationTable"
+            onChange={handleTableChange}
+            value={selectedTable}
+            className="border rounded p-2"
+          >
+            <option value="en-ueb-g1.ctb">UEB Grade 1</option>
+            <option value="en-ueb-g2.ctb">UEB Grade 2</option>
+            <option value="es-g2.ctb">Spanish Grade 2</option>
+            <option value="ar-ar-g2.ctb">Arabic Grade 2</option>
+            {/* Add more options as needed */}
+          </select>
         </div>
-        <TextBox setPrintText={setPrintText}/>
-        <div className="w-full p-4">
-          <h2 className="tracking-tight leading-tight mb-2">Print</h2>
-          <textarea
-            rows={4}
-            cols={25}
-            value={printText}
-            className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-          />
+        <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
+          <TextBox setPrintText={setPrintText} selectedTable={selectedTable}/>
+          <div className="w-full sm:w-1/2 p-4">
+            <h2 className="tracking-tight leading-tight mb-2">Print</h2>
+            <textarea
+              rows={6}
+              cols={25}
+              value={printText}
+              className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+            />
+          </div>
         </div>
       </div>
     </Wrapper>

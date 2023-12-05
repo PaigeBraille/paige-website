@@ -10,10 +10,10 @@ interface BacktranslationResult {
 }
 
 // Function to translate ASCII Braille to print
-export const translateToPrint = async (asciiBraille: string): Promise<string | null> => {
+export const translateToPrint = async (asciiBraille: string, tableName: string): Promise<string | null> => {
   const requestBody = {
     text: asciiBraille,
-    tableList: ['en-ueb-g2.ctb']
+    tableList: [tableName]
   };
 
   try {
@@ -39,10 +39,10 @@ export const translateToPrint = async (asciiBraille: string): Promise<string | n
 };
 
 // Function to backtranslate Braille to ASCII
-export const backtranslateToASCII = async (braille: string): Promise<string | null> => {
+export const backtranslateToASCII = async (braille: string, tableName: string): Promise<string | null> => {
   const requestBody = {
     braille: braille,
-    tableList: ['en-us-g2.ctb']
+    tableList: [tableName]
   };
 
   try {
