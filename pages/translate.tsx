@@ -12,8 +12,18 @@ type BrailleMapping = {
 };
 
 type TextBoxProps = {
+  inputText: string;
+  setInputText: React.Dispatch<React.SetStateAction<string>>;
   setPrintText: React.Dispatch<React.SetStateAction<string>>;
   selectedTable: string;
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+  keyPressedMap: Record<string, boolean>;
+  setKeyPressedMap: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+  pressedKeys: string[];
+  setPressedKeys: React.Dispatch<React.SetStateAction<string[]>>;
+  paigePressed: number;
+  setPaigePressed: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const translateAndUpdate = async (inputText: string, selectedTable: string, setPrintText: React.Dispatch<React.SetStateAction<string>>) => {
@@ -29,14 +39,23 @@ const translateAndUpdate = async (inputText: string, selectedTable: string, setP
 };
 
 
-const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
-  const [inputText, setInputText] = useState<string>("");
-  const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
-  const [pressedKeys, setPressedKeys] = useState<string[]>([]);
-  const [paige_pressed, setPaigePressed] = useState<number>(0);
+const TextBox = ({
+  inputText,
+  setInputText,
+  setPrintText,
+  selectedTable,
+  text,
+  setText,
+  keyPressedMap,
+  setKeyPressedMap,
+  pressedKeys,
+  setPressedKeys,
+  paigePressed,
+  setPaigePressed,
+}: TextBoxProps) => {
 
     // Initialize and declare the ASCII to Braille map
-    const [alphabetToBraille, setAlphabetToBraille] = useState<BrailleMapping>({
+    const [alphabetToBraille] = useState<BrailleMapping>({
       ' ': { braille: "⠀" },
       '!': { braille: "⠮" },
       '"': { braille: "⠐" },
@@ -104,76 +123,20 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
     });
 
 
-
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    const key = e.key.toLowerCase();
-    // If the key is in the pressedKeys array, remove it
-    setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
-
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    const key = e.key.toLowerCase();
-    if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
-      setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
-      setPressedKeys((prevKeys) => [...prevKeys, key]);
-
-    }
-    // Update paige_pressed based on the pressed key
-    if (["f"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 0));
-    }
-    if (["d"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 1));
-    }
-    if (["s"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 2));
-    }
-    if (["j"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 3));
-    }
-    if (["k"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 4));
-    }
-    if (["l"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 5));
-    }
-    // Handle special keys
-    if (key === " ") {
-      // Append a space
-      const updatedInputText = inputText + " ";
-      setInputText(updatedInputText);
-      // Translate 
-      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
-    } else if (key === "backspace") {
-      // Remove the last character
-      const updatedInputText = inputText.slice(0, -1);
-      setInputText(updatedInputText);
-      //tranbslate
-      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
-    } else if (key === "enter") {
-      // Append a newline character
-      const updatedInputText = inputText + "\n";
-      setInputText(updatedInputText);
-      // Translate 
-      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
-    }
-  };
-
-
   useEffect(() => {
     const handleKeyPress = async () => {
       if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
         // Append the new character to the existing input text
-        const updatedInputText = inputText + protocolAscii(paige_pressed);
+        const updatedText = text + protocolAscii(paigePressed);
         // Display the equivalent Braille Unicode in the input text
-        const brailleText = updatedInputText
+        const brailleText = updatedText
         .split('')
         .map(char => alphabetToBraille[char]?.braille || char)  // Use Braille mapping
         .join('');
-        setInputText(brailleText);  // Update input text after translation
+        setText(brailleText);  // Update input text after translation
+        setInputText(brailleText);
         // Translate 
-        translateAndUpdate(updatedInputText, selectedTable, setPrintText);
+        translateAndUpdate(updatedText, selectedTable, setPrintText);
         // Clear pressed keys
         setPressedKeys([]);
         setPaigePressed(0);
@@ -205,8 +168,6 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
           rows={6}
           cols={25}
           value={inputText}
-          onKeyDown={handleKeyDown}
-          onKeyUp={handleKeyUp}
           className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
         />
     </div>
@@ -214,13 +175,85 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
 };
 
 export default function Translate() {
+  const [text, setText] = useState("");
+  const [inputText, setInputText] = useState<string>("");
   const [printText, setPrintText] = useState("");
+  const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
+  const [pressedKeys, setPressedKeys] = useState<string[]>([]);
+  const [paigePressed, setPaigePressed] = useState<number>(0);
 
   const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g1.ctb'); // Initial table
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
   };
+  useEffect(() => {
+  const handleKeyUp = (e: KeyboardEvent) => {
+    const key = e.key.toLowerCase();
+    // If the key is in the pressedKeys array, remove it
+    setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
+
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const key = e.key.toLowerCase();
+    if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
+      setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
+      setPressedKeys((prevKeys) => [...prevKeys, key]);
+
+    }
+    // Update paige_pressed based on the pressed key
+    if (["f"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 0));
+    }
+    if (["d"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 1));
+    }
+    if (["s"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 2));
+    }
+    if (["j"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 3));
+    }
+    if (["k"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 4));
+    }
+    if (["l"].includes(key)) {
+      setPaigePressed((prevValue) => prevValue | (1 << 5));
+    }
+    // Handle special keys
+    if (key === " ") {
+      // Append a space
+      const updatedText = text + " ";
+      setText(updatedText);
+      setInputText(updatedText);
+      // Translate 
+      translateAndUpdate(updatedText, selectedTable, setPrintText);
+    } else if (key === "backspace") {
+      // Remove the last character
+      const updatedText = text.slice(0, -1);
+      setText(updatedText);
+      setInputText(updatedText);
+      //tranbslate
+      translateAndUpdate(updatedText, selectedTable, setPrintText);
+    } else if (key === "enter") {
+      // Append a newline character
+      const updatedText = text + "\n";
+      setText(updatedText);
+      setInputText(updatedText);
+      // Translate 
+      translateAndUpdate(updatedText, selectedTable, setPrintText);
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  window.addEventListener('keyup', handleKeyUp);
+      // Clean up event listeners when the component unmounts
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('keyup', handleKeyUp);
+      };
+    }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
 
   const handleSave = () => {
     const fileName = printText.split(' ')[0];
@@ -262,7 +295,20 @@ export default function Translate() {
           </select>
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
-          <TextBox setPrintText={setPrintText} selectedTable={selectedTable}/>
+          <TextBox
+            inputText={inputText}
+            setInputText={setInputText}
+            setPrintText={setPrintText}
+            selectedTable={selectedTable}
+            text={text}
+            setText={setText}
+            keyPressedMap={keyPressedMap}
+            setKeyPressedMap={setKeyPressedMap}
+            pressedKeys={pressedKeys}
+            setPressedKeys={setPressedKeys}
+            paigePressed={paigePressed}
+            setPaigePressed={setPaigePressed}
+          />
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>
             <textarea
