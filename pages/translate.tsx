@@ -249,8 +249,6 @@ export default function Translate() {
             <option value="en-ueb-g2.ctb">English (Grade 2)</option>
             <option value="ar-ar-g1.utb">Arabic (Grade 1)</option>
             <option value="ar-ar-g2.ctb">Arabic (Grade 2)</option>
-            <option value="zhcn-g1.ctb">Chinese (Grade 1)</option>
-            <option value="zhcn-g2.ctb">Chinese (Grade 2)</option>
             <option value="fr-bfu-comp6.utb">French (Grade 1)</option>
             <option value="fr-bfu-g2.ctb">French (Grade 2)</option>
             <option value="de-g0-detailed.utb">German (Grade 0)</option> 
