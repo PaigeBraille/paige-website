@@ -5,7 +5,7 @@ import Link from "next/link";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  "How to get started with Paige Connect, including playful instructions and ideas for activities. We support the Curriculum Framework for Children and Young People with Vision Impairment (CFVI), enabling teachers to create playful braille lesson plans.";
+  "Type braille with Paige Connect or your keyboard! Our translation is powered by Liblouis, the braille translator created by the community.";
   
 export default function WriteWithUs() {
   return (
@@ -15,9 +15,9 @@ export default function WriteWithUs() {
         <span>{WRITE_WITH_US_CONTENT}</span>
         <Link
           className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
-          href="/translate_2"
+          href="/translate"
         >
-          Activities
+          Translate
         </Link>
       </div>
       <div>
