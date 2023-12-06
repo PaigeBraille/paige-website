@@ -16,6 +16,18 @@ type TextBoxProps = {
   selectedTable: string;
 };
 
+const translateAndUpdate = async (inputText: string, selectedTable: string, setPrintText: React.Dispatch<React.SetStateAction<string>>) => {
+  try {
+    const translation = await backtranslateToASCII(inputText, selectedTable);
+    if (translation !== null) {
+      setPrintText(translation);
+    }
+  } catch (error) {
+    console.error('Error during translation:', error);
+    console.log("Fail");
+  }
+};
+
 
 const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
   const [inputText, setInputText] = useState<string>("");
@@ -129,16 +141,22 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
     // Handle special keys
     if (key === " ") {
       // Append a space
-      setInputText((prevText) => prevText + " ");
-      setPrintText((prevText: string) => prevText + " ");
+      const updatedInputText = inputText + " ";
+      setInputText(updatedInputText);
+      // Translate 
+      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
     } else if (key === "backspace") {
       // Remove the last character
-      setInputText((prevText) => prevText.slice(0, -1));
-      setPrintText((prevText: string) => prevText.slice(0, -1));
+      const updatedInputText = inputText.slice(0, -1);
+      setInputText(updatedInputText);
+      //tranbslate
+      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
     } else if (key === "enter") {
       // Append a newline character
-      setInputText((prevText) => prevText + "\n");
-      setPrintText((prevText: string) => prevText + "\n");
+      const updatedInputText = inputText + "\n";
+      setInputText(updatedInputText);
+      // Translate 
+      translateAndUpdate(updatedInputText, selectedTable, setPrintText);
     }
   };
 
@@ -148,24 +166,14 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
       if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
         // Append the new character to the existing input text
         const updatedInputText = inputText + protocolAscii(paige_pressed);
-        try {
-          const translation = await backtranslateToASCII(updatedInputText, selectedTable);
-          if (translation !== null) {
-            // Display the equivalent Braille Unicode in the input text
-            const brailleText = updatedInputText
-            .split('')
-            .map(char => alphabetToBraille[char]?.braille || char)  // Use Braille mapping
-            .join('');
-            setPrintText(translation);
-            setInputText(brailleText);  // Update input text after translation
-          } else {
-            console.error('Translation failed.');
-            console.log("Fail");
-          }
-        } catch (error) {
-          console.error('Error during translation:', error);
-          console.log("Fail");
-        }
+        // Display the equivalent Braille Unicode in the input text
+        const brailleText = updatedInputText
+        .split('')
+        .map(char => alphabetToBraille[char]?.braille || char)  // Use Braille mapping
+        .join('');
+        setInputText(brailleText);  // Update input text after translation
+        // Translate 
+        translateAndUpdate(updatedInputText, selectedTable, setPrintText);
         // Clear pressed keys
         setPressedKeys([]);
         setPaigePressed(0);
@@ -192,7 +200,7 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
 
   return (
     <div className="w-full sm:w-1/2 p-4">
-      <h2 className="tracking-tight leading-tight mb-2 ">Braille</h2>
+      <h2 className="tracking-tight leading-tight mb-2 " >Braille</h2>
         <textarea
           rows={6}
           cols={25}
@@ -205,32 +213,53 @@ const TextBox = ({ setPrintText, selectedTable }: TextBoxProps) => {
   );
 };
 
-export default function Learn() {
+export default function Translate_2() {
   const [printText, setPrintText] = useState("");
 
-  const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g2'); // Initial table
+  const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g1.ctb'); // Initial table
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
   };
 
+  const handleSave = () => {
+    const fileName = printText.split(' ')[0];
+    const blob = new Blob([printText], { type: 'text/plain' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
+        <div className="bg-white flex flex-col md:flex-row justify-between items-end py-6 md:py-12 px-4">
           <Heading css="text-start leading-tight text-primary">Translate</Heading>
           <select
             id="translationTable"
             onChange={handleTableChange}
             value={selectedTable}
-            className="border rounded p-2"
+            className="border rounded p-2 my-4"
           >
-            <option value="en-ueb-g1.ctb">UEB Grade 1</option>
-            <option value="en-ueb-g2.ctb">UEB Grade 2</option>
-            <option value="es-g2.ctb">Spanish Grade 2</option>
-            <option value="ar-ar-g2.ctb">Arabic Grade 2</option>
+            <option value="en-ueb-g1.ctb">English (Grade 1)</option>
+            <option value="en-ueb-g2.ctb">English (Grade 2)</option>
+            <option value="es-g2.ctb">Spanish (Grade 2)</option>
+            <option value="ar-ar-g2.ctb">Arabic (Grade 2)</option>
             {/* Add more options as needed */}
           </select>
+        </div>
+        <div className="flex flex-col bg-white px-4 justify-between relative gap-6 sm:rounded-lg">
+          <div className="flex flex-col justify-between">
+            <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-xl text-center">
+            Type Braille with Paige Connect or your keyboard!          
+              <div className="mt-2">S D F &nbsp; J K L</div>
+              <div>⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
+            </h2>
+          </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <TextBox setPrintText={setPrintText} selectedTable={selectedTable}/>
@@ -243,6 +272,17 @@ export default function Learn() {
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
             />
           </div>
+        </div>
+        <div className="flex pb-4 px-4">
+          <button onClick={handleSave} className="mt-4 p-2 bg-blue-500 text-white rounded">
+                Download file
+          </button>
+        </div>
+        <p className="mb-4 text-gray-600">
+
+        </p>
+        <div className="mb-4">
+
         </div>
       </div>
     </Wrapper>
