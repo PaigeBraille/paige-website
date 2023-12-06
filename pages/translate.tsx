@@ -247,19 +247,21 @@ export default function Translate() {
           >
             <option value="en-ueb-g1.ctb">English (Grade 1)</option>
             <option value="en-ueb-g2.ctb">English (Grade 2)</option>
-            <option value="es-g2.ctb">Spanish (Grade 2)</option>
+            <option value="ar-ar-g1.utb">Arabic (Grade 1)</option>
             <option value="ar-ar-g2.ctb">Arabic (Grade 2)</option>
+            <option value="zhcn-g1.ctb">Chinese (Grade 1)</option>
+            <option value="zhcn-g2.ctb">Chinese (Grade 2)</option>
+            <option value="fr-bfu-comp6.utb">French (Grade 1)</option>
+            <option value="fr-bfu-g2.ctb">French (Grade 2)</option>
+            <option value="de-g0-detailed.utb">German (Grade 0)</option> 
+            <option value="de-g1.ctb">German (Grade 1)</option>
+            <option value="de-g2.ctb">German (Grade 2)</option>
+            <option value="es-g1.ctb">Spanish (Grade 1)</option>
+            <option value="es-g2.ctb">Spanish (Grade 2)</option>
+            <option value="sv-g1.ctb">Swedish (Grade 1)</option>
+            <option value="sv-g2.ctb">Swedish (Grade 2)</option>
             {/* Add more options as needed */}
           </select>
-        </div>
-        <div className="flex flex-col bg-white px-4 justify-between relative gap-6 sm:rounded-lg">
-          <div className="flex flex-col justify-between">
-            <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-xl text-center">
-            Type Braille with Paige Connect or your keyboard!          
-              <div className="mt-2">S D F &nbsp; J K L</div>
-              <div>⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
-            </h2>
-          </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <TextBox setPrintText={setPrintText} selectedTable={selectedTable}/>
@@ -278,11 +280,14 @@ export default function Translate() {
                 Download file
           </button>
         </div>
-        <p className="mb-4 text-gray-600">
-
-        </p>
-        <div className="mb-4">
-
+        <div className="flex flex-col bg-white px-4 justify-between relative py-10 gap-6 sm:rounded-lg">
+          <div className="flex flex-col justify-between">
+            <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
+            Type Braille with Paige Connect or your keyboard!          
+              <div className="mt-2">S D F &nbsp; J K L</div>
+              <div>⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
+            </h2>
+          </div>
         </div>
       </div>
     </Wrapper>
