@@ -283,9 +283,9 @@ export default function Translate() {
         <div className="flex flex-col bg-white px-4 justify-between relative py-10 gap-6 sm:rounded-lg">
           <div className="flex flex-col justify-between">
             <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
-            Type Braille with Paige Connect or your keyboard!          
-              <div className="mt-2">S D F &nbsp; J K L</div>
-              <div>⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
+            Type braille with Paige Connect or your keyboard         
+              <div className="mt-2 text-primary">S D F &nbsp; J K L</div>
+              <div className="text-primary">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
             </h2>
           </div>
         </div>
