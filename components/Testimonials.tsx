@@ -56,7 +56,7 @@ const TestimonialsSection = () => {
         </div>
       </div>
       <Link
-        className="border rounded-sm border-paigedarkgrey px-4 py-2 text-center w-full sm:w-fit sm:mt-4"
+        className="rounded-sm px-4 py-2 sm:mt-6 font-bold border border-paigedarkgrey focus:outline-none focus:shadow-outline text-center w-full xl:w-fit"
         href="/stories"
       >
         Read full stories

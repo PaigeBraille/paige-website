@@ -67,3 +67,26 @@ export const backtranslateToASCII = async (braille: string, tableName: string): 
   }
 };
 
+export const translateAndUpdate = async (inputText: string, selectedTable: string, setPrintText: React.Dispatch<React.SetStateAction<string>>) => {
+  try {
+    const lines = inputText.split('\n');
+
+    // Translate each line independently
+    const translatedLines = await Promise.all(
+      lines.map(async (line) => {
+        return await backtranslateToASCII(line, selectedTable);
+      })
+    );
+
+    // Join the translated lines back together
+    const translation = translatedLines.join('\n');
+    console.log(translation);
+    // Replace characters between "\ and /" with their Unicode representations
+    const sanitizedText = translation.replace(/\\(.*?)\//g," ");
+
+    setPrintText(sanitizedText);
+  } catch (error) {
+    console.error('Error during translation:', error);
+    console.log('Fail');
+  }
+};

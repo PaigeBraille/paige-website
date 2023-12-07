@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
-
-//Translate 
-import { translateToPrint, backtranslateToASCII } from "../components/TranslationUtils";
-
-type BrailleMapping = {
-  [key: string]: {
-    braille: string;
-  };
-};
+import asciiBraille from "../components/BrailleMapping";
+import { translateAndUpdate } from "../components/TranslationUtils";
+import Copy from "../public/svg/Copy.svg"
 
 type TextBoxProps = {
   inputText: string;
@@ -26,19 +20,6 @@ type TextBoxProps = {
   setPaigePressed: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const translateAndUpdate = async (inputText: string, selectedTable: string, setPrintText: React.Dispatch<React.SetStateAction<string>>) => {
-  try {
-    const translation = await backtranslateToASCII(inputText, selectedTable);
-    if (translation !== null) {
-      setPrintText(translation);
-    }
-  } catch (error) {
-    console.error('Error during translation:', error);
-    console.log("Fail");
-  }
-};
-
-
 const TextBox = ({
   inputText,
   setInputText,
@@ -53,98 +34,24 @@ const TextBox = ({
   paigePressed,
   setPaigePressed,
 }: TextBoxProps) => {
-
-    // Initialize and declare the ASCII to Braille map
-    const [alphabetToBraille] = useState<BrailleMapping>({
-      ' ': { braille: "⠀" },
-      '!': { braille: "⠮" },
-      '"': { braille: "⠐" },
-      '#': { braille: "⠼" },
-      '$': { braille: "⠫" },
-      '%': { braille: "⠩" },
-      '&': { braille: "⠯" },
-      '\'': { braille: "⠄" },
-      '(': { braille: "⠷" },
-      ')': { braille: "⠾" },
-      '*': { braille: "⠡" },
-      '+': { braille: "⠬" },
-      ',': { braille: "⠠" },
-      '-': { braille: "⠤" },
-      '.': { braille: "⠨" },
-      '/': { braille: "⠌" },
-      '0': { braille: "⠴" },
-      '1': { braille: "⠂" },
-      '2': { braille: "⠆" },
-      '3': { braille: "⠒" },
-      '4': { braille: "⠲" },
-      '5': { braille: "⠢" },
-      '6': { braille: "⠖" },
-      '7': { braille: "⠶" },
-      '8': { braille: "⠦" },
-      '9': { braille: "⠔" },
-      ':': { braille: "⠱" },
-      ';': { braille: "⠰" },
-      '<': { braille: "⠣" },
-      '=': { braille: "⠿" },
-      '>': { braille: "⠜" },
-      '?': { braille: "⠹" },
-      '@': { braille: "⠈" },
-      'a': { braille: "⠁" },
-      'b': { braille: "⠃" },
-      'c': { braille: "⠉" },
-      'd': { braille: "⠙" },
-      'e': { braille: "⠑" },
-      'f': { braille: "⠋" },
-      'g': { braille: "⠛" },
-      'h': { braille: "⠓" },
-      'i': { braille: "⠊" },
-      'j': { braille: "⠚" },
-      'k': { braille: "⠅" },
-      'l': { braille: "⠇" },
-      'm': { braille: "⠍" },
-      'n': { braille: "⠝" },
-      'o': { braille: "⠕" },
-      'p': { braille: "⠏" },
-      'q': { braille: "⠟" },
-      'r': { braille: "⠗" },
-      's': { braille: "⠎" },
-      't': { braille: "⠞" },
-      'u': { braille: "⠥" },
-      'v': { braille: "⠧" },
-      'w': { braille: "⠺" },
-      'x': { braille: "⠭" },
-      'y': { braille: "⠽" },
-      'z': { braille: "⠵" },
-      '[': { braille: "⠪" },
-      '\\': { braille: "⠳" },
-      ']': { braille: "⠻" },
-      '^': { braille: "⠘" },
-      '_': { braille: "⠸" },
-    });
-
-
   useEffect(() => {
     const handleKeyPress = async () => {
-      if (Object.values(keyPressedMap).every((value) => !value) && pressedKeys.length > 0) {
-        // Append the new character to the existing input text
+      if (Object.values(keyPressedMap).every((value) => !value) && paigePressed !== 0) {
         const updatedText = text + protocolAscii(paigePressed);
-        // Display the equivalent Braille Unicode in the input text
         const brailleText = updatedText
-        .split('')
-        .map(char => alphabetToBraille[char]?.braille || char)  // Use Braille mapping
-        .join('');
-        setText(brailleText);  // Update input text after translation
+          .split('')
+          .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
+          .join('');
+        setText(brailleText);
         setInputText(brailleText);
-        // Translate 
         translateAndUpdate(updatedText, selectedTable, setPrintText);
-        // Clear pressed keys
         setPressedKeys([]);
         setPaigePressed(0);
       }
     };
-  
+
     handleKeyPress();
-  }, [pressedKeys,keyPressedMap, setInputText, setPrintText]);
+  }, [pressedKeys, keyPressedMap, paigePressed, setPaigePressed, setInputText, setPrintText]);
 
   const protocolAscii = (key: number): string => {
     const ASCII = [
@@ -154,22 +61,22 @@ const TextBox = ({
       '^', 'd', 'j', 'g', '>', 'n', 't', 'q',
       ',', '*', '5', '<', '-', 'u', '8', 'v',
       '.', '%', '[', '$', '+', 'x', '!', '&',
-      ';', 'B', '4', '\\', '0', 'z', '7', '(',
+      ';', ':', '4', '\\', '0', 'z', '7', '(',
       '_', '?', 'w', ']', '#', 'y', ')', '=', '\n'
     ];
-    
+
     return ASCII[key];
   };
 
   return (
     <div className="w-full sm:w-1/2 p-4">
-      <h2 className="tracking-tight leading-tight mb-2 " >Braille</h2>
-        <textarea
-          rows={6}
-          cols={25}
-          value={inputText}
-          className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-        />
+      <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
+      <textarea
+        rows={6}
+        cols={25}
+        value={inputText}
+        className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+      />
     </div>
   );
 };
@@ -187,84 +94,84 @@ export default function Translate() {
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
   };
+
   useEffect(() => {
-  const handleKeyUp = (e: KeyboardEvent) => {
-    const key = e.key.toLowerCase();
-    // If the key is in the pressedKeys array, remove it
-    setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
+    const handleKeyUp = (e: KeyboardEvent) => {
+      const key = e.key.toLowerCase();
+      // If the key is in the pressedKeys array, remove it
+      setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
 
-  };
+    };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    const key = e.key.toLowerCase();
-    if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
-      setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
-      setPressedKeys((prevKeys) => [...prevKeys, key]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.toLowerCase();
+      if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
+        setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
+        setPressedKeys((prevKeys) => [...prevKeys, key]);
 
-    }
-    // Update paige_pressed based on the pressed key
-    if (["f"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 0));
-    }
-    if (["d"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 1));
-    }
-    if (["s"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 2));
-    }
-    if (["j"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 3));
-    }
-    if (["k"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 4));
-    }
-    if (["l"].includes(key)) {
-      setPaigePressed((prevValue) => prevValue | (1 << 5));
-    }
-    // Handle special keys
-    if (key === " ") {
-      // Append a space
-      const updatedText = text + " ";
-      setText(updatedText);
-      setInputText(updatedText);
-      // Translate 
-      translateAndUpdate(updatedText, selectedTable, setPrintText);
-    } else if (key === "backspace") {
-      // Remove the last character
-      const updatedText = text.slice(0, -1);
-      setText(updatedText);
-      setInputText(updatedText);
-      //tranbslate
-      translateAndUpdate(updatedText, selectedTable, setPrintText);
-    } else if (key === "enter") {
-      // Append a newline character
-      const updatedText = text + "\n";
-      setText(updatedText);
-      setInputText(updatedText);
-      // Translate 
-      translateAndUpdate(updatedText, selectedTable, setPrintText);
-    }
-  };
+      }
+      // Update paige_pressed based on the pressed key
+      if (["f"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 0));
+      }
+      if (["d"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 1));
+      }
+      if (["s"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 2));
+      }
+      if (["j"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 3));
+      }
+      if (["k"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 4));
+      }
+      if (["l"].includes(key)) {
+        setPaigePressed((prevValue) => prevValue | (1 << 5));
+      }
+      // Handle special keys
+      if (key === " ") {
+        // Prevent the default action for the spacebar key
+        e.preventDefault();
+        // Append a space
+        const updatedText = text + " ";
+        setText(updatedText);
+        setInputText(updatedText);
+        // Translate 
+        translateAndUpdate(updatedText, selectedTable, setPrintText);
+      } else if (key === "backspace") {
+        // Remove the last character
+        const updatedText = text.slice(0, -1);
+        setText(updatedText);
+        setInputText(updatedText);
+        //tranbslate
+        translateAndUpdate(updatedText, selectedTable, setPrintText);
+      } else if (key === "enter") {
+        // Append a newline character
+        const updatedText = text + "\n";
+        setText(updatedText);
+        setInputText(updatedText);
+        // Translate 
+        translateAndUpdate(updatedText, selectedTable, setPrintText);
+      }
+    };
 
-  window.addEventListener('keydown', handleKeyDown);
-  window.addEventListener('keyup', handleKeyUp);
-      // Clean up event listeners when the component unmounts
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
-      };
-    }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+        // Clean up event listeners when the component unmounts
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+          window.removeEventListener('keyup', handleKeyUp);
+        };
 
-  const handleSave = () => {
-    const fileName = printText.split(' ')[0];
-    const blob = new Blob([printText], { type: 'text/plain' });
+  }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
 
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(printText).then(() => {
+      alert('Copied to clipboard!');
+    }).catch((err) => {
+      console.error('Unable to copy to clipboard', err);
+    });
   };
 
   return (
@@ -273,10 +180,10 @@ export default function Translate() {
         <div className="bg-white flex flex-col md:flex-row justify-between items-end py-6 md:py-12 px-4">
           <Heading css="text-start leading-tight text-primary">Translate</Heading>
           <select
-            id="translationTable"
             onChange={handleTableChange}
             value={selectedTable}
-            className="border rounded p-2 my-4"
+            className="border rounded p-2 my-4 md:my-0"
+            style={{ WebkitAppearance: "none" }}
           >
             <option value="en-ueb-g1.ctb">English (Grade 1)</option>
             <option value="en-ueb-g2.ctb">English (Grade 2)</option>
@@ -291,7 +198,6 @@ export default function Translate() {
             <option value="es-g2.ctb">Spanish (Grade 2)</option>
             <option value="sv-g1.ctb">Swedish (Grade 1)</option>
             <option value="sv-g2.ctb">Swedish (Grade 2)</option>
-            {/* Add more options as needed */}
           </select>
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
@@ -316,18 +222,19 @@ export default function Translate() {
               cols={25}
               value={printText}
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+              aria-live="assertive"
             />
           </div>
         </div>
-        <div className="flex pb-4 px-4">
-          <button onClick={handleSave} className="mt-4 p-2 bg-blue-500 text-white rounded">
-                Download file
+        <div className="flex justify-end pb-4 px-4">
+          <button type="button" onClick={handleCopy} className="mt-4 p-2 bg-blue-500 text-white rounded">
+            <Copy title="Copy" className="w-4 h-4" />
           </button>
         </div>
         <div className="flex flex-col bg-white px-4 justify-between relative py-10 gap-6 sm:rounded-lg">
           <div className="flex flex-col justify-between">
             <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
-            Type braille with Paige Connect or your keyboard         
+              Type braille with Paige Connect or your keyboard
               <div className="mt-2 text-primary">S D F &nbsp; J K L</div>
               <div className="text-primary">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
             </h2>

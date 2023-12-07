@@ -23,7 +23,7 @@ export default function HeroSection() {
         </p>
         <Link
           href="/buy"
-          className="bg-primary plausible-event-name=To+buy text-white font-medium rounded-sm py-1 px-4 inline-flex mx-auto lg:mr-auto lg:ml-0 hover:bg-blue-700"
+          className="rounded-sm px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit bg-primary plausible-event-name=To+buy text-white hover:bg-blue-700"
         >
           Find out more
         </Link>
