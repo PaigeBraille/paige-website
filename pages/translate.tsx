@@ -222,7 +222,7 @@ export default function Translate() {
               cols={25}
               value={printText}
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-              aria-live="assertive"
+              //aria-live="assertive"
             />
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function Translate() {
         <div className="flex flex-col bg-white px-4 justify-between relative py-10 gap-6 sm:rounded-lg">
           <div className="flex flex-col justify-between">
             <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
-              Type braille with Paige Connect or your keyboard
+              Type braille with your keyboard
               <div className="mt-2 text-primary">S D F &nbsp; J K L</div>
               <div className="text-primary">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
             </h2>
