@@ -5,7 +5,7 @@ import Link from "next/link";
 import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
-  "Type braille with Paige Connect or your keyboard! Our translation is powered by Liblouis, the braille translator created by the community.";
+  "Type braille with your keyboard! Our translation is powered by Liblouis, the braille translator created by the community.";
   
 export default function WriteWithUs() {
   return (
