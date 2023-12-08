@@ -182,7 +182,7 @@ export default function Translate() {
           <select
             onChange={handleTableChange}
             value={selectedTable}
-            className="border rounded p-2 my-4 md:my-0"
+            className="border rounded p-2 my-4 md:my-0 max-w-[300px]"
             style={{ WebkitAppearance: "none" }}
           >
             <option value="en-ueb-g1.ctb">English (Grade 1)</option>
@@ -198,14 +198,14 @@ export default function Translate() {
             <option value="es-g2.ctb">Spanish (Grade 2)</option>
             <option value="sv-g1.ctb">Swedish (Grade 1)</option>
             <option value="sv-g2.ctb">Swedish (Grade 2)</option>
-            <option value="zhcn-cbs.ctb">Chinese common braille (simplified Chinese characters)</option>
-            <option value="zh-chn.ctb">Chinese (China, Mandarin) Current Braille System (no tones)</option>
-            <option value="zhcn-g1.ctb">Chinese (China, Mandarin) Current Braille System</option>
-            <option value="zhcn-g2.ctb">Chinese (China, Mandarin) Double-phonic Braille System</option>
-            <option value="zh-hk.ctb">Chinese (Hong Kong, Cantonese)</option>
-            <option value="zh-tw.ctb">Chinese (Taiwan, Mandarin)</option>
+            <option value="zhcn-cbs.ctb" style={{ overflowWrap: "break-word" }}>Chinese common braille (simplified Chinese characters)</option>
+            <option value="zh-chn.ctb" style={{ overflowWrap: "break-word" }}>Chinese (China, Mandarin) Current Braille System (no tones)</option>
+            <option value="zhcn-g1.ctb" style={{ overflowWrap: "break-word" }}>Chinese (China, Mandarin) Current Braille System</option>
+            <option value="zhcn-g2.ctb" style={{ overflowWrap: "break-word" }}>Chinese (China, Mandarin) Double-phonic Braille System</option>
+            <option value="zh-hk.ctb" style={{ overflowWrap: "break-word" }}>Chinese (Hong Kong, Cantonese)</option>
+            <option value="zh-tw.ctb" style={{ overflowWrap: "break-word" }}>Chinese (Taiwan, Mandarin)</option>
           </select>
-        </div>
+      </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <TextBox
             inputText={inputText}
