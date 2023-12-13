@@ -55,11 +55,6 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               </li>
             );
           })}
-          <li className="mt-2">
-            <Link href="/history" className="hover:underline">
-              History
-            </Link>
-          </li>
         </ul>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
