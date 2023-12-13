@@ -4,6 +4,7 @@ import Heading from "../components/Heading";
 import asciiBraille from "../components/BrailleMapping";
 import { translateAndUpdate } from "../components/TranslationUtils";
 import Copy from "../public/svg/Copy.svg"
+import KeySelect from "../components/KeySelect";
 
 type TextBoxProps = {
   inputText: string;
@@ -88,12 +89,24 @@ export default function Translate() {
   const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
   const [pressedKeys, setPressedKeys] = useState<string[]>([]);
   const [paigePressed, setPaigePressed] = useState<number>(0);
-
   const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g1.ctb'); // Initial table
+  const [showKeyEditor, setShowKeyEditor] = useState(false);
+  const [keys, setKeys] = useState<string[]>(["s", "d", "f", "j", "k", "l"]);
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
   };
+
+  const handleSaveKeys = (newKeys: string[]) => {
+    setKeys(newKeys);
+    console.log("Updated keys:", keys);
+    setShowKeyEditor(false);
+  };
+  
+
+  const handleKeyEdit = () => {
+    setShowKeyEditor(true);
+  }
 
   useEffect(() => {
     const handleKeyUp = (e: KeyboardEvent) => {
@@ -105,28 +118,28 @@ export default function Translate() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
-      if (["s", "d", "f", "j", "k", "l"].includes(key) && !keyPressedMap[key]) {
+      if (keys.includes(key) && !keyPressedMap[key]) {
         setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
         setPressedKeys((prevKeys) => [...prevKeys, key]);
 
       }
       // Update paige_pressed based on the pressed key
-      if (["f"].includes(key)) {
+      if (keys[2].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 0));
       }
-      if (["d"].includes(key)) {
+      if (keys[1].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 1));
       }
-      if (["s"].includes(key)) {
+      if (keys[0].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 2));
       }
-      if (["j"].includes(key)) {
+      if (keys[3].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 3));
       }
-      if (["k"].includes(key)) {
+      if (keys[4].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 4));
       }
-      if (["l"].includes(key)) {
+      if (keys[5].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 5));
       }
       // Handle special keys
@@ -232,7 +245,7 @@ export default function Translate() {
           </div>
         </div>
         <div className="flex justify-end pb-4 px-4">
-          <button type="button" onClick={handleCopy} className="mt-4 p-2 bg-blue-500 text-white rounded">
+          <button type="button" onClick={handleCopy} className="m-2 p-2 bg-primary text-white rounded">
             <Copy title="Copy" className="w-4 h-4" />
           </button>
         </div>
@@ -240,11 +253,23 @@ export default function Translate() {
           <div className="flex flex-col justify-between">
             <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
               Type braille with your keyboard
-              <div className="mt-2 text-primary">S D F &nbsp; J K L</div>
+              <div className="mt-2 text-primary">
+                {keys.map((key, index) => (
+                  <span key={index}>
+                    {key.toUpperCase()}
+                    {index % 3 === 2 && index !== keys.length - 1 ? '\u00A0\u00A0\u00A0 ' : ' '}
+                  </span>
+                ))}
+              </div>
               <div className="text-primary">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
             </h2>
+            <button type="button" onClick={handleKeyEdit} aria-label="Edit input keys" className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center">
+              ?
+            </button>
           </div>
         </div>
+        {showKeyEditor && <KeySelect onSave={handleSaveKeys}/>}
+ 
       </div>
     </Wrapper>
   );
