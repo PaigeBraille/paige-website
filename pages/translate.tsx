@@ -181,7 +181,7 @@ export default function Translate() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(printText).then(() => {
-      alert('Copied to clipboard!');
+      //alert('Copied to clipboard!');
     }).catch((err) => {
       console.error('Unable to copy to clipboard', err);
     });
