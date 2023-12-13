@@ -19,6 +19,7 @@ type TextBoxProps = {
   setPressedKeys: React.Dispatch<React.SetStateAction<string[]>>;
   paigePressed: number;
   setPaigePressed: React.Dispatch<React.SetStateAction<number>>;
+  setSpokenFeedback: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const TextBox = ({
@@ -34,6 +35,7 @@ const TextBox = ({
   setPressedKeys,
   paigePressed,
   setPaigePressed,
+  setSpokenFeedback
 }: TextBoxProps) => {
   useEffect(() => {
     const handleKeyPress = async () => {
@@ -45,7 +47,7 @@ const TextBox = ({
           .join('');
         setText(brailleText);
         setInputText(brailleText);
-        translateAndUpdate(updatedText, selectedTable, setPrintText);
+        translateAndUpdate(updatedText, selectedTable, setPrintText,  null);
         setPressedKeys([]);
         setPaigePressed(0);
       }
@@ -92,6 +94,7 @@ export default function Translate() {
   const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g1.ctb'); // Initial table
   const [showKeyEditor, setShowKeyEditor] = useState(false);
   const [keys, setKeys] = useState<string[]>(["s", "d", "f", "j", "k", "l"]);
+  const [spokenFeedback, setSpokenFeedback] = useState<string>('');
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
@@ -151,21 +154,21 @@ export default function Translate() {
         setText(updatedText);
         setInputText(updatedText);
         // Translate 
-        translateAndUpdate(updatedText, selectedTable, setPrintText);
+        translateAndUpdate(updatedText, selectedTable, setPrintText, setSpokenFeedback);
       } else if (key === "backspace") {
         // Remove the last character
         const updatedText = text.slice(0, -1);
         setText(updatedText);
         setInputText(updatedText);
         //tranbslate
-        translateAndUpdate(updatedText, selectedTable, setPrintText);
+        translateAndUpdate(updatedText, selectedTable, setPrintText,  null);
       } else if (key === "enter") {
         // Append a newline character
         const updatedText = text + "\n";
         setText(updatedText);
         setInputText(updatedText);
         // Translate 
-        translateAndUpdate(updatedText, selectedTable, setPrintText);
+        translateAndUpdate(updatedText, selectedTable, setPrintText,  setSpokenFeedback);
       }
     };
 
@@ -181,7 +184,7 @@ export default function Translate() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(printText).then(() => {
-      //alert('Copied to clipboard!');
+      // alert('Copied to clipboard!');
     }).catch((err) => {
       console.error('Unable to copy to clipboard', err);
     });
@@ -232,6 +235,7 @@ export default function Translate() {
             setPressedKeys={setPressedKeys}
             paigePressed={paigePressed}
             setPaigePressed={setPaigePressed}
+            setSpokenFeedback={setSpokenFeedback}
           />
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>
@@ -244,14 +248,18 @@ export default function Translate() {
             />
           </div>
         </div>
-        <div className="flex justify-end pb-4 px-4">
-          <button type="button" onClick={handleCopy} className="m-2 p-2 bg-primary text-white rounded">
+        <div className="flex flex-col md:flex-row justify-between p-4 py-2 md:py-4">
+          <div>
+            <div className="tracking-tight font-bold leading-tight py-2 md:py-0">Spoken feedback:</div>
+            <div aria-live="assertive">{spokenFeedback}</div>
+          </div>
+          <button onClick={handleCopy} className="p-2 h-8 w-8 bg-primary text-white rounded">
             <Copy title="Copy" className="w-4 h-4" />
           </button>
         </div>
         <div className="flex flex-col bg-white px-4 justify-between relative py-10 gap-6 sm:rounded-lg">
           <div className="flex flex-col justify-between">
-            <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
+            <div className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
               Type braille with your keyboard
               <div className="mt-2 text-primary">
                 {keys.map((key, index) => (
@@ -261,9 +269,9 @@ export default function Translate() {
                   </span>
                 ))}
               </div>
-              <div className="text-primary">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
-            </h2>
-            <button type="button" onClick={handleKeyEdit} aria-label="Edit input keys" className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center">
+              <div className="text-primary" aria-hidden="true">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
+            </div>
+            <button tabIndex={-1} onClick={handleKeyEdit} aria-label="Edit input keys" className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center">
               ?
             </button>
           </div>

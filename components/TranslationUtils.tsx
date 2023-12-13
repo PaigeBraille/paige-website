@@ -67,7 +67,12 @@ export const backtranslateToASCII = async (braille: string, tableName: string): 
   }
 };
 
-export const translateAndUpdate = async (inputText: string, selectedTable: string, setPrintText: React.Dispatch<React.SetStateAction<string>>) => {
+export const translateAndUpdate = async (
+  inputText: string,
+  selectedTable: string,
+  setPrintText: React.Dispatch<React.SetStateAction<string>>,
+  setSpokenFeedback: React.Dispatch<React.SetStateAction<string>> | null
+) => {
   try {
     const lines = inputText.split('\n');
 
@@ -83,8 +88,13 @@ export const translateAndUpdate = async (inputText: string, selectedTable: strin
     console.log(translation);
     // Replace characters between "\ and /" with their Unicode representations
     const sanitizedText = translation.replace(/\\(.*?)\//g," ");
-
     setPrintText(sanitizedText);
+    // Conditionally set setSpokenFeedback if it is not null
+    const words = sanitizedText.split(/[ \n]+/);
+    if (setSpokenFeedback !== null) {
+      setSpokenFeedback(words[words.length-2]);
+    }
+
   } catch (error) {
     console.error('Error during translation:', error);
     console.log('Fail');

@@ -22,7 +22,7 @@ const KeySelect: React.FC<KeyEditorProps> = ({ onSave }) => {
   return (
     <div className="flex flex-col bg-primary px-4 justify-between relative py-10 mb-4 gap-6 sm:rounded-lg">
     <div className="flex flex-col justify-between">
-      <h2 className="font-bold text-white tracking-tight leading-tight text-center text-l sm:text-xl md:text-3xl">
+      <div className="font-bold text-white tracking-tight leading-tight text-center text-l sm:text-xl md:text-3xl">
         Edit input keys
         <div>  
         {keys.map((key, index) => (      
@@ -37,9 +37,9 @@ const KeySelect: React.FC<KeyEditorProps> = ({ onSave }) => {
         ))}
         </div>
 
-        <div className="text-white ">⠄ ⠂ ⠁ &nbsp;&nbsp;&nbsp;  ⠈ ⠐ ⠠</div>
+        <div className="text-white" aria-hidden="true">⠄ ⠂ ⠁ &nbsp;&nbsp;&nbsp;  ⠈ ⠐ ⠠</div>
         <button className="rounded-sm text-base px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit text-primary bg-white cursor-pointer" onClick={handleSave}>Save</button>
-      </h2>
+      </div>
     </div>
   </div>
   );
