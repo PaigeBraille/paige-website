@@ -13,6 +13,9 @@ type TextBoxProps = {
   selectedTable: string;
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
+  /*
+   * Holds the state of the keys that are currently pressed
+   */
   keyPressedMap: Record<string, boolean>;
   setKeyPressedMap: React.Dispatch<
     React.SetStateAction<Record<string, boolean>>
@@ -41,10 +44,12 @@ const TextBox = ({
 }: TextBoxProps) => {
   useEffect(() => {
     const handleKeyPress = async () => {
-      if (
-        Object.values(keyPressedMap).every((value) => !value) &&
-        paigePressed !== 0
-      ) {
+      // All the inputs keys have been unpressed thus the user has finished typing the character
+      // proceed to append the character to the text
+      const allKeysUnpressed = Object.values(keyPressedMap).every(
+        (value) => !value,
+      );
+      if (allKeysUnpressed && paigePressed !== 0) {
         const updatedText = text + protocolAscii(paigePressed);
         const brailleText = updatedText
           .split("")
