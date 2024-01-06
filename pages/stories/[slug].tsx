@@ -1,7 +1,12 @@
 import Heading from "@/components/Heading";
 import Image from "next/image";
 import Link from "next/link";
-import { getPostBySlug, getAllPosts, PostProps, SlugParams } from "../../lib/posts";
+import {
+  getPostBySlug,
+  getAllPosts,
+  PostProps,
+  SlugParams,
+} from "../../lib/posts";
 import { Wrapper } from "../../components/Wrapper";
 import path from "path";
 

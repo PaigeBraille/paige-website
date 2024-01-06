@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  
   return (
     <>
       <Head>

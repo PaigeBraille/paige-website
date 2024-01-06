@@ -14,7 +14,12 @@ const InstagramFeed: React.FC<InstagramFeedProps> = ({ posts }) => {
               src={post.media_url}
               alt={"Instagram Post with caption " + post.caption}
               className="w-48 h-48 cursor-pointer"
-              onClick={() => {window.open("https://www.instagram.com/paigebraille/", "_blank")}}
+              onClick={() => {
+                window.open(
+                  "https://www.instagram.com/paigebraille/",
+                  "_blank",
+                );
+              }}
             />
           </div>
         ))}

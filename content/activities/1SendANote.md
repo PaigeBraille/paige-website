@@ -1,14 +1,13 @@
 ---
 title: Write a note and send it
-alt: 'Screenshot of the by the Files tab from the Paige Connect web app open. A file is selected and downloading.'
-date: '08-03-2023'
-coverImage: '/activities-imgs/SendANote.png'
-excerpt: 'Write a note on your braille writer and send it to a friend'
-time: '15 min'
-people: '1'
-skills: '1,3'
+alt: "Screenshot of the by the Files tab from the Paige Connect web app open. A file is selected and downloading."
+date: "08-03-2023"
+coverImage: "/activities-imgs/SendANote.png"
+excerpt: "Write a note on your braille writer and send it to a friend"
+time: "15 min"
+people: "1"
+skills: "1,3"
 ---
-
 
 **How to Prepare:**
 
@@ -18,7 +17,7 @@ skills: '1,3'
 
 **Step by Step:**
 
-1. Write a note with your braille writer. Remember to press and hold new line on your braille writer to start a file (one beep) and save a file (two beeps).  
+1. Write a note with your braille writer. Remember to press and hold new line on your braille writer to start a file (one beep) and save a file (two beeps).
 2. Open the Paige web app on your device.
 3. Navigate to the Files tab.
 4. Download the note you want to send.

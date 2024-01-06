@@ -54,8 +54,8 @@ function GenericGraphicSection(props: GraphicSectionProps) {
             props.colorScheme === "BLUE"
               ? "bg-primary text-white "
               : props.colorScheme === "GREEN"
-              ? " bg-paigelightgreen"
-              : "bg-paigedarkblue"
+                ? " bg-paigelightgreen"
+                : "bg-paigedarkblue"
           }`}
         >
           <div

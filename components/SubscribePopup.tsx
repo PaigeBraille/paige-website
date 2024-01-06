@@ -48,7 +48,11 @@ export default function SubscribePopup(props: {
             Subscribe
           </button>
           <span className="font-extralight text-white text-xs">
-           By clicking join the waitlist you agree to having your data handled in accordance to our privacy policy. After signing up we will keep you informed as we develop our product and let you know when we’re ready. Joining the waitlist is non-commital and you may unsubscribe at any time.
+            By clicking join the waitlist you agree to having your data handled
+            in accordance to our privacy policy. After signing up we will keep
+            you informed as we develop our product and let you know when we’re
+            ready. Joining the waitlist is non-commital and you may unsubscribe
+            at any time.
           </span>
         </form>
       </div>

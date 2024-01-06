@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -18,47 +18,44 @@ body {
   font-size: 21px;
 }
 
-.testimonial-post>ul {
+.testimonial-post > ul {
   list-style-type: disc;
   margin-left: 1.6rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
-.testimonial-post>p>a {
-  color: #2A7DE1;
+.testimonial-post > p > a {
+  color: #2a7de1;
 }
 
-.testimonial-post>ol {
+.testimonial-post > ol {
   list-style-type: decimal;
   margin-left: 1.6rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
-.testimonial-post>h1 {
+.testimonial-post > h1 {
   font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #2A7DE1;
+  color: #2a7de1;
   line-height: 1.8rem;
 }
 
-.testimonial-post>h2 {
+.testimonial-post > h2 {
   font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   line-height: 1.6rem;
 }
 
-.testimonial-post>h3 {
+.testimonial-post > h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
   line-height: 1.4rem;
 }
 
-.testimonial-post>p {
+.testimonial-post > p {
   margin-bottom: 1rem;
 }
-
-
-

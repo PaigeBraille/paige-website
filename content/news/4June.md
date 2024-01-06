@@ -1,12 +1,12 @@
 ---
-title: 'June: Big Education Challenge'
-alt: 'Sergio Gosalvez standing outside City Hall, London, Newham. He is smiling and wearing a white shirt. '
-date: '04-07-2023'
-coverImage: '/news-imgs/news_june.jpg'
-excerpt: ' We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI). '
-time: ''
-people: ''
-skills: ''
+title: "June: Big Education Challenge"
+alt: "Sergio Gosalvez standing outside City Hall, London, Newham. He is smiling and wearing a white shirt. "
+date: "04-07-2023"
+coverImage: "/news-imgs/news_june.jpg"
+excerpt: " We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI). "
+time: ""
+people: ""
+skills: ""
 ---
 
 # We have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI).
@@ -21,19 +21,19 @@ We are thrilled to spotlight one of our valued team members, Sergio Gosalvez. Se
 
 While testing Paige Connect, we have been blown away by the positive response from qualified teachers of children with vision impairment (QTVI’s). To help serve QTVI’s in their vital role, we have designed Paige Connect to support four areas of the curriculum framework for children with vision impairment (CFVI):
 
-Communication:  
+Communication:
 
 Paige Connect translates braille into print so that children and young people can develop their social communication skills.
 
-Literacy:  
+Literacy:
 
-Paige Connect retrofits to braille writers so that children and young people can develop literacy skills. 
+Paige Connect retrofits to braille writers so that children and young people can develop literacy skills.
 
-Accessing Information:  
+Accessing Information:
 
-Paige Connect creates braille files so that children and young people can access, produce, and manage information independently. 
+Paige Connect creates braille files so that children and young people can access, produce, and manage information independently.
 
-Technology:  
+Technology:
 
 Paige Connect can be navigated with a screen reader so that children and young people can use technology with as much independence as possible.
 

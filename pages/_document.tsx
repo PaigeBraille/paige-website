@@ -5,7 +5,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <script defer data-domain="paigebraille.com" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script>
+          <script
+            defer
+            data-domain="paigebraille.com"
+            src="https://plausible.io/js/script.tagged-events.outbound-links.js"
+          ></script>
         </Head>
         <body>
           <Main />

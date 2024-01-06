@@ -18,8 +18,12 @@ const HowToSection = (props: {
         </div>
         {props.image}
       </div>
-      <div className="font-bold text-left text-primary text-xl px-4">{props.title}</div>
-      <div className="text-left text-sm text-paigedarkgrey px-4">{props.instructionText}</div>
+      <div className="font-bold text-left text-primary text-xl px-4">
+        {props.title}
+      </div>
+      <div className="text-left text-sm text-paigedarkgrey px-4">
+        {props.instructionText}
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import graphic from "../public/graphicbraille.png";
 
 const WRITE_WITH_US_CONTENT =
   "Type braille with your keyboard! Our translation is powered by Liblouis, the braille translator created by the community.";
-  
+
 export default function WriteWithUs() {
   return (
     <div className="flex flex-col lg:flex-row gap-6 justify-center md:justify-between w-full px-4 sm:px-8">

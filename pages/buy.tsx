@@ -8,7 +8,6 @@ import SubscribePopup from "../components/SubscribePopup";
 import Link from "next/link";
 import { Wrapper } from "../components/Wrapper";
 
-
 const FeatureItem = (props: { title: string; text: string; idx: number }) => {
   return (
     <div className="md:border-x border-paigedarkgrey flex flex-col gap-6">
@@ -65,9 +64,7 @@ const HeroSection = (props: { onClickJoin: () => void }) => {
         <Heading css="text-primary text-start lg:text-4xl leading-none">
           Paige Connect
         </Heading>
-        <p className="text-gray-900 text-xl font-extralight">
-          £200.00
-        </p>
+        <p className="text-gray-900 text-xl font-extralight">£200.00</p>
         <button
           className="plausible-event-name=Join+the+waitlist bg-primary text-white rounded-sm px-4 py-2 sm:mt-6 font-bold focus:outline-none focus:shadow-outline text-center w-full xl:w-fit"
           onClick={props.onClickJoin}
@@ -103,47 +100,38 @@ const ProductSection = () => {
           <div
             className={`inline-flex flex-col xl:max-w-1/2 gap-4 sm:mr-0 relative sm:px-4 xl:px-6 xl:m-0`}
           >
-            <Heading
-              css="text-center sm:text-start grow"
-              color="text-white"
-            >
+            <Heading css="text-center sm:text-start grow" color="text-white">
               Braille for everyone
             </Heading>
-            <span
-              className={
-                `text-white`
-              }
-            >
-              From the kitchen table to the classroom, we make braille accessible and affordable for everyone.
+            <span className={`text-white`}>
+              From the kitchen table to the classroom, we make braille
+              accessible and affordable for everyone.
             </span>
-            <span
-              className={
-                `text-white`
-              }
-            >
-              Paige Connect transforms the classic braille writer, letting you view the print translation instantly on any device.
+            <span className={`text-white`}>
+              Paige Connect transforms the classic braille writer, letting you
+              view the print translation instantly on any device.
             </span>
             <Link
-                className="rounded-sm font-bold text-primary bg-white hover:bg-blue-100 px-4 py-2 text-center  w-full sm:w-fit sm:mt-4"
-                target="_blank" 
-                rel="noreferrer"
-                href="https://calendly.com/sergio-paige/paige-connect-demo"
+              className="rounded-sm font-bold text-primary bg-white hover:bg-blue-100 px-4 py-2 text-center  w-full sm:w-fit sm:mt-4"
+              target="_blank"
+              rel="noreferrer"
+              href="https://calendly.com/sergio-paige/paige-connect-demo"
             >
-                Book a demo
+              Book a demo
             </Link>
           </div>
           <Image
-              className="w-auto md:w-1/2 object-contain object-right min-h-0  rounded-lg"
-              src={device}
-              alt="Paige Connect Device"
-              aria-details="Paige connect device that fits underneath a braille writer. "
-              width={700}
-              priority
-            />
+            className="w-auto md:w-1/2 object-contain object-right min-h-0  rounded-lg"
+            src={device}
+            alt="Paige Connect Device"
+            aria-details="Paige connect device that fits underneath a braille writer. "
+            width={700}
+            priority
+          />
         </div>
       </div>
     </section>
-    
+
     //   <p className="text-xs pb-2">
     //     *Paige Connect is not manufactured or endorsed by Perkins School for the
     //     Blind and Paige Braille is not affiliated with Perkins School for the
@@ -154,7 +142,6 @@ const ProductSection = () => {
 };
 
 export default function Buy() {
-  
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
@@ -163,7 +150,7 @@ export default function Buy() {
         <ProductSection />
         <HowTo />
         <FeatureSection />
-        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} /> 
+        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
         <SubscribePopup
           togglePopup={() => {
             setShowSubscribe(!showSubscribe);

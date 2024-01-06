@@ -3,7 +3,7 @@ import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
 import asciiBraille from "../components/BrailleMapping";
 import { translateAndUpdate } from "../components/TranslationUtils";
-import Copy from "../public/svg/Copy.svg"
+import Copy from "../public/svg/Copy.svg";
 import KeySelect from "../components/KeySelect";
 
 type TextBoxProps = {
@@ -14,7 +14,9 @@ type TextBoxProps = {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
   keyPressedMap: Record<string, boolean>;
-  setKeyPressedMap: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+  setKeyPressedMap: React.Dispatch<
+    React.SetStateAction<Record<string, boolean>>
+  >;
   pressedKeys: string[];
   setPressedKeys: React.Dispatch<React.SetStateAction<string[]>>;
   paigePressed: number;
@@ -35,37 +37,104 @@ const TextBox = ({
   setPressedKeys,
   paigePressed,
   setPaigePressed,
-  setSpokenFeedback
+  setSpokenFeedback,
 }: TextBoxProps) => {
   useEffect(() => {
     const handleKeyPress = async () => {
-      if (Object.values(keyPressedMap).every((value) => !value) && paigePressed !== 0) {
+      if (
+        Object.values(keyPressedMap).every((value) => !value) &&
+        paigePressed !== 0
+      ) {
         const updatedText = text + protocolAscii(paigePressed);
         const brailleText = updatedText
-          .split('')
+          .split("")
           .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
-          .join('');
+          .join("");
         setText(brailleText);
         setInputText(brailleText);
-        translateAndUpdate(updatedText, selectedTable, setPrintText,  null);
+        translateAndUpdate(updatedText, selectedTable, setPrintText, null);
         setPressedKeys([]);
         setPaigePressed(0);
       }
     };
 
     handleKeyPress();
-  }, [pressedKeys, keyPressedMap, paigePressed, setPaigePressed, setInputText, setPrintText]);
+  }, [
+    pressedKeys,
+    keyPressedMap,
+    paigePressed,
+    setPaigePressed,
+    setInputText,
+    setPrintText,
+  ]);
 
   const protocolAscii = (key: number): string => {
     const ASCII = [
-      ' ', 'a', '1', 'b', '\'', 'k', '2', 'l',
-      '@', 'c', 'i', 'f', '/', 'm', 's', 'p',
-      '"', 'e', '3', 'h', '9', 'o', '6', 'r',
-      '^', 'd', 'j', 'g', '>', 'n', 't', 'q',
-      ',', '*', '5', '<', '-', 'u', '8', 'v',
-      '.', '%', '[', '$', '+', 'x', '!', '&',
-      ';', ':', '4', '\\', '0', 'z', '7', '(',
-      '_', '?', 'w', ']', '#', 'y', ')', '=', '\n'
+      " ",
+      "a",
+      "1",
+      "b",
+      "'",
+      "k",
+      "2",
+      "l",
+      "@",
+      "c",
+      "i",
+      "f",
+      "/",
+      "m",
+      "s",
+      "p",
+      '"',
+      "e",
+      "3",
+      "h",
+      "9",
+      "o",
+      "6",
+      "r",
+      "^",
+      "d",
+      "j",
+      "g",
+      ">",
+      "n",
+      "t",
+      "q",
+      ",",
+      "*",
+      "5",
+      "<",
+      "-",
+      "u",
+      "8",
+      "v",
+      ".",
+      "%",
+      "[",
+      "$",
+      "+",
+      "x",
+      "!",
+      "&",
+      ";",
+      ":",
+      "4",
+      "\\",
+      "0",
+      "z",
+      "7",
+      "(",
+      "_",
+      "?",
+      "w",
+      "]",
+      "#",
+      "y",
+      ")",
+      "=",
+      "\n",
     ];
 
     return ASCII[key];
@@ -88,13 +157,15 @@ export default function Translate() {
   const [text, setText] = useState("");
   const [inputText, setInputText] = useState<string>("");
   const [printText, setPrintText] = useState("");
-  const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>({});
+  const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>(
+    {},
+  );
   const [pressedKeys, setPressedKeys] = useState<string[]>([]);
   const [paigePressed, setPaigePressed] = useState<number>(0);
-  const [selectedTable, setSelectedTable] = useState<string>('en-ueb-g1.ctb'); // Initial table
+  const [selectedTable, setSelectedTable] = useState<string>("en-ueb-g1.ctb"); // Initial table
   const [showKeyEditor, setShowKeyEditor] = useState(false);
   const [keys, setKeys] = useState<string[]>(["s", "d", "f", "j", "k", "l"]);
-  const [spokenFeedback, setSpokenFeedback] = useState<string>('');
+  const [spokenFeedback, setSpokenFeedback] = useState<string>("");
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
@@ -105,18 +176,16 @@ export default function Translate() {
     console.log("Updated keys:", keys);
     setShowKeyEditor(false);
   };
-  
 
   const handleKeyEdit = () => {
     setShowKeyEditor(true);
-  }
+  };
 
   useEffect(() => {
     const handleKeyUp = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
       // If the key is in the pressedKeys array, remove it
       setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
-
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -124,7 +193,6 @@ export default function Translate() {
       if (keys.includes(key) && !keyPressedMap[key]) {
         setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
         setPressedKeys((prevKeys) => [...prevKeys, key]);
-
       }
       // Update paige_pressed based on the pressed key
       if (keys[2].includes(key)) {
@@ -153,48 +221,62 @@ export default function Translate() {
         const updatedText = text + " ";
         setText(updatedText);
         setInputText(updatedText);
-        // Translate 
-        translateAndUpdate(updatedText, selectedTable, setPrintText, setSpokenFeedback);
+        // Translate
+        translateAndUpdate(
+          updatedText,
+          selectedTable,
+          setPrintText,
+          setSpokenFeedback,
+        );
       } else if (key === "backspace") {
         // Remove the last character
         const updatedText = text.slice(0, -1);
         setText(updatedText);
         setInputText(updatedText);
         //tranbslate
-        translateAndUpdate(updatedText, selectedTable, setPrintText,  null);
+        translateAndUpdate(updatedText, selectedTable, setPrintText, null);
       } else if (key === "enter") {
         // Append a newline character
         const updatedText = text + "\n";
         setText(updatedText);
         setInputText(updatedText);
-        // Translate 
-        translateAndUpdate(updatedText, selectedTable, setPrintText,  setSpokenFeedback);
+        // Translate
+        translateAndUpdate(
+          updatedText,
+          selectedTable,
+          setPrintText,
+          setSpokenFeedback,
+        );
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-        // Clean up event listeners when the component unmounts
-        return () => {
-          window.removeEventListener('keydown', handleKeyDown);
-          window.removeEventListener('keyup', handleKeyUp);
-        };
-
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
   }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(printText).then(() => {
-      // alert('Copied to clipboard!');
-    }).catch((err) => {
-      console.error('Unable to copy to clipboard', err);
-    });
+    navigator.clipboard
+      .writeText(printText)
+      .then(() => {
+        // alert('Copied to clipboard!');
+      })
+      .catch((err) => {
+        console.error("Unable to copy to clipboard", err);
+      });
   };
 
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
         <div className="bg-white flex flex-col md:flex-row justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-primary">Translate</Heading>
+          <Heading css="text-start leading-tight text-primary">
+            Translate
+          </Heading>
           <select
             onChange={handleTableChange}
             value={selectedTable}
@@ -207,20 +289,30 @@ export default function Translate() {
             <option value="ar-ar-g2.ctb">Arabic (Grade 2)</option>
             <option value="fr-bfu-comp6.utb">French (Grade 1)</option>
             <option value="fr-bfu-g2.ctb">French (Grade 2)</option>
-            <option value="de-g0-detailed.utb">German (Grade 0)</option> 
+            <option value="de-g0-detailed.utb">German (Grade 0)</option>
             <option value="de-g1.ctb">German (Grade 1)</option>
             <option value="de-g2.ctb">German (Grade 2)</option>
             <option value="es-g1.ctb">Spanish (Grade 1)</option>
             <option value="es-g2.ctb">Spanish (Grade 2)</option>
             <option value="sv-g1.ctb">Swedish (Grade 1)</option>
             <option value="sv-g2.ctb">Swedish (Grade 2)</option>
-            <option className="break-all" value="zhcn-cbs.ctb" >Chinese common braille (simplified Chinese characters)</option>
-            <option className="break-all" value="zh-chn.ctb" >Chinese (China, Mandarin) Current Braille System (no tones)</option>
-            <option className="break-all" value="zhcn-g1.ctb" >Chinese (China, Mandarin) Current Braille System</option>
-            <option className="break-all" value="zhcn-g2.ctb" >Chinese (China, Mandarin) Double-phonic Braille System</option>
-            <option className="break-all" value="zh-hk.ctb" >Chinese (Hong Kong, Cantonese)</option>
+            <option className="break-all" value="zhcn-cbs.ctb">
+              Chinese common braille (simplified Chinese characters)
+            </option>
+            <option className="break-all" value="zh-chn.ctb">
+              Chinese (China, Mandarin) Current Braille System (no tones)
+            </option>
+            <option className="break-all" value="zhcn-g1.ctb">
+              Chinese (China, Mandarin) Current Braille System
+            </option>
+            <option className="break-all" value="zhcn-g2.ctb">
+              Chinese (China, Mandarin) Double-phonic Braille System
+            </option>
+            <option className="break-all" value="zh-hk.ctb">
+              Chinese (Hong Kong, Cantonese)
+            </option>
           </select>
-      </div>
+        </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <TextBox
             inputText={inputText}
@@ -250,10 +342,15 @@ export default function Translate() {
         </div>
         <div className="flex flex-col md:flex-row justify-between p-4 py-2 md:py-4">
           <div>
-            <div className="tracking-tight font-bold leading-tight py-2 md:py-0">Spoken feedback:</div>
+            <div className="tracking-tight font-bold leading-tight py-2 md:py-0">
+              Spoken feedback:
+            </div>
             <div aria-live="assertive">{spokenFeedback}</div>
           </div>
-          <button onClick={handleCopy} className="p-2 h-8 w-8 bg-primary text-white rounded">
+          <button
+            onClick={handleCopy}
+            className="p-2 h-8 w-8 bg-primary text-white rounded"
+          >
             <Copy title="Copy" className="w-4 h-4" />
           </button>
         </div>
@@ -265,31 +362,28 @@ export default function Translate() {
                 {keys.map((key, index) => (
                   <span key={index}>
                     {key.toUpperCase()}
-                    {index % 3 === 2 && index !== keys.length - 1 ? '\u00A0\u00A0\u00A0 ' : ' '}
+                    {index % 3 === 2 && index !== keys.length - 1
+                      ? "\u00A0\u00A0\u00A0 "
+                      : " "}
                   </span>
                 ))}
               </div>
-              <div className="text-primary" aria-hidden="true">⠄ ⠂ ⠁ &nbsp;  ⠈ ⠐ ⠠</div>
+              <div className="text-primary" aria-hidden="true">
+                ⠄ ⠂ ⠁ &nbsp; ⠈ ⠐ ⠠
+              </div>
             </div>
-            <button tabIndex={-1} onClick={handleKeyEdit} aria-label="Edit input keys" className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center">
+            <button
+              tabIndex={-1}
+              onClick={handleKeyEdit}
+              aria-label="Edit input keys"
+              className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center"
+            >
               ?
             </button>
           </div>
         </div>
-        {showKeyEditor && <KeySelect onSave={handleSaveKeys}/>}
- 
+        {showKeyEditor && <KeySelect onSave={handleSaveKeys} />}
       </div>
     </Wrapper>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

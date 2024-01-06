@@ -19,7 +19,10 @@ export async function getInstagramPosts() {
     const imageData = data.data as InstagramPost[];
 
     // Filter out anything that's not an image
-    const imagePosts = imageData.filter((post) => post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM");
+    const imagePosts = imageData.filter(
+      (post) =>
+        post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM",
+    );
 
     return imagePosts;
   } catch (error) {

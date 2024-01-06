@@ -20,7 +20,6 @@ const ResourceText = () => {
 };
 
 export default function Resources() {
-  
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
