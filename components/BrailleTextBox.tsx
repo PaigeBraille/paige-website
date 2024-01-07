@@ -46,6 +46,11 @@ export const BrailleTextBox = ({
   function setAsciiGlyphString(asciiGlyphString: string): void {
     onChange(asciiGlyphString);
     _setAsciiGlyphString(asciiGlyphString);
+    const brailleText = asciiGlyphString
+      .split("")
+      .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
+      .join("");
+    setUnicodeGlyphString(brailleText);
   }
 
   const keys = [
@@ -138,11 +143,7 @@ export const BrailleTextBox = ({
         console.log({ keyPressedMap });
         console.log({ paigePressed });
         const updatedText = asciiGlyphString + protocolAscii(paigePressed);
-        const brailleText = updatedText
-          .split("")
-          .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
-          .join("");
-        setAsciiGlyphString(brailleText);
+        setAsciiGlyphString(updatedText);
         setPressedKeys([]);
         setPaigePressed(0);
       }
@@ -168,7 +169,7 @@ export const BrailleTextBox = ({
       <textarea
         rows={6}
         cols={25}
-        value={asciiGlyphString}
+        value={unicodeGlyphString}
         className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
       />
     </div>
