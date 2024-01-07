@@ -11,8 +11,6 @@ type TextBoxProps = {
   setInputText: React.Dispatch<React.SetStateAction<string>>;
   setPrintText: React.Dispatch<React.SetStateAction<string>>;
   selectedTable: string;
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
   /*
    * Holds the state of the keys that are currently pressed
    */
@@ -32,8 +30,6 @@ const TextBox = ({
   setInputText,
   setPrintText,
   selectedTable,
-  text,
-  setText,
   keyPressedMap,
   setKeyPressedMap,
   pressedKeys,
@@ -50,12 +46,11 @@ const TextBox = ({
         (value) => !value,
       );
       if (allKeysUnpressed && paigePressed !== 0) {
-        const updatedText = text + protocolAscii(paigePressed);
+        const updatedText = inputText + protocolAscii(paigePressed);
         const brailleText = updatedText
           .split("")
           .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
           .join("");
-        setText(brailleText);
         setInputText(brailleText);
         translateAndUpdate(updatedText, selectedTable, setPrintText, null);
         setPressedKeys([]);
@@ -98,17 +93,24 @@ const TextBox = ({
 };
 
 export default function Translate() {
-  const [text, setText] = useState("");
+  // Used to store the braille input text
   const [inputText, setInputText] = useState<string>("");
+  // Used to store the print test displayed when the braille input is translated
   const [printText, setPrintText] = useState("");
+  // Used to store the state of the keys that are currently pressed
   const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>(
     {},
   );
   const [pressedKeys, setPressedKeys] = useState<string[]>([]);
+  // Used to store the value of the keys that had been pressed once the last key has been unpressed
   const [paigePressed, setPaigePressed] = useState<number>(0);
+  // Used to store the selected table
   const [selectedTable, setSelectedTable] = useState<string>("en-ueb-g1.ctb"); // Initial table
+  // Used to store the state of the key editor
   const [showKeyEditor, setShowKeyEditor] = useState(false);
+  // Used to store the keys that are currently being used
   const [keys, setKeys] = useState<string[]>(["s", "d", "f", "j", "k", "l"]);
+  // Used to store the spoken feedback, the text which gets read to aria assertive
   const [spokenFeedback, setSpokenFeedback] = useState<string>("");
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -170,8 +172,7 @@ export default function Translate() {
         // Prevent the default action for the spacebar key
         e.preventDefault();
         // Append a space
-        const updatedText = text + " ";
-        setText(updatedText);
+        const updatedText = inputText + " ";
         setInputText(updatedText);
         // Translate
         translateAndUpdate(
@@ -182,19 +183,15 @@ export default function Translate() {
         );
       } else if (key === "backspace") {
         // Remove the last character
-        const updatedText = text.slice(0, -1);
-        setText(updatedText);
-        setInputText(updatedText);
-        //tranbslate
-        translateAndUpdate(updatedText, selectedTable, setPrintText, null);
+        setInputText((inputText) => inputText.slice(0, -1));
+        //translate
+        translateAndUpdate(inputText, selectedTable, setPrintText, null);
       } else if (key === "enter") {
         // Append a newline character
-        const updatedText = text + "\n";
-        setText(updatedText);
-        setInputText(updatedText);
+        setInputText((inputText) => inputText + "\n");
         // Translate
         translateAndUpdate(
-          updatedText,
+          inputText,
           selectedTable,
           setPrintText,
           setSpokenFeedback,
@@ -271,8 +268,6 @@ export default function Translate() {
             setInputText={setInputText}
             setPrintText={setPrintText}
             selectedTable={selectedTable}
-            text={text}
-            setText={setText}
             keyPressedMap={keyPressedMap}
             setKeyPressedMap={setKeyPressedMap}
             pressedKeys={pressedKeys}
