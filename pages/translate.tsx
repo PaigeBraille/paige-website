@@ -5,6 +5,7 @@ import { asciiBraille } from "../components/BrailleMapping";
 import { translateAndUpdate } from "../components/TranslationUtils";
 import Copy from "../public/svg/Copy.svg";
 import KeySelect from "../components/KeySelect";
+import { BrailleTextBox } from "@/components/BrailleTextBox";
 
 type TextBoxProps = {
   inputText: string;
@@ -123,101 +124,101 @@ export default function Translate() {
     setShowKeyEditor(false);
   };
 
-  const handleKeyEdit = () => {
-    setShowKeyEditor(true);
-  };
+  // const handleKeyEdit = () => {
+  //   setShowKeyEditor(true);
+  // };
 
-  useEffect(() => {
-    const handleKeyUp = (e: KeyboardEvent) => {
-      const key = e.key.toLowerCase();
-      // If the key is in the pressedKeys array, remove it
-      setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
-    };
+  // useEffect(() => {
+  //   const handleKeyUp = (e: KeyboardEvent) => {
+  //     const key = e.key.toLowerCase();
+  //     // If the key is in the pressedKeys array, remove it
+  //     setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
+  //   };
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const key = e.key.toLowerCase();
-      if (keys.includes(key) && !keyPressedMap[key]) {
-        setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
-        setPressedKeys((prevKeys) => [...prevKeys, key]);
-      }
-      // Update paige_pressed based on the pressed key
-      // This is a way to encode the pressed keys into a single integer
-      // A example with the default keys is if:
-      // "S" is pressed add 4 to paige_pressed, however the binary way does not repeatedly add 4
-      // "D" is pressed add 2 to paige_pressed
-      // "F" is pressed add 1 to paige_pressed
-      // "J" is pressed add 8 to paige_pressed
-      // "K" is pressed add 16 to paige_pressed
-      // "L" is pressed add 32 to paige_pressed
-      if (keys[2].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 0));
-      }
-      if (keys[1].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 1));
-      }
-      if (keys[0].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 2));
-      }
-      if (keys[3].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 3));
-      }
-      if (keys[4].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 4));
-      }
-      if (keys[5].includes(key)) {
-        setPaigePressed((prevValue) => prevValue | (1 << 5));
-      }
-      // Handle special keys
-      if (key === " ") {
-        // Prevent the default action for the spacebar key
-        e.preventDefault();
-        // Append a space
-        const updatedText = inputText + " ";
-        setInputText(updatedText);
-        // Translate
-        translateAndUpdate(
-          updatedText,
-          selectedTable,
-          setPrintText,
-          setSpokenFeedback,
-        );
-      } else if (key === "backspace") {
-        // Remove the last character
-        setInputText((inputText) => inputText.slice(0, -1));
-        //translate
-        translateAndUpdate(inputText, selectedTable, setPrintText, null);
-      } else if (key === "enter") {
-        // Append a newline character
-        setInputText((inputText) => inputText + "\n");
-        // Translate
-        translateAndUpdate(
-          inputText,
-          selectedTable,
-          setPrintText,
-          setSpokenFeedback,
-        );
-      }
-    };
+  //   const handleKeyDown = (e: KeyboardEvent) => {
+  //     const key = e.key.toLowerCase();
+  //     if (keys.includes(key) && !keyPressedMap[key]) {
+  //       setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
+  //       setPressedKeys((prevKeys) => [...prevKeys, key]);
+  //     }
+  //     // Update paige_pressed based on the pressed key
+  //     // This is a way to encode the pressed keys into a single integer
+  //     // A example with the default keys is if:
+  //     // "S" is pressed add 4 to paige_pressed, however the binary way does not repeatedly add 4
+  //     // "D" is pressed add 2 to paige_pressed
+  //     // "F" is pressed add 1 to paige_pressed
+  //     // "J" is pressed add 8 to paige_pressed
+  //     // "K" is pressed add 16 to paige_pressed
+  //     // "L" is pressed add 32 to paige_pressed
+  //     if (keys[2].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 0));
+  //     }
+  //     if (keys[1].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 1));
+  //     }
+  //     if (keys[0].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 2));
+  //     }
+  //     if (keys[3].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 3));
+  //     }
+  //     if (keys[4].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 4));
+  //     }
+  //     if (keys[5].includes(key)) {
+  //       setPaigePressed((prevValue) => prevValue | (1 << 5));
+  //     }
+  //     // Handle special keys
+  //     if (key === " ") {
+  //       // Prevent the default action for the spacebar key
+  //       e.preventDefault();
+  //       // Append a space
+  //       const updatedText = inputText + " ";
+  //       setInputText(updatedText);
+  //       // Translate
+  //       translateAndUpdate(
+  //         updatedText,
+  //         selectedTable,
+  //         setPrintText,
+  //         setSpokenFeedback,
+  //       );
+  //     } else if (key === "backspace") {
+  //       // Remove the last character
+  //       setInputText((inputText) => inputText.slice(0, -1));
+  //       //translate
+  //       translateAndUpdate(inputText, selectedTable, setPrintText, null);
+  //     } else if (key === "enter") {
+  //       // Append a newline character
+  //       setInputText((inputText) => inputText + "\n");
+  //       // Translate
+  //       translateAndUpdate(
+  //         inputText,
+  //         selectedTable,
+  //         setPrintText,
+  //         setSpokenFeedback,
+  //       );
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-    // Clean up event listeners when the component unmounts
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
+  //   window.addEventListener("keydown", handleKeyDown);
+  //   window.addEventListener("keyup", handleKeyUp);
+  //   // Clean up event listeners when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //     window.removeEventListener("keyup", handleKeyUp);
+  //   };
+  // }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
 
-  const handleCopy = () => {
-    navigator.clipboard
-      .writeText(printText)
-      .then(() => {
-        // alert('Copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error("Unable to copy to clipboard", err);
-      });
-  };
+  // const handleCopy = () => {
+  //   navigator.clipboard
+  //     .writeText(printText)
+  //     .then(() => {
+  //       // alert('Copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error("Unable to copy to clipboard", err);
+  //     });
+  // };
 
   return (
     <Wrapper>
@@ -262,7 +263,8 @@ export default function Translate() {
             </option>
           </select>
         </div>
-        <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
+        <BrailleTextBox onChange={() => {}} />
+        {/* <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <TextBox
             inputText={inputText}
             setInputText={setInputText}
@@ -328,7 +330,7 @@ export default function Translate() {
               ?
             </button>
           </div>
-        </div>
+        </div> */}
         {showKeyEditor && <KeySelect onSave={handleSaveKeys} />}
       </div>
     </Wrapper>
