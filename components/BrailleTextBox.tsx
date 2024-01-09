@@ -164,14 +164,11 @@ export const BrailleTextBox = ({
   };
 
   return (
-    <div className="w-full sm:w-1/2 p-4">
-      <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
-      <textarea
-        rows={6}
-        cols={25}
-        value={unicodeGlyphString}
-        className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-      />
-    </div>
+    <textarea
+      rows={6}
+      cols={25}
+      value={unicodeGlyphString}
+      className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
+    />
   );
 };

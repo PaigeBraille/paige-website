@@ -97,14 +97,7 @@ export default function Translate() {
   // Used to store the braille input text
   const [inputText, setInputText] = useState<string>("");
   // Used to store the print test displayed when the braille input is translated
-  const [printText, setPrintText] = useState("");
-  // Used to store the state of the keys that are currently pressed
-  const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>(
-    {},
-  );
-  const [pressedKeys, setPressedKeys] = useState<string[]>([]);
-  // Used to store the value of the keys that had been pressed once the last key has been unpressed
-  const [paigePressed, setPaigePressed] = useState<number>(0);
+  const [printText, setPrintText] = useState<string>("");
   // Used to store the selected table
   const [selectedTable, setSelectedTable] = useState<string>("en-ueb-g1.ctb"); // Initial table
   // Used to store the state of the key editor
@@ -128,97 +121,26 @@ export default function Translate() {
   //   setShowKeyEditor(true);
   // };
 
-  // useEffect(() => {
-  //   const handleKeyUp = (e: KeyboardEvent) => {
-  //     const key = e.key.toLowerCase();
-  //     // If the key is in the pressedKeys array, remove it
-  //     setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: false }));
-  //   };
+  const handleCopy = () => {
+    navigator.clipboard
+      .writeText(printText)
+      .then(() => {
+        // alert('Copied to clipboard!');
+      })
+      .catch((err) => {
+        console.error("Unable to copy to clipboard", err);
+      });
+  };
 
-  //   const handleKeyDown = (e: KeyboardEvent) => {
-  //     const key = e.key.toLowerCase();
-  //     if (keys.includes(key) && !keyPressedMap[key]) {
-  //       setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
-  //       setPressedKeys((prevKeys) => [...prevKeys, key]);
-  //     }
-  //     // Update paige_pressed based on the pressed key
-  //     // This is a way to encode the pressed keys into a single integer
-  //     // A example with the default keys is if:
-  //     // "S" is pressed add 4 to paige_pressed, however the binary way does not repeatedly add 4
-  //     // "D" is pressed add 2 to paige_pressed
-  //     // "F" is pressed add 1 to paige_pressed
-  //     // "J" is pressed add 8 to paige_pressed
-  //     // "K" is pressed add 16 to paige_pressed
-  //     // "L" is pressed add 32 to paige_pressed
-  //     if (keys[2].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 0));
-  //     }
-  //     if (keys[1].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 1));
-  //     }
-  //     if (keys[0].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 2));
-  //     }
-  //     if (keys[3].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 3));
-  //     }
-  //     if (keys[4].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 4));
-  //     }
-  //     if (keys[5].includes(key)) {
-  //       setPaigePressed((prevValue) => prevValue | (1 << 5));
-  //     }
-  //     // Handle special keys
-  //     if (key === " ") {
-  //       // Prevent the default action for the spacebar key
-  //       e.preventDefault();
-  //       // Append a space
-  //       const updatedText = inputText + " ";
-  //       setInputText(updatedText);
-  //       // Translate
-  //       translateAndUpdate(
-  //         updatedText,
-  //         selectedTable,
-  //         setPrintText,
-  //         setSpokenFeedback,
-  //       );
-  //     } else if (key === "backspace") {
-  //       // Remove the last character
-  //       setInputText((inputText) => inputText.slice(0, -1));
-  //       //translate
-  //       translateAndUpdate(inputText, selectedTable, setPrintText, null);
-  //     } else if (key === "enter") {
-  //       // Append a newline character
-  //       setInputText((inputText) => inputText + "\n");
-  //       // Translate
-  //       translateAndUpdate(
-  //         inputText,
-  //         selectedTable,
-  //         setPrintText,
-  //         setSpokenFeedback,
-  //       );
-  //     }
-  //   };
-
-  //   window.addEventListener("keydown", handleKeyDown);
-  //   window.addEventListener("keyup", handleKeyUp);
-  //   // Clean up event listeners when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("keydown", handleKeyDown);
-  //     window.removeEventListener("keyup", handleKeyUp);
-  //   };
-  // }, [pressedKeys, keyPressedMap, setInputText, setPrintText]);
-
-  // const handleCopy = () => {
-  //   navigator.clipboard
-  //     .writeText(printText)
-  //     .then(() => {
-  //       // alert('Copied to clipboard!');
-  //     })
-  //     .catch((err) => {
-  //       console.error("Unable to copy to clipboard", err);
-  //     });
-  // };
+  const onTextChange = (newAsciiString: string) => {
+    setInputText(newAsciiString);
+    translateAndUpdate(
+      newAsciiString,
+      selectedTable,
+      setPrintText,
+      setSpokenFeedback,
+    );
+  };
 
   return (
     <Wrapper>
@@ -263,9 +185,12 @@ export default function Translate() {
             </option>
           </select>
         </div>
-        <BrailleTextBox onChange={() => {}} />
-        {/* <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
-          <TextBox
+        <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
+          <div className="w-full sm:w-1/2 p-4">
+            <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
+            <BrailleTextBox onChange={onTextChange} />
+          </div>
+          {/* <TextBox
             inputText={inputText}
             setInputText={setInputText}
             setPrintText={setPrintText}
@@ -277,7 +202,7 @@ export default function Translate() {
             paigePressed={paigePressed}
             setPaigePressed={setPaigePressed}
             setSpokenFeedback={setSpokenFeedback}
-          />
+          /> */}
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>
             <textarea
@@ -321,16 +246,16 @@ export default function Translate() {
                 ⠄ ⠂ ⠁ &nbsp; ⠈ ⠐ ⠠
               </div>
             </div>
-            <button
+            {/* <button
               tabIndex={-1}
               onClick={handleKeyEdit}
               aria-label="Edit input keys"
               className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center"
             >
               ?
-            </button>
+            </button> */}
           </div>
-        </div> */}
+        </div>
         {showKeyEditor && <KeySelect onSave={handleSaveKeys} />}
       </div>
     </Wrapper>
