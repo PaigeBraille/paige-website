@@ -20,14 +20,15 @@ export default function Stories({
   posts: Post[];
   instagram: InstagramPost[];
 }) {
-
   const [showSubscribe, setShowSubscribe] = useState(false);
   return (
     <Wrapper>
       <div className="max-w-5xl mx-auto md:px-6 flex flex-col">
         <InstagramFeed posts={instagram} />
         <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-paigedarkgrey">Stories</Heading>
+          <Heading css="text-start leading-tight text-paigedarkgrey">
+            Stories
+          </Heading>
         </div>
         <div className="px-6 md:px-0">
           <div className="flex flex-col gap-4">
@@ -46,11 +47,11 @@ export default function Stories({
         </div> */}
       </div>
       <SubscribePopup
-          togglePopup={() => {
-            setShowSubscribe(!showSubscribe);
-          }}
-          isVisible={showSubscribe}
-        />
+        togglePopup={() => {
+          setShowSubscribe(!showSubscribe);
+        }}
+        isVisible={showSubscribe}
+      />
     </Wrapper>
   );
 }

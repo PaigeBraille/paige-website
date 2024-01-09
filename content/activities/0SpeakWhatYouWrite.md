@@ -1,12 +1,12 @@
 ---
 title: Speak what you write!
-alt: 'Screenshot of the Paige Connect web app open with the print output window selected.'
-date: '11-09-2023'
-coverImage: '/activities-imgs/SpeakWhatYouWrite.png'
-excerpt: 'Hear your screen reader speak what you type with Paige Connect'
-time: '10 min'
-people: '1'
-skills: '1,3'
+alt: "Screenshot of the Paige Connect web app open with the print output window selected."
+date: "11-09-2023"
+coverImage: "/activities-imgs/SpeakWhatYouWrite.png"
+excerpt: "Hear your screen reader speak what you type with Paige Connect"
+time: "10 min"
+people: "1"
+skills: "1,3"
 ---
 
 **How to prepare:**
@@ -22,7 +22,7 @@ skills: '1,3'
 3. Navigate to the print output window within the Paige web app.
 4. Start writing a file by long-pressing the new line key on your braille writer.
 5. As you type, listen to your screen reader, which will speak out loud what you write!
- 
-**Tips:** 
+
+**Tips:**
 
 - If you encounter any difficulties or need additional guidance, visit our [support section](https://paigebraille.com/support) for comprehensive instructions.

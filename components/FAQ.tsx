@@ -50,7 +50,9 @@ const FAQ = (props: { questions: FAQuestion[] }) => {
           <div
             key={q.question}
             className={`text-sm  ${
-              index === activeQuestion ? "flex w-full flex-col gap-2 visible" : "hidden"
+              index === activeQuestion
+                ? "flex w-full flex-col gap-2 visible"
+                : "hidden"
             }`}
           >
             {q.answer.map((a) => {

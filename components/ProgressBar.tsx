@@ -5,14 +5,19 @@ type ProgressBarProps = {
   totalLevels: number;
 };
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ currentLevel, totalLevels }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({
+  currentLevel,
+  totalLevels,
+}) => {
   // Calculate the progress percentage
   const progress = (currentLevel / totalLevels) * 100;
 
   return (
     <div className="w-full border border-primary h-4 rounded-full">
-      <div className="h-4 rounded-full bg-primary" style={{ width: `${progress}%` }}>
-      </div>
+      <div
+        className="h-4 rounded-full bg-primary"
+        style={{ width: `${progress}%` }}
+      ></div>
     </div>
   );
 };

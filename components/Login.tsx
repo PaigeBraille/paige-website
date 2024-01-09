@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = ({ setAuthenticated }) => {
           </div>
         </div>
         <div className="w-full md:w-1/2 flex items-center justify-center md:-mt-36">
-            <Graphic5 className="object-cover" />
+          <Graphic5 className="object-cover" />
         </div>
       </div>
     </div>
@@ -49,13 +49,3 @@ const Login: React.FC<LoginProps> = ({ setAuthenticated }) => {
 };
 
 export default Login;
-
-
-
-
-
-
-
-
-
-

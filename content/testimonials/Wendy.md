@@ -1,13 +1,14 @@
 ---
 title: Wendy Eaton
-alt: 'East Sussex logo.'
-date: '08-03-2023'
-coverImage: '/testimonial-imgs/wendy.jpg'
+alt: "East Sussex logo."
+date: "08-03-2023"
+coverImage: "/testimonial-imgs/wendy.jpg"
 excerpt: '"If you are working in a school with a student it will save you so much time, you can just use the app to read what has been brailled in print – no more transcribing underneath a line of braille!"'
-time: ''
-people: ''
-skills: ''
+time: ""
+people: ""
+skills: ""
 ---
+
 # My story
 
 **Who are you?**

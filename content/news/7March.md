@@ -1,12 +1,12 @@
 ---
-title: 'March: Testing at New College Worcester'
-alt: 'Shows New College Worcester teacher, Sean Randall, and a young student playing with LEGO Braille Bricks. '
-date: '13-04-2023'
-coverImage: '/news-imgs/news_march.jpeg'
-excerpt: 'Students at New College Worcester spent a week using Paige Connect. Subscribe to our newsletter to learn more!'
-time: ''
-people: ''
-skills: ''
+title: "March: Testing at New College Worcester"
+alt: "Shows New College Worcester teacher, Sean Randall, and a young student playing with LEGO Braille Bricks. "
+date: "13-04-2023"
+coverImage: "/news-imgs/news_march.jpeg"
+excerpt: "Students at New College Worcester spent a week using Paige Connect. Subscribe to our newsletter to learn more!"
+time: ""
+people: ""
+skills: ""
 ---
 
 # Students at New College Worcester spent a week using Paige Connect!
@@ -18,7 +18,6 @@ We are excited to share with you the progress we made in the past month and the 
 We are thrilled to spotlight one of our valued team members, [Sean Randall](https://seanrandall.me/). Sean works as an IT teacher at New College Worcester and is a passionate advocate for computing and access technologies. His work also involves training students in the use of screen readers and braille displays, giving young people the skills to leave school with their technology as a faithful companion rather than a huge inconvenience.
 
 We want to take the opportunity to thank Sean for his invaluable help and advice to the Paige team since its beginnings. He has been amazing at providing thorough accessibility feedback for the web application of our first product, Paige Connect. Sean has also organised several testing sessions of our prototypes with students, providing insights into how we can improve our product to better serve our customers.
-
 
 **Progress**
 

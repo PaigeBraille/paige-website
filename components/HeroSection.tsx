@@ -19,7 +19,8 @@ export default function HeroSection() {
           What is Paige Connect?
         </h1>
         <p className="text-gray-600">
-          An adaptation for braille writers that lets you share the print translation.
+          An adaptation for braille writers that lets you share the print
+          translation.
         </p>
         <Link
           href="/buy"

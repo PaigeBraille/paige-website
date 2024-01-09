@@ -10,7 +10,12 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
         <Link href="/">
           <Logo className="inline-block h-auto" alt="Paige Logo" />
         </Link>
-        <p className="mb-4">Contact us at: <a className="text-white" href = "mailto: hello@paigebraille.com">hello@paigebraille.com</a></p>
+        <p className="mb-4">
+          Contact us at:{" "}
+          <a className="text-white" href="mailto: hello@paigebraille.com">
+            hello@paigebraille.com
+          </a>
+        </p>
         <form
           className="flex flex-col gap-2 items-center md:items-start overflow-clip"
           name="footer-subscribe"
@@ -30,7 +35,9 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
             className="py-1 px-2 font-light text-black outline-none"
           />
         </form>
-        <p className="mb-4 mt-4">© Paige Braille Ltd 2023. All rights reserved. Company no. 14311624.</p>
+        <p className="mb-4 mt-4">
+          © Paige Braille Ltd 2023. All rights reserved. Company no. 14311624.
+        </p>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Web</h5>
@@ -60,8 +67,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Legal</h5>
         <ul className="mb-4">
-        <li className="mt-2">
-            <Link href="/Return & Refund Policy.pdf" className="hover:underline">
+          <li className="mt-2">
+            <Link
+              href="/Return & Refund Policy.pdf"
+              className="hover:underline"
+            >
               Returns
             </Link>
           </li>
@@ -72,7 +82,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           </li>
           <li className="mt-2">
             <Link href="/Terms of Service.pdf" className="hover:underline">
-              Terms of Service 
+              Terms of Service
             </Link>
           </li>
           <li className="mt-2">
@@ -90,7 +100,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">
         <h5 className="mb-4 font-bold">Social</h5>
         <ul className="mb-4">
-          <li className="mt-2">           
+          <li className="mt-2">
             <a
               href="https://www.instagram.com/paigebraille/"
               className="hover:underline"
@@ -120,10 +130,15 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               className="hover:underline"
             >
               YouTube
-            </a> 
+            </a>
           </li>
           <li className="mt-2">
-            <Link href="https://drive.google.com/drive/folders/1AqTR1wjvtb7O3ZdATcOG1L05cEgAxj9O?usp=drive_link" target="_blank" rel="noreferrer"className="hover:underline">
+            <Link
+              href="https://drive.google.com/drive/folders/1AqTR1wjvtb7O3ZdATcOG1L05cEgAxj9O?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+            >
               Press
             </Link>
           </li>

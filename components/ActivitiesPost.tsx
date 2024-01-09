@@ -22,9 +22,9 @@ export default function ActivitiesPost({ post }: PostProps) {
         </h2>
         <p className="text-sm mb-auto">{post.excerpt}</p>
         <div className="text-xs text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-auto mb-2">
-          <Time title="Time" className="w-4 h-4 mr-2"/>
+          <Time title="Time" className="w-4 h-4 mr-2" />
           {post.time}
-          <People title="People" className="w-4 h-4 mx-2"/>
+          <People title="People" className="w-4 h-4 mx-2" />
           {post.people}
           <Link
             href={`/activities/${post.slug}`}

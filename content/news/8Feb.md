@@ -1,23 +1,23 @@
 ---
-title: 'February: Support from Unltd'
-alt: 'UnLtd London office exterior street view on a sunny day.'
-date: '5-03-2023'
-coverImage: '/news-imgs/news_feb.jpeg'
-excerpt: 'We reached out  to the braille community to present the idea of Paige Connect. Subscribe to our newsletter to learn more!'
-time: ''
-people: ''
-skills: ''
+title: "February: Support from Unltd"
+alt: "UnLtd London office exterior street view on a sunny day."
+date: "5-03-2023"
+coverImage: "/news-imgs/news_feb.jpeg"
+excerpt: "We reached out  to the braille community to present the idea of Paige Connect. Subscribe to our newsletter to learn more!"
+time: ""
+people: ""
+skills: ""
 ---
+
 # We reached out to the braille community to present the idea of Paige Connect.
 
 We are excited to share with you the progress we made in the past month and the developments we have in store for you.
 
 **Progress**
 
-This month we reached out to the braille community to present the idea of Paige Connect. We believe it is crucial that we work in close collaboration with braille readers to ensure they have a say in the technology created for them and that the resulting design serves them in their daily lives. 
+This month we reached out to the braille community to present the idea of Paige Connect. We believe it is crucial that we work in close collaboration with braille readers to ensure they have a say in the technology created for them and that the resulting design serves them in their daily lives.
 
-We did this through The Braillists Foundation which is a grassroots organisation promoting braille and supporting its use.  We also posted on the VI Forum which provides a space for education professionals to share their expertise. Through these channels we arranged in person testing to gather feedback and uses for Paige Connect.
-
+We did this through The Braillists Foundation which is a grassroots organisation promoting braille and supporting its use. We also posted on the VI Forum which provides a space for education professionals to share their expertise. Through these channels we arranged in person testing to gather feedback and uses for Paige Connect.
 
 **Thank you**
 

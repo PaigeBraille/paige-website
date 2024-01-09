@@ -15,7 +15,11 @@ type BrailleMapping = {
 // Define the type for the TextBoxProps
 type TextBoxProps = {
   nextSuggestion: { letter: string; braille: string; introducedCount: number };
-  setNextSuggestion: (suggestion: { letter: string; braille: string; introducedCount:number }) => void;
+  setNextSuggestion: (suggestion: {
+    letter: string;
+    braille: string;
+    introducedCount: number;
+  }) => void;
   printText: string;
   setPrintText: (text: string) => void;
   alphabetToBraille: BrailleMapping;
@@ -40,9 +44,10 @@ const TextBox = ({
     const alphabet = "abcklmuvxdfnpyeioszhjrtwgq";
     const sectionArray = Array.from(alphabet.slice(0, 26 * level));
     console.log(sectionArray);
-    return sectionArray.every(letter => alphabetToBraille[letter].introducedCount > 1);
-  }  
-
+    return sectionArray.every(
+      (letter) => alphabetToBraille[letter].introducedCount > 1,
+    );
+  }
 
   const getRandomSuggestion = (alphabetToBraille: BrailleMapping) => {
     const alphabet = "abcklmuvxdfnpyeioszhjrtwgq";
@@ -56,9 +61,15 @@ const TextBox = ({
     }
     // Use the difficulty level to control randomness
     let letter = alphabet.charAt(
-      Math.floor(Math.random() * alphabet.length * difficultyLevels[currentLevel])
+      Math.floor(
+        Math.random() * alphabet.length * difficultyLevels[currentLevel],
+      ),
     );
-    return { letter, braille: alphabetToBraille[letter].braille, introducedCount: alphabetToBraille[letter].introducedCount };
+    return {
+      letter,
+      braille: alphabetToBraille[letter].braille,
+      introducedCount: alphabetToBraille[letter].introducedCount,
+    };
   };
 
   const difficultyLevels: number[] = [
@@ -77,7 +88,6 @@ const TextBox = ({
     25 / 26,
     26 / 26,
   ];
-  
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     var newText = e.target.value;
@@ -142,7 +152,6 @@ const TextBox = ({
   );
 };
 
-
 export default function Learn() {
   // Initialize nextSuggestion to a non-random value initially
   const [nextSuggestion, setNextSuggestion] = useState({
@@ -150,7 +159,9 @@ export default function Learn() {
     braille: "⠁",
     introducedCount: 1,
   });
-  const [printText, setPrintText] = useState(`${nextSuggestion.letter} is ${nextSuggestion.braille}`);
+  const [printText, setPrintText] = useState(
+    `${nextSuggestion.letter} is ${nextSuggestion.braille}`,
+  );
   const [alphabetToBraille, setAlphabetToBraille] = useState<BrailleMapping>({
     a: { braille: "⠁", introducedCount: 1 },
     b: { braille: "⠃", introducedCount: 0 },
@@ -181,12 +192,10 @@ export default function Learn() {
   });
 
   const [currentLevel, setCurrentLevel] = useState(0);
-  
 
   const incrementLevel = () => {
     setCurrentLevel(currentLevel + 1);
   };
-  
 
   // Add a state to track if the user is authenticated
   const [authenticated, setAuthenticated] = useState(false);
@@ -195,7 +204,6 @@ export default function Learn() {
   const handleAuthentication = (value: boolean) => {
     setAuthenticated(value);
   };
-
 
   useEffect(() => {
     setPrintText(`${nextSuggestion.letter} is ${nextSuggestion.braille}`);
@@ -227,15 +235,5 @@ export default function Learn() {
         )}
       </div>
     </Wrapper>
-
   );
 }
-
-
-
-
-
-
-
-
-
