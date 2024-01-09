@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { asciiBraille } from "./BrailleMapping";
 
-type inputKeyMap = {
-  "upper-left": string;
-  "middle-left": string;
+export type InputKeyMap = {
   "lower-left": string;
+  "middle-left": string;
+  "upper-left": string;
   "upper-right": string;
   "middle-right": string;
   "lower-right": string;
 };
 
-const defaultInputKeyMap: inputKeyMap = {
-  "upper-left": "f",
-  "middle-left": "d",
+const defaultInputKeyMap: InputKeyMap = {
   "lower-left": "s",
+  "middle-left": "d",
+  "upper-left": "f",
   "upper-right": "j",
   "middle-right": "k",
   "lower-right": "l",
@@ -23,12 +23,12 @@ type BrailleTextBoxProps = {
   // Listen for changes to the text box,
   onChange: (currentAsciiGlyphString: string) => void;
   // Map of 6 strings, each representing a dot of a braille character
-  inputKeyMap?: inputKeyMap;
+  InputKeyMap?: InputKeyMap;
 };
 
 export const BrailleTextBox = ({
   onChange,
-  inputKeyMap = defaultInputKeyMap,
+  InputKeyMap = defaultInputKeyMap,
 }: BrailleTextBoxProps) => {
   // Used to hold the ascii glyph string of the input
   const [asciiGlyphString, _setAsciiGlyphString] = useState<string>("");
@@ -54,12 +54,12 @@ export const BrailleTextBox = ({
   }
 
   const keys = [
-    inputKeyMap["lower-left"],
-    inputKeyMap["middle-left"],
-    inputKeyMap["upper-left"],
-    inputKeyMap["upper-right"],
-    inputKeyMap["middle-right"],
-    inputKeyMap["lower-right"],
+    InputKeyMap["lower-left"],
+    InputKeyMap["middle-left"],
+    InputKeyMap["upper-left"],
+    InputKeyMap["upper-right"],
+    InputKeyMap["middle-right"],
+    InputKeyMap["lower-right"],
   ];
 
   useEffect(() => {

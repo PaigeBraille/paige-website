@@ -5,93 +5,7 @@ import { asciiBraille } from "../components/BrailleMapping";
 import { translateAndUpdate } from "../components/TranslationUtils";
 import Copy from "../public/svg/Copy.svg";
 import KeySelect from "../components/KeySelect";
-import { BrailleTextBox } from "@/components/BrailleTextBox";
-
-type TextBoxProps = {
-  inputText: string;
-  setInputText: React.Dispatch<React.SetStateAction<string>>;
-  setPrintText: React.Dispatch<React.SetStateAction<string>>;
-  selectedTable: string;
-  /*
-   * Holds the state of the keys that are currently pressed
-   */
-  keyPressedMap: Record<string, boolean>;
-  setKeyPressedMap: React.Dispatch<
-    React.SetStateAction<Record<string, boolean>>
-  >;
-  pressedKeys: string[];
-  setPressedKeys: React.Dispatch<React.SetStateAction<string[]>>;
-  paigePressed: number;
-  setPaigePressed: React.Dispatch<React.SetStateAction<number>>;
-  setSpokenFeedback: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const TextBox = ({
-  inputText,
-  setInputText,
-  setPrintText,
-  selectedTable,
-  keyPressedMap,
-  setKeyPressedMap,
-  pressedKeys,
-  setPressedKeys,
-  paigePressed,
-  setPaigePressed,
-  setSpokenFeedback,
-}: TextBoxProps) => {
-  useEffect(() => {
-    const handleKeyPress = async () => {
-      // All the inputs keys have been unpressed thus the user has finished typing the character
-      // proceed to append the character to the text
-      const allKeysUnpressed = Object.values(keyPressedMap).every(
-        (value) => !value,
-      );
-      if (allKeysUnpressed && paigePressed !== 0) {
-        const updatedText = inputText + protocolAscii(paigePressed);
-        const brailleText = updatedText
-          .split("")
-          .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
-          .join("");
-        setInputText(brailleText);
-        translateAndUpdate(updatedText, selectedTable, setPrintText, null);
-        setPressedKeys([]);
-        setPaigePressed(0);
-      }
-    };
-
-    handleKeyPress();
-  }, [
-    pressedKeys,
-    keyPressedMap,
-    paigePressed,
-    setPaigePressed,
-    setInputText,
-    setPrintText,
-  ]);
-
-  const protocolAscii = (keyMapping: number): string => {
-    console.log(keyMapping);
-    const entry = Object.entries(asciiBraille).find(
-      ([_key, value]) => value.keyMapping === keyMapping,
-    );
-    if (!entry) return "";
-    const [key] = entry;
-    console.log(key);
-    return key;
-  };
-
-  return (
-    <div className="w-full sm:w-1/2 p-4">
-      <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
-      <textarea
-        rows={6}
-        cols={25}
-        value={inputText}
-        className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-      />
-    </div>
-  );
-};
+import { BrailleTextBox, InputKeyMap } from "@/components/BrailleTextBox";
 
 export default function Translate() {
   // Used to store the braille input text
@@ -103,7 +17,14 @@ export default function Translate() {
   // Used to store the state of the key editor
   const [showKeyEditor, setShowKeyEditor] = useState(false);
   // Used to store the keys that are currently being used
-  const [keys, setKeys] = useState<string[]>(["s", "d", "f", "j", "k", "l"]);
+  const [keys, setKeys] = useState<InputKeyMap>({
+    "lower-left": "s",
+    "middle-left": "d",
+    "upper-left": "f",
+    "upper-right": "j",
+    "middle-right": "k",
+    "lower-right": "l",
+  });
   // Used to store the spoken feedback, the text which gets read to aria assertive
   const [spokenFeedback, setSpokenFeedback] = useState<string>("");
 
@@ -112,14 +33,22 @@ export default function Translate() {
   };
 
   const handleSaveKeys = (newKeys: string[]) => {
-    setKeys(newKeys);
-    console.log("Updated keys:", keys);
+    const newKeyMap: InputKeyMap = {
+      "lower-left": newKeys[0],
+      "middle-left": newKeys[1],
+      "upper-left": newKeys[2],
+      "upper-right": newKeys[3],
+      "middle-right": newKeys[4],
+      "lower-right": newKeys[5],
+    };
+    setKeys(newKeyMap);
+    console.log("Updated keys:", newKeyMap);
     setShowKeyEditor(false);
   };
 
-  // const handleKeyEdit = () => {
-  //   setShowKeyEditor(true);
-  // };
+  const handleKeyEdit = () => {
+    setShowKeyEditor(true);
+  };
 
   const handleCopy = () => {
     navigator.clipboard
@@ -188,21 +117,8 @@ export default function Translate() {
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
-            <BrailleTextBox onChange={onTextChange} />
+            <BrailleTextBox InputKeyMap={keys} onChange={onTextChange} />
           </div>
-          {/* <TextBox
-            inputText={inputText}
-            setInputText={setInputText}
-            setPrintText={setPrintText}
-            selectedTable={selectedTable}
-            keyPressedMap={keyPressedMap}
-            setKeyPressedMap={setKeyPressedMap}
-            pressedKeys={pressedKeys}
-            setPressedKeys={setPressedKeys}
-            paigePressed={paigePressed}
-            setPaigePressed={setPaigePressed}
-            setSpokenFeedback={setSpokenFeedback}
-          /> */}
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>
             <textarea
@@ -233,10 +149,10 @@ export default function Translate() {
             <div className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
               Type braille with your keyboard
               <div className="mt-2 text-primary">
-                {keys.map((key, index) => (
+                {Object.values(keys).map((key, index) => (
                   <span key={index}>
                     {key.toUpperCase()}
-                    {index % 3 === 2 && index !== keys.length - 1
+                    {index % 3 === 2 && index !== Object.values(keys).length - 1
                       ? "\u00A0\u00A0\u00A0 "
                       : " "}
                   </span>
@@ -246,14 +162,14 @@ export default function Translate() {
                 ⠄ ⠂ ⠁ &nbsp; ⠈ ⠐ ⠠
               </div>
             </div>
-            {/* <button
+            <button
               tabIndex={-1}
               onClick={handleKeyEdit}
               aria-label="Edit input keys"
               className="m-2 bg-primary text-white font-bold rounded-full h-8 w-8 flex items-center justify-center"
             >
               ?
-            </button> */}
+            </button>
           </div>
         </div>
         {showKeyEditor && <KeySelect onSave={handleSaveKeys} />}
