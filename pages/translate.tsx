@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
-import asciiBraille from "../components/BrailleMapping";
+import { asciiBraille } from "../components/BrailleMapping";
 import { translateAndUpdate } from "../components/TranslationUtils";
 import Copy from "../public/svg/Copy.svg";
 import KeySelect from "../components/KeySelect";
@@ -73,76 +73,15 @@ const TextBox = ({
     setPrintText,
   ]);
 
-  const protocolAscii = (key: number): string => {
-    const ASCII = [
-      " ",
-      "a",
-      "1",
-      "b",
-      "'",
-      "k",
-      "2",
-      "l",
-      "@",
-      "c",
-      "i",
-      "f",
-      "/",
-      "m",
-      "s",
-      "p",
-      '"',
-      "e",
-      "3",
-      "h",
-      "9",
-      "o",
-      "6",
-      "r",
-      "^",
-      "d",
-      "j",
-      "g",
-      ">",
-      "n",
-      "t",
-      "q",
-      ",",
-      "*",
-      "5",
-      "<",
-      "-",
-      "u",
-      "8",
-      "v",
-      ".",
-      "%",
-      "[",
-      "$",
-      "+",
-      "x",
-      "!",
-      "&",
-      ";",
-      ":",
-      "4",
-      "\\",
-      "0",
-      "z",
-      "7",
-      "(",
-      "_",
-      "?",
-      "w",
-      "]",
-      "#",
-      "y",
-      ")",
-      "=",
-      "\n",
-    ];
-
-    return ASCII[key];
+  const protocolAscii = (keyMapping: number): string => {
+    console.log(keyMapping);
+    const entry = Object.entries(asciiBraille).find(
+      ([_key, value]) => value.keyMapping === keyMapping,
+    );
+    if (!entry) return "";
+    const [key] = entry;
+    console.log(key);
+    return key;
   };
 
   return (
@@ -200,6 +139,14 @@ export default function Translate() {
         setPressedKeys((prevKeys) => [...prevKeys, key]);
       }
       // Update paige_pressed based on the pressed key
+      // This is a way to encode the pressed keys into a single integer
+      // A example with the default keys is if:
+      // "S" is pressed add 4 to paige_pressed, however the binary way does not repeatedly add 4
+      // "D" is pressed add 2 to paige_pressed
+      // "F" is pressed add 1 to paige_pressed
+      // "J" is pressed add 8 to paige_pressed
+      // "K" is pressed add 16 to paige_pressed
+      // "L" is pressed add 32 to paige_pressed
       if (keys[2].includes(key)) {
         setPaigePressed((prevValue) => prevValue | (1 << 0));
       }
