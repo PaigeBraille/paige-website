@@ -72,4 +72,6 @@ export const asciiBraille: BrailleMapping = {
   "\\": { braille: "⠳", keyMapping: 51 },
   "]": { braille: "⠻", keyMapping: 59 },
   "^": { braille: "⠘", keyMapping: 24 },
+  _: { braille: "⠸", keyMapping: 56 },
+  
 };
