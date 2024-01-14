@@ -128,10 +128,6 @@ function Lesson({
     "correct" | "incorrect" | "pending"
   >("pending");
 
-  useEffect(() => {
-    setInputText(""); // Reset input text when the lesson changes
-  }, [lesson]);
-
   function onTextChange(newAsciiString: string) {
     setInputText(newAsciiString);
     if (newAsciiString === lesson.correctInputMatch) {
@@ -147,7 +143,10 @@ function Lesson({
   return (
     <>
       <div>{lesson.prompt}</div> {/* Display the question prompt */}
-      <BrailleTextBox onChange={onTextChange}></BrailleTextBox>
+      <BrailleTextBox
+        onChange={onTextChange}
+        value={inputText}
+      ></BrailleTextBox>
       <div>Lesson Status: {lessonStatus}</div>
     </>
   );

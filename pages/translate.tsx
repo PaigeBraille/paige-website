@@ -117,7 +117,11 @@ export default function Translate() {
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
-            <BrailleTextBox InputKeyMap={keys} onChange={onTextChange} />
+            <BrailleTextBox
+              InputKeyMap={keys}
+              onChange={onTextChange}
+              value={inputText}
+            />
           </div>
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>

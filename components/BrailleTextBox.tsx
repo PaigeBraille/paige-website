@@ -24,14 +24,15 @@ type BrailleTextBoxProps = {
   onChange: (currentAsciiGlyphString: string) => void;
   // Map of 6 strings, each representing a dot of a braille character
   InputKeyMap?: InputKeyMap;
+  // Controlled ASCII value
+  value: string;
 };
 
 export const BrailleTextBox = ({
   onChange,
   InputKeyMap = defaultInputKeyMap,
+  value,
 }: BrailleTextBoxProps) => {
-  // Used to hold the ascii glyph string of the input
-  const [asciiGlyphString, _setAsciiGlyphString] = useState<string>("");
   // Used to hold the keys which are currently pressed
   const [keyPressedMap, setKeyPressedMap] = useState<Record<string, boolean>>(
     {},
@@ -39,19 +40,16 @@ export const BrailleTextBox = ({
   // Used to store the value of the keys that had been pressed once the last key has been unpressed
   const [paigePressed, setPaigePressed] = useState<number>(0);
   const [unicodeGlyphString, setUnicodeGlyphString] = useState<string>("");
-  // I don't know why this is needed but is somehow is
-  const [pressedKeys, setPressedKeys] = useState<string[]>([]);
 
-  // Sync the asciiGlyphString with the parent component
-  function setAsciiGlyphString(asciiGlyphString: string): void {
-    onChange(asciiGlyphString);
-    _setAsciiGlyphString(asciiGlyphString);
-    const brailleText = asciiGlyphString
+  useEffect(() => {
+    // Sync the ASCII value with the parent component
+    onChange(value);
+    const brailleText = value
       .split("")
       .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
       .join("");
     setUnicodeGlyphString(brailleText);
-  }
+  }, [value, onChange]);
 
   const keys = [
     InputKeyMap["lower-left"],
@@ -73,7 +71,6 @@ export const BrailleTextBox = ({
       const key = e.key.toLowerCase();
       if (keys.includes(key) && !keyPressedMap[key]) {
         setKeyPressedMap((prevMap) => ({ ...prevMap, [key]: true }));
-        setPressedKeys((prevKeys) => [...prevKeys, key]);
       }
       // Update paige_pressed based on the pressed key
       // This is a way to encode the pressed keys into a single integer
@@ -85,41 +82,34 @@ export const BrailleTextBox = ({
       // "K" is pressed add 16 to paige_pressed
       // "L" is pressed add 32 to paige_pressed
       if (keys[2].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 0));
       }
       if (keys[1].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 1));
       }
       if (keys[0].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 2));
       }
       if (keys[3].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 3));
       }
       if (keys[4].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 4));
       }
       if (keys[5].includes(key)) {
-        console.log({ key });
         setPaigePressed((prevValue) => prevValue | (1 << 5));
       }
-      console.log(paigePressed);
       // Handle special keys
       if (key === " ") {
         e.preventDefault();
-        const updatedText = asciiGlyphString + " ";
-        setAsciiGlyphString(updatedText);
+        const updatedText = value + " ";
+        onChange(updatedText);
       } else if (key === "backspace") {
-        const updatedText = asciiGlyphString.slice(0, -1);
-        setAsciiGlyphString(updatedText);
+        const updatedText = value.slice(0, -1);
+        onChange(updatedText);
       } else if (key === "enter") {
-        const updatedText = asciiGlyphString + "\n";
-        setAsciiGlyphString(updatedText);
+        const updatedText = value + "\n";
+        onChange(updatedText);
       }
     };
 
@@ -130,7 +120,7 @@ export const BrailleTextBox = ({
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [pressedKeys, keyPressedMap, setAsciiGlyphString]);
+  }, [value, keyPressedMap, onChange]);
 
   useEffect(() => {
     const handleKeyPress = async () => {
@@ -140,11 +130,8 @@ export const BrailleTextBox = ({
         (value) => !value,
       );
       if (allKeysUnpressed && paigePressed !== 0) {
-        console.log({ keyPressedMap });
-        console.log({ paigePressed });
-        const updatedText = asciiGlyphString + protocolAscii(paigePressed);
-        setAsciiGlyphString(updatedText);
-        setPressedKeys([]);
+        const updatedText = value + protocolAscii(paigePressed);
+        onChange(updatedText);
         setPaigePressed(0);
       }
     };
@@ -153,13 +140,11 @@ export const BrailleTextBox = ({
   }, [keyPressedMap]);
 
   const protocolAscii = (keyMapping: number): string => {
-    console.log(keyMapping);
     const entry = Object.entries(asciiBraille).find(
       ([_key, value]) => value.keyMapping === keyMapping,
     );
     if (!entry) return "";
     const [key] = entry;
-    console.log(key);
     return key;
   };
 
