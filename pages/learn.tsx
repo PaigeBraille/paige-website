@@ -5,34 +5,6 @@ import Login from "../components/Login"; // Import the Login component
 import ProgressBar from "../components/ProgressBar";
 import { BrailleTextBox } from "@/components/BrailleTextBox";
 
-export default function LearnPage() {
-  // Add a state to track if the user is authenticated
-  const [authenticated, setAuthenticated] = useState(true);
-
-  // Define a function to set the authenticated state
-  const handleAuthentication = (value: boolean) => {
-    setAuthenticated(value);
-  };
-  return (
-    <Wrapper>
-      <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-primary">Learn</Heading>
-        </div>
-        {authenticated ? (
-          <>
-            <ProgressBar currentLevel={1} totalLevels={2} />
-            <Learn />
-          </>
-        ) : (
-          // Render the Login component when not authenticated
-          <Login setAuthenticated={handleAuthentication} />
-        )}
-      </div>
-    </Wrapper>
-  );
-}
-
 interface Lesson {
   prompt: string;
   correctInputMatch: string;
@@ -61,12 +33,57 @@ const lessons: Lesson[] = [
   },
 ];
 
+export default function LearnPage() {
+  // Add a state to track if the user is authenticated
+  const [authenticated, setAuthenticated] = useState(true);
+
+  // Define a function to set the authenticated state
+  const handleAuthentication = (value: boolean) => {
+    setAuthenticated(value);
+  };
+  return (
+    <Wrapper>
+      <div className="mx-auto max-w-5xl md:px-6">
+        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
+          <Heading css="text-start leading-tight text-primary">Learn</Heading>
+        </div>
+        {authenticated ? (
+          <>
+            <Learn lessons={lessons} />
+          </>
+        ) : (
+          // Render the Login component when not authenticated
+          <Login setAuthenticated={handleAuthentication} />
+        )}
+      </div>
+    </Wrapper>
+  );
+}
+
+function LessonProgressBar({
+  lessonsInProgress,
+}: {
+  lessonsInProgress: LessonInProgress[];
+}) {
+  const totalLevels = lessonsInProgress.reduce(
+    (total, lesson) => total + lesson.numberOfSuccessesToPass,
+    0,
+  );
+
+  const totalProgress = lessonsInProgress.reduce(
+    (total, lesson) => total + lesson.numberOfSuccesses,
+    0,
+  );
+
+  return <ProgressBar currentLevel={totalProgress} totalLevels={totalLevels} />;
+}
+
 function selectRandomLesson(lessons: LessonInProgress[]) {
   const randomLessonIndex = Math.floor(Math.random() * lessons.length);
   return lessons[randomLessonIndex];
 }
 
-function Learn() {
+function Learn({ lessons }: { lessons: Lesson[] }) {
   const [inputText, setInputText] = useState<string>("");
   const [lessonsInProgress, setLessonsInProgress] = useState<
     LessonInProgress[]
@@ -78,10 +95,19 @@ function Learn() {
   const handleLessonCompletion = () => {
     const newRandomLesson = selectRandomLesson(lessonsInProgress);
     setCurrentLesson(newRandomLesson);
+
+    setLessonsInProgress((prevLessonsInProgress) =>
+      prevLessonsInProgress.map((lesson) =>
+        lesson === currentLesson
+          ? { ...lesson, numberOfSuccesses: lesson.numberOfSuccesses + 1 }
+          : lesson,
+      ),
+    );
   };
 
   return (
     <>
+      <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       <Lesson
         lesson={currentLesson}
         onCompletion={handleLessonCompletion}
@@ -102,12 +128,17 @@ function Lesson({
     "correct" | "incorrect" | "pending"
   >("pending");
 
+  useEffect(() => {
+    setInputText(""); // Reset input text when the lesson changes
+  }, [lesson]);
+
   function onTextChange(newAsciiString: string) {
     setInputText(newAsciiString);
     if (newAsciiString === lesson.correctInputMatch) {
       setLessonStatus("correct");
       setInputText("");
       onCompletion();
+      setLessonStatus("pending");
     } else {
       setLessonStatus("incorrect");
     }
