@@ -153,6 +153,7 @@ export const BrailleTextBox = ({
       rows={6}
       cols={25}
       value={unicodeGlyphString}
+      onChange={() => {}}
       className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
     />
   );

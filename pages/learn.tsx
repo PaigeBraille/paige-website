@@ -7,6 +7,7 @@ import { BrailleTextBox } from "@/components/BrailleTextBox";
 
 interface Lesson {
   prompt: string;
+  hint: string;
   correctInputMatch: string;
   numberOfSuccessesToPass: number;
 }
@@ -18,16 +19,19 @@ interface LessonInProgress extends Lesson {
 const lessons: Lesson[] = [
   {
     prompt: "Type the letter a?",
+    hint: "e.g. ⠁",
     correctInputMatch: "a", // This is the ascii character representing the ascii glyph for A
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter b",
+    hint: "e.g. ⠃",
     correctInputMatch: "b", // This is the ascii character representing the ascii glyph for A
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter c?",
+    hint: "e.g. ⠉",
     correctInputMatch: "c", // This is the ascii character representing the ascii glyph for A
     numberOfSuccessesToPass: 3,
   },
@@ -120,7 +124,7 @@ function Learn({ lessons }: { lessons: Lesson[] }) {
     <>
       <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
-        <p>Lesson complete!</p>
+        <>{"Lesson complete!"}</>
       ) : (
         <Lesson
           lesson={currentLesson}
@@ -142,6 +146,7 @@ function Lesson({
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
+  const [showHint, setShowHint] = useState<boolean>(false);
 
   function onTextChange(newAsciiString: string) {
     setInputText(newAsciiString);
@@ -150,14 +155,40 @@ function Lesson({
       setInputText("");
       onCompletion();
       setLessonStatus("pending");
+      setShowHint(false);
     } else {
       setLessonStatus("incorrect");
     }
   }
 
+  const toggleHint = () => {
+    setShowHint(!showHint);
+  };
+
   return (
     <>
-      <div>{lesson.prompt}</div> {/* Display the question prompt */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          justifyItems: "center",
+          alignItems: "center",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+        }}
+      >
+        <div>
+          {lesson.prompt}
+          {showHint && ` ${lesson.hint}`}
+        </div>{" "}
+        {/* Display the question prompt and hint if showHint is true */}
+        <button
+          className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
+          onClick={toggleHint}
+        >
+          {showHint ? "Hide Hint" : "Show Hint"}
+        </button>
+      </div>
       <BrailleTextBox
         onChange={onTextChange}
         value={inputText}
