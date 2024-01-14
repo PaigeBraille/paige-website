@@ -14,6 +14,7 @@ interface Lesson {
 
 interface LessonInProgress extends Lesson {
   numberOfSuccesses: number;
+  isFirstAppearance: boolean;
 }
 
 const lessons: Lesson[] = [
@@ -24,15 +25,15 @@ const lessons: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter b",
+    prompt: "Type the letter b?",
     hint: "e.g. ⠃",
-    correctInputMatch: "b", // This is the ascii character representing the ascii glyph for A
+    correctInputMatch: "b", // This is the ascii character representing the ascii glyph for B
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter c?",
     hint: "e.g. ⠉",
-    correctInputMatch: "c", // This is the ascii character representing the ascii glyph for A
+    correctInputMatch: "c", // This is the ascii character representing the ascii glyph for C
     numberOfSuccessesToPass: 3,
   },
 ];
@@ -45,6 +46,12 @@ export default function LearnPage() {
   const handleAuthentication = (value: boolean) => {
     setAuthenticated(value);
   };
+
+  const lessonsInProgress: LessonInProgress[] = lessons.map((lesson) => ({
+    ...lesson,
+    numberOfSuccesses: 0,
+    isFirstAppearance: true,
+  }));
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
@@ -53,7 +60,7 @@ export default function LearnPage() {
         </div>
         {authenticated ? (
           <>
-            <Learn lessons={lessons} />
+            <Learn lessons={lessonsInProgress} />
           </>
         ) : (
           // Render the Login component when not authenticated
@@ -82,53 +89,71 @@ function LessonProgressBar({
   return <ProgressBar currentLevel={totalProgress} totalLevels={totalLevels} />;
 }
 
-// I would like this lesson to filter out lessons which have been completed i.e. numberOfSuccesses === numberOfSuccessesToPass.
-// It should never return a lesson which has been completed.
-function selectRandomLesson(lessons: LessonInProgress[]) {
-  const incompleteLessons = lessons.filter(
-    (lesson) => lesson.numberOfSuccesses < lesson.numberOfSuccessesToPass,
-  );
-
-  const randomLessonIndex = Math.floor(
-    Math.random() * incompleteLessons.length,
-  );
-  return incompleteLessons[randomLessonIndex];
-}
-
-function Learn({ lessons }: { lessons: Lesson[] }) {
-  const [lessonsInProgress, setLessonsInProgress] = useState<
-    LessonInProgress[]
-  >(lessons.map((lesson) => ({ ...lesson, numberOfSuccesses: 0 })));
+function Learn({ lessons }: { lessons: LessonInProgress[] }) {
+  const [lessonsInProgress, setLessonsInProgress] =
+    useState<LessonInProgress[]>(lessons);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
-    selectRandomLesson(lessonsInProgress),
+    lessonsInProgress[0],
   );
 
-  const handleLessonCompletion = () => {
-    const newRandomLesson = selectRandomLesson(lessonsInProgress);
-    setCurrentLesson(newRandomLesson);
-
+  const handleLessonCompletion = (lesson: LessonInProgress) => {
+    // Increment the number of successes for the old lesson
     setLessonsInProgress((prevLessonsInProgress) =>
-      prevLessonsInProgress.map((lesson) =>
-        lesson === currentLesson
-          ? { ...lesson, numberOfSuccesses: lesson.numberOfSuccesses + 1 }
-          : lesson,
+      prevLessonsInProgress.map((prevLesson) =>
+        prevLesson.prompt === lesson.prompt
+          ? {
+              ...prevLesson,
+              numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
+            }
+          : prevLesson,
       ),
     );
+
+    // Set the old lesson to not be the first appearance
+    setLessonsInProgress((prevLessonsInProgress) =>
+      prevLessonsInProgress.map((prevLesson) =>
+        prevLesson.prompt === lesson.prompt
+          ? { ...prevLesson, isFirstAppearance: false }
+          : prevLesson,
+      ),
+    );
+
+    // Get a new random lesson
+    const newRandomLesson = selectRandomLesson();
+    setCurrentLesson(newRandomLesson);
   };
 
   const isLessonComplete = lessonsInProgress.every(
-    (lesson) => lesson.numberOfSuccesses === lesson.numberOfSuccessesToPass,
+    (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
   );
+
+  function selectRandomLesson() {
+    const incompleteLessons = lessonsInProgress.filter(
+      (lesson) => lesson.numberOfSuccesses < lesson.numberOfSuccessesToPass,
+    );
+
+    const randomLessonIndex = Math.floor(
+      Math.random() * incompleteLessons.length,
+    );
+    return incompleteLessons[randomLessonIndex];
+  }
 
   return (
     <>
+      {/* show as raw text numberOfSUccesses of each lesson  */}
+      {lessonsInProgress.map((lesson) => (
+        <div key={lesson.prompt}>
+          {lesson.prompt}: {lesson.numberOfSuccesses}
+        </div>
+      ))}
+      {/* show as raw text current lesson */}
       <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
         <>{"Lesson complete!"}</>
       ) : (
         <Lesson
           lesson={currentLesson}
-          onCompletion={handleLessonCompletion}
+          onCompletion={() => handleLessonCompletion(currentLesson)}
         ></Lesson>
       )}
     </>
@@ -139,14 +164,14 @@ function Lesson({
   lesson,
   onCompletion,
 }: {
-  lesson: Lesson;
+  lesson: LessonInProgress;
   onCompletion: () => void;
 }) {
   const [inputText, setInputText] = useState<string>("");
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
-  const [showHint, setShowHint] = useState<boolean>(false);
+  const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
   function onTextChange(newAsciiString: string) {
     setInputText(newAsciiString);
