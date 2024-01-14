@@ -78,13 +78,20 @@ function LessonProgressBar({
   return <ProgressBar currentLevel={totalProgress} totalLevels={totalLevels} />;
 }
 
+// I would like this lesson to filter out lessons which have been completed i.e. numberOfSuccesses === numberOfSuccessesToPass.
+// It should never return a lesson which has been completed.
 function selectRandomLesson(lessons: LessonInProgress[]) {
-  const randomLessonIndex = Math.floor(Math.random() * lessons.length);
-  return lessons[randomLessonIndex];
+  const incompleteLessons = lessons.filter(
+    (lesson) => lesson.numberOfSuccesses < lesson.numberOfSuccessesToPass,
+  );
+
+  const randomLessonIndex = Math.floor(
+    Math.random() * incompleteLessons.length,
+  );
+  return incompleteLessons[randomLessonIndex];
 }
 
 function Learn({ lessons }: { lessons: Lesson[] }) {
-  const [inputText, setInputText] = useState<string>("");
   const [lessonsInProgress, setLessonsInProgress] = useState<
     LessonInProgress[]
   >(lessons.map((lesson) => ({ ...lesson, numberOfSuccesses: 0 })));
@@ -105,13 +112,21 @@ function Learn({ lessons }: { lessons: Lesson[] }) {
     );
   };
 
+  const isLessonComplete = lessonsInProgress.every(
+    (lesson) => lesson.numberOfSuccesses === lesson.numberOfSuccessesToPass,
+  );
+
   return (
     <>
       <LessonProgressBar lessonsInProgress={lessonsInProgress} />
-      <Lesson
-        lesson={currentLesson}
-        onCompletion={handleLessonCompletion}
-      ></Lesson>
+      {isLessonComplete ? (
+        <p>Lesson complete!</p>
+      ) : (
+        <Lesson
+          lesson={currentLesson}
+          onCompletion={handleLessonCompletion}
+        ></Lesson>
+      )}
     </>
   );
 }
