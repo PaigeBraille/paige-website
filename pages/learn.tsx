@@ -7,7 +7,7 @@ import { BrailleTextBox } from "@/components/BrailleTextBox";
 
 export default function LearnPage() {
   // Add a state to track if the user is authenticated
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   // Define a function to set the authenticated state
   const handleAuthentication = (value: boolean) => {
@@ -61,72 +61,63 @@ const lessons: Lesson[] = [
   },
 ];
 
+function selectRandomLesson(lessons: LessonInProgress[]) {
+  const randomLessonIndex = Math.floor(Math.random() * lessons.length);
+  return lessons[randomLessonIndex];
+}
+
 function Learn() {
   const [inputText, setInputText] = useState<string>("");
-  const [currentLessonStatus, setCurrentLessonStatus] = useState<
-    "correct" | "incorrect" | "pending"
-  >("pending");
   const [lessonsInProgress, setLessonsInProgress] = useState<
     LessonInProgress[]
   >(lessons.map((lesson) => ({ ...lesson, numberOfSuccesses: 0 })));
-
-  // Randomly select a lesson from the lessonsInProgress array
-  const randomLessonIndex = Math.floor(
-    Math.random() * lessonsInProgress.length,
+  const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
+    selectRandomLesson(lessonsInProgress),
   );
-  const randomLesson = lessonsInProgress[randomLessonIndex];
 
-  // Rest of the code...
-
-  function onTextChange(newAsciiString: string) {
-    if (newAsciiString === lessons[0].correctInputMatch) {
-      setCurrentLessonStatus("correct");
-    } else {
-      setCurrentLessonStatus("incorrect");
-    }
-    setInputText(newAsciiString);
-  }
+  const handleLessonCompletion = () => {
+    const newRandomLesson = selectRandomLesson(lessonsInProgress);
+    setCurrentLesson(newRandomLesson);
+  };
 
   return (
     <>
-      <div>{lessons[0].prompt}</div> {/* Display the question prompt */}
-      <BrailleTextBox onChange={onTextChange}></BrailleTextBox>
-      <div>Lesson Status: {currentLessonStatus}</div>
+      <Lesson
+        lesson={currentLesson}
+        onCompletion={handleLessonCompletion}
+      ></Lesson>
     </>
   );
 }
 
-function Lesson({ lesson }: { lesson: Lesson }) {
+function Lesson({
+  lesson,
+  onCompletion,
+}: {
+  lesson: Lesson;
+  onCompletion: () => void;
+}) {
   const [inputText, setInputText] = useState<string>("");
-  const [currentLessonStatus, setCurrentLessonStatus] = useState<
+  const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
-  const [lessonsInProgress, setLessonsInProgress] = useState<
-    LessonInProgress[]
-  >(lessons.map((lesson) => ({ ...lesson, numberOfSuccesses: 0 })));
-
-  // Randomly select a lesson from the lessonsInProgress array
-  const randomLessonIndex = Math.floor(
-    Math.random() * lessonsInProgress.length,
-  );
-  const randomLesson = lessonsInProgress[randomLessonIndex];
-
-  // Rest of the code...
 
   function onTextChange(newAsciiString: string) {
-    if (newAsciiString === lessons[0].correctInputMatch) {
-      setCurrentLessonStatus("correct");
-    } else {
-      setCurrentLessonStatus("incorrect");
-    }
     setInputText(newAsciiString);
+    if (newAsciiString === lesson.correctInputMatch) {
+      setLessonStatus("correct");
+      setInputText("");
+      onCompletion();
+    } else {
+      setLessonStatus("incorrect");
+    }
   }
 
   return (
     <>
-      <div>{lessons[0].prompt}</div> {/* Display the question prompt */}
+      <div>{lesson.prompt}</div> {/* Display the question prompt */}
       <BrailleTextBox onChange={onTextChange}></BrailleTextBox>
-      <div>Lesson Status: {currentLessonStatus}</div>
+      <div>Lesson Status: {lessonStatus}</div>
     </>
   );
 }
