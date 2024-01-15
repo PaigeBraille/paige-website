@@ -58,6 +58,16 @@ export default function Support() {
         <div className="border-t border-paigedarkgrey  md:mb-6">
           <FAQ questions={questions} />
         </div>
+        {/* <div className="flex flex-col bg-white p-4 sm:my-4 justify-between relative gap-6 sm:rounded-lg">
+          <div className="flex flex-col justify-between">
+            <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-xl">
+            Paige Connect works with your favourite braille software{" "}
+            <a className="text-primary" href="/compatibility">
+              Check it out!
+            </a>
+            </h2>
+          </div>
+        </div> */}
         <ManualSection />
       </div>
     </Wrapper>

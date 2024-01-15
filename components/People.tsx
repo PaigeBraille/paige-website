@@ -21,6 +21,7 @@ function TeamMember(props: {
         alt={props.heading}
         width={64}
         height={64}
+        quality={25}
       />
       <h3 className="mb-1 text-lg font-bold tracking-tight text-gray-900 leading-tight">
         {props.heading}

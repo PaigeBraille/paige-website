@@ -80,7 +80,7 @@ export default function BlogPost({ post }: PostProps) {
               alt={post.alt}
               width={400}
               height={250}
-              quality={30}
+              quality={25}
             />
           </div>
           <div className="flex flex-col gap-2 p-4 bg-blue-50 rounded-lg md:w-1/2">

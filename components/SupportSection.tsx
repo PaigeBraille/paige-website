@@ -105,7 +105,7 @@ export const Translate = () => {
           number={1}
           image={ConnectA1}
           alt="Bluetooth symbol."
-          instructionText="On your phone, tablet or laptop, turn Bluetooth on and connect to the Paige device."
+          instructionText="On your phone, tablet or laptop, turn Bluetooth on and pair with Paige Connect."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
@@ -134,7 +134,7 @@ export const Learn = () => {
           number={1}
           image={ConnectA1}
           alt="Bluetooth symbol."
-          instructionText="On your phone, tablet or laptop, turn Bluetooth on and connect to the Paige device."
+          instructionText="On your phone, tablet or laptop, turn Bluetooth on and pair with Paige Connect."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
