@@ -1,6 +1,7 @@
 import React from "react";
 import Graphic4 from "../public/svg/board-outline.svg";
 import Heading from "../components/Heading";
+import Link from "next/link";
 
 export default function ManualSection() {
   return (
@@ -8,9 +9,9 @@ export default function ManualSection() {
       <div className="flex flex-col justify-between">
         <h2 className="font-bold text-paigedarkgrey tracking-tight leading-tight text-l sm:text-xl md:text-3xl text-center">
           Paige Connect works with your favourite {"  "}
-          <a className="text-primary" href="/compatibility">
+          <Link className="text-primary" href="/compatibility">
           braille software
-          </a>.{"  "}
+          </Link>.{"  "}
           If you have any questions, get in touch at{" "}
           <a className="text-primary" href="mailto: hello@paigebraille.com">
             hello@paigebraille.com
