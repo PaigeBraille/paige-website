@@ -5,6 +5,10 @@ import Swap2 from "../public/support-imgs/swap-2.jpeg";
 import Swap3 from "../public/support-imgs/swap-3.jpeg";
 import ConnectA1 from "../public/support-imgs/connect-1.png";
 import ConnectA2 from "../public/support-imgs/connect-2.png";
+import Translate2 from "../public/support-imgs/translate-2.png";
+import Translate3 from "../public/support-imgs/translate-3.png";
+import Learn2 from "../public/support-imgs/learn-2.png";
+import Learn3 from "../public/support-imgs/learn-3.png";
 // import ConnectA3 from "../public/support-imgs/connect-2.jpg";
 import ConnectB1 from "../public/support-imgs/connect-1.png";
 import ConnectB2 from "../public/support-imgs/connect-b-2.png";
@@ -93,34 +97,64 @@ export const Swap = () => {
   );
 };
 
-export const ConnectA = () => {
+export const Translate = () => {
   return (
     <section className="bg-white py-2 mx-6 sm:mx-0 text-center">
       <div className="flex flex-wrap">
         <SupportSection
           number={1}
           image={ConnectA1}
-          alt="Wi-Fi symbol."
-          instructionText="Connect to the Paige Wi-Fi network. Enter the password 12345678."
+          alt="Bluetooth symbol."
+          instructionText="On your phone, tablet or laptop, turn Bluetooth on and pair with Paige Connect."
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={2}
-          image={ConnectA2}
+          image={Translate2}
           alt="Screenshot of the Paige Connect web app open in a browser."
-          instructionText="Connect to the web app by typing http://192.168.0.1 into your browser."
+          instructionText="Go to our website at paigebraille.com/translate"
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={3}
-          image={ConnectA2}
+          image={Translate3}
           alt="Screenshot of the Paige Connect web app open in a browser."
-          instructionText="Please note that you will not be connected to internet."
+          instructionText="Start writing braille to see or hear what you emboss!"
         />
       </div>
     </section>
   );
 };
+
+export const Learn = () => {
+  return (
+    <section className="bg-white py-2 mx-6 sm:mx-0 text-center">
+      <div className="flex flex-wrap">
+        <SupportSection
+          number={1}
+          image={ConnectA1}
+          alt="Bluetooth symbol."
+          instructionText="On your phone, tablet or laptop, turn Bluetooth on and pair with Paige Connect."
+        />
+        <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+        <SupportSection
+          number={2}
+          image={Learn2}
+          alt="Screenshot of the Paige Connect web app open in a browser."
+          instructionText="Go to our website at paigebraill.com/learn"
+        />
+        <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
+        <SupportSection
+          number={3}
+          image={Learn3}
+          alt="Screenshot of the Paige Connect web app open in a browser."
+          instructionText="Start learning braille with curated online exercises!"
+        />
+      </div>
+    </section>
+  );
+};
+
 
 export const ConnectB = () => {
   return (
