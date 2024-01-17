@@ -492,6 +492,215 @@ const lessons: Lesson[] = [
     correctInputMatch: "z",
     numberOfSuccessesToPass: 3,
   },
+  {
+    prompt: "Type the contraction and?",
+    hint: "and is dots 1 2 3 4 6",
+    correctInputMatch: "&",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the contraction for?",
+    hint: "for is dots 1 2 3 4 5 6",
+    correctInputMatch: "=",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the contraction of?",
+    hint: "of is dots 1 2 3 5 6",
+    correctInputMatch: "(",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the contraction the?",
+    hint: "the is dots 2 3 4 6",
+    correctInputMatch: "!",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the contraction with?",
+    hint: "with is dots 2 3 4 5 6",
+    correctInputMatch: ")",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign child?",
+    hint: "child is dots 1 6",
+    correctInputMatch: "*",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign shall?",
+    hint: "shall is dots 1 4 6",
+    correctInputMatch: "%",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign this?",
+    hint: "this is dots 1 4 5 6",
+    correctInputMatch: "?",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign which?",
+    hint: "which is dots 1 5 6",
+    correctInputMatch: ":",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign out?",
+    hint: "out is dots 1 2 5 6",
+    correctInputMatch: "\\",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong wordsign still?",
+    hint: "still is dots 3 4",
+    correctInputMatch: "/",
+    numberOfSuccessesToPass: 3,
+  },
+  // Strong Groupsigns
+  {
+    prompt: "Type the strong groupsign ch?",
+    hint: "ch is dots 1 6",
+    correctInputMatch: "*",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign sh?",
+    hint: "sh is dots 1 4 6",
+    correctInputMatch: "%",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign th?",
+    hint: "th is dots 1 4 5 6",
+    correctInputMatch: "?",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign wh?",
+    hint: "wh is dots 1 5 6",
+    correctInputMatch: ":",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign ou?",
+    hint: "ou is dots 1 2 5 6",
+    correctInputMatch: "\\",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign st?",
+    hint: "st is dots 3 4",
+    correctInputMatch: "/",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign gh?",
+    hint: "gh is dots 1 2 6",
+    correctInputMatch: "<",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign ed?",
+    hint: "ed is dots 1 2 4 6",
+    correctInputMatch: "$",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign er?",
+    hint: "er is dots 1 2 4 5 6",
+    correctInputMatch: "]",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign ow?",
+    hint: "ow is dots 2 4 6",
+    correctInputMatch: "[",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign ar?",
+    hint: "ar is dots 3 4 5",
+    correctInputMatch: ">",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the strong groupsign ing?",
+    hint: "ing is dots 3 4 6",
+    correctInputMatch: "+",
+    numberOfSuccessesToPass: 3,
+  },
+
+  // Lower Groupsigns
+  {
+    prompt: "Type the lower groupsign ea?",
+    hint: "ea is dot 2",
+    correctInputMatch: "1",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign bb?",
+    hint: "bb is dots 2 3",
+    correctInputMatch: "2",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign cc?",
+    hint: "cc is dots 2 5",
+    correctInputMatch: "3",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign ff?",
+    hint: "ff is dots 2 3 5",
+    correctInputMatch: "6",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign gg?",
+    hint: "gg is dots 2 3 5 6",
+    correctInputMatch: "7",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign be?",
+    hint: "be is dots 2 3",
+    correctInputMatch: "2",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign con?",
+    hint: "con is dots 2 5",
+    correctInputMatch: "3",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign dis?",
+    hint: "dis is dots 2 5 6",
+    correctInputMatch: "4",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign en?",
+    hint: "en is dots 2 6",
+    correctInputMatch: "5",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "Type the lower groupsign in?",
+    hint: "in is dots 3 5",
+    correctInputMatch: "9",
+    numberOfSuccessesToPass: 3,
+  },
+
+  // Lower Wordsigns
+  {
+    prompt: "Type the lower wordsign be?",
+    hint: "be is dots 2 3",
+    correctInputMatch: "2",
+    numberOfSuccessesToPass: 3,
+  },
 ];
 
 export default function LearnPage() {
