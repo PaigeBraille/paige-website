@@ -50,7 +50,7 @@ export default function HistorySection() {
 
       <HistoryItem
         title="Perkins Brailler"
-        text='The most widely used mechanical braille writer in the world since its invention in 1951. It has been hailed as "the best machine ever invented to teach students braille".'
+        text="The most widely used mechanical braille writer in the world since its invention in 1951. It has been hailed as 'the best machine ever invented to teach students braille'."
         idx={1951}
         image={History1}
       />
