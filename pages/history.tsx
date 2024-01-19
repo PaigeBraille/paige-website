@@ -11,8 +11,8 @@ const HeroText = () => {
   return (
     <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
       <h1 className="text-lg sm:text-xl md:text-3xl tracking-tight leading-tight md:w-2/3 font-extralight">
-        <span className="font-extrabold text-primary">Paige Connect</span>builds on a great a 
-        tradition of adaptations for the Perkins braille writer.
+        <span className="font-extrabold text-primary">Paige Connect</span> Paige Connect builds on a 
+        great a tradition of adaptations for the Perkins braille writer. 
       </h1>
     </div>
   );
