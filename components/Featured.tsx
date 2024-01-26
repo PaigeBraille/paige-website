@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Featured() {
   return (
-    <div className="flex flex-col md:flex-row bg-blue-50 px-6 p-6 md:p-6  justify-between relative overflow-visible gap-4 rounded-lg">
+    <div className="flex flex-col md:flex-row bg-blue-50 px-6 p-6 md:p-6 mt-6 justify-between relative overflow-visible gap-4 rounded-lg">
       <div className="flex md:w-2/5 md:h-full">
         <Image
           src="/testimonial-imgs/seren.jpeg"

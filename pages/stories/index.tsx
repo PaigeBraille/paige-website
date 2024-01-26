@@ -28,6 +28,8 @@ export default function Stories({
         <InstagramFeed posts={instagram} />
         <div className="px-6 md:px-0">
           <Featured  />
+        </div>
+        <div className="px-6 md:px-0">
           <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
             <Heading css="text-start leading-tight text-paigedarkgrey">
               Stories
