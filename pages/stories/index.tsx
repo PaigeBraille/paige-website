@@ -8,6 +8,7 @@ import path from "path";
 import { getInstagramPosts, InstagramPost } from "../../lib/instagram";
 import InstagramFeed from "../../components/InstagramFeed";
 import NewsletterSection2 from "../../components/NewsletterSection2";
+import Featured from "../../components/Featured";
 import SubscribePopup from "../../components/SubscribePopup";
 import Graphic3 from "../../public/svg/graphic-3.svg";
 
@@ -25,12 +26,13 @@ export default function Stories({
     <Wrapper>
       <div className="max-w-5xl mx-auto md:px-6 flex flex-col">
         <InstagramFeed posts={instagram} />
-        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-paigedarkgrey">
-            Stories
-          </Heading>
-        </div>
         <div className="px-6 md:px-0">
+          <Featured  />
+          <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
+            <Heading css="text-start leading-tight text-paigedarkgrey">
+              Stories
+            </Heading>
+          </div>
           <div className="flex flex-col gap-4">
             {posts.map((post) => (
               <TestimonialPost key={post.slug} post={post} />
