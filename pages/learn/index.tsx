@@ -837,17 +837,7 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
           }
         : prevLesson,
     );
-    setLessonsInProgress((oldLessons) =>
-      oldLessons.map((prevLesson) =>
-        prevLesson.prompt === lesson.prompt
-          ? {
-              ...prevLesson,
-              numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
-              isFirstAppearance: false,
-            }
-          : prevLesson,
-      ),
-    );
+    setLessonsInProgress(updatedLessonsInProgress);
 
     // Get a new random lesson
     const newRandomLesson = selectRandomLesson(updatedLessonsInProgress);
@@ -893,7 +883,7 @@ function IndividualLesson({
       setInputText("");
       onCompletion();
       setLessonStatus("pending");
-      setShowHint(false);
+      // setShowHint(false);
     } else {
       setLessonStatus("incorrect");
     }
