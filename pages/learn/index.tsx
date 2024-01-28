@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { Wrapper } from "../components/Wrapper";
-import Heading from "../components/Heading";
-import Login from "../components/Login"; // Import the Login component
-import ProgressBar from "../components/ProgressBar";
+import { Wrapper } from "../../components/Wrapper";
+import Heading from "../../components/Heading";
+import Login from "../../components/Login"; // Import the Login component
+import ProgressBar from "../../components/ProgressBar";
 import { BrailleTextBox } from "@/components/BrailleTextBox";
 
 interface Lesson {
@@ -17,7 +17,13 @@ interface LessonInProgress extends Lesson {
   isFirstAppearance: boolean;
 }
 
-const lessons: Lesson[] = [
+interface Chapter {
+  name: string;
+  description: string;
+  lessons: Lesson[];
+}
+
+const LESSONS: Lesson[] = [
   {
     prompt: "Type the letter a?",
     hint: "a is dot 1",
@@ -285,13 +291,13 @@ const lessons: Lesson[] = [
   {
     prompt: 'Type the opening quote symbol "?',
     hint: '" is dots 2 3 6',
-    correctInputMatch: '8',
+    correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: 'Type the closing quote symbol "?',
     hint: '" is dots  3 5 6',
-    correctInputMatch: '0',
+    correctInputMatch: "0",
     numberOfSuccessesToPass: 3,
   },
   {
@@ -703,6 +709,57 @@ const lessons: Lesson[] = [
   },
 ];
 
+const CHAPTERS: Chapter[] = [
+  {
+    name: "Chapter 1",
+    description: "The alphabet",
+    lessons: [
+      {
+        prompt: "Type the letter a?",
+        hint: "a is dot 1",
+        correctInputMatch: "a",
+        numberOfSuccessesToPass: 3,
+      },
+      {
+        prompt: "Type the letter b?",
+        hint: "b is dots 1 2",
+        correctInputMatch: "b",
+        numberOfSuccessesToPass: 3,
+      },
+      {
+        prompt: "Type the letter c?",
+        hint: "c is dots 1 4",
+        correctInputMatch: "c",
+        numberOfSuccessesToPass: 3,
+      },
+    ],
+  },
+  {
+    name: "Chapter 2",
+    description: "The alphabet extended",
+    lessons: [
+      {
+        prompt: "Type the letter k?",
+        hint: "k is dots 1 3",
+        correctInputMatch: "k",
+        numberOfSuccessesToPass: 3,
+      },
+      {
+        prompt: "Type the letter l?",
+        hint: "l is dots 1 2 3",
+        correctInputMatch: "l",
+        numberOfSuccessesToPass: 3,
+      },
+      {
+        prompt: "Type the letter m?",
+        hint: "m is dots 1 3 4",
+        correctInputMatch: "m",
+        numberOfSuccessesToPass: 3,
+      },
+    ],
+  },
+];
+
 export default function LearnPage() {
   // Add a state to track if the user is authenticated
   const [authenticated, setAuthenticated] = useState(true);
@@ -712,7 +769,7 @@ export default function LearnPage() {
     setAuthenticated(value);
   };
 
-  const lessonsInProgress: LessonInProgress[] = lessons.map((lesson) => ({
+  const lessonsInProgress: LessonInProgress[] = LESSONS.map((lesson) => ({
     ...lesson,
     numberOfSuccesses: 0,
     isFirstAppearance: true,
@@ -720,12 +777,9 @@ export default function LearnPage() {
   return (
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
-        <div className="bg-white flex justify-between items-end py-6 md:py-12 px-4">
-          <Heading css="text-start leading-tight text-primary">Learn</Heading>
-        </div>
         {authenticated ? (
           <>
-            <Learn lessons={lessonsInProgress} />
+            <ChapterList chapters={CHAPTERS} />
           </>
         ) : (
           // Render the Login component when not authenticated
@@ -765,7 +819,7 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   return incompleteLessons[randomLessonIndex];
 }
 
-function Learn({ lessons }: { lessons: LessonInProgress[] }) {
+function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
   const [lessonsInProgress, setLessonsInProgress] =
     useState<LessonInProgress[]>(lessons);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
@@ -779,16 +833,18 @@ function Learn({ lessons }: { lessons: LessonInProgress[] }) {
         ? {
             ...prevLesson,
             numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
+            isFirstAppearance: false,
           }
         : prevLesson,
     );
-    setLessonsInProgress(updatedLessonsInProgress);
-
-    // Set the old lesson to not be the first appearance
-    setLessonsInProgress((prevLessonsInProgress) =>
-      prevLessonsInProgress.map((prevLesson) =>
+    setLessonsInProgress((oldLessons) =>
+      oldLessons.map((prevLesson) =>
         prevLesson.prompt === lesson.prompt
-          ? { ...prevLesson, isFirstAppearance: false }
+          ? {
+              ...prevLesson,
+              numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
+              isFirstAppearance: false,
+            }
           : prevLesson,
       ),
     );
@@ -808,16 +864,16 @@ function Learn({ lessons }: { lessons: LessonInProgress[] }) {
       {isLessonComplete ? (
         <>{"Lesson complete!"}</>
       ) : (
-        <Lesson
+        <IndividualLesson
           lesson={currentLesson}
           onCompletion={() => handleLessonCompletion(currentLesson)}
-        ></Lesson>
+        ></IndividualLesson>
       )}
     </>
   );
 }
 
-function Lesson({
+function IndividualLesson({
   lesson,
   onCompletion,
 }: {
@@ -876,6 +932,80 @@ function Lesson({
         value={inputText}
       ></BrailleTextBox>
       <div>Lesson Status: {lessonStatus}</div>
+    </>
+  );
+}
+
+function Chapter({
+  chapter,
+  setSelectedChapter,
+}: {
+  chapter: Chapter;
+  setSelectedChapter: React.Dispatch<React.SetStateAction<Chapter | null>>;
+}) {
+  const { name, description, lessons } = chapter;
+  const lessonsInProgress: LessonInProgress[] = lessons.map((lesson) => ({
+    ...lesson,
+    numberOfSuccesses: 0,
+    isFirstAppearance: true,
+  }));
+
+  const goBack = () => {
+    setSelectedChapter(null);
+  };
+
+  return (
+    <div className="py-6 md:py-12 px-4">
+      <div className="bg-white flex justify-between items-center align-content-center my-6">
+        <div className="flex">
+          <Heading css="text-start leading-tight text-primary mr-3">
+            {name}{" "}
+          </Heading>
+          <Heading css="text-start leading-tight text-tertiary">
+            {` ${description}`}
+          </Heading>
+        </div>
+        <button
+          className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
+          onClick={goBack}
+        >
+          Back
+        </button>
+      </div>
+      <Lessons lessons={lessonsInProgress} />
+    </div>
+  );
+}
+
+function ChapterList({ chapters }: { chapters: Chapter[] }) {
+  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  return (
+    <>
+      {selectedChapter === null && (
+        <div className="py-6 md:py-12 px-4">
+          <div className="bg-white flex justify-between items-end">
+            <Heading css="text-start leading-tight text-primary">Learn</Heading>
+          </div>
+          <ul>
+            {chapters.map((chapter) => (
+              <li key={chapter.name}>
+                <button
+                  onClick={() => setSelectedChapter(chapter)}
+                  className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2  hover:bg-blue-700"
+                >
+                  {`${chapter.name} - ${chapter.description}`}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {selectedChapter && (
+        <Chapter
+          chapter={selectedChapter}
+          setSelectedChapter={setSelectedChapter}
+        />
+      )}
     </>
   );
 }
