@@ -4,6 +4,7 @@ import Heading from "../../components/Heading";
 import Login from "../../components/Login"; // Import the Login component
 import ProgressBar from "../../components/ProgressBar";
 import { BrailleTextBox } from "@/components/BrailleTextBox";
+import audioFile from "./correct.mp3";
 
 interface Lesson {
   prompt: string;
@@ -876,13 +877,24 @@ function IndividualLesson({
   >("pending");
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
-  function onTextChange(newAsciiString: string) {
+  const audio = new Audio(audioFile);
+  // const play = async () => {
+  //   console.log("playing");
+  //   await audio.play();
+  // };
+
+  async function onTextChange(newAsciiString: string) {
     setInputText(newAsciiString);
     if (newAsciiString === lesson.correctInputMatch) {
       setLessonStatus("correct");
+      audio.play();
+
+      // await 500ms before moving on to the next lesson
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      setLessonStatus("pending");
       setInputText("");
       onCompletion();
-      setLessonStatus("pending");
       // setShowHint(false);
     } else {
       setLessonStatus("incorrect");
