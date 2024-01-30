@@ -36,7 +36,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
           />
         </form>
         <p className="mb-4 mt-4">
-          © Paige Braille Ltd 2023. All rights reserved. Company no. 14311624.
+          © Paige Braille Ltd 2024. All rights reserved. Company no. 14311624.
         </p>
       </div>
       <div className="w-full md:w-1/4 text-center md:text-left md:border-l md:border-white p-2">

@@ -111,14 +111,14 @@ export const Translate = () => {
         <SupportSection
           number={2}
           image={Translate2}
-          alt="Screenshot of the Paige Connect web app open in a browser."
+          alt="QR code to our website at paigebraille.com/translate."
           instructionText="Go to our website at paigebraille.com/translate"
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={3}
           image={Translate3}
-          alt="Screenshot of the Paige Connect web app open in a browser."
+          alt="Screenshot of the Paige website open in a browser with the Translate tab selected."
           instructionText="Start writing braille to see or hear what you emboss!"
         />
       </div>
@@ -140,14 +140,14 @@ export const Learn = () => {
         <SupportSection
           number={2}
           image={Learn2}
-          alt="Screenshot of the Paige Connect web app open in a browser."
-          instructionText="Go to our website at paigebraill.com/learn"
+          alt="QR code to our website at paigebraille.com/learn."
+          instructionText="Go to our website at paigebraille.com/learn"
         />
         <div className="w-px h-full bg-gray-400 my-4 md:hidden"></div>
         <SupportSection
           number={3}
           image={Learn3}
-          alt="Screenshot of the Paige Connect web app open in a browser."
+          alt="Screenshot of the Paige website open in a browser with the Learn tab selected."
           instructionText="Start learning braille with curated online exercises!"
         />
       </div>

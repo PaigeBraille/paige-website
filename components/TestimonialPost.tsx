@@ -5,7 +5,7 @@ import { PostProps } from "@/lib/posts";
 export default function TestimonialPost({ post }: PostProps) {
   return (
     <div className="flex flex-col md:flex-row gap-4">
-      <div className="flex md:w-1/2 md:h-full">
+      <div className="flex md:w-2/5 md:h-full">
         <Image
           src={post.coverImage}
           alt={post.alt}
@@ -14,7 +14,7 @@ export default function TestimonialPost({ post }: PostProps) {
           quality={25}
         />
       </div>
-      <div className="flex flex-col gap-2 p-4 bg-blue-50 rounded-lg md:w-1/2">
+      <div className="flex flex-col gap-2 p-4 bg-blue-50 rounded-lg md:w-3/5">
         <h2 className="text-xl font-bold tracking-tight" id={post.title}>
           {post.title}
         </h2>
