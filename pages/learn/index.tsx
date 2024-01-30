@@ -63,19 +63,19 @@ const LESSONS: Lesson[] = [
   },
   {
     prompt: "Type the letter u?",
-    hint: "u is dots 1 3 6",
+    hint: "k is dots 1 3 6",
     correctInputMatch: "u",
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter v?",
-    hint: "v is dots 1 2 3 6",
+    hint: "l is dots 1 2 3 6",
     correctInputMatch: "v",
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter x?",
-    hint: "x is dots 1 3 4 6",
+    hint: "m is dots 1 3 4 6",
     correctInputMatch: "x",
     numberOfSuccessesToPass: 3,
   },
@@ -712,52 +712,74 @@ const LESSONS: Lesson[] = [
 
 const CHAPTERS: Chapter[] = [
   {
-    name: "Chapter 1",
-    description: "The alphabet",
-    lessons: [
-      {
-        prompt: "Type the letter a?",
-        hint: "a is dot 1",
-        correctInputMatch: "a",
-        numberOfSuccessesToPass: 3,
-      },
-      {
-        prompt: "Type the letter b?",
-        hint: "b is dots 1 2",
-        correctInputMatch: "b",
-        numberOfSuccessesToPass: 3,
-      },
-      {
-        prompt: "Type the letter c?",
-        hint: "c is dots 1 4",
-        correctInputMatch: "c",
-        numberOfSuccessesToPass: 3,
-      },
-    ],
+    name: "Level 1",
+    description: "The alphabet: a, b, c",
+    lessons: [LESSONS[0],LESSONS[1],LESSONS[2]],
   },
   {
-    name: "Chapter 2",
-    description: "The alphabet extended",
-    lessons: [
-      {
-        prompt: "Type the letter k?",
-        hint: "k is dots 1 3",
-        correctInputMatch: "k",
-        numberOfSuccessesToPass: 3,
-      },
-      {
-        prompt: "Type the letter l?",
-        hint: "l is dots 1 2 3",
-        correctInputMatch: "l",
-        numberOfSuccessesToPass: 3,
-      },
-      {
-        prompt: "Type the letter m?",
-        hint: "m is dots 1 3 4",
-        correctInputMatch: "m",
-        numberOfSuccessesToPass: 3,
-      },
-    ],
+    name: "Level 2",
+    description: "The alphabet: k, l, m",
+    lessons: [LESSONS[3],LESSONS[4], LESSONS[5]],
+  },
+  {
+    name: "Level 3",
+    description: "The alphabet: u, v, x",
+    lessons: [ LESSONS[6],LESSONS[7], LESSONS[8]],
+  },
+  {
+    name: "Level 4",
+    description: "The alphabet: d, f",
+    lessons: [LESSONS[9], LESSONS[10]],
+  },
+  {
+    name: "Level 5",
+    description: "The alphabet: n, p",
+    lessons: [LESSONS[11], LESSONS[12]],
+  },
+  {
+    name: "Level 6",
+    description: "The alphabet: y",
+    lessons: [LESSONS[13]],
+  },
+  {
+    name: "Level 7",
+    description: "The alphabet: e, i",
+    lessons: [LESSONS[14],LESSONS[15]],
+  },
+  {
+    name: "Level 8",
+    description: "The alphabet: o, s",
+    lessons: [LESSONS[16],LESSONS[17]],
+  },
+  {
+    name: "Level 9",
+    description: "The alphabet: z",
+    lessons: [LESSONS[18]],
+  },
+  {
+    name: "Level 10",
+    description: "The alphabet: h, j",
+    lessons: [LESSONS[19],LESSONS[20]],
+  },
+  {
+    name: "Level 11",
+    description: "The alphabet: r, t",
+    lessons: [LESSONS[21],LESSONS[22]],
+  },
+  {
+    name: "Level 12",
+    description: "The alphabet: w",
+    lessons: [LESSONS[23]],
+  },
+  {
+    name: "Level 13",
+    description: "The alphabet: g",
+    lessons: [LESSONS[24]],
+  },
+  {
+    name: "Level 14",
+    description: "The alphabet: q",
+    lessons: [LESSONS[25]],
   },
 ];
 
