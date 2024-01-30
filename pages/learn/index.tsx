@@ -5,6 +5,12 @@ import Login from "../../components/Login"; // Import the Login component
 import ProgressBar from "../../components/ProgressBar";
 import { BrailleTextBox } from "@/components/BrailleTextBox";
 import audioFile from "./correct.mp3";
+import Link from "next/link";
+import {
+  faChevronDown,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Lesson {
   prompt: string;
@@ -23,6 +29,22 @@ interface Chapter {
   description: string;
   lessons: Lesson[];
 }
+
+export type FAQuestion = {
+  question: string; // Question
+  answer: string[]; // List of paragraphs
+};
+
+const questions: FAQuestion[] = [
+  {
+    question: "Alphabet",
+    answer: [],
+  },
+  {
+    question: "Numbers",
+    answer: [],
+  },
+];
 
 const LESSONS: Lesson[] = [
   {
@@ -713,72 +735,72 @@ const LESSONS: Lesson[] = [
 const CHAPTERS: Chapter[] = [
   {
     name: "Level 1",
-    description: "The alphabet: a, b, c",
+    description: "a, b, c",
     lessons: [LESSONS[0],LESSONS[1],LESSONS[2]],
   },
   {
     name: "Level 2",
-    description: "The alphabet: k, l, m",
+    description: "k, l, m",
     lessons: [LESSONS[3],LESSONS[4], LESSONS[5]],
   },
   {
     name: "Level 3",
-    description: "The alphabet: u, v, x",
+    description: "u, v, x",
     lessons: [ LESSONS[6],LESSONS[7], LESSONS[8]],
   },
   {
     name: "Level 4",
-    description: "The alphabet: d, f",
+    description: "d, f",
     lessons: [LESSONS[9], LESSONS[10]],
   },
   {
     name: "Level 5",
-    description: "The alphabet: n, p",
+    description: "n, p",
     lessons: [LESSONS[11], LESSONS[12]],
   },
   {
     name: "Level 6",
-    description: "The alphabet: y",
+    description: "y",
     lessons: [LESSONS[13]],
   },
   {
     name: "Level 7",
-    description: "The alphabet: e, i",
+    description: "e, i",
     lessons: [LESSONS[14],LESSONS[15]],
   },
   {
     name: "Level 8",
-    description: "The alphabet: o, s",
+    description: "o, s",
     lessons: [LESSONS[16],LESSONS[17]],
   },
   {
     name: "Level 9",
-    description: "The alphabet: z",
+    description: "z",
     lessons: [LESSONS[18]],
   },
   {
     name: "Level 10",
-    description: "The alphabet: h, j",
+    description: "h, j",
     lessons: [LESSONS[19],LESSONS[20]],
   },
   {
     name: "Level 11",
-    description: "The alphabet: r, t",
+    description: "r, t",
     lessons: [LESSONS[21],LESSONS[22]],
   },
   {
     name: "Level 12",
-    description: "The alphabet: w",
+    description: "w",
     lessons: [LESSONS[23]],
   },
   {
     name: "Level 13",
-    description: "The alphabet: g",
+    description: "g",
     lessons: [LESSONS[24]],
   },
   {
     name: "Level 14",
-    description: "The alphabet: q",
+    description: "q",
     lessons: [LESSONS[25]],
   },
 ];
@@ -980,6 +1002,9 @@ function Chapter({
 
   return (
     <div className="py-6 md:py-12 px-4">
+      <button onClick={goBack} className="text-primary text-xs font-light">
+          ← Go back
+      </button>
       <div className="bg-white flex justify-between items-center align-content-center my-6">
         <div className="flex">
           <Heading css="text-start leading-tight text-primary mr-3">
@@ -989,12 +1014,6 @@ function Chapter({
             {` ${description}`}
           </Heading>
         </div>
-        <button
-          className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
-          onClick={goBack}
-        >
-          Back
-        </button>
       </div>
       <Lessons lessons={lessonsInProgress} />
     </div>
@@ -1003,6 +1022,12 @@ function Chapter({
 
 function ChapterList({ chapters }: { chapters: Chapter[] }) {
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  // Set initial value to null to default to all collapsed, or any index to default to that question being open
+  const [activeQuestion, setActiveQuestion] = useState<null | number>(0);
+
+  const handleClick = (index: number) => {
+    setActiveQuestion(index === activeQuestion ? null : index);
+  };
   return (
     <>
       {selectedChapter === null && (
@@ -1010,18 +1035,59 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
           <div className="bg-white flex justify-between items-end">
             <Heading css="text-start leading-tight text-primary">Learn</Heading>
           </div>
-          <ul>
-            {chapters.map((chapter) => (
-              <li key={chapter.name}>
-                <button
-                  onClick={() => setSelectedChapter(chapter)}
-                  className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2  hover:bg-blue-700"
-                >
-                  {`${chapter.name} - ${chapter.description}`}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <ul className="flex flex-col">
+           {questions.map((q, index) => (
+             <li
+               key={q.question}
+               className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
+             >
+               <div
+                 className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
+                 onClick={() => handleClick(index)}
+                 aria-label={q.question}
+               >
+                 <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
+                   {q.question}
+                 </h3>
+                 <span className="text-gray-600 inline-flex text-xl md:text-2xl">
+                   {index === activeQuestion ? (
+                     <FontAwesomeIcon icon={faChevronDown} size="xs" />
+                   ) : (
+                     <FontAwesomeIcon icon={faChevronLeft} size="xs" />
+                   )}
+                 </span>
+               </div>
+               <div
+                 key={q.question}
+                 className={`text-sm  ${
+                   index === activeQuestion
+                     ? "flex w-full flex-col gap-2 visible"
+                     : "hidden"
+                 }`}
+               >
+                 {q.answer.map((a) => {
+                   return (
+                     <p key={a} className="block">
+                       {a}
+                     </p>
+                   );
+                 })}
+                <ul>
+                  {chapters.map((chapter) => (
+                    <li key={chapter.name}>
+                      <button
+                        onClick={() => setSelectedChapter(chapter)}
+                        className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2 hover:bg-blue-700"
+                      >
+                        {`${chapter.name} - ${chapter.description}`}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+               </div>
+             </li>
+           ))}
+         </ul>
         </div>
       )}
       {selectedChapter && (
