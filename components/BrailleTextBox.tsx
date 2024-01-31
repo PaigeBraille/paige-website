@@ -150,12 +150,12 @@ export const BrailleTextBox = ({
 
   return (
     <textarea
-      rows={1}
+      rows={6}
       cols={25}
       value={unicodeGlyphString}
       onChange={() => {}}
       className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-      style={{ fontFamily: "APHfont", fontSize: "100px" }}
+      style={{ fontFamily: "APHfont" }}
     />
   );
 };

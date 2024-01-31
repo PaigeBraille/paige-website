@@ -40,171 +40,167 @@ const questions: FAQuestion[] = [
     question: "Alphabet",
     answer: [],
   },
-  {
-    question: "Numbers",
-    answer: [],
-  },
 ];
 
 const LESSONS: Lesson[] = [
   {
-    prompt: "Type the letter a?",
-    hint: "a is dot 1",
+    prompt: "a",
+    hint: "is dot 1",
     correctInputMatch: "a",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter b?",
-    hint: "b is dots 1 2",
+    prompt: "b",
+    hint: "is dots 1 2",
     correctInputMatch: "b",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter c?",
-    hint: "c is dots 1 4",
+    prompt: "c",
+    hint: "is dots 1 4",
     correctInputMatch: "c",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter k?",
-    hint: "k is dots 1 3",
+    prompt: "k",
+    hint: "is dots 1 3",
     correctInputMatch: "k",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter l?",
-    hint: "l is dots 1 2 3",
+    prompt: "l",
+    hint: "is dots 1 2 3",
     correctInputMatch: "l",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter m?",
-    hint: "m is dots 1 3 4",
+    prompt: "m",
+    hint: "is dots 1 3 4",
     correctInputMatch: "m",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter u?",
-    hint: "k is dots 1 3 6",
+    prompt: "u",
+    hint: "is dots 1 3 6",
     correctInputMatch: "u",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter v?",
-    hint: "l is dots 1 2 3 6",
+    prompt: "v",
+    hint: "is dots 1 2 3 6",
     correctInputMatch: "v",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter x?",
-    hint: "m is dots 1 3 4 6",
+    prompt: "x",
+    hint: "is dots 1 3 4 6",
     correctInputMatch: "x",
     numberOfSuccessesToPass: 3,
   },
   {
     prompt: "Type the letter d?",
-    hint: "d is dots 1 4 5",
+    hint: "is dots 1 4 5",
     correctInputMatch: "d",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter f?",
-    hint: "f is dots 1 2 4",
+    prompt: "f",
+    hint: "dots 1 2 4",
     correctInputMatch: "f",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter n?",
-    hint: "n is dots 1 3 4 5",
+    prompt: "n",
+    hint: "is dots 1 3 4 5",
     correctInputMatch: "n",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter p?",
-    hint: "p is dots 1 2 3 4",
+    prompt: "p",
+    hint: "is dots 1 2 3 4",
     correctInputMatch: "p",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter y?",
-    hint: "y is dots 1 3 4 5 6",
+    prompt: "y",
+    hint: "is dots 1 3 4 5 6",
     correctInputMatch: "y",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter e?",
-    hint: "e is dots 1 5",
+    prompt: "e",
+    hint: "is dots 1 5",
     correctInputMatch: "e",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter i?",
-    hint: "i is dots 2 4",
+    prompt: "i",
+    hint: "is dots 2 4",
     correctInputMatch: "i",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter o?",
-    hint: "o is dots 1 3 5",
+    prompt: "o",
+    hint: "is dots 1 3 5",
     correctInputMatch: "o",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter s?",
-    hint: "s is dots 2 3 4",
+    prompt: "s",
+    hint: "is dots 2 3 4",
     correctInputMatch: "s",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter z?",
-    hint: "z is dots 1 3 5 6",
+    prompt: "z",
+    hint: "is dots 1 3 5 6",
     correctInputMatch: "z",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter h?",
-    hint: "h is dots 1 2 5",
+    prompt: "h",
+    hint: "is dots 1 2 5",
     correctInputMatch: "h",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter j?",
-    hint: "j is dots 2 4 5",
+    prompt: "j",
+    hint: "is dots 2 4 5",
     correctInputMatch: "j",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter r?",
-    hint: "r is dots 1 2 3 5",
+    prompt: "r",
+    hint: "is dots 1 2 3 5",
     correctInputMatch: "r",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter t?",
-    hint: "t is dots 2 3 4 5",
+    prompt: "t",
+    hint: "is dots 2 3 4 5",
     correctInputMatch: "t",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter w?",
-    hint: "w is dots 2 4 5 6",
+    prompt: "w",
+    hint: "is dots 2 4 5 6",
     correctInputMatch: "w",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter g?",
-    hint: "g is dots 1 2 4 5",
+    prompt: "g",
+    hint: "is dots 1 2 4 5",
     correctInputMatch: "g",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter q?",
-    hint: "q is dots 1 2 3 4 5",
+    prompt: "q",
+    hint: "is dots 1 2 3 4 5",
     correctInputMatch: "q",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 1?",
+    prompt: "1",
     hint: "1 is dots 3 4 5 6, dot 1",
     correctInputMatch: "#a",
     numberOfSuccessesToPass: 3,
@@ -895,7 +891,6 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
 
   return (
     <>
-      <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
         <>{"Lesson complete!"}</>
       ) : (
@@ -904,6 +899,7 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
           onCompletion={() => handleLessonCompletion(currentLesson)}
         ></IndividualLesson>
       )}
+      <LessonProgressBar lessonsInProgress={lessonsInProgress} />
     </>
   );
 }
@@ -951,33 +947,21 @@ function IndividualLesson({
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          justifyItems: "center",
-          alignItems: "center",
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
-        }}
-      >
-        <div>
-          {lesson.prompt}
-          {showHint && ` ${lesson.hint}`}
-        </div>{" "}
-        {/* Display the question prompt and hint if showHint is true */}
-        <button
-          className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
-          onClick={toggleHint}
-        >
-          {showHint ? "Hide Hint" : "Show Hint"}
-        </button>
-      </div>
+      <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-6">
+        {lesson.prompt}
+        {showHint && ` ${lesson.hint}`}
+      </div>{" "}
+      {/* Display the question prompt and hint if showHint is true */}
       <BrailleTextBox
         onChange={onTextChange}
         value={inputText}
       ></BrailleTextBox>
-      <div>Lesson Status: {lessonStatus}</div>
+      <button
+        className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
+        onClick={toggleHint}
+      >
+        {showHint ? "Hide Hint" : "Show Hint"}
+      </button>
     </>
   );
 }
@@ -1002,19 +986,12 @@ function Chapter({
 
   return (
     <div className="py-6 md:py-12 px-4">
-      <button onClick={goBack} className="text-primary text-xs font-light">
+      <button onClick={goBack} className="text-left text-primary text-xs font-light">
           ← Go back
       </button>
-      <div className="bg-white flex justify-between items-center align-content-center my-6">
-        <div className="flex">
-          <Heading css="text-start leading-tight text-primary mr-3">
-            {name}{" "}
-          </Heading>
-          <Heading css="text-start leading-tight text-tertiary">
-            {` ${description}`}
-          </Heading>
-        </div>
-      </div>
+      <Heading css="text-center text-primary">
+          {name}{" - "}{` ${description}`}
+      </Heading>
       <Lessons lessons={lessonsInProgress} />
     </div>
   );
