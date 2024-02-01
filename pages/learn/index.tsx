@@ -3,7 +3,7 @@ import { Wrapper } from "../../components/Wrapper";
 import Heading from "../../components/Heading";
 import Login from "../../components/Login"; // Import the Login component
 import ProgressBar from "../../components/ProgressBar";
-import { BrailleTextBox } from "@/components/BrailleTextBox";
+import { BrailleLearnBox } from "@/components/BrailleLearnBox";
 import audioFile from "./correct.mp3";
 import Link from "next/link";
 import {
@@ -11,6 +11,9 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HintOn from "../../public/svg/hint-on.svg";
+import HintOff from "../../public/svg/hint-off.svg";
+import Heart from "../../public/svg/heart.svg";
 
 interface Lesson {
   prompt: string;
@@ -891,15 +894,17 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
 
   return (
     <>
+    <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
-        <>{"Lesson complete!"}</>
+        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2">
+          Level completed!
+        </div>
       ) : (
         <IndividualLesson
           lesson={currentLesson}
           onCompletion={() => handleLessonCompletion(currentLesson)}
         ></IndividualLesson>
       )}
-      <LessonProgressBar lessonsInProgress={lessonsInProgress} />
     </>
   );
 }
@@ -952,16 +957,20 @@ function IndividualLesson({
         {showHint && ` ${lesson.hint}`}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
-      <BrailleTextBox
+      <BrailleLearnBox
         onChange={onTextChange}
         value={inputText}
-      ></BrailleTextBox>
-      <button
-        className="bg-primary text-white font-bold rounded-md py-2 px-2 mt-2 mx-2 hover:bg-blue-700"
-        onClick={toggleHint}
-      >
-        {showHint ? "Hide Hint" : "Show Hint"}
-      </button>
+      ></BrailleLearnBox>
+      <div className="flex justify-between w-full">
+        <button
+          className=" h-10 w-10"
+          onClick={toggleHint}
+        >
+          {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
+        </button>
+        <Heart title="Hide hint" className="w-10 h-10" />
+      </div>
+
     </>
   );
 }
