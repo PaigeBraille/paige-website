@@ -107,10 +107,11 @@ export const BrailleLearnBox = ({
       } else if (key === "backspace") {
         const updatedText = value.slice(0, -1);
         onChange(updatedText);
-      } else if (key === "enter") {
-        const updatedText = value + "\n";
-        onChange(updatedText);
-      }
+      } 
+      // else if (key === "enter") {
+      //   const updatedText = value + "\n";
+      //   onChange(updatedText);
+      // }
     };
 
     window.addEventListener("keydown", handleKeyDown);

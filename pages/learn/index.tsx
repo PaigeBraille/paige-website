@@ -860,6 +860,7 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   const randomLessonIndex = Math.floor(
     Math.random() * incompleteLessons.length,
   );
+
   return incompleteLessons[randomLessonIndex];
 }
 
@@ -920,27 +921,41 @@ function IndividualLesson({
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
+
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
   const audio = new Audio(audioFile);
-  // const play = async () => {
-  //   console.log("playing");
-  //   await audio.play();
-  // };
+
+  let lastInputWasSpaceOrNewline = false;
+
+  useEffect(() => {
+    // Update showHint when lesson.isFirstAppearance changes
+    setShowHint(lesson.isFirstAppearance);
+  }, [lesson.isFirstAppearance]);
 
   async function onTextChange(newAsciiString: string) {
+    // Update lastInputWasSpaceOrNewline based on the current input
+    lastInputWasSpaceOrNewline = newAsciiString.endsWith(' ') || newAsciiString.endsWith('\n');
+
+    // Remove the last character if the last input was space bar or newline
+    if (lastInputWasSpaceOrNewline) {
+      newAsciiString = newAsciiString.slice(0, -1);
+    }
+  
     setInputText(newAsciiString);
-    if (newAsciiString === lesson.correctInputMatch) {
+  
+    // Check if the last input was space bar or newline
+    if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
       setLessonStatus("correct");
       audio.play();
-
+  
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 500));
-
+  
       setLessonStatus("pending");
       setInputText("");
       onCompletion();
-      // setShowHint(false);
+
     } else {
       setLessonStatus("incorrect");
     }
@@ -952,23 +967,24 @@ function IndividualLesson({
 
   return (
     <>
-      <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-6">
+      <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
         {lesson.prompt}
         {showHint && ` ${lesson.hint}`}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
       <BrailleLearnBox
+        aria-live="off"
         onChange={onTextChange}
         value={inputText}
       ></BrailleLearnBox>
-      <div className="flex justify-between w-full">
+      <div className="flex justify-left w-full">
         <button
-          className=" h-10 w-10"
+          className=" button h-10 w-10"
           onClick={toggleHint}
         >
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
-        <Heart title="Hide hint" className="w-10 h-10" />
+        {/* <Heart title="Hide hint" className="w-10 h-10" /> */}
       </div>
 
     </>
