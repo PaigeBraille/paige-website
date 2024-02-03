@@ -155,7 +155,7 @@ export const BrailleTextBox = ({
       value={unicodeGlyphString}
       onChange={() => {}}
       className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-      style={{ fontFamily: "APHfont" }}
+      style={{ fontFamily: "APHfont", fontSize: "24px" }}
     />
   );
 };

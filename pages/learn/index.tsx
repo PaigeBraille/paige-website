@@ -101,7 +101,7 @@ const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the letter d?",
+    prompt: "d",
     hint: "is dots 1 4 5",
     correctInputMatch: "d",
     numberOfSuccessesToPass: 3,

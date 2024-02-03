@@ -156,7 +156,7 @@ export const BrailleLearnBox = ({
       value={unicodeGlyphString}
       onChange={() => {}}
       className="text-2xl text-center resize-none w-full"
-      style={{ fontFamily: "APHfont" }}
+      style={{ fontFamily: "APHfont", fontSize: "36px"  }}
     />
   );
 };
