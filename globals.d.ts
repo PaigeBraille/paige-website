@@ -4,6 +4,6 @@ declare module "*.jpg";
 declare module "*.svg";
 declare module "*.mp3";
 declare module "*.woff";
-declare module "*.otf";
+declare module "*.eot";
 declare module "*.woff2";
 declare module "*.ttf";

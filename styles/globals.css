@@ -60,13 +60,14 @@ body {
   margin-bottom: 1rem;
 }
 
-
 @font-face {
   font-family: 'APHfont';
-  src: 
-      local("APHfont"),
-      url("aph-braille-shadows-webfont.ttf") format("truetype"),
-      url("aph-braille-shadows-webfont.otf") format("opentype"),
-      url('aph-braille-shadows-webfont.woff2') format('woff2'),
-      url('aph-braille-shadows-webfont.woff') format('woff');
+  src: url('APH_Braille_Shadows.eot');
+  src: url('APH_Braille_Shadows.eot?#iefix') format('embedded-opentype'),
+      url('APH_Braille_Shadows.woff2') format('woff2'),
+      url('APH_Braille_Shadows.woff') format('woff'),
+      url('APH_Braille_Shadows.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
