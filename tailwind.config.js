@@ -17,6 +17,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ["'Inter'", "ui-sans-serif"],
+      braille: ["APHfont"],
     },
     fontSize: {
       xs: ".65rem",

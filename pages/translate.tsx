@@ -162,7 +162,7 @@ export default function Translate() {
                   </span>
                 ))}
               </div>
-              <div className="text-primary" aria-hidden="true">
+              <div className="text-primary font-braille" aria-hidden="true">
                 ⠄ ⠂ ⠁ &nbsp; ⠈ ⠐ ⠠
               </div>
             </div>
