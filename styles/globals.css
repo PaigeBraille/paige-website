@@ -60,10 +60,12 @@ body {
   margin-bottom: 1rem;
 }
 
+
 @font-face {
-  font-family: "APHfont";
-  src:
-    local("APHfont"),
-    url("APH-Braille-Shadows.otf") format("opentype");
-  font-weight: normal;
+  font-family: 'APHfont';
+  src: 
+      local("APHfont"),
+      url("aph-braille-shadows-webfont.otf") format("opentype"),
+      url('aph-braille-shadows-webfont.woff2') format('woff2'),
+      url('aph-braille-shadows-webfont.woff') format('woff');
 }
