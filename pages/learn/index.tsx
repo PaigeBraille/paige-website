@@ -34,24 +34,9 @@ interface Level {
 }
 
 export type Chapter = {
-  question: string; // Question
-  answer: string[]; // List of paragraphs
+  name: string;
+  levels: Level[];
 };
-
-const questions:Chapter[] = [
-  {
-    question: "Alphabet",
-    answer: [],
-  },
-  // {
-  //   question: "Numbers",
-  //   answer: [],
-  // },
-  // {
-  //   question: "Signs",
-  //   answer: [],
-  // },
-];
 
 const LESSONS: Lesson[] = [
   {
@@ -812,6 +797,40 @@ const allLevels: Level[] = [
   },
 ];
 
+const someLevels: Level[] = [
+  {
+    name: "Level 1",
+    description: "a, b, c",
+    lessons: [LESSONS[0],LESSONS[1],LESSONS[2]],
+  },
+  {
+    name: "Level 2",
+    description: "k, l, m",
+    lessons: [LESSONS[3],LESSONS[4], LESSONS[5]],
+  },
+  {
+    name: "Level 3",
+    description: "u, v, x",
+    lessons: [ LESSONS[6],LESSONS[7], LESSONS[8]],
+  },
+  {
+    name: "Level 4",
+    description: "d, f",
+    lessons: [LESSONS[9], LESSONS[10]],
+  },
+];
+
+const questions:Chapter[] = [
+  {
+    name: "Alphabet",
+    levels: allLevels,
+  },
+  {
+    name: "Some",
+    levels: someLevels,
+  },
+];
+
 export default function LearnPage() {
   // Add a state to track if the user is authenticated
   const [authenticated, setAuthenticated] = useState(true);
@@ -1048,16 +1067,16 @@ function ChapterList({ levels }: { levels: Level[] }) {
           <ul className="flex flex-col">
            {questions.map((q, index) => (
              <li
-               key={q.question}
+               key={q.name}
                className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
              >
                <div
                  className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
                  onClick={() => handleClick(index)}
-                 aria-label={q.question}
+                 aria-label={q.name}
                >
                  <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
-                   {q.question}
+                   {q.name}
                  </h3>
                  <span className="text-gray-600 inline-flex text-xl md:text-2xl">
                    {index === activeQuestion ? (
@@ -1068,7 +1087,7 @@ function ChapterList({ levels }: { levels: Level[] }) {
                  </span>
                </div>
                <div
-                 key={q.question}
+                 key={q.name}
                  className={`text-sm  ${
                    index === activeQuestion
                      ? "flex w-full flex-col gap-2 visible"
@@ -1076,7 +1095,7 @@ function ChapterList({ levels }: { levels: Level[] }) {
                  }`}
                >
                 <ul>
-                  {levels.map((level) => (
+                  {q.levels.map((level) => (
                     <li key={level.name}>
                       <button
                         onClick={() => setSelectedLevel(level)}
