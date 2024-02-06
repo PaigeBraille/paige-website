@@ -27,22 +27,30 @@ interface LessonInProgress extends Lesson {
   isFirstAppearance: boolean;
 }
 
-interface Chapter {
+interface Level {
   name: string;
   description: string;
   lessons: Lesson[];
 }
 
-export type FAQuestion = {
+export type Chapter = {
   question: string; // Question
   answer: string[]; // List of paragraphs
 };
 
-const questions: FAQuestion[] = [
+const questions:Chapter[] = [
   {
     question: "Alphabet",
     answer: [],
   },
+  // {
+  //   question: "Numbers",
+  //   answer: [],
+  // },
+  // {
+  //   question: "Signs",
+  //   answer: [],
+  // },
 ];
 
 const LESSONS: Lesson[] = [
@@ -731,7 +739,7 @@ const LESSONS: Lesson[] = [
   },
 ];
 
-const CHAPTERS: Chapter[] = [
+const allLevels: Level[] = [
   {
     name: "Level 1",
     description: "a, b, c",
@@ -823,7 +831,7 @@ export default function LearnPage() {
       <div className="mx-auto max-w-5xl md:px-6">
         {authenticated ? (
           <>
-            <ChapterList chapters={CHAPTERS} />
+            <ChapterList levels={allLevels} />
           </>
         ) : (
           // Render the Login component when not authenticated
@@ -991,14 +999,14 @@ function IndividualLesson({
   );
 }
 
-function Chapter({
-  chapter,
-  setSelectedChapter,
+function Level({
+  level,
+  setSelectedLevel,
 }: {
-  chapter: Chapter;
-  setSelectedChapter: React.Dispatch<React.SetStateAction<Chapter | null>>;
+  level: Level;
+  setSelectedLevel: React.Dispatch<React.SetStateAction<Level | null>>;
 }) {
-  const { name, description, lessons } = chapter;
+  const { name, description, lessons } = level;
   const lessonsInProgress: LessonInProgress[] = lessons.map((lesson) => ({
     ...lesson,
     numberOfSuccesses: 0,
@@ -1006,7 +1014,7 @@ function Chapter({
   }));
 
   const goBack = () => {
-    setSelectedChapter(null);
+    setSelectedLevel(null);
   };
 
   return (
@@ -1022,8 +1030,8 @@ function Chapter({
   );
 }
 
-function ChapterList({ chapters }: { chapters: Chapter[] }) {
-  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+function ChapterList({ levels }: { levels: Level[] }) {
+  const [selectedLevel, setSelectedLevel] = useState<Level | null>(null);
   // Set initial value to null to default to all collapsed, or any index to default to that question being open
   const [activeQuestion, setActiveQuestion] = useState<null | number>(0);
 
@@ -1032,7 +1040,7 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
   };
   return (
     <>
-      {selectedChapter === null && (
+      {selectedLevel === null && (
         <div className="py-6 md:py-12 px-4">
           <div className="bg-white flex justify-between items-end">
             <Heading css="text-start leading-tight text-primary">Learn</Heading>
@@ -1067,21 +1075,14 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
                      : "hidden"
                  }`}
                >
-                 {q.answer.map((a) => {
-                   return (
-                     <p key={a} className="block">
-                       {a}
-                     </p>
-                   );
-                 })}
                 <ul>
-                  {chapters.map((chapter) => (
-                    <li key={chapter.name}>
+                  {levels.map((level) => (
+                    <li key={level.name}>
                       <button
-                        onClick={() => setSelectedChapter(chapter)}
+                        onClick={() => setSelectedLevel(level)}
                         className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2 hover:bg-blue-700"
                       >
-                        {`${chapter.name} - ${chapter.description}`}
+                        {`${level.name} - ${level.description}`}
                       </button>
                     </li>
                   ))}
@@ -1092,10 +1093,10 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
          </ul>
         </div>
       )}
-      {selectedChapter && (
-        <Chapter
-          chapter={selectedChapter}
-          setSelectedChapter={setSelectedChapter}
+      {selectedLevel && (
+        <Level
+          level={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
         />
       )}
     </>
