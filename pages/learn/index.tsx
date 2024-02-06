@@ -27,29 +27,60 @@ interface LessonInProgress extends Lesson {
   isFirstAppearance: boolean;
 }
 
-interface Chapter {
+interface Level {
   name: string;
   description: string;
   lessons: Lesson[];
 }
 
-export type FAQuestion = {
-  question: string; // Question
-  answer: string[]; // List of paragraphs
+export type Chapter = {
+  name: string;
+  levels: Level[];
 };
 
-const questions: FAQuestion[] = [
-  {
-    question: "Alphabet",
-    answer: [],
-  },
-];
-
 const LESSONS: Lesson[] = [
+  // Lesson 1: a, l, d, t
   {
     prompt: "a",
     hint: "is dot 1",
     correctInputMatch: "a",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "l",
+    hint: "is dots 1 2 3",
+    correctInputMatch: "l",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "d",
+    hint: "is dots 1 4 5",
+    correctInputMatch: "d",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "t",
+    hint: "is dots 2 3 4 5",
+    correctInputMatch: "t",
+    numberOfSuccessesToPass: 3,
+  },
+  // Lesson 2: e, m, y, b, h, o
+  {
+    prompt: "e",
+    hint: "is dots 1 5",
+    correctInputMatch: "e",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "m",
+    hint: "is dots 1 3 4",
+    correctInputMatch: "m",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "y",
+    hint: "is dots 1 3 4 5 6",
+    correctInputMatch: "y",
     numberOfSuccessesToPass: 3,
   },
   {
@@ -58,6 +89,19 @@ const LESSONS: Lesson[] = [
     correctInputMatch: "b",
     numberOfSuccessesToPass: 3,
   },
+  {
+    prompt: "h",
+    hint: "is dots 1 2 5",
+    correctInputMatch: "h",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "o",
+    hint: "is dots 1 3 5",
+    correctInputMatch: "o",
+    numberOfSuccessesToPass: 3,
+  },
+  // Lesson 3: c, k, s
   {
     prompt: "c",
     hint: "is dots 1 4",
@@ -71,69 +115,17 @@ const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "l",
-    hint: "is dots 1 2 3",
-    correctInputMatch: "l",
+    prompt: "s",
+    hint: "is dots 2 3 4",
+    correctInputMatch: "s",
     numberOfSuccessesToPass: 3,
   },
+  //Halfway 
+  //Level 4: g,i,u,j,n, v
   {
-    prompt: "m",
-    hint: "is dots 1 3 4",
-    correctInputMatch: "m",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "u",
-    hint: "is dots 1 3 6",
-    correctInputMatch: "u",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "v",
-    hint: "is dots 1 2 3 6",
-    correctInputMatch: "v",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "x",
-    hint: "is dots 1 3 4 6",
-    correctInputMatch: "x",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "d",
-    hint: "is dots 1 4 5",
-    correctInputMatch: "d",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "f",
-    hint: "dots 1 2 4",
-    correctInputMatch: "f",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "n",
-    hint: "is dots 1 3 4 5",
-    correctInputMatch: "n",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "p",
-    hint: "is dots 1 2 3 4",
-    correctInputMatch: "p",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "y",
-    hint: "is dots 1 3 4 5 6",
-    correctInputMatch: "y",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "e",
-    hint: "is dots 1 5",
-    correctInputMatch: "e",
+    prompt: "g",
+    hint: "is dots 1 2 4 5",
+    correctInputMatch: "g",
     numberOfSuccessesToPass: 3,
   },
   {
@@ -143,27 +135,9 @@ const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "o",
-    hint: "is dots 1 3 5",
-    correctInputMatch: "o",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "s",
-    hint: "is dots 2 3 4",
-    correctInputMatch: "s",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "z",
-    hint: "is dots 1 3 5 6",
-    correctInputMatch: "z",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "h",
-    hint: "is dots 1 2 5",
-    correctInputMatch: "h",
+    prompt: "u",
+    hint: "is dots 1 3 6",
+    correctInputMatch: "u",
     numberOfSuccessesToPass: 3,
   },
   {
@@ -173,17 +147,43 @@ const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
+    prompt: "n",
+    hint: "is dots 1 3 4 5",
+    correctInputMatch: "n",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "v",
+    hint: "is dots 1 2 3 6",
+    correctInputMatch: "v",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 5: r, x, f, p
+  {
     prompt: "r",
     hint: "is dots 1 2 3 5",
     correctInputMatch: "r",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "t",
-    hint: "is dots 2 3 4 5",
-    correctInputMatch: "t",
+    prompt: "x",
+    hint: "is dots 1 3 4 6",
+    correctInputMatch: "x",
     numberOfSuccessesToPass: 3,
   },
+  {
+    prompt: "f",
+    hint: "dots 1 2 4",
+    correctInputMatch: "f",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "p",
+    hint: "is dots 1 2 3 4",
+    correctInputMatch: "p",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 6: w, z, q
   {
     prompt: "w",
     hint: "is dots 2 4 5 6",
@@ -191,9 +191,9 @@ const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "g",
-    hint: "is dots 1 2 4 5",
-    correctInputMatch: "g",
+    prompt: "z",
+    hint: "is dots 1 3 5 6",
+    correctInputMatch: "z",
     numberOfSuccessesToPass: 3,
   },
   {
@@ -202,66 +202,69 @@ const LESSONS: Lesson[] = [
     correctInputMatch: "q",
     numberOfSuccessesToPass: 3,
   },
+  // Numbers
   {
     prompt: "1",
-    hint: "1 is dots 3 4 5 6, dot 1",
+    hint: "is dots 3 4 5 6, dot 1",
     correctInputMatch: "#a",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 2?",
-    hint: "2 is dots 3 4 5 6, dots 1 2",
+    prompt: "2",
+    hint: "is dots 3 4 5 6, dots 1 2",
     correctInputMatch: "#b",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 3?",
-    hint: "3 is dots 3 4 5 6, dots 1 4",
+    prompt: "3",
+    hint: "is dots 3 4 5 6, dots 1 4",
     correctInputMatch: "#c",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 4?",
-    hint: "4 is dots 3 4 5 6, dots 1 4 5",
+    prompt: "4",
+    hint: "is dots 3 4 5 6, dots 1 4 5",
     correctInputMatch: "#d",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 5?",
-    hint: "5 is dots 3 4 5 6, dots 1 5",
+    prompt: "5",
+    hint: "is dots 3 4 5 6, dots 1 5",
     correctInputMatch: "#e",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 6?",
-    hint: "6 is dots 3 4 5 6, dots 1 2 4",
+    prompt: "6",
+    hint: "is dots 3 4 5 6, dots 1 2 4",
     correctInputMatch: "#f",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 7?",
-    hint: "7 is dots 3 4 5 6, dots 1 2 4 5",
+    prompt: "7",
+    hint: "is dots 3 4 5 6, dots 1 2 4 5",
     correctInputMatch: "#g",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 8?",
-    hint: "8 is dots 3 4 5 6, dots 1 2 5",
+    prompt: "8",
+    hint: "is dots 3 4 5 6, dots 1 2 5",
     correctInputMatch: "#h",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 9?",
-    hint: "9 is dots 3 4 5 6, dots 2 4",
+    prompt: "9",
+    hint: "is dots 3 4 5 6, dots 2 4",
     correctInputMatch: "#i",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the number 0?",
-    hint: "0 is dots 3 4 5 6, dots 2 4 5",
+    prompt: "0",
+    hint: "is dots 3 4 5 6, dots 2 4 5",
     correctInputMatch: "#j",
     numberOfSuccessesToPass: 3,
   },
+  //Punctuation
+  // Level 1
   {
     prompt: "Type the comma symbol ,?",
     hint: ", is dot 2",
@@ -731,76 +734,55 @@ const LESSONS: Lesson[] = [
   },
 ];
 
-const CHAPTERS: Chapter[] = [
+const alphabetLevels: Level[] = [
   {
     name: "Level 1",
-    description: "a, b, c",
-    lessons: [LESSONS[0],LESSONS[1],LESSONS[2]],
+    description: "a, l, d, t",
+    lessons: [LESSONS[0],LESSONS[1],LESSONS[2],LESSONS[3]],
   },
   {
     name: "Level 2",
-    description: "k, l, m",
-    lessons: [LESSONS[3],LESSONS[4], LESSONS[5]],
+    description: "e, m, y, b, h, o",
+    lessons: [LESSONS[4],LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
   },
   {
     name: "Level 3",
-    description: "u, v, x",
-    lessons: [ LESSONS[6],LESSONS[7], LESSONS[8]],
+    description: "c, k, s",
+    lessons: [ LESSONS[10],LESSONS[11], LESSONS[12]],
   },
   {
     name: "Level 4",
-    description: "d, f",
-    lessons: [LESSONS[9], LESSONS[10]],
+    description: "g, i, u, j, n, v",
+    lessons: [LESSONS[13],LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
   },
   {
     name: "Level 5",
-    description: "n, p",
-    lessons: [LESSONS[11], LESSONS[12]],
+    description: "r, x, f, p",
+    lessons:  [LESSONS[19],LESSONS[20],LESSONS[21],LESSONS[22]],
   },
   {
     name: "Level 6",
-    description: "y",
-    lessons: [LESSONS[13]],
+    description: "w, z, q",
+    lessons: [ LESSONS[23],LESSONS[24], LESSONS[25]],
+  },
+];
+
+const numberLevels: Level[] = [
+  {
+    name: "Level 1",
+    description: "0 to 9",
+    lessons: [LESSONS[26],LESSONS[27], LESSONS[28], LESSONS[29], LESSONS[30], LESSONS[31], LESSONS[32],LESSONS[33], LESSONS[34], LESSONS[35]],
+  },
+];
+
+const chapters:Chapter[] = [
+  {
+    name: "Alphabet",
+    levels: alphabetLevels,
   },
   {
-    name: "Level 7",
-    description: "e, i",
-    lessons: [LESSONS[14],LESSONS[15]],
-  },
-  {
-    name: "Level 8",
-    description: "o, s",
-    lessons: [LESSONS[16],LESSONS[17]],
-  },
-  {
-    name: "Level 9",
-    description: "z",
-    lessons: [LESSONS[18]],
-  },
-  {
-    name: "Level 10",
-    description: "h, j",
-    lessons: [LESSONS[19],LESSONS[20]],
-  },
-  {
-    name: "Level 11",
-    description: "r, t",
-    lessons: [LESSONS[21],LESSONS[22]],
-  },
-  {
-    name: "Level 12",
-    description: "w",
-    lessons: [LESSONS[23]],
-  },
-  {
-    name: "Level 13",
-    description: "g",
-    lessons: [LESSONS[24]],
-  },
-  {
-    name: "Level 14",
-    description: "q",
-    lessons: [LESSONS[25]],
+    name: "Numbers",
+    levels: numberLevels,
   },
 ];
 
@@ -823,7 +805,7 @@ export default function LearnPage() {
       <div className="mx-auto max-w-5xl md:px-6">
         {authenticated ? (
           <>
-            <ChapterList chapters={CHAPTERS} />
+            <ChapterList />
           </>
         ) : (
           // Render the Login component when not authenticated
@@ -917,6 +899,7 @@ function IndividualLesson({
   lesson: LessonInProgress;
   onCompletion: () => void;
 }) {
+  const [promptText, setPromptText] = useState<string>(lesson.prompt);
   const [inputText, setInputText] = useState<string>("");
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
@@ -929,9 +912,21 @@ function IndividualLesson({
   let lastInputWasSpaceOrNewline = false;
 
   useEffect(() => {
+    setPromptText(lesson.prompt);
+  }, [lesson.prompt, lesson.numberOfSuccesses]);
+
+  useEffect(() => {
     // Update showHint when lesson.isFirstAppearance changes
     setShowHint(lesson.isFirstAppearance);
   }, [lesson.isFirstAppearance]);
+
+  useEffect(() => {
+    if (showHint) {
+      setPromptText(lesson.prompt + " " + lesson.hint);
+    } else {
+      setPromptText(lesson.prompt);
+    }
+  }, [lesson.hint, showHint]);
 
   async function onTextChange(newAsciiString: string) {
     // Update lastInputWasSpaceOrNewline based on the current input
@@ -947,17 +942,19 @@ function IndividualLesson({
     // Check if the last input was space bar or newline
     if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
       setLessonStatus("correct");
+      setPromptText("Correct!");
       audio.play();
-  
+      setPromptText("Correct!");
       // await 500ms before moving on to the next lesson
-      await new Promise((resolve) => setTimeout(resolve, 500));
-  
-      setLessonStatus("pending");
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setInputText("");
       onCompletion();
 
-    } else {
-      setLessonStatus("incorrect");
+    } else if (lastInputWasSpaceOrNewline && newAsciiString !== lesson.correctInputMatch){
+      setPromptText("Incorrect!");
+      // await 500ms before moving on to the next lesson
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setPromptText(lesson.prompt + " " + lesson.hint);
     }
   }
 
@@ -967,9 +964,8 @@ function IndividualLesson({
 
   return (
     <>
-      <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
-        {lesson.prompt}
-        {showHint && ` ${lesson.hint}`}
+      <div className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
+        {promptText}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
       <BrailleLearnBox
@@ -991,14 +987,14 @@ function IndividualLesson({
   );
 }
 
-function Chapter({
-  chapter,
-  setSelectedChapter,
+function Level({
+  level,
+  setSelectedLevel,
 }: {
-  chapter: Chapter;
-  setSelectedChapter: React.Dispatch<React.SetStateAction<Chapter | null>>;
+  level: Level;
+  setSelectedLevel: React.Dispatch<React.SetStateAction<Level | null>>;
 }) {
-  const { name, description, lessons } = chapter;
+  const { name, description, lessons } = level;
   const lessonsInProgress: LessonInProgress[] = lessons.map((lesson) => ({
     ...lesson,
     numberOfSuccesses: 0,
@@ -1006,7 +1002,7 @@ function Chapter({
   }));
 
   const goBack = () => {
-    setSelectedChapter(null);
+    setSelectedLevel(null);
   };
 
   return (
@@ -1022,37 +1018,37 @@ function Chapter({
   );
 }
 
-function ChapterList({ chapters }: { chapters: Chapter[] }) {
-  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+function ChapterList() {
+  const [selectedLevel, setSelectedLevel] = useState<Level | null>(null);
   // Set initial value to null to default to all collapsed, or any index to default to that question being open
-  const [activeQuestion, setActiveQuestion] = useState<null | number>(0);
+  const [activeChapter, setActiveChapter] = useState<null | number>(0);
 
   const handleClick = (index: number) => {
-    setActiveQuestion(index === activeQuestion ? null : index);
+    setActiveChapter(index === activeChapter ? null : index);
   };
   return (
     <>
-      {selectedChapter === null && (
+      {selectedLevel === null && (
         <div className="py-6 md:py-12 px-4">
           <div className="bg-white flex justify-between items-end">
             <Heading css="text-start leading-tight text-primary">Learn</Heading>
           </div>
           <ul className="flex flex-col">
-           {questions.map((q, index) => (
+           {chapters.map((c, index) => (
              <li
-               key={q.question}
+               key={c.name}
                className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
              >
                <div
                  className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
                  onClick={() => handleClick(index)}
-                 aria-label={q.question}
+                 aria-label={c.name}
                >
                  <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
-                   {q.question}
+                   {c.name}
                  </h3>
                  <span className="text-gray-600 inline-flex text-xl md:text-2xl">
-                   {index === activeQuestion ? (
+                   {index === activeChapter ? (
                      <FontAwesomeIcon icon={faChevronDown} size="xs" />
                    ) : (
                      <FontAwesomeIcon icon={faChevronLeft} size="xs" />
@@ -1060,28 +1056,21 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
                  </span>
                </div>
                <div
-                 key={q.question}
+                 key={c.name}
                  className={`text-sm  ${
-                   index === activeQuestion
+                   index === activeChapter
                      ? "flex w-full flex-col gap-2 visible"
                      : "hidden"
                  }`}
                >
-                 {q.answer.map((a) => {
-                   return (
-                     <p key={a} className="block">
-                       {a}
-                     </p>
-                   );
-                 })}
                 <ul>
-                  {chapters.map((chapter) => (
-                    <li key={chapter.name}>
+                  {c.levels.map((level) => (
+                    <li key={level.name}>
                       <button
-                        onClick={() => setSelectedChapter(chapter)}
+                        onClick={() => setSelectedLevel(level)}
                         className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2 hover:bg-blue-700"
                       >
-                        {`${chapter.name} - ${chapter.description}`}
+                        {`${level.name} - ${level.description}`}
                       </button>
                     </li>
                   ))}
@@ -1092,10 +1081,10 @@ function ChapterList({ chapters }: { chapters: Chapter[] }) {
          </ul>
         </div>
       )}
-      {selectedChapter && (
-        <Chapter
-          chapter={selectedChapter}
-          setSelectedChapter={setSelectedChapter}
+      {selectedLevel && (
+        <Level
+          level={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
         />
       )}
     </>
