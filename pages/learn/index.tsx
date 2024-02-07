@@ -856,12 +856,13 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   return incompleteLessons[randomLessonIndex];
 }
 
-function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
+function Lessons({ lessons, level }: { lessons: LessonInProgress[], level: Level }) {
   const [lessonsInProgress, setLessonsInProgress] =
     useState<LessonInProgress[]>(lessons);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0],
   );
+  const [isLessonComplete, setIsLessonComplete] = useState<boolean>(false); // Initialize to false
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
@@ -881,9 +882,11 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
     setCurrentLesson(newRandomLesson);
   };
 
-  const isLessonComplete = lessonsInProgress.every(
-    (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
-  );
+  useEffect(() => {
+    setIsLessonComplete(lessonsInProgress.every(
+      (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
+  ));
+  }, [lessonsInProgress]);
 
   return (
     <>
@@ -895,6 +898,8 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
       ) : (
         <IndividualLesson
           lesson={currentLesson}
+          level={level}
+          setIsLessonComplete={setIsLessonComplete}
           onCompletion={() => handleLessonCompletion(currentLesson)}
         ></IndividualLesson>
       )}
@@ -904,9 +909,13 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
 
 function IndividualLesson({
   lesson,
+  level,
+  setIsLessonComplete,
   onCompletion,
 }: {
   lesson: LessonInProgress;
+  level: Level;
+  setIsLessonComplete: (value: boolean) => void;
   onCompletion: () => void;
 }) {
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
@@ -914,6 +923,7 @@ function IndividualLesson({
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
+  const [livesRemaining, setLivesRemaining] = useState<number>(3); // Initialize lives remaining to 3
 
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
@@ -962,6 +972,14 @@ function IndividualLesson({
 
     } else if (lastInputWasSpaceOrNewline && newAsciiString !== lesson.correctInputMatch){
       setPromptText("Incorrect!");
+      // Decrement livesRemaining if the answer is incorrect during a challenge
+      if (level.name.includes("Challenge")) {
+        setLivesRemaining((prevLives) => prevLives - 1);
+        // End the level if no lives remaining
+        if (livesRemaining === 0) {
+          setIsLessonComplete(true);
+        }
+      }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setPromptText(lesson.prompt + " " + lesson.hint);
@@ -983,14 +1001,23 @@ function IndividualLesson({
         onChange={onTextChange}
         value={inputText}
       ></BrailleLearnBox>
-      <div className="flex justify-left w-full">
+      <div className={` flex w-full ${
+          level.name.includes("Challenge") ? "justify-between" : "justify-left"
+        }`}
+      >
         <button
           className=" button h-10 w-10"
           onClick={toggleHint}
         >
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
-        {/* <Heart title="Lives" className="w-10 h-10" /> */}
+        {level.name.includes("Challenge") ? 
+          <div>
+            {livesRemaining} 
+            <Heart title="Lives" className="w-10 h-10" />
+          </div> 
+          : null 
+        }
       </div>
 
     </>
@@ -1023,7 +1050,7 @@ function Level({
       <Heading css="text-center text-primary">
         {`${name.includes("Challenge") ? name : name + " - " + description}`}
       </Heading>
-      <Lessons lessons={lessonsInProgress} />
+      <Lessons lessons={lessonsInProgress} level={level} />
     </div>
   );
 }
