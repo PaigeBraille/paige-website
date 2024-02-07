@@ -126,7 +126,7 @@ export default function Translate() {
           <div className="w-full sm:w-1/2 p-4">
             <h2 className="tracking-tight leading-tight mb-2">Print</h2>
             <textarea
-              rows={27}
+              rows={15}
               cols={25}
               value={printText}
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
