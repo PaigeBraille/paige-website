@@ -13,6 +13,7 @@ module.exports = {
         paigedarkgrey: "#171D1C",
         paigelightgreen: "#E2EFDE",
         paigeyellow: "#F5B700",
+        paigered: "#AE1438",
       },
     },
     fontFamily: {

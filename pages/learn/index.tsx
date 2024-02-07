@@ -738,32 +738,42 @@ const alphabetLevels: Level[] = [
   {
     name: "Level 1",
     description: "a, l, d, t",
-    lessons: [LESSONS[0],LESSONS[1],LESSONS[2],LESSONS[3]],
+    lessons: [LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3]],
   },
   {
     name: "Level 2",
     description: "e, m, y, b, h, o",
-    lessons: [LESSONS[4],LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
+    lessons: [LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
   },
   {
     name: "Level 3",
     description: "c, k, s",
-    lessons: [ LESSONS[10],LESSONS[11], LESSONS[12]],
+    lessons: [ LESSONS[10], LESSONS[11], LESSONS[12]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [ LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12]],
   },
   {
     name: "Level 4",
     description: "g, i, u, j, n, v",
-    lessons: [LESSONS[13],LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
+    lessons: [LESSONS[13], LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
   },
   {
     name: "Level 5",
     description: "r, x, f, p",
-    lessons:  [LESSONS[19],LESSONS[20],LESSONS[21],LESSONS[22]],
+    lessons:  [LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22]],
   },
   {
     name: "Level 6",
     description: "w, z, q",
-    lessons: [ LESSONS[23],LESSONS[24], LESSONS[25]],
+    lessons: [ LESSONS[23] ,LESSONS[24], LESSONS[25]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [ LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12], LESSONS[13], LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18], LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22], LESSONS[23], LESSONS[24], LESSONS[25]],
   },
 ];
 
@@ -980,7 +990,7 @@ function IndividualLesson({
         >
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
-        {/* <Heart title="Hide hint" className="w-10 h-10" /> */}
+        {/* <Heart title="Lives" className="w-10 h-10" /> */}
       </div>
 
     </>
@@ -1011,7 +1021,7 @@ function Level({
           ← Go back
       </button>
       <Heading css="text-center text-primary">
-          {name}{" - "}{` ${description}`}
+        {`${name.includes("Challenge") ? name : name + " - " + description}`}
       </Heading>
       <Lessons lessons={lessonsInProgress} />
     </div>
@@ -1034,51 +1044,53 @@ function ChapterList() {
             <Heading css="text-start leading-tight text-primary">Learn</Heading>
           </div>
           <ul className="flex flex-col">
-           {chapters.map((c, index) => (
-             <li
-               key={c.name}
-               className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
-             >
-               <div
-                 className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
-                 onClick={() => handleClick(index)}
-                 aria-label={c.name}
-               >
-                 <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
-                   {c.name}
-                 </h3>
-                 <span className="text-gray-600 inline-flex text-xl md:text-2xl">
-                   {index === activeChapter ? (
-                     <FontAwesomeIcon icon={faChevronDown} size="xs" />
-                   ) : (
-                     <FontAwesomeIcon icon={faChevronLeft} size="xs" />
-                   )}
-                 </span>
-               </div>
-               <div
-                 key={c.name}
-                 className={`text-sm  ${
-                   index === activeChapter
-                     ? "flex w-full flex-col gap-2 visible"
-                     : "hidden"
-                 }`}
-               >
-                <ul>
-                  {c.levels.map((level) => (
-                    <li key={level.name}>
-                      <button
-                        onClick={() => setSelectedLevel(level)}
-                        className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2 hover:bg-blue-700"
-                      >
-                        {`${level.name} - ${level.description}`}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-               </div>
-             </li>
-           ))}
-         </ul>
+            {chapters.map((c, index) => (
+              <li
+                key={c.name}
+                className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
+              >
+                <div
+                  className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
+                  onClick={() => handleClick(index)}
+                  aria-label={c.name}
+                >
+                  <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
+                    {c.name}
+                  </h3>
+                  <span className="text-gray-600 inline-flex text-xl md:text-2xl">
+                    {index === activeChapter ? (
+                      <FontAwesomeIcon icon={faChevronDown} size="xs" />
+                    ) : (
+                      <FontAwesomeIcon icon={faChevronLeft} size="xs" />
+                    )}
+                  </span>
+                </div>
+                <div
+                  key={c.name}
+                  className={`text-sm  ${
+                    index === activeChapter
+                      ? "flex w-full flex-col gap-2 visible"
+                      : "hidden"
+                  }`}
+                >
+                  <ul>
+                    {c.levels.map((level) => (
+                      <li key={level.name}>
+                        <button
+                          onClick={() => setSelectedLevel(level)}
+                          className={` text-white font-bold rounded-md py-2 px-4 mt-2 ${
+                            level.name.includes("Challenge") ? "bg-paigedarkblue hover:bg-blue-700" : "bg-primary hover:bg-blue-700"
+                          }`}
+                        >
+                          {`${level.name.includes("Challenge") ? level.name : level.name + " - " + level.description}`}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
       {selectedLevel && (
