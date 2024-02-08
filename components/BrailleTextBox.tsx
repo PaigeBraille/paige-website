@@ -150,7 +150,7 @@ export const BrailleTextBox = ({
 
   return (
     <textarea
-      rows={6}
+      rows={15}
       cols={25}
       value={unicodeGlyphString}
       onChange={() => {}}
