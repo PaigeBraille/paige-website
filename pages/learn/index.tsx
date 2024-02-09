@@ -266,77 +266,83 @@ const LESSONS: Lesson[] = [
   //Punctuation
   // Level 1
   {
-    prompt: "Type the comma symbol ,?",
-    hint: ", is dot 2",
+    prompt: ",",
+    hint: "is dot 2",
     correctInputMatch: "1",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the apostrophe symbol '?",
-    hint: "' is dot 3",
+    prompt: "'",
+    hint: "is dot 3",
     correctInputMatch: "'",
     numberOfSuccessesToPass: 3,
   },
+  // Level 2
   {
-    prompt: "Type the colon symbol :?",
-    hint: ": is dots 2 5",
+    prompt: ":",
+    hint: "is dots 2 5",
     correctInputMatch: "3",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the semicolon symbol ;?",
-    hint: "; is dot 2 3",
+    prompt: ";",
+    hint: "is dot 2 3",
     correctInputMatch: "2",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the hyphen symbol -?",
-    hint: "- is dots 3 6",
+    prompt: "-",
+    hint: "is dots 3 6",
     correctInputMatch: "-",
     numberOfSuccessesToPass: 3,
   },
+  //Halfway
+  //Level 3
   {
-    prompt: "Type the period symbol .?",
-    hint: ". is dots 2 5 6",
+    prompt: ".",
+    hint: "is dots 2 5 6",
     correctInputMatch: "4",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the exclamation mark symbol !?",
-    hint: "! is dots 2 3 5",
+    prompt: "!",
+    hint: "is dots 2 3 5",
     correctInputMatch: "6",
     numberOfSuccessesToPass: 3,
   },
+  // Level 4
   {
-    prompt: "Type the question mark symbol ??",
-    hint: "? is dots 2 3 6",
+    prompt: "?",
+    hint: "is dots 2 3 6",
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: 'Type the opening quote symbol "?',
-    hint: '" is dots 2 3 6',
+    prompt: '“',
+    hint: 'is dots 2 3 6',
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: 'Type the closing quote symbol "?',
-    hint: '" is dots  3 5 6',
+    prompt: '”',
+    hint: 'is dots  3 5 6',
     correctInputMatch: "0",
     numberOfSuccessesToPass: 3,
   },
+  // Level 5
   {
-    prompt: "Type the left parenthesis symbol ( ?",
-    hint: "( is dot 5, dots 1 2 6",
+    prompt: "(",
+    hint: "is dot 5, dots 1 2 6",
     correctInputMatch: '"<',
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the right parenthesis symbol ) ?",
-    hint: ") is dot 5, dots 3 4 5",
+    prompt: ")",
+    hint: "is dot 5, dots 3 4 5",
     correctInputMatch: '">',
     numberOfSuccessesToPass: 3,
   },
+  // Challenge
   {
     prompt: "Type the less than symbol < ?",
     hint: "< is dot 4, dots 1 2 6",
@@ -738,32 +744,42 @@ const alphabetLevels: Level[] = [
   {
     name: "Level 1",
     description: "a, l, d, t",
-    lessons: [LESSONS[0],LESSONS[1],LESSONS[2],LESSONS[3]],
+    lessons: [LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3]],
   },
   {
     name: "Level 2",
     description: "e, m, y, b, h, o",
-    lessons: [LESSONS[4],LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
+    lessons: [LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
   },
   {
     name: "Level 3",
     description: "c, k, s",
-    lessons: [ LESSONS[10],LESSONS[11], LESSONS[12]],
+    lessons: [ LESSONS[10], LESSONS[11], LESSONS[12]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [ LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12]],
   },
   {
     name: "Level 4",
     description: "g, i, u, j, n, v",
-    lessons: [LESSONS[13],LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
+    lessons: [LESSONS[13], LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
   },
   {
     name: "Level 5",
     description: "r, x, f, p",
-    lessons:  [LESSONS[19],LESSONS[20],LESSONS[21],LESSONS[22]],
+    lessons:  [LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22]],
   },
   {
     name: "Level 6",
     description: "w, z, q",
-    lessons: [ LESSONS[23],LESSONS[24], LESSONS[25]],
+    lessons: [ LESSONS[23] ,LESSONS[24], LESSONS[25]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [ LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12], LESSONS[13], LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18], LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22], LESSONS[23], LESSONS[24], LESSONS[25]],
   },
 ];
 
@@ -775,6 +791,44 @@ const numberLevels: Level[] = [
   },
 ];
 
+const signLevels: Level[] = [
+  {
+    name: "Level 1",
+    description: " , and ' ",
+    lessons: [LESSONS[36], LESSONS[37]],
+  },
+  {
+    name: "Level 2",
+    description: '":", ";", "-"',
+    lessons: [LESSONS[38], LESSONS[39], LESSONS[40]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [ LESSONS[36], LESSONS[37], LESSONS[38], LESSONS[39], LESSONS[40]],
+  },
+  {
+    name: "Level 3",
+    description: '"."", "!"',
+    lessons: [LESSONS[41], LESSONS[42]],
+  },
+  {
+    name: "Level 4",
+    description: '"?", "“", "”"',
+    lessons: [LESSONS[43], LESSONS[44], LESSONS[45]],
+  },
+  {
+    name: "Level 5",
+    description: '"(", ")"',
+    lessons: [LESSONS[46], LESSONS[47]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [ LESSONS[36], LESSONS[37], LESSONS[38], LESSONS[39], LESSONS[40], LESSONS[41], LESSONS[42], LESSONS[43], LESSONS[44], LESSONS[45], LESSONS[46], LESSONS[47]],
+  },
+];
+
 const chapters:Chapter[] = [
   {
     name: "Alphabet",
@@ -783,6 +837,10 @@ const chapters:Chapter[] = [
   {
     name: "Numbers",
     levels: numberLevels,
+  },
+  {
+    name: "Basic Punctuations",
+    levels: signLevels,
   },
 ];
 
@@ -846,12 +904,13 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   return incompleteLessons[randomLessonIndex];
 }
 
-function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
+function Lessons({ lessons, level }: { lessons: LessonInProgress[], level: Level }) {
   const [lessonsInProgress, setLessonsInProgress] =
     useState<LessonInProgress[]>(lessons);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0],
   );
+  const [challengeFail, setChallengeFail] = useState<boolean>(false); 
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
@@ -879,12 +938,18 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
     <>
     <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
-        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2">
+        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
           Level completed!
+        </div>
+      ) : challengeFail ? (
+        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
+          Challenge failed!
         </div>
       ) : (
         <IndividualLesson
           lesson={currentLesson}
+          level={level}
+          setChallengeFail={setChallengeFail}
           onCompletion={() => handleLessonCompletion(currentLesson)}
         ></IndividualLesson>
       )}
@@ -894,9 +959,13 @@ function Lessons({ lessons }: { lessons: LessonInProgress[] }) {
 
 function IndividualLesson({
   lesson,
+  level,
+  setChallengeFail,
   onCompletion,
 }: {
   lesson: LessonInProgress;
+  level: Level;
+  setChallengeFail: (value: boolean) => void;
   onCompletion: () => void;
 }) {
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
@@ -904,6 +973,7 @@ function IndividualLesson({
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
+  const [livesRemaining, setLivesRemaining] = useState<number>(3); // Initialize lives remaining to 3
 
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
@@ -952,6 +1022,17 @@ function IndividualLesson({
 
     } else if (lastInputWasSpaceOrNewline && newAsciiString !== lesson.correctInputMatch){
       setPromptText("Incorrect!");
+      // Decrement livesRemaining if the answer is incorrect during a challenge
+      if (level.name.includes("Challenge")) {
+        setLivesRemaining((prevLives) => {
+          const newLives = prevLives - 1;
+          // End the level if no lives remaining
+          if (newLives === 0) {
+            setChallengeFail(true);
+          }
+          return newLives; // Remove this line
+        });
+      }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setPromptText(lesson.prompt + " " + lesson.hint);
@@ -973,14 +1054,25 @@ function IndividualLesson({
         onChange={onTextChange}
         value={inputText}
       ></BrailleLearnBox>
-      <div className="flex justify-left w-full">
+      <div className={` flex w-full ${
+          level.name.includes("Challenge") ? "justify-between" : "justify-left"
+        }`}
+      >
         <button
           className=" button h-10 w-10"
           onClick={toggleHint}
         >
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
-        {/* <Heart title="Hide hint" className="w-10 h-10" /> */}
+        {level.name.includes("Challenge") ? 
+          <div className="flex gap-4" aria-live="assertive">
+            <div className=" text-2xl text-paigedarkgrey pt-1" >
+              {livesRemaining} 
+            </div>
+            <Heart title="Lives" className="w-10 h-10" />
+          </div> 
+          : null 
+        }
       </div>
 
     </>
@@ -1011,9 +1103,9 @@ function Level({
           ← Go back
       </button>
       <Heading css="text-center text-primary">
-          {name}{" - "}{` ${description}`}
+        {`${name.includes("Challenge") ? name : name + " - " + description}`}
       </Heading>
-      <Lessons lessons={lessonsInProgress} />
+      <Lessons lessons={lessonsInProgress} level={level} />
     </div>
   );
 }
@@ -1034,51 +1126,53 @@ function ChapterList() {
             <Heading css="text-start leading-tight text-primary">Learn</Heading>
           </div>
           <ul className="flex flex-col">
-           {chapters.map((c, index) => (
-             <li
-               key={c.name}
-               className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
-             >
-               <div
-                 className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
-                 onClick={() => handleClick(index)}
-                 aria-label={c.name}
-               >
-                 <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
-                   {c.name}
-                 </h3>
-                 <span className="text-gray-600 inline-flex text-xl md:text-2xl">
-                   {index === activeChapter ? (
-                     <FontAwesomeIcon icon={faChevronDown} size="xs" />
-                   ) : (
-                     <FontAwesomeIcon icon={faChevronLeft} size="xs" />
-                   )}
-                 </span>
-               </div>
-               <div
-                 key={c.name}
-                 className={`text-sm  ${
-                   index === activeChapter
-                     ? "flex w-full flex-col gap-2 visible"
-                     : "hidden"
-                 }`}
-               >
-                <ul>
-                  {c.levels.map((level) => (
-                    <li key={level.name}>
-                      <button
-                        onClick={() => setSelectedLevel(level)}
-                        className="bg-primary text-white font-bold rounded-md py-2 px-4 mt-2 hover:bg-blue-700"
-                      >
-                        {`${level.name} - ${level.description}`}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-               </div>
-             </li>
-           ))}
-         </ul>
+            {chapters.map((c, index) => (
+              <li
+                key={c.name}
+                className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
+              >
+                <div
+                  className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
+                  onClick={() => handleClick(index)}
+                  aria-label={c.name}
+                >
+                  <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
+                    {c.name}
+                  </h3>
+                  <span className="text-gray-600 inline-flex text-xl md:text-2xl">
+                    {index === activeChapter ? (
+                      <FontAwesomeIcon icon={faChevronDown} size="xs" />
+                    ) : (
+                      <FontAwesomeIcon icon={faChevronLeft} size="xs" />
+                    )}
+                  </span>
+                </div>
+                <div
+                  key={c.name}
+                  className={`text-sm  ${
+                    index === activeChapter
+                      ? "flex w-full flex-col gap-2 visible"
+                      : "hidden"
+                  }`}
+                >
+                  <ul>
+                    {c.levels.map((level) => (
+                      <li key={level.name}>
+                        <button
+                          onClick={() => setSelectedLevel(level)}
+                          className={` text-white font-bold rounded-md py-2 px-4 mt-2 ${
+                            level.name.includes("Challenge") ? "bg-paigedarkblue hover:bg-blue-700" : "bg-primary hover:bg-blue-700"
+                          }`}
+                        >
+                          {`${level.name.includes("Challenge") ? level.name : level.name + " - " + level.description}`}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
       {selectedLevel && (

@@ -87,7 +87,6 @@ function GenericGraphicSection(props: GraphicSectionProps) {
                 } ${
                   props.colorScheme === "BLUE" &&
                   "text-primary bg-white hover:bg-blue-100"
-                }
                 }`}
                 href={props.linkTo}
                 aria-label={"Learn more about " + props.heading}

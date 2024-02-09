@@ -156,6 +156,7 @@ export const BrailleLearnBox = ({
       value={unicodeGlyphString}
       onChange={() => {}}
       className="text-2xl font-braille text-center resize-none w-full"
+      aria-live="off"
     />
   );
 };
