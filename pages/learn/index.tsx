@@ -862,9 +862,14 @@ export default function LearnPage() {
     <Wrapper>
       <div className="mx-auto max-w-5xl md:px-6">
         {authenticated ? (
-          <>
+        <div className="px-4">
+          <div className="bg-white flex justify-between items-end py-6 md:py-12">
+            <Heading css="text-start leading-tight text-primary">Learn</Heading>
+          </div>
+           <div className="border-t border-paigedarkgrey  md:mb-6">
             <ChapterList />
-          </>
+          </div>
+        </div>
         ) : (
           // Render the Login component when not authenticated
           <Login setAuthenticated={handleAuthentication} />
@@ -1121,10 +1126,6 @@ function ChapterList() {
   return (
     <>
       {selectedLevel === null && (
-        <div className="py-6 md:py-12 px-4">
-          <div className="bg-white flex justify-between items-end">
-            <Heading css="text-start leading-tight text-primary">Learn</Heading>
-          </div>
           <ul className="flex flex-col">
             {chapters.map((c, index) => (
               <li
@@ -1173,7 +1174,6 @@ function ChapterList() {
               </li>
             ))}
           </ul>
-        </div>
       )}
       {selectedLevel && (
         <Level

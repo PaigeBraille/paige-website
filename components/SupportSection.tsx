@@ -1,6 +1,6 @@
 import React, { ReactHTMLElement } from "react";
 import Image from "next/image";
-import Swap1 from "../public/support-imgs/swap-1.jpg";
+import Swap1 from "../public/support-imgs/swap-1.jpeg";
 import Swap2 from "../public/support-imgs/swap-2.jpeg";
 import Swap3 from "../public/support-imgs/swap-3.jpeg";
 import ConnectA1 from "../public/support-imgs/connect-1.png";
