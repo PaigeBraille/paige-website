@@ -266,77 +266,83 @@ const LESSONS: Lesson[] = [
   //Punctuation
   // Level 1
   {
-    prompt: "Type the comma symbol ,?",
-    hint: ", is dot 2",
+    prompt: ",",
+    hint: "is dot 2",
     correctInputMatch: "1",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the apostrophe symbol '?",
-    hint: "' is dot 3",
+    prompt: "'",
+    hint: "is dot 3",
     correctInputMatch: "'",
     numberOfSuccessesToPass: 3,
   },
+  // Level 2
   {
-    prompt: "Type the colon symbol :?",
-    hint: ": is dots 2 5",
+    prompt: ":",
+    hint: "is dots 2 5",
     correctInputMatch: "3",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the semicolon symbol ;?",
-    hint: "; is dot 2 3",
+    prompt: ";",
+    hint: "is dot 2 3",
     correctInputMatch: "2",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the hyphen symbol -?",
-    hint: "- is dots 3 6",
+    prompt: "-",
+    hint: "is dots 3 6",
     correctInputMatch: "-",
     numberOfSuccessesToPass: 3,
   },
+  //Halfway
+  //Level 3
   {
-    prompt: "Type the period symbol .?",
-    hint: ". is dots 2 5 6",
+    prompt: ".",
+    hint: "is dots 2 5 6",
     correctInputMatch: "4",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the exclamation mark symbol !?",
-    hint: "! is dots 2 3 5",
+    prompt: "!",
+    hint: "is dots 2 3 5",
     correctInputMatch: "6",
     numberOfSuccessesToPass: 3,
   },
+  // Level 4
   {
-    prompt: "Type the question mark symbol ??",
-    hint: "? is dots 2 3 6",
+    prompt: "?",
+    hint: "is dots 2 3 6",
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: 'Type the opening quote symbol "?',
-    hint: '" is dots 2 3 6',
+    prompt: '“',
+    hint: 'is dots 2 3 6',
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: 'Type the closing quote symbol "?',
-    hint: '" is dots  3 5 6',
+    prompt: '”',
+    hint: 'is dots  3 5 6',
     correctInputMatch: "0",
     numberOfSuccessesToPass: 3,
   },
+  // Level 5
   {
-    prompt: "Type the left parenthesis symbol ( ?",
-    hint: "( is dot 5, dots 1 2 6",
+    prompt: "(",
+    hint: "is dot 5, dots 1 2 6",
     correctInputMatch: '"<',
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the right parenthesis symbol ) ?",
-    hint: ") is dot 5, dots 3 4 5",
+    prompt: ")",
+    hint: "is dot 5, dots 3 4 5",
     correctInputMatch: '">',
     numberOfSuccessesToPass: 3,
   },
+  // Challenge
   {
     prompt: "Type the less than symbol < ?",
     hint: "< is dot 4, dots 1 2 6",
@@ -785,6 +791,44 @@ const numberLevels: Level[] = [
   },
 ];
 
+const signLevels: Level[] = [
+  {
+    name: "Level 1",
+    description: " , and ' ",
+    lessons: [LESSONS[36], LESSONS[37]],
+  },
+  {
+    name: "Level 2",
+    description: '":", ";", "-"',
+    lessons: [LESSONS[38], LESSONS[39], LESSONS[40]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [ LESSONS[36], LESSONS[37], LESSONS[38], LESSONS[39], LESSONS[40]],
+  },
+  {
+    name: "Level 3",
+    description: '"."", "!"',
+    lessons: [LESSONS[41], LESSONS[42]],
+  },
+  {
+    name: "Level 4",
+    description: '"?", "“", "”"',
+    lessons: [LESSONS[43], LESSONS[44], LESSONS[45]],
+  },
+  {
+    name: "Level 5",
+    description: '"(", ")"',
+    lessons: [LESSONS[46], LESSONS[47]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [ LESSONS[36], LESSONS[37], LESSONS[38], LESSONS[39], LESSONS[40], LESSONS[41], LESSONS[42], LESSONS[43], LESSONS[44], LESSONS[45], LESSONS[46], LESSONS[47]],
+  },
+];
+
 const chapters:Chapter[] = [
   {
     name: "Alphabet",
@@ -793,6 +837,10 @@ const chapters:Chapter[] = [
   {
     name: "Numbers",
     levels: numberLevels,
+  },
+  {
+    name: "Basic Punctuations",
+    levels: signLevels,
   },
 ];
 
@@ -862,7 +910,7 @@ function Lessons({ lessons, level }: { lessons: LessonInProgress[], level: Level
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0],
   );
-  const [isLessonComplete, setIsLessonComplete] = useState<boolean>(false); // Initialize to false
+  const [challengeFail, setChallengeFail] = useState<boolean>(false); 
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
@@ -882,24 +930,26 @@ function Lessons({ lessons, level }: { lessons: LessonInProgress[], level: Level
     setCurrentLesson(newRandomLesson);
   };
 
-  useEffect(() => {
-    setIsLessonComplete(lessonsInProgress.every(
-      (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
-  ));
-  }, [lessonsInProgress]);
+  const isLessonComplete = lessonsInProgress.every(
+    (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
+  );
 
   return (
     <>
     <LessonProgressBar lessonsInProgress={lessonsInProgress} />
       {isLessonComplete ? (
-        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2">
+        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
           Level completed!
+        </div>
+      ) : challengeFail ? (
+        <div  className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
+          Challenge failed!
         </div>
       ) : (
         <IndividualLesson
           lesson={currentLesson}
           level={level}
-          setIsLessonComplete={setIsLessonComplete}
+          setChallengeFail={setChallengeFail}
           onCompletion={() => handleLessonCompletion(currentLesson)}
         ></IndividualLesson>
       )}
@@ -910,12 +960,12 @@ function Lessons({ lessons, level }: { lessons: LessonInProgress[], level: Level
 function IndividualLesson({
   lesson,
   level,
-  setIsLessonComplete,
+  setChallengeFail,
   onCompletion,
 }: {
   lesson: LessonInProgress;
   level: Level;
-  setIsLessonComplete: (value: boolean) => void;
+  setChallengeFail: (value: boolean) => void;
   onCompletion: () => void;
 }) {
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
@@ -974,11 +1024,14 @@ function IndividualLesson({
       setPromptText("Incorrect!");
       // Decrement livesRemaining if the answer is incorrect during a challenge
       if (level.name.includes("Challenge")) {
-        setLivesRemaining((prevLives) => prevLives - 1);
-        // End the level if no lives remaining
-        if (livesRemaining === 0) {
-          setIsLessonComplete(true);
-        }
+        setLivesRemaining((prevLives) => {
+          const newLives = prevLives - 1;
+          // End the level if no lives remaining
+          if (newLives === 0) {
+            setChallengeFail(true);
+          }
+          return newLives; // Remove this line
+        });
       }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -1012,8 +1065,10 @@ function IndividualLesson({
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
         {level.name.includes("Challenge") ? 
-          <div>
-            {livesRemaining} 
+          <div className="flex gap-4" aria-live="assertive">
+            <div className=" text-2xl text-paigedarkgrey pt-1" >
+              {livesRemaining} 
+            </div>
             <Heart title="Lives" className="w-10 h-10" />
           </div> 
           : null 
