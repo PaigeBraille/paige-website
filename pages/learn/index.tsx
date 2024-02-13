@@ -2113,7 +2113,7 @@ function IndividualLesson({
   useEffect(() => {
     // Update showHint when lesson.isFirstAppearance changes
     setShowHint(lesson.isFirstAppearance);
-  }, [lesson.isFirstAppearance]);
+  }, [lesson.isFirstAppearance, lesson]);
 
   useEffect(() => {
     if (showHint) {
@@ -2146,7 +2146,6 @@ function IndividualLesson({
       onCompletion();
 
     } else if (lastInputWasSpaceOrNewline && newAsciiString !== lesson.correctInputMatch){
-      setPromptText("Incorrect!");
       // Decrement livesRemaining if the answer is incorrect during a challenge
       if (level.name.includes("Challenge")) {
         setLivesRemaining((prevLives) => {
@@ -2154,13 +2153,21 @@ function IndividualLesson({
           // End the level if no lives remaining
           if (newLives === 0) {
             setChallengeFail(true);
+          } else if (newLives === 1) {
+            setPromptText(newLives + " life remaining" ); // Display the number of lives remaining
+          } else {
+            setPromptText(newLives + " lives remaining" ); // Display the number of lives remaining
           }
           return newLives; // Remove this line
         });
+      } else {
+        setPromptText("Incorrect!");
       }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      setInputText("");
       setPromptText(lesson.prompt + " " + lesson.hint);
+      setShowHint(false);
     }
   }
 
@@ -2190,12 +2197,12 @@ function IndividualLesson({
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
         {level.name.includes("Challenge") ? 
-          <div className="flex gap-4" aria-live="assertive">
-            <div className=" text-2xl text-paigedarkgrey pt-1" >
-              {livesRemaining} 
-            </div>
+        <div className="relative flex items-center justify-center w-10 h-10" aria-live="assertive">
+          <span className="text-2xl z-10 text-white">{livesRemaining}</span>
+          <div className="absolute inset-0 flex items-center justify-center">
             <Heart title="Lives" className="w-10 h-10" />
-          </div> 
+          </div>
+        </div>
           : null 
         }
       </div>
