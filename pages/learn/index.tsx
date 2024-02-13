@@ -1927,7 +1927,7 @@ const chapters:Chapter[] = [
     levels: SYMBOLS,
   },
   {
-    name: "Alhabetic wordsigns",
+    name: "Alphabetic wordsigns",
     levels: ALPHABETIC_WORDSIGNS,
   },
   {
