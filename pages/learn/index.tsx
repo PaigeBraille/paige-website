@@ -266,32 +266,32 @@ const LESSONS: Lesson[] = [
   //Punctuation
   // Level 1
   {
-    prompt: ",",
+    prompt: 'comma',
     hint: "is dot 2",
     correctInputMatch: "1",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "'",
+    prompt: "apostrophe",
     hint: "is dot 3",
     correctInputMatch: "'",
     numberOfSuccessesToPass: 3,
   },
   // Level 2
   {
-    prompt: ":",
+    prompt: "colon",
     hint: "is dots 2 5",
     correctInputMatch: "3",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: ";",
+    prompt: "semicolon",
     hint: "is dot 2 3",
     correctInputMatch: "2",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "-",
+    prompt: "hyphen",
     hint: "is dots 3 6",
     correctInputMatch: "-",
     numberOfSuccessesToPass: 3,
@@ -299,448 +299,1228 @@ const LESSONS: Lesson[] = [
   //Halfway
   //Level 3
   {
-    prompt: ".",
+    prompt: "full stop",
     hint: "is dots 2 5 6",
     correctInputMatch: "4",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "!",
+    prompt: "exclamation mark",
     hint: "is dots 2 3 5",
     correctInputMatch: "6",
     numberOfSuccessesToPass: 3,
   },
   // Level 4
   {
-    prompt: "?",
+    prompt: "question mark",
     hint: "is dots 2 3 6",
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: '“',
+    prompt: 'opening quotation mark',
     hint: 'is dots 2 3 6',
     correctInputMatch: "8",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: '”',
+    prompt: 'closing quotation mark',
     hint: 'is dots  3 5 6',
     correctInputMatch: "0",
     numberOfSuccessesToPass: 3,
   },
   // Level 5
   {
-    prompt: "(",
+    prompt: "opening parenthesis",
     hint: "is dot 5, dots 1 2 6",
     correctInputMatch: '"<',
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: ")",
+    prompt: "closing parenthesis",
     hint: "is dot 5, dots 3 4 5",
     correctInputMatch: '">',
     numberOfSuccessesToPass: 3,
   },
   // Challenge
+  // Level 1
   {
-    prompt: "Type the less than symbol < ?",
-    hint: "< is dot 4, dots 1 2 6",
-    correctInputMatch: "@<",
+    prompt: "<",
+    hint: "is dot 4, dots 1 2 6",
+    correctInputMatch: "`<",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the greater than symbol > ?",
-    hint: "> is dot 4, dots 3 4 5",
-    correctInputMatch: "@>",
+    prompt: ">",
+    hint: "is dot 4, dots 3 4 5",
+    correctInputMatch: "`>",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 2
+  {
+    prompt: "@",
+    hint: "is dot 4, dot 1",
+    correctInputMatch: "`a",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the at symbol @?",
-    hint: "@ is dot 4, dot 1",
-    correctInputMatch: "@a",
+    prompt: "&",
+    hint: "is dot 4, dots 1 2 3 4 6",
+    correctInputMatch: "`&",
     numberOfSuccessesToPass: 3,
   },
+  //Halfway
+  //Level 3
   {
-    prompt: "Type the ampersand symbol &?",
-    hint: "& is dot 4, dots 1 2 3 4 6",
-    correctInputMatch: "@&",
-    numberOfSuccessesToPass: 3,
-  },
-  {
-    prompt: "Type the plus symbol +?",
-    hint: "+ is dot 5, dots 2 3 5",
+    prompt: "+",
+    hint: "is dot 5, dots 2 3 5",
     correctInputMatch: '"6',
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the equals symbol =?",
-    hint: "= is dot 5, dots 2 3 5 6",
+    prompt: "=",
+    hint: "is dot 5, dots 2 3 5 6",
     correctInputMatch: '"7',
     numberOfSuccessesToPass: 3,
   },
+  // Level 4
   {
-    prompt: "Type the percent symbol %?",
-    hint: "% is dots 4 6, dots 3 5 6",
+    prompt: "%",
+    hint: "is dots 4 6, dots 3 5 6",
     correctInputMatch: ".0",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the hash symbol #?",
-    hint: "# is dots 4 5 6, dots 1 4 5 6",
+    prompt: "#",
+    hint: "is dots 4 5 6, dots 1 4 5 6",
     correctInputMatch: "_?",
     numberOfSuccessesToPass: 3,
   },
+  // Challenge
   {
-    prompt: "Type the wordsign but?",
-    hint: "but is dots 1 2",
+    prompt: "b: but",
+    hint: "is dots 1 2",
     correctInputMatch: "b",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign can?",
-    hint: "can is dots 1 4",
+    prompt: "c: can",
+    hint: "is dots 1 4",
     correctInputMatch: "c",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign do?",
-    hint: "do is dots 1 4 5",
+    prompt: "d: do",
+    hint: "is dots 1 4 5",
     correctInputMatch: "d",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign every?",
-    hint: "every is dots 1 5",
+    prompt: "e: every",
+    hint: "is dots 1 5",
     correctInputMatch: "e",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign from?",
-    hint: "from is dots 1 2 4",
+    prompt: "f: from",
+    hint: "is dots 1 2 4",
     correctInputMatch: "f",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign go?",
-    hint: "go is dots 1 2 4 5",
+    prompt: "g: go",
+    hint: "is dots 1 2 4 5",
     correctInputMatch: "g",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign have?",
-    hint: "have is dots 1 2 5",
+    prompt: "h: have",
+    hint: "is dots 1 2 5",
     correctInputMatch: "h",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign just?",
-    hint: "just is dots 2 4 5",
+    prompt: "j: just",
+    hint: "is dots 2 4 5",
     correctInputMatch: "j",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign knowledge?",
-    hint: "knowledge is dots 1 3",
+    prompt: "k: knowledge",
+    hint: "is dots 1 3",
     correctInputMatch: "k",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign like?",
-    hint: "like is dots 1 2 3",
+    prompt: "l: like",
+    hint: "is dots 1 2 3",
     correctInputMatch: "l",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign more?",
-    hint: "more is dots 1 3 4",
+    prompt: "m: more",
+    hint: "is dots 1 3 4",
     correctInputMatch: "m",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign not?",
-    hint: "not is dots 1 3 4 5",
+    prompt: "n: not",
+    hint: "is dots 1 3 4 5",
     correctInputMatch: "n",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign people?",
-    hint: "people is dots 1 2 3 4",
+    prompt: "p: people",
+    hint: "is dots 1 2 3 4",
     correctInputMatch: "p",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign quite?",
-    hint: "quite is dots 1 2 3 4 5",
+    prompt: "q: quite",
+    hint: "is dots 1 2 3 4 5",
     correctInputMatch: "q",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign rather?",
-    hint: "rather is dots 1 2 3 5",
+    prompt: "r: rather",
+    hint: "is dots 1 2 3 5",
     correctInputMatch: "r",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign so?",
-    hint: "so is dots 2 3 4",
+    prompt: "s: so",
+    hint: "is dots 2 3 4",
     correctInputMatch: "s",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign that?",
-    hint: "that is dots 2 3 4 5",
+    prompt: "t: that",
+    hint: "is dots 2 3 4 5",
     correctInputMatch: "t",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign us?",
-    hint: "us is dots 1 3 6",
+    prompt: "u: us",
+    hint: "is dots 1 3 6",
     correctInputMatch: "u",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign very?",
-    hint: "very is dots 1 2 3 6",
+    prompt: "v: very",
+    hint: "is dots 1 2 3 6",
     correctInputMatch: "v",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign will?",
-    hint: "will is dots 2 4 5 6",
+    prompt: "w: will",
+    hint: "is dots 2 4 5 6",
     correctInputMatch: "w",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign it?",
-    hint: "it is dots 1 3 4 6",
+    prompt: "x: it",
+    hint: "is dots 1 3 4 6",
     correctInputMatch: "x",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign you?",
-    hint: "you is dots 1 3 4 5 6",
+    prompt: "y: you",
+    hint: "is dots 1 3 4 5 6",
     correctInputMatch: "y",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the wordsign as?",
-    hint: "as is dots 1 3 5 6",
+    prompt: "z: as",
+    hint: "is dots 1 3 5 6",
     correctInputMatch: "z",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the contraction and?",
-    hint: "and is dots 1 2 3 4 6",
+    prompt: "and",
+    hint: "is dots 1 2 3 4 6",
     correctInputMatch: "&",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the contraction for?",
-    hint: "for is dots 1 2 3 4 5 6",
+    prompt: "for",
+    hint: "is dots 1 2 3 4 5 6",
     correctInputMatch: "=",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the contraction of?",
-    hint: "of is dots 1 2 3 5 6",
+    prompt: "of",
+    hint: "is dots 1 2 3 5 6",
     correctInputMatch: "(",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the contraction the?",
-    hint: "the is dots 2 3 4 6",
+    prompt: "the",
+    hint: "is dots 2 3 4 6",
     correctInputMatch: "!",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the contraction with?",
-    hint: "with is dots 2 3 4 5 6",
+    prompt: "with",
+    hint: "is dots 2 3 4 5 6",
     correctInputMatch: ")",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign child?",
-    hint: "child is dots 1 6",
+    prompt: "child",
+    hint: "is dots 1 6",
     correctInputMatch: "*",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign shall?",
-    hint: "shall is dots 1 4 6",
+    prompt: "shall",
+    hint: "is dots 1 4 6",
     correctInputMatch: "%",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign this?",
-    hint: "this is dots 1 4 5 6",
+    prompt: "this",
+    hint: "is dots 1 4 5 6",
     correctInputMatch: "?",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign which?",
-    hint: "which is dots 1 5 6",
+    prompt: "which",
+    hint: "is dots 1 5 6",
     correctInputMatch: ":",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign out?",
-    hint: "out is dots 1 2 5 6",
-    correctInputMatch: "\\",
+    prompt: "out",
+    hint: "is dots 1 2 5 6",
+    correctInputMatch: "|",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong wordsign still?",
-    hint: "still is dots 3 4",
+    prompt: "still",
+    hint: "is dots 3 4",
     correctInputMatch: "/",
     numberOfSuccessesToPass: 3,
   },
   // Strong Groupsigns
   {
-    prompt: "Type the strong groupsign ch?",
-    hint: "ch is dots 1 6",
+    prompt: "ch",
+    hint: "is dots 1 6",
     correctInputMatch: "*",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign sh?",
-    hint: "sh is dots 1 4 6",
+    prompt: "sh",
+    hint: "is dots 1 4 6",
     correctInputMatch: "%",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign th?",
+    prompt: "th",
     hint: "th is dots 1 4 5 6",
     correctInputMatch: "?",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign wh?",
-    hint: "wh is dots 1 5 6",
+    prompt: "wh",
+    hint: "is dots 1 5 6",
     correctInputMatch: ":",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign ou?",
-    hint: "ou is dots 1 2 5 6",
-    correctInputMatch: "\\",
+    prompt: "ou",
+    hint: "is dots 1 2 5 6",
+    correctInputMatch: "|",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign st?",
-    hint: "st is dots 3 4",
+    prompt: "st",
+    hint: "is dots 3 4",
     correctInputMatch: "/",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign gh?",
-    hint: "gh is dots 1 2 6",
+    prompt: "gh",
+    hint: "is dots 1 2 6",
     correctInputMatch: "<",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign ed?",
-    hint: "ed is dots 1 2 4 6",
+    prompt: "ed",
+    hint: "is dots 1 2 4 6",
     correctInputMatch: "$",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign er?",
-    hint: "er is dots 1 2 4 5 6",
-    correctInputMatch: "]",
+    prompt: "er",
+    hint: "is dots 1 2 4 5 6",
+    correctInputMatch: "}",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign ow?",
-    hint: "ow is dots 2 4 6",
-    correctInputMatch: "[",
+    prompt: "ow",
+    hint: "is dots 2 4 6",
+    correctInputMatch: "{",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign ar?",
-    hint: "ar is dots 3 4 5",
+    prompt: "ar",
+    hint: "is dots 3 4 5",
     correctInputMatch: ">",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the strong groupsign ing?",
-    hint: "ing is dots 3 4 6",
+    prompt: "ing",
+    hint: "is dots 3 4 6",
     correctInputMatch: "+",
     numberOfSuccessesToPass: 3,
   },
 
   // Lower Groupsigns
   {
-    prompt: "Type the lower groupsign ea?",
-    hint: "ea is dot 2",
+    prompt: "ea",
+    hint: "is dot 2",
     correctInputMatch: "1",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign bb?",
-    hint: "bb is dots 2 3",
+    prompt: "bb",
+    hint: "is dots 2 3",
     correctInputMatch: "2",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign cc?",
-    hint: "cc is dots 2 5",
+    prompt: "cc",
+    hint: "is dots 2 5",
     correctInputMatch: "3",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign ff?",
-    hint: "ff is dots 2 3 5",
+    prompt: "ff",
+    hint: "is dots 2 3 5",
     correctInputMatch: "6",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign gg?",
-    hint: "gg is dots 2 3 5 6",
+    prompt: "gg",
+    hint: "is dots 2 3 5 6",
     correctInputMatch: "7",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign be?",
-    hint: "be is dots 2 3",
+    prompt: "be",
+    hint: "is dots 2 3",
     correctInputMatch: "2",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign con?",
-    hint: "con is dots 2 5",
+    prompt: "con",
+    hint: "is dots 2 5",
     correctInputMatch: "3",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign dis?",
-    hint: "dis is dots 2 5 6",
+    prompt: "dis",
+    hint: "is dots 2 5 6",
     correctInputMatch: "4",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign en?",
-    hint: "en is dots 2 6",
+    prompt: "en",
+    hint: "is dots 2 6",
     correctInputMatch: "5",
     numberOfSuccessesToPass: 3,
   },
   {
-    prompt: "Type the lower groupsign in?",
-    hint: "in is dots 3 5",
+    prompt: "in",
+    hint: "is dots 3 5",
     correctInputMatch: "9",
     numberOfSuccessesToPass: 3,
   },
 
   // Lower Wordsigns
   {
-    prompt: "Type the lower wordsign be?",
-    hint: "be is dots 2 3",
+    prompt: "be",
+    hint: "is dots 2 3",
     correctInputMatch: "2",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "enough",
+    hint: "is dots 2 6",
+    correctInputMatch: "5",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "were",
+    hint: "is dots 2 3 5 6",
+    correctInputMatch: "7",
+    numberOfSuccessesToPass: 3,
+  },
+  // Halfway
+  {
+    prompt: "his",
+    hint: "is dots 2 3 6",
+    correctInputMatch: "8",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "in",
+    hint: "is dots 3 5",
+    correctInputMatch: "9",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "was",
+    hint: "is dots 3 5 6",
+    correctInputMatch: "0",
+    numberOfSuccessesToPass: 3,
+  },
+  // Initial letter contractions
+  // Level 1
+  {
+    prompt: "day",
+    hint: "is dot 5, dots 1 4 5",
+    correctInputMatch: '"d',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ever",
+    hint: "is dot 5, dots 1 5",
+    correctInputMatch: '"e',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "father",
+    hint: "is dot 5, dots 1 2 4",
+    correctInputMatch: '"f',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "here",
+    hint: "is dot 5, dots 1 2 5",
+    correctInputMatch: '"h',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "know",
+    hint: "is dot 5, dots 1 3",
+    correctInputMatch: '"k',
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 2
+  {
+    prompt: "lord",
+    hint: "is dot 5, dots 1 2 3",
+    correctInputMatch: '"l',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "mother",
+    hint: "is dot 5, dots 1 3 4",
+    correctInputMatch: '"m',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "name",
+    hint: "is dot 5, dots 1 3 4 5",
+    correctInputMatch: '"n',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "one",
+    hint: "is dot 5, dots 1 3 5",
+    correctInputMatch: '"o',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "part",
+    hint: "is dot 5, dots 1 2 3 4",
+    correctInputMatch: '"p',
+    numberOfSuccessesToPass: 3,
+  },
+  // Challenge
+  // Level 3
+  {
+    prompt: "question",
+    hint: "is dot 5, dots 1 2 3 4 5",
+    correctInputMatch: '"q',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "right",
+    hint: "is dot 5, dots 1 2 3 5",
+    correctInputMatch: '"r',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "some",
+    hint: "is dot 5, dots 2 3 4",
+    correctInputMatch: '"s',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "time",
+    hint: "is dot 5, dots 2 3 4 5",
+    correctInputMatch: '"t',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "under",
+    hint: "is dot 5, dots 1 3 6",
+    correctInputMatch: '"u',
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 4
+  {
+    prompt: "work",
+    hint: "is dot 5, dots 2 4 5 6",
+    correctInputMatch: '"w',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "young",
+    hint: "is dot 5, dots 1 3 4 5 6",
+    correctInputMatch: '"y',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "there",
+    hint: "is dot 5, dots 2 3 4 6",
+    correctInputMatch: '"!',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "character",
+    hint: "is dot 5, dots 1 6",
+    correctInputMatch: '"*',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "through",
+    hint: "is dot 5, dots 1 4 5 6",
+    correctInputMatch: '"?',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "where",
+    hint: "is dot 5, dots 1 5 6",
+    correctInputMatch: '":',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ought",
+    hint: "is dot 5, dots 1 2 5 6",
+    correctInputMatch: '"|',
+    numberOfSuccessesToPass: 3,
+  },
+  // Challenge
+  // Level 5
+  {
+    prompt: "upon",
+    hint: "is dots 4 5, dots 1 3 6",
+    correctInputMatch: '~u',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "word",
+    hint: "is dots 4 5, dots 2 4 5 6",
+    correctInputMatch: '~w',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "these",
+    hint: "is dots 4 5, dots 2 3 4 6",
+    correctInputMatch: '~!',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "those",
+    hint: "is dots 4 5, dots 1 4 5 6",
+    correctInputMatch: '~?',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "whose",
+    hint: "is dots 4 5, dots 1 5 6",
+    correctInputMatch: '~:',
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 6
+  {
+    prompt: "cannot",
+    hint: "is dots 4 5 6, dots 1 4",
+    correctInputMatch: '_c',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "had",
+    hint: "is dots 4 5 6, dots 1 2 5",
+    correctInputMatch: '_h',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "many",
+    hint: "is dots 4 5 6, dots 1 3 4",
+    correctInputMatch: '_m',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "spirit",
+    hint: "is dots 4 5 6, dots 2 3 4",
+    correctInputMatch: '_s',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "world",
+    hint: "is dots 4 5 6, dots 2 4 5 6",
+    correctInputMatch: '_w',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "their",
+    hint: "is dots 4 5 6, dots 2 3 4 6",
+    correctInputMatch: '_!',
+    numberOfSuccessesToPass: 3,
+  },
+  // Challenge
+  // Final letter groupsigns
+  // Level 1
+  {
+    prompt: "ound",
+    hint: "is dots 4 6, dots 1 4 5",
+    correctInputMatch: '.d',
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ance",
+    hint: "is dots 4 6, dots 1 5",
+    correctInputMatch: ".e",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "sion",
+    hint: "is dots 4 6, dots 1 3 4 5",
+    correctInputMatch: ".n",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "less",
+    hint: "is dots 4 6, dots 2 3 4",
+    correctInputMatch: ".s",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ount",
+    hint: "is dots 4 6, dots 2 3 4 5",
+    correctInputMatch: ".t",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 2
+  {
+    prompt: "ence",
+    hint: "is dots 5 6, dots 1 5",
+    correctInputMatch: ";e",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ong",
+    hint: "is dots 5 6, dots 1 2 4 5",
+    correctInputMatch: ";g",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ful",
+    hint: "is dots 5 6, dots 1 2 3",
+    correctInputMatch: ";l",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "tion",
+    hint: "is dots 5 6, dots 1 3 4 5",
+    correctInputMatch: ";n",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ness",
+    hint: "is dots 5 6, dots 2 3 4",
+    correctInputMatch: ";s",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ment",
+    hint: "is dots 5 6, dots 2 3 4 5",
+    correctInputMatch: ";t",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ity",
+    hint: "is dots 5 6, dots 1 3 4 5 6",
+    correctInputMatch: ";y",
+    numberOfSuccessesToPass: 3,
+  },
+  // Challenge
+  // Short forms
+  // Level 1
+  {
+    prompt: "ab: about",
+    hint: "is dot 1, dots 1 2",
+    correctInputMatch: "2",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "abv: above",
+    hint: "is dot 1, dots 1 2, dots 1 2 3 6",
+    correctInputMatch: "abv",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ac: according",
+    hint: "is dot 1, dots 1 4",
+    correctInputMatch: "ac",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "acr: across",
+    hint: "is dot 1, dots 1 4, dots 1 2 3 5",
+    correctInputMatch: "acr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "af: after",
+    hint: "is dot 1, dots 1 2 4",
+    correctInputMatch: "af",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "afn: afternoon",
+    hint: "is dot 1, dots 1 2 4, dots 1 3 4 5",
+    correctInputMatch: "afn",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "afw: afterward",
+    hint: "is dot 1, dots 1 2 4, dots 2 4 5 6",
+    correctInputMatch: "afw",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ag: again",
+    hint: "is dot 1, dots 1 2 4 5",
+    correctInputMatch: "ag",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "agst: against",
+    hint: "is dot 1, dots 1 2 4 5, dots 3 4",
+    correctInputMatch: "ag/",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "alm: almost",
+    hint: "is dot 1, dots 1 2 3, dots 1 3 4",
+    correctInputMatch: "alm",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "alr: already",
+    hint: "is dot 1, dots 1 2 3, dots 1 2 3 5",
+    correctInputMatch: "alr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "al: also",
+    hint: "is dot 1, dots 1 2 3",
+    correctInputMatch: "al",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "alth: although",
+    hint: "is dot 1, dots 1 2 3, dots 1 4 5 6",
+    correctInputMatch: "al?",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "alt: altogether",
+    hint: "is dot 1, dots 1 2 3, dots 2 3 4 5",
+    correctInputMatch: "alt",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "alw: always",
+    hint: "is dot 1, dots 1 2 3, dots 2 4 5 6",
+    correctInputMatch: "alw",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 2
+  {
+    prompt: "bec: because",
+    hint: "is dots 2 3, dots 1 4",
+    correctInputMatch: "2c",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bef: before",
+    hint: "is dots 2 3, dots 1 2 4",
+    correctInputMatch: "2f",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "beh: behind",
+    hint: "is dots 2 3, dots 1 2 5",
+    correctInputMatch: "2h",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bel: below",
+    hint: "is dots 2 3, dots 1 2 3",
+    correctInputMatch: "2l",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ben: beneath",
+    hint: "is dots 2 3, dots 1 3 4 5",
+    correctInputMatch: "2n",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bes: beside",
+    hint: "is dots 2 3, dots 2 3 4",
+    correctInputMatch: "2s",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bet: between",
+    hint: "is dots 2 3, dots 2 3 4 5",
+    correctInputMatch: "2t",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bey: beyond",
+    hint: "is dots 2 3, dots 1 3 4 5 6",
+    correctInputMatch: "2y",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "bl: blind",
+    hint: "is dots 1 2, dots 1 2 3",
+    correctInputMatch: "bl",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "brl: braille",
+    hint: "is dots 1 2, dots 1 2 3 5, dots 1 2 3",
+    correctInputMatch: "brl",
+    numberOfSuccessesToPass: 3,
+  },
+  // Challenge
+  // Level 3
+  {
+    prompt: "chn: children",
+    hint: "is dots 1 6, dots 1 3 4 5",
+    correctInputMatch: "*n",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "concv: conceive",
+    hint: "is dots 2 5, dots 1 4, dots 1 2 3 6",
+    correctInputMatch: "3cv",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "concvg: conceiving",
+    hint: "is dots 2 5, dots 1 4, dots 1 2 3 6, dots 1 2 4 5",
+    correctInputMatch: "3cvg",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "cd: could",
+    hint: "is dots 1 4, dots 1 4 5",
+    correctInputMatch: "cd",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "dcv: deceive",
+    hint: "is dots 1 4 5, dots 1 4, dots 1 2 3 6",
+    correctInputMatch: "dcv",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "dcvg: deceiving",
+    hint: "is dots 1 4 5, dots 1 4, dots 1 2 3 6, dots 1 2 4 5",
+    correctInputMatch: "dcvg",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "dcl: declare",
+    hint: "is dots 1 4 5, dots 1 4, dots 1 2 3",
+    correctInputMatch: "dcl",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "dclg: declaring",
+    hint: "is dots 1 4 5, dots 1 4, dots 1 2 3, dots 1 2 4 5",
+    correctInputMatch: "dclg",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ei: either",
+    hint: "is dots 1 5, dots 2 4",
+    correctInputMatch: "ei",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "fst: first",
+    hint: "is dots 1 2 4, dots 3 4",
+    correctInputMatch: "f/",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "fr: friend",
+    hint: "is dots 1 2 4, dots 1 2 3 5",
+    correctInputMatch: "fr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "gd: good",
+    hint: "is dots 1 2 4 5, dots 1 4 5",
+    correctInputMatch: "gd",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "grt: great",
+    hint: "is dots 1 2 4 5, dots 1 2 3 5, dots 2 3 4 5",
+    correctInputMatch: "grt",
+    numberOfSuccessesToPass: 3,
+  },
+  // Level 4
+  {
+    prompt: "herf: herself",
+    hint: "is dots 1 2 5, dots 1 2 4 5 6, dots 1 2 4",
+    correctInputMatch: "h}f",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "hm: him",
+    hint: "is dots 1 2 5, dots 1 3 4",
+    correctInputMatch: "hm",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "hmf: himself",
+    hint: "is dots 1 2 5, dots 1 3 4, dots 1 2 4",
+    correctInputMatch: "hmf",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "imm: immediate",
+    hint: "is dots 2 4, dots 1 3 4, dots 1 3 4",
+    correctInputMatch: "imm",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "xs: its",
+    hint: "is dots 1 3 4 6, dots 2 3 4",
+    correctInputMatch: "xs",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "xf: itself",
+    hint: "is dots 1 3 4 6, dots 1 2 4",
+    correctInputMatch: "xf",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "lr: letter",
+    hint: "is dots 1 2 3, dots 1 2 3 5",
+    correctInputMatch: "lr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "ll: little",
+    hint: "is dots 1 2 3, dots 1 2 3",
+    correctInputMatch: "ll",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "mch: much",
+    hint: "is dots 1 3 4, dots 1 6",
+    correctInputMatch: "m*",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "mst: must",
+    hint: "is dots 1 3 4, dots 3 4",
+    correctInputMatch: "m/",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "myf: myself",
+    hint: "is dots 1 3 4, dots 1 3 4 5 6, dots 1 2 4",
+    correctInputMatch: "myf",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "nec: necessary",
+    hint: "is dots 1 3 4 5, dots 1 5, dots 1 4",
+    correctInputMatch: "nec",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "nei: neither",
+    hint: "is dots 1 3 4 5, dots 1 5, dots 2 4",
+    correctInputMatch: "nei",
+    numberOfSuccessesToPass: 3,
+  },
+    // Level 5
+    {
+      prompt: "onef: oneself",
+      hint: "is dot 5, dots 1 3 5, dots 1 2 4",
+      correctInputMatch: '"of',
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "ourvs: ourselves",
+      hint: "is dots 1 2 4 5, dots 1 2 3 5, dots 1 2 3 6, dots 2 3 4",
+      correctInputMatch: "|rvs",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "pd: paid",
+      hint: "is dots 1 2 3 4, dots 1 4 5",
+      correctInputMatch: "pd",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "percv: perceive",
+      hint: "is dots 1 2 3 4, dots 1 2 4 5 6, dots 1 4, dots 1 2 3 6",
+      correctInputMatch: "p}cv",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "percvg: perceiving",
+      hint: "is dots 1 2 3 4, dots 1 2 4 5 6, dots 1 4, dots 1 2 3 6, dots 1 2 4 5",
+      correctInputMatch: "p}cvg",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "perh: perhaps",
+      hint: "is dots 1 2 3 4, dots 1 2 4 5 6, dots 1 2 5",
+      correctInputMatch: "p}h",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "qk: quick",
+      hint: "is dots 1 2 3 4 5, dots 1 3",
+      correctInputMatch: "qk",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "rcv: receive",
+      hint: "is dots 1 2 3 5, dots 1 4, dots 1 2 3 6",
+      correctInputMatch: "rcv",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "rcvg: receiving",
+      hint: "is dots 1 2 3 5, dots 1 4, dots 1 2 3 6, dots 1 2 4 5",
+      correctInputMatch: "rcvg",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "rjc: rejoice",
+      hint: "is dots 1 2 3 5, dots 2 4 5, dots 1 4",
+      correctInputMatch: "rjc",
+      numberOfSuccessesToPass: 3,
+    },
+    {
+      prompt: "rjcg: rejoicing",
+      hint: "is dots 1 2 3 5, dots 2 4 5, dots 1 4, dots 1 2 4 5",
+      correctInputMatch: "rjcg",
+      numberOfSuccessesToPass: 3,
+    },
+    // Level 6
+      // Level 4
+  {
+    prompt: "sd: said",
+    hint: "is dots 2 3 4, dots 1 4 5",
+    correctInputMatch: "sd",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "shd: should",
+    hint: "is dots 1 4 6, dots 1 4 5",
+    correctInputMatch: "%d",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "sch: such",
+    hint: "is dots 2 3 4, dots 1 6",
+    correctInputMatch: "s*",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "themvs: themselves",
+    hint: "is dots 2 3 4 6, dots 1 3 4, dots 1 2 3 6, dots 2 3 4",
+    correctInputMatch: "!mvs",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "thyf: thyself",
+    hint: "is dots 1 4 5 6, dots 1 3 4 5 6, dots 1 2 4",
+    correctInputMatch: "?yf",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "td: today",
+    hint: "is dots 2 3 4 5, dots 1 4 5",
+    correctInputMatch: "td",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "tgr: together",
+    hint: "is dots 2 3 4 5, dots 1 2 4 5, dots 1 2 3 5",
+    correctInputMatch: "tgr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "tm: tomorrow",
+    hint: "is dots 2 3 4 5, dots 1 3 4",
+    correctInputMatch: "tm",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "tn: tonight",
+    hint: "is dots 2 3 4 5, dots 1 3 4 5",
+    correctInputMatch: "tn",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "wd: would",
+    hint: "is dots 2 4 5 6, dots 1 4 5",
+    correctInputMatch: "wd",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "yr: your",
+    hint: "is dots 1 3 4 5 6, dots 1 2 3 5",
+    correctInputMatch: "yr",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "yrf: yourself",
+    hint: "is dots 1 3 4 5 6, dots 1 2 3 5, dots 1 2 4",
+    correctInputMatch: "yrf",
+    numberOfSuccessesToPass: 3,
+  },
+  {
+    prompt: "yrvs: yourselves",
+    hint: "is dots 1 3 4 5 6, dots 1 2 3 5, dots 1 2 3 6, dots 2 3 4",
+    correctInputMatch: "yrvs",
     numberOfSuccessesToPass: 3,
   },
 ];
 
-const alphabetLevels: Level[] = [
+const ALPHABET: Level[] = [
   {
     name: "Level 1",
     description: "a, l, d, t",
@@ -783,23 +1563,38 @@ const alphabetLevels: Level[] = [
   },
 ];
 
-const numberLevels: Level[] = [
+const NUMBERS: Level[] = [
   {
     name: "Level 1",
-    description: "0 to 9",
+    description: "1, 2, 3",
+    lessons: [ LESSONS[26], LESSONS[27], LESSONS[28]],
+  },
+  {
+    name: "Level 2",
+    description: "4, 5, 6",
+    lessons: [ LESSONS[29], LESSONS[30], LESSONS[31]],
+  },
+  {
+    name: "Level 3",
+    description: "7, 8, 9, 0",
+    lessons: [ LESSONS[32], LESSONS[33], LESSONS[34], LESSONS[35]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
     lessons: [LESSONS[26],LESSONS[27], LESSONS[28], LESSONS[29], LESSONS[30], LESSONS[31], LESSONS[32],LESSONS[33], LESSONS[34], LESSONS[35]],
   },
 ];
 
-const signLevels: Level[] = [
+const PUNCTUATION: Level[] = [
   {
     name: "Level 1",
-    description: " , and ' ",
+    description: 'comma, apostrophe ',
     lessons: [LESSONS[36], LESSONS[37]],
   },
   {
     name: "Level 2",
-    description: '":", ";", "-"',
+    description: 'colon, semicolon, hyphen',
     lessons: [LESSONS[38], LESSONS[39], LESSONS[40]],
   },
   {
@@ -809,17 +1604,17 @@ const signLevels: Level[] = [
   },
   {
     name: "Level 3",
-    description: '"."", "!"',
+    description: 'full stop, exclamation mark',
     lessons: [LESSONS[41], LESSONS[42]],
   },
   {
     name: "Level 4",
-    description: '"?", "“", "”"',
+    description: 'interrogation mark, opening and closing quotation mark',
     lessons: [LESSONS[43], LESSONS[44], LESSONS[45]],
   },
   {
     name: "Level 5",
-    description: '"(", ")"',
+    description: 'opening and closing parenthesis',
     lessons: [LESSONS[46], LESSONS[47]],
   },
   {
@@ -829,18 +1624,343 @@ const signLevels: Level[] = [
   },
 ];
 
+const SYMBOLS: Level[] = [
+  {
+    name: "Level 1",
+    description: '< and >',
+    lessons: [LESSONS[48], LESSONS[49]],
+  },
+  {
+    name: "Level 2",
+    description: '@ and & ',
+    lessons: [LESSONS[50], LESSONS[51]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[48], LESSONS[49], LESSONS[50], LESSONS[51]],
+  },
+  {
+    name: "Level 3",
+    description: '+ and =',
+    lessons: [LESSONS[52], LESSONS[53]],
+  },
+  {
+    name: "Level 4",
+    description: '% and #',
+    lessons: [LESSONS[54], LESSONS[55]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [LESSONS[48], LESSONS[49], LESSONS[50], LESSONS[51], LESSONS[52], LESSONS[53], LESSONS[54], LESSONS[55]],
+  },
+];
+
+const ALPHABETIC_WORDSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'b, c, d, e, f, g',
+    lessons: [LESSONS[56], LESSONS[57], LESSONS[58], LESSONS[59], LESSONS[60], LESSONS[61]],
+  },
+  {
+    name: "Level 2",
+    description: 'h, j, k, l, m, n',
+    lessons: [LESSONS[62], LESSONS[63], LESSONS[64], LESSONS[65], LESSONS[66], LESSONS[67]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[56], LESSONS[57], LESSONS[58], LESSONS[59], LESSONS[60], LESSONS[61], LESSONS[62], LESSONS[63], LESSONS[64], LESSONS[65], LESSONS[66], LESSONS[67]],
+  },
+  {
+    name: "Level 3",
+    description: 'p, q, r, s, t, u',
+    lessons: [LESSONS[68], LESSONS[69], LESSONS[70], LESSONS[71], LESSONS[72], LESSONS[73]],
+  },
+  {
+    name: "Level 4",
+    description: 'v, w, x, y, z',
+    lessons: [LESSONS[74], LESSONS[75], LESSONS[76], LESSONS[77], LESSONS[78]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [LESSONS[68], LESSONS[69], LESSONS[70], LESSONS[71], LESSONS[72], LESSONS[73], LESSONS[74], LESSONS[75], LESSONS[76], LESSONS[77], LESSONS[78]],
+  },
+];
+
+const STRONG_CONTRACTIONS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'and, for, of',
+    lessons: [LESSONS[79], LESSONS[80], LESSONS[81]],
+  },
+  {
+    name: "Level 2",
+    description: 'the, with',
+    lessons: [LESSONS[82], LESSONS[83]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[79], LESSONS[80], LESSONS[81], LESSONS[82], LESSONS[83]],
+  },
+];
+
+const STRONG_WORDSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'child, shall, this',
+    lessons: [LESSONS[84], LESSONS[85], LESSONS[86]],
+  },
+  {
+    name: "Level 2",
+    description: 'which, out, still',
+    lessons: [LESSONS[87], LESSONS[88], LESSONS[89]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[84], LESSONS[85], LESSONS[86], LESSONS[87], LESSONS[88], LESSONS[89]],
+  },
+];
+
+const STRONG_GROUPSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'ch, sh, th',
+    lessons: [LESSONS[90], LESSONS[91], LESSONS[92]],
+  },
+  {
+    name: "Level 2",
+    description: 'wh, ou, st',
+    lessons: [LESSONS[93], LESSONS[94], LESSONS[95]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[90], LESSONS[91], LESSONS[92], LESSONS[93], LESSONS[94], LESSONS[95]],
+  },
+  {
+    name: "Level 3",
+    description: 'gh, ed, er',
+    lessons: [LESSONS[96], LESSONS[97], LESSONS[98]],
+  },
+  {
+    name: "Level 4",
+    description: 'ow, ar, ing',
+    lessons: [LESSONS[99], LESSONS[100], LESSONS[101]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [LESSONS[90], LESSONS[91], LESSONS[92], LESSONS[93], LESSONS[94], LESSONS[95], LESSONS[96], LESSONS[97], LESSONS[98], LESSONS[99], LESSONS[100], LESSONS[101]],
+  },
+];
+
+const LOWER_GROUPSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'ea, bb, cc, ff, gg',
+    lessons: [LESSONS[102], LESSONS[103], LESSONS[104], LESSONS[105], LESSONS[106]],
+  },
+  {
+    name: "Level 2",
+    description: 'be, con dis, en, in',
+    lessons: [LESSONS[107], LESSONS[108], LESSONS[109], LESSONS[110], LESSONS[111]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[102], LESSONS[103], LESSONS[104], LESSONS[105], LESSONS[106], LESSONS[107], LESSONS[108], LESSONS[109], LESSONS[110], LESSONS[111]],
+  },
+];
+
+const LOWER_WORDSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'be, enough, were',
+    lessons: [LESSONS[112], LESSONS[113], LESSONS[114]],
+  },
+  {
+    name: "Level 2",
+    description: 'his, in, was',
+    lessons: [LESSONS[115], LESSONS[116], LESSONS[117]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[112], LESSONS[113], LESSONS[114], LESSONS[115], LESSONS[116], LESSONS[117]],
+  },
+];
+
+const INITIAL_LETTER_CONTRACTIONS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'day, ever, father, here, know',
+    lessons: [LESSONS[118], LESSONS[119], LESSONS[120], LESSONS[121], LESSONS[122]],
+  },
+  {
+    name: "Level 2",
+    description: 'lord, mother, name, one, part',
+    lessons: [LESSONS[123], LESSONS[124], LESSONS[125], LESSONS[126], LESSONS[127]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[118], LESSONS[119], LESSONS[120], LESSONS[121], LESSONS[122], LESSONS[123], LESSONS[124], LESSONS[125], LESSONS[126], LESSONS[127]],
+  },
+  {
+    name: "Level 3",
+    description: 'question, right, some, time, under',
+    lessons: [LESSONS[128], LESSONS[129], LESSONS[130], LESSONS[131], LESSONS[132]],
+  },
+  {
+    name: "Level 4",
+    description: 'work, young, there, character, through, where, ought',
+    lessons: [LESSONS[133], LESSONS[134], LESSONS[135], LESSONS[136], LESSONS[137], LESSONS[138], LESSONS[139]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [LESSONS[118], LESSONS[119], LESSONS[120], LESSONS[121], LESSONS[122], LESSONS[123], LESSONS[124], LESSONS[125], LESSONS[126], LESSONS[127], LESSONS[128], LESSONS[129], LESSONS[130], LESSONS[131], LESSONS[132], LESSONS[133], LESSONS[134], LESSONS[135], LESSONS[136], LESSONS[137], LESSONS[138], LESSONS[139]],
+  },
+  {
+    name: "Level 5",
+    description: 'upon, word, these, those, whose',
+    lessons: [LESSONS[140], LESSONS[141], LESSONS[142], LESSONS[143], LESSONS[144]],
+  },
+  {
+    name: "Level 6",
+    description: 'cannot, had, many, spirit, world, their',
+    lessons: [LESSONS[145], LESSONS[146], LESSONS[147], LESSONS[148], LESSONS[149]],
+  },
+  {
+    name: "Challenge 3",
+    description: "",
+    lessons: [LESSONS[118], LESSONS[119], LESSONS[120], LESSONS[121], LESSONS[122], LESSONS[123], LESSONS[124], LESSONS[125], LESSONS[126], LESSONS[127], LESSONS[128], LESSONS[129], LESSONS[130], LESSONS[131], LESSONS[132], LESSONS[133], LESSONS[134], LESSONS[135], LESSONS[136], LESSONS[137], LESSONS[138], LESSONS[139], LESSONS[140], LESSONS[141], LESSONS[142], LESSONS[143], LESSONS[144], LESSONS[145], LESSONS[146], LESSONS[147], LESSONS[148], LESSONS[149]],
+  },
+];
+
+const FINAL_LETTER_GROUPSIGNS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'ound, ance, sion, less, ount',
+    lessons: [LESSONS[150], LESSONS[151], LESSONS[152], LESSONS[153], LESSONS[154]],
+  },
+  {
+    name: "Level 2",
+    description: 'ence, ong, ful, tion, ness, ment, ity',
+    lessons: [LESSONS[155], LESSONS[156], LESSONS[157], LESSONS[158], LESSONS[159], LESSONS[160], LESSONS[161]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[150], LESSONS[151], LESSONS[152], LESSONS[153], LESSONS[154], LESSONS[155], LESSONS[156], LESSONS[157], LESSONS[158], LESSONS[159], LESSONS[160], LESSONS[161]],
+  },
+];
+
+const SHORT_FORMS: Level[] = [
+  {
+    name: "Level 1",
+    description: 'ab - alw',
+    lessons: [LESSONS[161], LESSONS[162], LESSONS[163], LESSONS[164], LESSONS[165], LESSONS[166], LESSONS[167], LESSONS[168], LESSONS[169], LESSONS[170], LESSONS[171], LESSONS[172],  LESSONS[173], LESSONS[174], LESSONS[175]],
+  },
+  {
+    name: "Level 2",
+    description: 'bec - brl',
+    lessons: [LESSONS[176], LESSONS[177], LESSONS[178], LESSONS[179], LESSONS[180], LESSONS[181], LESSONS[182], LESSONS[183], LESSONS[184], LESSONS[185]],
+  },
+  {
+    name: "Challenge 1",
+    description: "",
+    lessons: [LESSONS[161], LESSONS[162], LESSONS[163], LESSONS[164], LESSONS[165], LESSONS[166], LESSONS[167], LESSONS[168], LESSONS[169], LESSONS[170], LESSONS[171], LESSONS[172],  LESSONS[173], LESSONS[174], LESSONS[175], LESSONS[176], LESSONS[177], LESSONS[178], LESSONS[179], LESSONS[180], LESSONS[181], LESSONS[182], LESSONS[183], LESSONS[184], LESSONS[185]],
+  },
+  {
+    name: "Level 3",
+    description: 'chn - grt',
+    lessons: [LESSONS[187], LESSONS[188], LESSONS[189], LESSONS[190], LESSONS[191], LESSONS[192], LESSONS[193], LESSONS[194], LESSONS[195], LESSONS[196], LESSONS[197], LESSONS[198], LESSONS[199]],
+  },
+  {
+    name: "Level 4",
+    description: 'herf - nei',
+    lessons: [LESSONS[200], LESSONS[201], LESSONS[202], LESSONS[203], LESSONS[204], LESSONS[205], LESSONS[206], LESSONS[207], LESSONS[208], LESSONS[209], LESSONS[210], LESSONS[211], LESSONS[212]],
+  },
+  {
+    name: "Challenge 2",
+    description: "",
+    lessons: [LESSONS[187], LESSONS[188], LESSONS[189], LESSONS[190], LESSONS[191], LESSONS[192], LESSONS[193], LESSONS[194], LESSONS[195], LESSONS[196], LESSONS[197], LESSONS[198], LESSONS[199], LESSONS[200], LESSONS[201], LESSONS[202], LESSONS[203], LESSONS[204], LESSONS[205], LESSONS[206], LESSONS[207], LESSONS[208], LESSONS[209], LESSONS[210], LESSONS[211], LESSONS[212]],
+  },
+  {
+    name: "Level 5",
+    description: 'onef - rjcg',
+    lessons: [LESSONS[213], LESSONS[214], LESSONS[215], LESSONS[216], LESSONS[217], LESSONS[218], LESSONS[219], LESSONS[220], LESSONS[221], LESSONS[222], LESSONS[223]],
+  },
+  {
+    name: "Level 6",
+    description: 'sd - yrvs',
+    lessons: [LESSONS[224], LESSONS[225], LESSONS[226], LESSONS[227], LESSONS[228], LESSONS[229], LESSONS[230], LESSONS[231], LESSONS[232], LESSONS[233], LESSONS[234], LESSONS[235], LESSONS[236]],
+  },
+  {
+    name: "Challenge 3",
+    description: "",
+    lessons: [LESSONS[213], LESSONS[214], LESSONS[215], LESSONS[216], LESSONS[217], LESSONS[218], LESSONS[219], LESSONS[220], LESSONS[221], LESSONS[222], LESSONS[223], LESSONS[224], LESSONS[225], LESSONS[226], LESSONS[227], LESSONS[228], LESSONS[229], LESSONS[230], LESSONS[231], LESSONS[232], LESSONS[233], LESSONS[234], LESSONS[235], LESSONS[236]],
+  },
+];
+
 const chapters:Chapter[] = [
   {
     name: "Alphabet",
-    levels: alphabetLevels,
+    levels: ALPHABET,
   },
   {
     name: "Numbers",
-    levels: numberLevels,
+    levels: NUMBERS,
   },
   {
-    name: "Basic Punctuations",
-    levels: signLevels,
+    name: "Punctuation",
+    levels: PUNCTUATION,
+  },
+  {
+    name: "Symbols",
+    levels: SYMBOLS,
+  },
+  {
+    name: "Alhabetic wordsigns",
+    levels: ALPHABETIC_WORDSIGNS,
+  },
+  {
+    name: "Strong contractions",
+    levels: STRONG_CONTRACTIONS,
+  },
+  {
+    name: "Strong wordsigns",
+    levels: STRONG_WORDSIGNS,
+  },
+  {
+    name: "Strong groupsigns",
+    levels: STRONG_GROUPSIGNS,
+  },
+  {
+    name: "Lower groupsigns",
+    levels: LOWER_GROUPSIGNS,
+  },
+  {
+    name: "Lower wordsigns",
+    levels: LOWER_WORDSIGNS,
+  },
+  {
+    name: "Initial letter contractions",
+    levels: INITIAL_LETTER_CONTRACTIONS,
+  },
+  {
+    name: "Final letter groupsigns",
+    levels: FINAL_LETTER_GROUPSIGNS,
+  },
+  {
+    name: "Short forms",
+    levels: SHORT_FORMS,
   },
 ];
 
