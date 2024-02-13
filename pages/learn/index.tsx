@@ -2098,7 +2098,7 @@ function IndividualLesson({
   const [lessonStatus, setLessonStatus] = useState<
     "correct" | "incorrect" | "pending"
   >("pending");
-  const [livesRemaining, setLivesRemaining] = useState<number>(3); // Initialize lives remaining to 3
+  const [livesRemaining, setLivesRemaining] = useState<number>(5); // Initialize lives remaining to 3
 
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
@@ -2164,7 +2164,7 @@ function IndividualLesson({
         setPromptText("Incorrect!");
       }
       // await 500ms before moving on to the next lesson
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       setInputText("");
       setPromptText(lesson.prompt + " " + lesson.hint);
       setShowHint(false);
@@ -2197,7 +2197,7 @@ function IndividualLesson({
           {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
         </button>
         {level.name.includes("Challenge") ? 
-        <div className="relative flex items-center justify-center w-10 h-10" aria-live="assertive">
+        <div className="relative flex items-center justify-center w-10 h-10">
           <span className="text-2xl z-10 text-white">{livesRemaining}</span>
           <div className="absolute inset-0 flex items-center justify-center">
             <Heart title="Lives" className="w-10 h-10" />
