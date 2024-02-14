@@ -1401,7 +1401,6 @@ export const LESSONS: Lesson[] = [
     numberOfSuccessesToPass: 3,
   },
   // Level 6
-  // Level 4
   {
     prompt: "sd: said",
     hint: "is dots 2 3 4, dots 1 4 5",
