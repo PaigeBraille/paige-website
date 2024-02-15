@@ -1,41 +1,82 @@
-import { LESSONS } from "@/components/LessonMapping";
-import { Level, Chapter } from "../pages/learn";
+import { LESSONS} from "@/components/LessonMapping";
+import { Lesson, Level, Chapter } from "../pages/learn";
+
+const generateReviewLessons = (reviewStrings: string[]): Lesson[] => {
+  const numberOfSuccessesToPass = 1;
+
+  return reviewStrings.map((prompt: string) => ({
+    prompt,
+    hint: "",
+    correctInputMatch: prompt,
+    numberOfSuccessesToPass,
+  }));
+};
 
 const ALPHABET: Level[] = [
   {
     name: "Level 1",
     description: "a, l, d, t",
     lessons: [LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3]],
+    review: generateReviewLessons(["lad", "dad", "add", "at", "tall", "data"]),
   },
   {
     name: "Level 2",
-    description: "e, m, y, b, h, o",
-    lessons: [LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9]],
+    description: "e, m, y",
+    lessons: [LESSONS[4], LESSONS[5], LESSONS[6]],
+    review: generateReviewLessons(["ale", "dale", "eat", "tell", "tale", "tea", "late", "let", "eel", "am", "dam", "dame", "male", "meet", "mad", "made", "melt", "lay", "my", "me", "yell", "may", "ally", "alley", "yet"]),
   },
   {
     name: "Level 3",
+    description: "b, h, o",
+    lessons: [LESSONS[7], LESSONS[8], LESSONS[9]],
+    review: generateReviewLessons(["ball", "bad", "bat", "bell", "baby", "blame", "hall", "halt", "he", "hell", "held", "halt", "hold", "hot", "hotel", "ham", "hay", "load", "boat", "bolt", "doll", "lot", "toe", "label"]),
+  },
+  {
+    name: "Level 4",
     description: "c, k, s",
-    lessons: [ LESSONS[10], LESSONS[11], LESSONS[12]],
+    lessons: [LESSONS[10], LESSONS[11], LESSONS[12]],
+    review: generateReviewLessons(["clay", "call", "cell", "came", "camel", "lace", "kale", "cloak", "clock", "bake", "back", "black", "clam", "bells", "bakes", "smells", "soaks", "act", "ace", "lake", "books", "sales", "slack", "cooks", "cool", "makes", "sad"]),
   },
   {
     name: "Challenge 1",
     description: "",
-    lessons: [ LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12]],
-  },
-  {
-    name: "Level 4",
-    description: "g, i, u, j, n, v",
-    lessons: [LESSONS[13], LESSONS[14], LESSONS[15], LESSONS[16], LESSONS[17], LESSONS[18]],
+    lessons: [LESSONS[0], LESSONS[1], LESSONS[2], LESSONS[3], LESSONS[4], LESSONS[5], LESSONS[6], LESSONS[7], LESSONS[8], LESSONS[9], LESSONS[10], LESSONS[11], LESSONS[12]],
   },
   {
     name: "Level 5",
-    description: "r, x, f, p",
-    lessons:  [LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22]],
+    description: "g, i, u",
+    lessons: [LESSONS[13], LESSONS[14], LESSONS[15]],
+    review: generateReviewLessons(["bag", "gas", "glad", "bags", "gale", "get", "leg", "ill", "bill", "is", "mills", "licks", "big", "bus", "dull", "mules", "ducks", "buy", "dusk", "smiles", "hit", "ice", "busy", "sulks", "usual", "uses"]),
   },
   {
     name: "Level 6",
-    description: "w, z, q",
-    lessons: [ LESSONS[23] ,LESSONS[24], LESSONS[25]],
+    description: "j, n, v",
+    lessons: [LESSONS[16], LESSONS[17], LESSONS[18]],
+    review: generateReviewLessons(["jam", "jobs", "object", "jog", "jug", "an", "any", "nails", "snails", "kneels", "hunk", "village", "values", "live", "alive", "move", "jets", "subject", "juice", "no", "on", "net", "bang", "sun", "move", "saves", "lovely", "voyage", "eve"]),
+  },
+  {
+    name: "Level 7",
+    description: "r, x",
+    lessons:  [LESSONS[19], LESSONS[20]],
+    review: generateReviewLessons(["air", "rails", "rage", "or", "brake", "cracks", "axe", "exit", "mix", "mixes", "mixture", "orange", "rival", "dairy", "box", "exactly", "exam", "taxi"]),
+  },
+  {
+    name: "Level 8",
+    description: "f, p",
+    lessons:  [LESSONS[21], LESSONS[22]],
+    review: generateReviewLessons(["flag", "fills", "fox", "if", "fell", "cuff", "fog", "ape", "clap", "apple", "plate", "pills", "flap", "fall", "life", "lift", "raft", "fix", "figs", "pile", "pop", "peep", "special", "puff"]),
+  },
+  {
+    name: "Level 9",
+    description: "w, z",
+    lessons: [LESSONS[23] ,LESSONS[24]],
+    review: generateReviewLessons(["away", "saw", "week", "wax", "hawks", "dawn", "we", "gaze", "daze", "doze", "zoo", "jazz", "breeze", "awake", "new", "swans", "well", "zip", "fizz", "zoom", "gaze"]),
+  },
+  {
+    name: "Level 10",
+    description: "q",
+    lessons: [LESSONS[25]],
+    review: generateReviewLessons(["quite", "quilt", "equip", "equal", "quacks", "equal", "quotes", "quiz"]),
   },
   {
     name: "Challenge 2",

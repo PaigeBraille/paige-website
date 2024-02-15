@@ -8,14 +8,18 @@ import ProgressBar from "./ProgressBar";
 import { LessonInProgress, Level} from "../pages/learn";
 
 function LevelProgressBar({
-  lessonsInProgress,
+  lessonsInProgress,isReview,
 }: {
   lessonsInProgress: LessonInProgress[];
+  isReview: boolean;
 }) {
-  const totalLevels = lessonsInProgress.reduce(
-    (total, lesson) => total + lesson.numberOfSuccessesToPass,
-    0,
-  );
+  const totalLevels = isReview
+    ? Math.min
+    (
+      lessonsInProgress.reduce((total, lesson) => total + lesson.numberOfSuccessesToPass,0),
+      10
+    )
+    : lessonsInProgress.reduce((total, lesson) => total + lesson.numberOfSuccessesToPass,0);
 
   const totalProgress = lessonsInProgress.reduce(
     (total, lesson) => total + lesson.numberOfSuccesses,
@@ -37,7 +41,7 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   return incompleteLessons[randomLessonIndex];
 }
 
-export function Lessons({ lessons, level }: { lessons: LessonInProgress[]; level: Level; }) {
+export function Lessons({ lessons, level, isReview}: { lessons: LessonInProgress[]; level: Level; isReview: boolean }) {
   const [lessonsInProgress, setLessonsInProgress] = useState<LessonInProgress[]>(lessons);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0]
@@ -61,14 +65,17 @@ export function Lessons({ lessons, level }: { lessons: LessonInProgress[]; level
     setCurrentLesson(newRandomLesson);
   };
 
-  const isLessonComplete = lessonsInProgress.every(
-    (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass
-  );
+  // End level
+  const isLevelComplete =  isReview 
+    ? lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) 
+      // If level is a review it ends after 10 words have been introduced
+      || lessonsInProgress.filter((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass).length >= 10 
+    : lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) ;
 
   return (
     <>
-      <LevelProgressBar lessonsInProgress={lessonsInProgress} />
-      {isLessonComplete ? (
+      <LevelProgressBar lessonsInProgress={lessonsInProgress} isReview={isReview} />
+      {isLevelComplete ? (
         <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
           Level completed!
         </div>
@@ -82,6 +89,7 @@ export function Lessons({ lessons, level }: { lessons: LessonInProgress[]; level
           level={level}
           setChallengeFail={setChallengeFail}
           onCompletion={() => handleLessonCompletion(currentLesson)}
+          isReview={isReview}
         ></IndividualLesson>
       )}
     </>
@@ -89,12 +97,13 @@ export function Lessons({ lessons, level }: { lessons: LessonInProgress[]; level
 }
 
 export function IndividualLesson({
-  lesson, level, setChallengeFail, onCompletion,
+  lesson, level, setChallengeFail, onCompletion, isReview
 }: {
   lesson: LessonInProgress;
   level: Level;
   setChallengeFail: (value: boolean) => void;
   onCompletion: () => void;
+  isReview: boolean;
 }) {
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
   const [inputText, setInputText] = useState<string>("");
@@ -187,12 +196,14 @@ export function IndividualLesson({
       ></BrailleLearnBox>
       <div className={` flex w-full ${level.name.includes("Challenge") ? "justify-between" : "justify-left"}`}
       >
-        <button
-          className=" button h-10 w-10"
-          onClick={toggleHint}
-        >
-          {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
-        </button>
+        {!isReview ?
+          <button
+            className=" button h-10 w-10"
+            onClick={toggleHint}
+          >
+            {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
+          </button>
+        : null}
         {level.name.includes("Challenge") ?
           <div className="relative flex items-center justify-center w-10 h-10">
             <span className="text-2xl z-10 text-white">{livesRemaining}</span>
@@ -200,7 +211,7 @@ export function IndividualLesson({
               <Heart title="Lives" className="w-10 h-10" />
             </div>
           </div>
-          : null}
+        : null}
       </div>
 
     </>

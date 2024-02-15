@@ -1479,4 +1479,12 @@ export const LESSONS: Lesson[] = [
     correctInputMatch: "yrvs",
     numberOfSuccessesToPass: 3,
   },
+  // REVIEW
+  {
+    prompt: "lad",
+    hint: "",
+    correctInputMatch: "lad",
+    numberOfSuccessesToPass: 3,
+  },
 ];
+
