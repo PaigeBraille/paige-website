@@ -1026,7 +1026,7 @@ export const LESSONS: Lesson[] = [
   {
     prompt: "ab: about",
     hint: "is dot 1, dots 1 2",
-    correctInputMatch: "2",
+    correctInputMatch: "ab",
     numberOfSuccessesToPass: 3,
   },
   {
