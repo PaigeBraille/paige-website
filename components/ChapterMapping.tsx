@@ -56,27 +56,15 @@ const ALPHABET: Level[] = [
   },
   {
     name: "Level 7",
-    description: "r, x",
-    lessons:  [LESSONS[19], LESSONS[20]],
-    review: generateReviewLessons(["air", "rails", "rage", "or", "brake", "cracks", "axe", "exit", "mix", "mixes", "mixture", "orange", "rival", "dairy", "box", "exactly", "exam", "taxi"]),
+    description: "r, x, f, p",
+    lessons:  [LESSONS[19], LESSONS[20], LESSONS[21], LESSONS[22]],
+    review: generateReviewLessons(["air", "rails", "rage", "or", "brake", "cracks", "axe", "exit", "mix", "mixes", "mixture", "orange", "rival", "dairy", "box", "exactly", "exam", "taxi", "flag", "fills", "fox", "if", "fell", "cuff", "fog", "ape", "clap", "apple", "plate", "pills", "flap", "fall", "life", "lift", "raft", "fix", "figs", "pile", "pop", "peep", "special", "puff"]),
   },
   {
     name: "Level 8",
-    description: "f, p",
-    lessons:  [LESSONS[21], LESSONS[22]],
-    review: generateReviewLessons(["flag", "fills", "fox", "if", "fell", "cuff", "fog", "ape", "clap", "apple", "plate", "pills", "flap", "fall", "life", "lift", "raft", "fix", "figs", "pile", "pop", "peep", "special", "puff"]),
-  },
-  {
-    name: "Level 9",
-    description: "w, z",
-    lessons: [LESSONS[23] ,LESSONS[24]],
-    review: generateReviewLessons(["away", "saw", "week", "wax", "hawks", "dawn", "we", "gaze", "daze", "doze", "zoo", "jazz", "breeze", "awake", "new", "swans", "well", "zip", "fizz", "zoom", "gaze"]),
-  },
-  {
-    name: "Level 10",
-    description: "q",
-    lessons: [LESSONS[25]],
-    review: generateReviewLessons(["quite", "quilt", "equip", "equal", "quacks", "equal", "quotes", "quiz"]),
+    description: "w, z, q",
+    lessons: [LESSONS[23] ,LESSONS[24], LESSONS[25]],
+    review: generateReviewLessons(["away", "saw", "week", "wax", "hawks", "dawn", "we", "gaze", "daze", "doze", "zoo", "jazz", "breeze", "awake", "new", "swans", "well", "zip", "fizz", "zoom", "gaze", "quite", "quilt", "equip", "equal", "quacks", "equal", "quotes", "quiz"]),
   },
   {
     name: "Challenge 2",
