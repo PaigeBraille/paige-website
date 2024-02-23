@@ -41,8 +41,14 @@ function selectRandomLesson(lessons: LessonInProgress[]) {
   return incompleteLessons[randomLessonIndex];
 }
 
-export function Lessons({ lessons, level, isReview}: { lessons: LessonInProgress[]; level: Level; isReview: boolean }) {
+function selectNextLesson(lessons: LessonInProgress[]) {
+
+  return ;
+}
+
+export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonInProgress[]; level: Level; isReview: boolean; isRead: boolean }) {
   const [lessonsInProgress, setLessonsInProgress] = useState<LessonInProgress[]>(lessons);
+  const [countLessons, setCountLessons] = useState<number>(1);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0]
   );
@@ -60,9 +66,25 @@ export function Lessons({ lessons, level, isReview}: { lessons: LessonInProgress
     );
     setLessonsInProgress(updatedLessonsInProgress);
 
-    // Get a new random lesson
-    const newRandomLesson = selectRandomLesson(updatedLessonsInProgress);
-    setCurrentLesson(newRandomLesson);
+    // Ensure level.read is initialized as an array with the current lesson
+    if(!isRead && !isReview){
+      if (level.read) {
+        // Append the last completed lesson to level.read
+        level.read = [...level.read, lesson];
+      }
+    }
+
+    // Increment the countLessons for read levels
+    if (isRead) {
+      setCountLessons((prevCount) => prevCount + 1);
+       // Get the next lesson based on the updated countLessons
+      const newRandomLesson = lessonsInProgress[countLessons];
+      setCurrentLesson(newRandomLesson);
+    } else {   // Get a new random lesson
+      const newRandomLesson = selectRandomLesson(updatedLessonsInProgress);
+      setCurrentLesson(newRandomLesson);
+    }
+    
   };
 
   // End level
@@ -90,6 +112,8 @@ export function Lessons({ lessons, level, isReview}: { lessons: LessonInProgress
           setChallengeFail={setChallengeFail}
           onCompletion={() => handleLessonCompletion(currentLesson)}
           isReview={isReview}
+          isRead={isRead}
+          countLessons={countLessons}
         ></IndividualLesson>
       )}
     </>
@@ -97,13 +121,15 @@ export function Lessons({ lessons, level, isReview}: { lessons: LessonInProgress
 }
 
 export function IndividualLesson({
-  lesson, level, setChallengeFail, onCompletion, isReview
+  lesson, level, setChallengeFail, onCompletion, isReview, isRead, countLessons
 }: {
   lesson: LessonInProgress;
   level: Level;
   setChallengeFail: (value: boolean) => void;
   onCompletion: () => void;
   isReview: boolean;
+  isRead: boolean;
+  countLessons: number;
 }) {
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
   const [inputText, setInputText] = useState<string>("");
@@ -117,7 +143,7 @@ export function IndividualLesson({
 
   useEffect(() => {
     setPromptText(lesson.prompt);
-  }, [lesson.prompt, lesson.numberOfSuccesses]);
+  }, [lesson.prompt, lesson.numberOfSuccesses, lesson]);
 
   useEffect(() => {
     // Update showHint when lesson.isFirstAppearance changes
@@ -147,7 +173,6 @@ export function IndividualLesson({
     if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
       setPromptText("Correct!");
       audio.play();
-      setPromptText("Correct!");
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setInputText("");
@@ -186,7 +211,7 @@ export function IndividualLesson({
   return (
     <>
       <div className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
-        {promptText}
+        {isRead? "Write letter " + countLessons : promptText}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
       <BrailleLearnBox
@@ -196,7 +221,7 @@ export function IndividualLesson({
       ></BrailleLearnBox>
       <div className={` flex w-full ${level.name.includes("Challenge") ? "justify-between" : "justify-left"}`}
       >
-        {!isReview ?
+        {(!isReview && !isRead) ? 
           <button
             className=" button h-10 w-10"
             onClick={toggleHint}

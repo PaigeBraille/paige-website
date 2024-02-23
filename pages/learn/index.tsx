@@ -28,6 +28,7 @@ export interface Level {
   description: string;
   lessons: Lesson[];
   review?: Lesson[];
+  read?: Lesson[];
 }
 
 export type Chapter = {
@@ -37,7 +38,8 @@ export type Chapter = {
 
 function ChapterList() {
   const [selectedLevel, setSelectedLevel] = useState<Level | null>(null);
-  const [isReview, setReview] = useState(false);
+  const [isReview, setIsReview] = useState(false);
+  const [isRead, setIsRead] = useState(false);
   // Set initial value to null to default to all collapsed, or any index to default to that question being open
   const [activeChapter, setActiveChapter] = useState<null | number>(0);
 
@@ -82,7 +84,7 @@ function ChapterList() {
                       <li key={level.name}>
                         {level.name.includes("Challenge") ?
                           <button 
-                            onClick={() =>  { setSelectedLevel(level); setReview(false);} }
+                            onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false)} }
                             className="text-center text-white font-bold bg-paigedarkblue hover:bg-blue-700 rounded-md py-4 px-4 mt-2 w-full"
                           >
                             {level.name}
@@ -94,14 +96,25 @@ function ChapterList() {
                             </div>
                             <div>
                               <button
-                                onClick={() =>  { setSelectedLevel(level); setReview(false);} }
+                                onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false)} }
                                 className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                               >
                                 Write
                               </button>
+                              {level.read ? 
+                                <button
+                                  onClick={() => { setSelectedLevel(level); setIsReview(false); setIsRead(true);} }
+                                  className={` text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700  ${
+                                    level.read.length >= 10 ? "" : "opacity-50 cursor-not-allowed"
+                                  }`}
+                                  disabled={level.read.length >= 10}
+                                >
+                                  Read
+                                </button>
+                              : null}
                               {level.review ? 
                                 <button
-                                  onClick={() => { setSelectedLevel(level); setReview(true);} }
+                                  onClick={() => { setSelectedLevel(level); setIsReview(true); setIsRead(false)} }
                                   className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                                 >
                                   Review
@@ -123,6 +136,7 @@ function ChapterList() {
           level={selectedLevel}
           setSelectedLevel={setSelectedLevel}
           isReview={isReview}
+          isRead={isRead}
         />
       )}
     </>
@@ -132,14 +146,16 @@ function ChapterList() {
 function Level({
   level,
   setSelectedLevel,
-  isReview
+  isReview,
+  isRead,
 }: {
   level: Level;
   setSelectedLevel: React.Dispatch<React.SetStateAction<Level | null>>;
   isReview: boolean;
+  isRead: boolean;
 }) {
 
-  const lessons: Lesson[] = isReview ? (level.review || []) : level.lessons;
+  const lessons: Lesson[] = isReview ? (level.review || []) : isRead? (level.read || []) : level.lessons;
 
   const lessonInProgress: LessonInProgress[] = lessons.map((lesson) => ({
     ...lesson,
@@ -159,7 +175,7 @@ function Level({
       <Heading css="text-center text-primary">
         {`${level.name.includes("Challenge") ? level.name : isReview ? level.name + " review" : level.name + " - " + level.description}`}
       </Heading>
-      <Lessons lessons={lessonInProgress} level={level} isReview={isReview}/>
+      <Lessons lessons={lessonInProgress} level={level} isReview={isReview} isRead={isRead}/>
     </div>
   );
 }
