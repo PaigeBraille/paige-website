@@ -105,9 +105,10 @@ function ChapterList() {
                                 <button
                                   onClick={() => { setSelectedLevel(level); setIsReview(false); setIsRead(true);} }
                                   className={` text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700  ${
-                                    level.read.length >= 10 ? "" : "opacity-50 cursor-not-allowed"
+                                    level.read.length >= (level.lessons.length*3) ? "" : "opacity-50 cursor-not-allowed"
                                   }`}
-                                  disabled={level.read.length >= 10}
+                                  disabled={level.read.length < (level.lessons.length*3)}
+                                  aria-disabled={level.read.length < (level.lessons.length*3)}
                                 >
                                   Read
                                 </button>
