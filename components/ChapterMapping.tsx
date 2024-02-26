@@ -86,16 +86,19 @@ const NUMBERS: Level[] = [
     name: "Level 1",
     description: "1, 2, 3",
     lessons: [ LESSONS[26], LESSONS[27], LESSONS[28]],
+    read: [],
   },
   {
     name: "Level 2",
     description: "4, 5, 6",
     lessons: [ LESSONS[29], LESSONS[30], LESSONS[31]],
+    read: [],
   },
   {
     name: "Level 3",
     description: "7, 8, 9, 0",
     lessons: [ LESSONS[32], LESSONS[33], LESSONS[34], LESSONS[35]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -109,11 +112,13 @@ const PUNCTUATION: Level[] = [
     name: "Level 1",
     description: 'comma, apostrophe ',
     lessons: [LESSONS[36], LESSONS[37]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'colon, semicolon, hyphen',
     lessons: [LESSONS[38], LESSONS[39], LESSONS[40]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -124,16 +129,19 @@ const PUNCTUATION: Level[] = [
     name: "Level 3",
     description: 'full stop, exclamation mark',
     lessons: [LESSONS[41], LESSONS[42]],
+    read: [],
   },
   {
     name: "Level 4",
     description: 'interrogation mark, opening and closing quotation mark',
     lessons: [LESSONS[43], LESSONS[44], LESSONS[45]],
+    read: [],
   },
   {
     name: "Level 5",
     description: 'opening and closing parenthesis',
     lessons: [LESSONS[46], LESSONS[47]],
+    read: [],
   },
   {
     name: "Challenge 2",
@@ -147,11 +155,13 @@ const SYMBOLS: Level[] = [
     name: "Level 1",
     description: '< and >',
     lessons: [LESSONS[48], LESSONS[49]],
+    read: [],
   },
   {
     name: "Level 2",
     description: '@ and & ',
     lessons: [LESSONS[50], LESSONS[51]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -162,11 +172,13 @@ const SYMBOLS: Level[] = [
     name: "Level 3",
     description: '+ and =',
     lessons: [LESSONS[52], LESSONS[53]],
+    read: [],
   },
   {
     name: "Level 4",
     description: '% and #',
     lessons: [LESSONS[54], LESSONS[55]],
+    read: [],
   },
   {
     name: "Challenge 2",

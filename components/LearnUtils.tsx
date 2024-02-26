@@ -142,7 +142,11 @@ export function IndividualLesson({
   let lastInputWasSpaceOrNewline = false;
 
   useEffect(() => {
-    setPromptText(lesson.prompt);
+    if (isRead){
+      setPromptText("Write letter " + countLessons)
+    } else {
+      setPromptText(lesson.prompt);
+    }
   }, [lesson.prompt, lesson.numberOfSuccesses, lesson]);
 
   useEffect(() => {
@@ -151,9 +155,9 @@ export function IndividualLesson({
   }, [lesson.isFirstAppearance, lesson]);
 
   useEffect(() => {
-    if (showHint) {
+    if (showHint && !isRead) {
       setPromptText(lesson.prompt + " " + lesson.hint);
-    } else {
+    } else if (!isRead) {
       setPromptText(lesson.prompt);
     }
   }, [lesson.hint, showHint]);
@@ -199,8 +203,12 @@ export function IndividualLesson({
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setInputText("");
-      setPromptText(lesson.prompt + " " + lesson.hint);
-      setShowHint(false);
+      if (isRead){
+        setPromptText("Write letter " + countLessons)
+      } else {
+        setPromptText(lesson.prompt + " " + lesson.hint);
+        setShowHint(false);
+      }     
     }
   }
 
@@ -211,7 +219,7 @@ export function IndividualLesson({
   return (
     <>
       <div className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
-        {isRead? "Write letter " + countLessons : promptText}
+        {promptText}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
       <BrailleLearnBox
