@@ -96,7 +96,7 @@ function ChapterList() {
                             </div>
                             <div>
                               <button
-                                onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false)} }
+                                onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false); level.read = [];} }
                                 className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                               >
                                 Write
