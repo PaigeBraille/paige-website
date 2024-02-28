@@ -192,11 +192,13 @@ const ALPHABETIC_WORDSIGNS: Level[] = [
     name: "Level 1",
     description: 'b, c, d, e, f, g',
     lessons: [LESSONS[56], LESSONS[57], LESSONS[58], LESSONS[59], LESSONS[60], LESSONS[61]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'h, j, k, l, m, n',
     lessons: [LESSONS[62], LESSONS[63], LESSONS[64], LESSONS[65], LESSONS[66], LESSONS[67]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -207,11 +209,13 @@ const ALPHABETIC_WORDSIGNS: Level[] = [
     name: "Level 3",
     description: 'p, q, r, s, t, u',
     lessons: [LESSONS[68], LESSONS[69], LESSONS[70], LESSONS[71], LESSONS[72], LESSONS[73]],
+    read: [],
   },
   {
     name: "Level 4",
     description: 'v, w, x, y, z',
     lessons: [LESSONS[74], LESSONS[75], LESSONS[76], LESSONS[77], LESSONS[78]],
+    read: [],
   },
   {
     name: "Challenge 2",
@@ -225,11 +229,13 @@ const STRONG_CONTRACTIONS: Level[] = [
     name: "Level 1",
     description: 'and, for, of',
     lessons: [LESSONS[79], LESSONS[80], LESSONS[81]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'the, with',
     lessons: [LESSONS[82], LESSONS[83]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -243,11 +249,13 @@ const STRONG_WORDSIGNS: Level[] = [
     name: "Level 1",
     description: 'child, shall, this',
     lessons: [LESSONS[84], LESSONS[85], LESSONS[86]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'which, out, still',
     lessons: [LESSONS[87], LESSONS[88], LESSONS[89]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -261,11 +269,13 @@ const STRONG_GROUPSIGNS: Level[] = [
     name: "Level 1",
     description: 'ch, sh, th',
     lessons: [LESSONS[90], LESSONS[91], LESSONS[92]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'wh, ou, st',
     lessons: [LESSONS[93], LESSONS[94], LESSONS[95]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -276,11 +286,13 @@ const STRONG_GROUPSIGNS: Level[] = [
     name: "Level 3",
     description: 'gh, ed, er',
     lessons: [LESSONS[96], LESSONS[97], LESSONS[98]],
+    read: [],
   },
   {
     name: "Level 4",
     description: 'ow, ar, ing',
     lessons: [LESSONS[99], LESSONS[100], LESSONS[101]],
+    read: [],
   },
   {
     name: "Challenge 2",
@@ -294,11 +306,13 @@ const LOWER_GROUPSIGNS: Level[] = [
     name: "Level 1",
     description: 'ea, bb, cc, ff, gg',
     lessons: [LESSONS[102], LESSONS[103], LESSONS[104], LESSONS[105], LESSONS[106]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'be, con dis, en, in',
     lessons: [LESSONS[107], LESSONS[108], LESSONS[109], LESSONS[110], LESSONS[111]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -312,11 +326,13 @@ const LOWER_WORDSIGNS: Level[] = [
     name: "Level 1",
     description: 'be, enough, were',
     lessons: [LESSONS[112], LESSONS[113], LESSONS[114]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'his, in, was',
     lessons: [LESSONS[115], LESSONS[116], LESSONS[117]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -330,11 +346,13 @@ const INITIAL_LETTER_CONTRACTIONS: Level[] = [
     name: "Level 1",
     description: 'day, ever, father, here, know',
     lessons: [LESSONS[118], LESSONS[119], LESSONS[120], LESSONS[121], LESSONS[122]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'lord, mother, name, one, part',
     lessons: [LESSONS[123], LESSONS[124], LESSONS[125], LESSONS[126], LESSONS[127]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -345,11 +363,13 @@ const INITIAL_LETTER_CONTRACTIONS: Level[] = [
     name: "Level 3",
     description: 'question, right, some, time, under',
     lessons: [LESSONS[128], LESSONS[129], LESSONS[130], LESSONS[131], LESSONS[132]],
+    read: [],
   },
   {
     name: "Level 4",
     description: 'work, young, there, character, through, where, ought',
     lessons: [LESSONS[133], LESSONS[134], LESSONS[135], LESSONS[136], LESSONS[137], LESSONS[138], LESSONS[139]],
+    read: [],
   },
   {
     name: "Challenge 2",
@@ -360,11 +380,13 @@ const INITIAL_LETTER_CONTRACTIONS: Level[] = [
     name: "Level 5",
     description: 'upon, word, these, those, whose',
     lessons: [LESSONS[140], LESSONS[141], LESSONS[142], LESSONS[143], LESSONS[144]],
+    read: [],
   },
   {
     name: "Level 6",
     description: 'cannot, had, many, spirit, world, their',
     lessons: [LESSONS[145], LESSONS[146], LESSONS[147], LESSONS[148], LESSONS[149], LESSONS[150]],
+    read: [],
   },
   {
     name: "Challenge 3",
@@ -378,11 +400,13 @@ const FINAL_LETTER_GROUPSIGNS: Level[] = [
     name: "Level 1",
     description: 'ound, ance, sion, less, ount',
     lessons: [LESSONS[151], LESSONS[152], LESSONS[153], LESSONS[154], LESSONS[155]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'ence, ong, ful, tion, ness, ment, ity',
     lessons: [LESSONS[156], LESSONS[157], LESSONS[158], LESSONS[159], LESSONS[160], LESSONS[161], LESSONS[162]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -396,11 +420,13 @@ const SHORT_FORMS: Level[] = [
     name: "Level 1",
     description: 'ab - alw',
     lessons: [LESSONS[163], LESSONS[164], LESSONS[165], LESSONS[166], LESSONS[167], LESSONS[168], LESSONS[169], LESSONS[170], LESSONS[171], LESSONS[172],  LESSONS[173], LESSONS[174], LESSONS[175], LESSONS[176], LESSONS[177]],
+    read: [],
   },
   {
     name: "Level 2",
     description: 'bec - brl',
     lessons: [LESSONS[178], LESSONS[179], LESSONS[180], LESSONS[181], LESSONS[182], LESSONS[183], LESSONS[184], LESSONS[185], LESSONS[186], LESSONS[187]],
+    read: [],
   },
   {
     name: "Challenge 1",
@@ -411,11 +437,13 @@ const SHORT_FORMS: Level[] = [
     name: "Level 3",
     description: 'chn - grt',
     lessons: [LESSONS[188], LESSONS[189], LESSONS[190], LESSONS[191], LESSONS[192], LESSONS[193], LESSONS[194], LESSONS[195], LESSONS[196], LESSONS[197], LESSONS[198], LESSONS[199], LESSONS[200]],
+    read: [],
   },
   {
     name: "Level 4",
     description: 'herf - nei',
     lessons: [LESSONS[201], LESSONS[202], LESSONS[203], LESSONS[204], LESSONS[205], LESSONS[206], LESSONS[207], LESSONS[208], LESSONS[209], LESSONS[210], LESSONS[211], LESSONS[212], LESSONS[213]],
+    read: [],
   },
   {
     name: "Challenge 2",
@@ -426,11 +454,13 @@ const SHORT_FORMS: Level[] = [
     name: "Level 5",
     description: 'onef - rjcg',
     lessons: [LESSONS[214], LESSONS[215], LESSONS[216], LESSONS[217], LESSONS[218], LESSONS[219], LESSONS[220], LESSONS[221], LESSONS[222], LESSONS[223], LESSONS[224]],
+    read: [],
   },
   {
     name: "Level 6",
     description: 'sd - yrvs',
     lessons: [LESSONS[225], LESSONS[226], LESSONS[227], LESSONS[228], LESSONS[229], LESSONS[230], LESSONS[231], LESSONS[232], LESSONS[233], LESSONS[234], LESSONS[235], LESSONS[236], LESSONS[237]],
+    read: [],
   },
   {
     name: "Challenge 3",
