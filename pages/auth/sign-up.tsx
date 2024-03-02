@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { auth } from "@/lib/firebase";
 import { Wrapper } from "@/components/Wrapper";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const router = useRouter();
@@ -21,27 +22,13 @@ const SignUp = () => {
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
-    passwordOne: Yup.string().required("Password is required"),
+    passwordOne: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
     passwordTwo: Yup.string()
       .oneOf([Yup.ref("passwordOne")], "Passwords must match")
       .required("Confirm Password is required"),
   });
-
-  const onSubmit = (values: any, { setSubmitting }: any) => {
-    setError(null);
-    //create user in Firebase and redirect to your logged in page.
-    createUserWithEmailAndPassword(auth, values.email, values.passwordOne)
-      .then((authUser) => {
-        console.log("Success. The user is created in Firebase");
-      })
-      .catch((error) => {
-        // An error occurred. Set error message to be displayed to user
-        setError(error.message);
-      })
-      .finally(() => {
-        setSubmitting(false);
-      });
-  };
 
   return (
     <Wrapper>
@@ -58,7 +45,42 @@ const SignUp = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={onSubmit}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              setError(null);
+              setSubmitting(true);
+              // toast in loading state
+              const toastId = toast.loading("Submitting account details");
+              //create user in Firebase and redirect to your logged in page.
+              createUserWithEmailAndPassword(
+                auth,
+                values.email,
+                values.passwordOne,
+              )
+                .then((authUser) => {
+                  toast.update(toastId, {
+                    render: "Account created successfully",
+                    type: "success",
+                    isLoading: false,
+                  });
+                  console.log("Success. The user is created in Firebase");
+                })
+                .catch((error) => {
+                  toast.update(toastId, {
+                    render: "Error creating account",
+                    type: "error",
+                    isLoading: false,
+                  });
+                  setError(error.message);
+                })
+                .finally(() => {
+                  resetForm();
+                  setSubmitting(false);
+                  // wait 5 seconds then dismiss the toast
+                  setTimeout(() => {
+                    toast.dismiss(toastId);
+                  }, 5000);
+                });
+            }}
           >
             <Form>
               {error && <div className="text-red-500 mb-4">{error}</div>}
