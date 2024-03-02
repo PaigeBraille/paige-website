@@ -158,11 +158,18 @@ const SignUp = () => {
             </Form>
           </Formik>
           <div className="border-t border-gray-900 mt-4 mb-1"></div>
-          <Link href="/auth/login">
-            <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
-              Already have an account?
-            </p>
-          </Link>
+          <div className="flex justify-between">
+            <Link href="/auth/login">
+              <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
+                Already have an account?
+              </p>
+            </Link>
+            <Link href="/auth/reset-password">
+              <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
+                Forgot password?
+              </p>
+            </Link>
+          </div>
         </div>
       </div>
     </Wrapper>

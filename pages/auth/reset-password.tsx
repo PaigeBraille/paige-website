@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { sendPasswordResetEmail, getAuth } from "firebase/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { auth } from "@/lib/firebase";
@@ -8,22 +8,18 @@ import { Wrapper } from "@/components/Wrapper";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const ResetPassword = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
 
   const initialValues = {
     email: "",
-    password: "",
   };
 
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
-    password: Yup.string()
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters"),
   });
 
   return (
@@ -32,10 +28,10 @@ const Login = () => {
         <div className="bg-blue-50 px-6 p-6 rounded-lg">
           <div className="pb-4">
             <h2 className="text-l font-bold text-primary tracking-tight">
-              Log in
+              Reset Password
             </h2>
             <p className="text-sm text-gray-600">
-              Log in to access your account
+              Enter your email to reset your password
             </p>
           </div>
           <Formik
@@ -45,23 +41,23 @@ const Login = () => {
               setError(null);
               setSubmitting(true);
               // toast in loading state
-              const toastId = toast.loading("Logging in");
-              // sign in user with Firebase and redirect to the logged in page.
-              signInWithEmailAndPassword(auth, values.email, values.password)
-                .then((authUser) => {
+              const toastId = toast.loading("Sending password reset email");
+              // send password reset email with Firebase
+              sendPasswordResetEmail(auth, values.email)
+                .then(() => {
                   toast.update(toastId, {
-                    render: "Logged in successfully",
+                    render: "Password reset email sent",
                     type: "success",
                     isLoading: false,
                   });
-                  console.log("Success. The user is logged in with Firebase");
+                  console.log("Success. Password reset email sent");
                   setTimeout(() => {
-                    router.push("/learn");
-                  }, 1000); // Redirect to "/learn" after 1 second
+                    router.push("/auth/login");
+                  }, 1000); // Redirect to "/auth/login" after 1 second
                 })
                 .catch((error) => {
                   toast.update(toastId, {
-                    render: "Error logging in",
+                    render: "Error sending password reset email",
                     type: "error",
                     isLoading: false,
                   });
@@ -81,7 +77,7 @@ const Login = () => {
               {error && <div className="text-red-500 mb-4">{error}</div>}
               <div className="mb-5">
                 <label
-                  htmlFor="loginEmail"
+                  htmlFor="resetPasswordEmail"
                   className="block text-xs text-gray-600"
                 >
                   Email
@@ -89,7 +85,7 @@ const Login = () => {
                 <Field
                   type="email"
                   name="email"
-                  id="loginEmail"
+                  id="resetPasswordEmail"
                   placeholder="Email"
                   className="border border-gray-300 rounded px-2 py-1 w-full"
                 />
@@ -99,53 +95,26 @@ const Login = () => {
                   className="text-xs text-red-700 absolute"
                 />
               </div>
-              <div className="mb-5">
-                <label
-                  htmlFor="loginPassword"
-                  className="block text-xs text-gray-600"
-                >
-                  Password
-                </label>
-                <Field
-                  type="password"
-                  name="password"
-                  id="loginPassword"
-                  placeholder="Password"
-                  className="border border-gray-300 rounded px-2 py-1 w-full"
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="text-xs text-red-700 absolute"
-                />
-              </div>
               <div className="mt-8">
                 <button
                   className="text-xs border border-black rounded px-4 py-2 mr-auto w-full"
                   type="submit"
                 >
-                  Log in
+                  Reset Password
                 </button>
               </div>
             </Form>
           </Formik>
           <div className="border-t border-gray-900 mt-4 mb-1"></div>
-          <div className="flex justify-between">
-            <Link href="/auth/sign-up">
-              <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
-                Don't have an account? Sign up
-              </p>
-            </Link>
-            <Link href="/auth/reset-password">
-              <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
-                Forgot password?
-              </p>
-            </Link>
-          </div>
+          <Link href="/auth/login">
+            <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
+              Remember your password? Log in
+            </p>
+          </Link>
         </div>
       </div>
     </Wrapper>
   );
 };
 
-export default Login;
+export default ResetPassword;
