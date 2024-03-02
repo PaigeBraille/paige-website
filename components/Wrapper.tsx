@@ -27,6 +27,10 @@ const WEB_LINKS: NavLinkInfo[] = [
     name: "Buy",
     location: "/buy",
   },
+  {
+    name: "Sign up",
+    location: "/auth/sign-up",
+  },
 ];
 
 export function Wrapper(props: { children?: ReactNode }) {
