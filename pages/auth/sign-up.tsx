@@ -63,6 +63,9 @@ const SignUp = () => {
                     isLoading: false,
                   });
                   console.log("Success. The user is created in Firebase");
+                  setTimeout(() => {
+                    router.push("/learn");
+                  }, 1000); // Redirect to "/learn" after 1 second
                 })
                 .catch((error) => {
                   toast.update(toastId, {
