@@ -133,7 +133,7 @@ const Login = () => {
           <div className="flex justify-between">
             <Link href="/auth/sign-up">
               <p className="text-gray-700 hover:underline text-xs hover:text-gray-500">
-                Don't have an account? Sign up
+                {"Don't have an account? Sign up"}
               </p>
             </Link>
             <Link href="/auth/reset-password">
