@@ -4,7 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Logo from "../public/svg/Paige_logo.svg";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { toast } from "react-toastify";
 
@@ -46,7 +46,6 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
   const [links, setLinks] = useState<NavLinkInfo[]>([]);
 
   useEffect(() => {
-    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsLoggedIn(true);
