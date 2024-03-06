@@ -5,28 +5,21 @@ import HintOn from "../public/svg/hint-on.svg";
 import HintOff from "../public/svg/hint-off.svg";
 import Heart from "../public/svg/heart.svg";
 import ProgressBar from "./ProgressBar";
-import { LessonInProgress, Level } from "../pages/learn";
-import { addCompletedLessonToUser, auth } from "@/lib/firebase";
+import { LessonInProgress, Level} from "../pages/learn";
 
 function LevelProgressBar({
-  lessonsInProgress,
-  isReview,
+  lessonsInProgress,isReview,
 }: {
   lessonsInProgress: LessonInProgress[];
   isReview: boolean;
 }) {
   const totalLevels = isReview
-    ? Math.min(
-        lessonsInProgress.reduce(
-          (total, lesson) => total + lesson.numberOfSuccessesToPass,
-          0,
-        ),
-        10,
-      )
-    : lessonsInProgress.reduce(
-        (total, lesson) => total + lesson.numberOfSuccessesToPass,
-        0,
-      );
+    ? Math.min
+    (
+      lessonsInProgress.reduce((total, lesson) => total + lesson.numberOfSuccessesToPass,0),
+      10
+    )
+    : lessonsInProgress.reduce((total, lesson) => total + lesson.numberOfSuccessesToPass,0);
 
   const totalProgress = lessonsInProgress.reduce(
     (total, lesson) => total + lesson.numberOfSuccesses,
@@ -38,54 +31,43 @@ function LevelProgressBar({
 
 function selectRandomLesson(lessons: LessonInProgress[]) {
   const incompleteLessons = lessons.filter(
-    (lesson) => lesson.numberOfSuccesses < lesson.numberOfSuccessesToPass,
+    (lesson) => lesson.numberOfSuccesses < lesson.numberOfSuccessesToPass
   );
 
   const randomLessonIndex = Math.floor(
-    Math.random() * incompleteLessons.length,
+    Math.random() * incompleteLessons.length
   );
 
   return incompleteLessons[randomLessonIndex];
 }
 
 function selectNextLesson(lessons: LessonInProgress[]) {
-  return;
+
+  return ;
 }
 
-export function Lessons({
-  lessons,
-  level,
-  isReview,
-  isRead,
-}: {
-  lessons: LessonInProgress[];
-  level: Level;
-  isReview: boolean;
-  isRead: boolean;
-}) {
-  const [lessonsInProgress, setLessonsInProgress] =
-    useState<LessonInProgress[]>(lessons);
+export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonInProgress[]; level: Level; isReview: boolean; isRead: boolean }) {
+  const [lessonsInProgress, setLessonsInProgress] = useState<LessonInProgress[]>(lessons);
   const [countLessons, setCountLessons] = useState<number>(1);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
-    lessonsInProgress[0],
+    lessonsInProgress[0]
   );
   const [challengeFail, setChallengeFail] = useState<boolean>(false);
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
-    const updatedLessonsInProgress = lessonsInProgress.map((prevLesson) =>
-      prevLesson.prompt === lesson.prompt
-        ? {
-            ...prevLesson,
-            numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
-            isFirstAppearance: false,
-          }
-        : prevLesson,
+    const updatedLessonsInProgress = lessonsInProgress.map((prevLesson) => prevLesson.prompt === lesson.prompt
+      ? {
+        ...prevLesson,
+        numberOfSuccesses: prevLesson.numberOfSuccesses + 1,
+        isFirstAppearance: false,
+      }
+      : prevLesson
     );
     setLessonsInProgress(updatedLessonsInProgress);
 
     // Ensure level.read is initialized as an array with the current lesson
-    if (!isRead && !isReview) {
+    if(!isRead && !isReview){
       if (level.read) {
         // Append the last completed lesson to level.read
         level.read = [...level.read, lesson];
@@ -95,51 +77,32 @@ export function Lessons({
     // Increment the countLessons for read levels
     if (isRead) {
       setCountLessons((prevCount) => prevCount + 1);
-      // Get the next lesson based on the updated countLessons
+       // Get the next lesson based on the updated countLessons
       const newRandomLesson = lessonsInProgress[countLessons];
       setCurrentLesson(newRandomLesson);
-    } else {
-      // Get a new random lesson
+    } else {   // Get a new random lesson
       const newRandomLesson = selectRandomLesson(updatedLessonsInProgress);
       setCurrentLesson(newRandomLesson);
     }
+    
   };
 
   // End level
-  const isLevelComplete = isReview
-    ? lessonsInProgress.every(
-        (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
-      ) ||
+  const isLevelComplete =  isReview 
+    ? lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) 
       // If level is a review it ends after 10 words have been introduced
-      lessonsInProgress.filter(
-        (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
-      ).length >= 10
-    : lessonsInProgress.every(
-        (lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass,
-      );
-
-  if (isLevelComplete) {
-    addCompletedLessonToUser(level.name, auth);
-  }
+      || lessonsInProgress.filter((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass).length >= 10 
+    : lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) ;
 
   return (
     <>
-      <LevelProgressBar
-        lessonsInProgress={lessonsInProgress}
-        isReview={isReview}
-      />
+      <LevelProgressBar lessonsInProgress={lessonsInProgress} isReview={isReview} />
       {isLevelComplete ? (
-        <div
-          className="text-center leading-tight text-2xl text-paigedarkgrey p-2"
-          aria-live="assertive"
-        >
+        <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
           Level completed!
         </div>
       ) : challengeFail ? (
-        <div
-          className="text-center leading-tight text-2xl text-paigedarkgrey p-2"
-          aria-live="assertive"
-        >
+        <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
           Challenge failed!
         </div>
       ) : (
@@ -158,13 +121,7 @@ export function Lessons({
 }
 
 export function IndividualLesson({
-  lesson,
-  level,
-  setChallengeFail,
-  onCompletion,
-  isReview,
-  isRead,
-  countLessons,
+  lesson, level, setChallengeFail, onCompletion, isReview, isRead, countLessons
 }: {
   lesson: LessonInProgress;
   level: Level;
@@ -185,8 +142,8 @@ export function IndividualLesson({
   let lastInputWasSpaceOrNewline = false;
 
   useEffect(() => {
-    if (isRead) {
-      setPromptText("Write letter " + countLessons);
+    if (isRead){
+      setPromptText("Write letter " + countLessons)
     } else {
       setPromptText(lesson.prompt);
     }
@@ -207,8 +164,7 @@ export function IndividualLesson({
 
   async function onTextChange(newAsciiString: string) {
     // Update lastInputWasSpaceOrNewline based on the current input
-    lastInputWasSpaceOrNewline =
-      newAsciiString.endsWith(" ") || newAsciiString.endsWith("\n");
+    lastInputWasSpaceOrNewline = newAsciiString.endsWith(' ') || newAsciiString.endsWith('\n');
 
     // Remove the last character if the last input was space bar or newline
     if (lastInputWasSpaceOrNewline) {
@@ -218,20 +174,15 @@ export function IndividualLesson({
     setInputText(newAsciiString);
 
     // Check if the last input was space bar or newline
-    if (
-      lastInputWasSpaceOrNewline &&
-      newAsciiString === lesson.correctInputMatch
-    ) {
+    if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
       setPromptText("Correct!");
       audio.play();
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setInputText("");
       onCompletion();
-    } else if (
-      lastInputWasSpaceOrNewline &&
-      newAsciiString !== lesson.correctInputMatch
-    ) {
+
+    } else if (lastInputWasSpaceOrNewline && newAsciiString !== lesson.correctInputMatch) {
       // Decrement livesRemaining if the answer is incorrect during a challenge
       if (level.name.includes("Challenge")) {
         setLivesRemaining((prevLives) => {
@@ -252,12 +203,12 @@ export function IndividualLesson({
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setInputText("");
-      if (isRead) {
-        setPromptText("Write letter " + countLessons);
+      if (isRead){
+        setPromptText("Write letter " + countLessons)
       } else {
         setPromptText(lesson.prompt + " " + lesson.hint);
         setShowHint(false);
-      }
+      }     
     }
   }
 
@@ -267,10 +218,7 @@ export function IndividualLesson({
 
   return (
     <>
-      <div
-        className="text-center leading-tight text-2xl text-paigedarkgrey p-6"
-        aria-live="assertive"
-      >
+      <div className="text-center leading-tight text-2xl text-paigedarkgrey p-6" aria-live="assertive">
         {promptText}
       </div>{" "}
       {/* Display the question prompt and hint if showHint is true */}
@@ -279,29 +227,26 @@ export function IndividualLesson({
         onChange={onTextChange}
         value={inputText}
       ></BrailleLearnBox>
-      <div
-        className={` flex w-full ${
-          level.name.includes("Challenge") ? "justify-between" : "justify-left"
-        }`}
+      <div className={` flex w-full ${level.name.includes("Challenge") ? "justify-between" : "justify-left"}`}
       >
-        {!isReview && !isRead ? (
-          <button className=" button h-10 w-10" onClick={toggleHint}>
-            {showHint ? (
-              <HintOn title="Hide hint" className="w-10 h-10" />
-            ) : (
-              <HintOff title="Show hint" className="w-10 h-10" />
-            )}
+        {(!isReview && !isRead) ? 
+          <button
+            className=" button h-10 w-10"
+            onClick={toggleHint}
+          >
+            {showHint ? <HintOn title="Hide hint" className="w-10 h-10" /> : <HintOff title="Show hint" className="w-10 h-10" />}
           </button>
-        ) : null}
-        {level.name.includes("Challenge") ? (
+        : null}
+        {level.name.includes("Challenge") ?
           <div className="relative flex items-center justify-center w-10 h-10">
             <span className="text-2xl z-10 text-white">{livesRemaining}</span>
             <div className="absolute inset-0 flex items-center justify-center">
               <Heart title="Lives" className="w-10 h-10" />
             </div>
           </div>
-        ) : null}
+        : null}
       </div>
+
     </>
   );
 }
