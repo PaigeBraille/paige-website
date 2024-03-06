@@ -1,12 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Logo from "../public/svg/Paige_logo.svg";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
-import { toast } from "react-toastify";
 
 // Register font awesome icons
 library.add(faBars);
@@ -42,26 +39,6 @@ function NavLink(props: NavLinkInfo) {
 
 export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [links, setLinks] = useState<NavLinkInfo[]>([]);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLoggedIn(true);
-        setLinks(
-          props.links.filter(
-            (link) => link.name !== "Sign up" && link.name !== "Log in",
-          ),
-        );
-      } else {
-        setIsLoggedIn(false);
-        setLinks(props.links);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [props.links]);
 
   return (
     <section className="bg-white flex justify-top flex-col max-w-5xl mx-auto">
@@ -93,42 +70,9 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
             id="paige-navbar"
           >
             <ul className="flex flex-col border border-gray-300 p-4 md:p-0 rounded-lg mb-6 md:mb-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 bg-gray-50 md:bg-white">
-              {links.map((l) => {
+              {props.links.map((l) => {
                 return <NavLink {...l} key={l.name} />;
               })}
-              {isLoggedIn ? (
-                <button
-                  type="button"
-                  className="text-xs border border-black rounded px-1 my-0 mr-auto"
-                  onClick={() => {
-                    const toastId = toast.loading("Logging out");
-                    signOut(auth)
-                      .then(() => {
-                        toast.update(toastId, {
-                          render: "Logged out successfully",
-                          type: "success",
-                          isLoading: false,
-                        });
-                      })
-                      .catch((error) => {
-                        toast.update(toastId, {
-                          render: "Error logging out",
-                          type: "error",
-                          isLoading: false,
-                        });
-                      })
-                      .finally(() => {
-                        setTimeout(() => {
-                          toast.dismiss(toastId);
-                        }, 5000);
-                      });
-                  }}
-                >
-                  Logout
-                </button>
-              ) : (
-                <></>
-              )}
             </ul>
           </div>
         </div>
