@@ -50,7 +50,7 @@ function GenericGraphicSection(props: GraphicSectionProps) {
     <section className="flex flex-col bg-white gap-4 w-full">
       <div className="flex flex-col gap-6">
         <div
-          className={`flex flex-col lg:flex-row items-center justify-between w-full xl:rounded-lg xl:overflow-visible relative gap-4 xl:gap-0 px-4 py-8  ${
+          className={`flex flex-col lg:flex-row items-center justify-between w-full sm:rounded-lg sm:overflow-visible relative gap-4 sm:gap-0 px-4 py-8  ${
             props.colorScheme === "BLUE"
               ? "bg-primary text-white "
               : props.colorScheme === "GREEN"

@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
                 className="flex flex-col gap-2 relative overflow-y-clip h-36 rounded-b-lg"
                 key={i}
               >
-                <SpeechBubble className="absolute top-0 left-0" />
+                <SpeechBubble className="h-52 absolute x-0 y-0" />
                 <h3 className="z-10 w-52 mt-8 mx-6 font-bold">{t.name}</h3>
                 <blockquote className="z-10 w-52 mx-6 text-sm">
                   {t.text}

@@ -3,10 +3,35 @@ import Image from "next/image";
 import device from "../public/paige-connect.jpeg";
 import Heading from "../components/Heading";
 import HowTo from "../components/HowTo";
-import NewsletterSection from "../components/NewsletterSection";
+import EmailSection from "../components/EmailSection";
 import SubscribePopup from "../components/SubscribePopup";
 import Link from "next/link";
 import { Wrapper } from "../components/Wrapper";
+import {
+  Swap,
+  Translate,
+  Learn,
+} from "../components/SupportSection";
+import FAQ, { FAQuestion } from "../components/FAQ";
+
+const questions: FAQuestion[] = [
+  {
+    question: "Swap",
+    answer: [],
+    fragment: <Swap />,
+  },
+  {
+    question: "Translate",
+    answer: [],
+    fragment: <Translate />,
+  },
+  {
+    question: "Learn",
+    answer: [],
+    fragment: <Learn />,
+  },
+  // Add more questions here...
+];
 
 const FeatureItem = (props: { title: string; text: string; idx: number }) => {
   return (
@@ -148,9 +173,12 @@ export default function Buy() {
       <div className="max-w-5xl mx-auto sm:mb-6 flex flex-col gap-12 sm:gap-16 sm:px-6 pt-6 overflow-clip">
         <HeroSection onClickJoin={() => setShowSubscribe(true)} />
         <ProductSection />
-        <HowTo />
-        <FeatureSection />
-        <NewsletterSection onClickSubscribe={() => setShowSubscribe(true)} />
+        {/* <HowTo /> */}
+        <div className="border-t border-paigedarkgrey  md:mb-6">
+          <FAQ questions={questions} />
+        </div>
+        {/* <FeatureSection /> */}
+        <EmailSection onClickSubscribe={() => setShowSubscribe(true)} />
         <SubscribePopup
           togglePopup={() => {
             setShowSubscribe(!showSubscribe);

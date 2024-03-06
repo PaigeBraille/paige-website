@@ -12,10 +12,6 @@ const WEB_LINKS: NavLinkInfo[] = [
     location: "/stories",
   },
   {
-    name: "Support",
-    location: "/support",
-  },
-  {
     name: "Translate",
     location: "/translate",
   },
