@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Lessons } from "../../components/LearnUtils";
 import { LESSONS } from "../../components/LessonMapping";
 import { CHAPTERS } from "../../components/ChapterMapping";
+import ToolsSection from "../../components/ToolsSection";
 
 export interface Lesson {
   prompt: string;
@@ -49,6 +50,7 @@ function ChapterList() {
   return (
     <>
       {selectedLevel === null && (
+        <div>
           <ul className="flex flex-col">
             {CHAPTERS.map((c, index) => (
               <li
@@ -131,6 +133,8 @@ function ChapterList() {
               </li>
             ))}
           </ul>
+          <ToolsSection />
+        </div>
       )}
       {selectedLevel && (
         <Level

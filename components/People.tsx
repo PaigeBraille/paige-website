@@ -66,11 +66,11 @@ export default function People() {
             heading={"Nina Rimsky"}
             caption={"Software"}
           />
-          <TeamMember
+          {/* <TeamMember
             imageSrc={Sean}
             heading={"Sean Randall"}
             caption={"Accessibility"}
-          />
+          /> */}
         </div>
       </div>
       {/* <div className="flex flex-col md:border md:border-paigedarkgrey rounded-b-lg">
