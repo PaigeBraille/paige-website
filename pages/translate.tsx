@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
 import { asciiBraille } from "../components/BrailleMapping";
@@ -27,6 +27,16 @@ export default function Translate() {
   });
   // Used to store the spoken feedback, the text which gets read to aria assertive
   const [spokenFeedback, setSpokenFeedback] = useState<string>("");
+
+
+  const spokenFeedbackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Focus on the spoken feedback element when the component mounts
+    if (spokenFeedbackRef.current) {
+      spokenFeedbackRef.current.focus();
+    }
+  }, []);
 
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTable(event.target.value);
@@ -139,7 +149,7 @@ export default function Translate() {
             <div className="tracking-tight font-bold leading-tight py-2 md:py-0">
               Spoken feedback:
             </div>
-            <div aria-live="assertive">{spokenFeedback}</div>
+            <div aria-live="assertive"  ref={spokenFeedbackRef} id="spoken-feedback">{spokenFeedback}</div>
           </div>
           <button
             onClick={handleCopy}
