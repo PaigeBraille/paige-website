@@ -46,13 +46,26 @@ function selectNextLesson(lessons: LessonInProgress[]) {
   return ;
 }
 
-export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonInProgress[]; level: Level; isReview: boolean; isRead: boolean }) {
+export function Lessons(
+{ lessons, level, isReview, isRead, nextLevel
+}: { 
+  lessons: LessonInProgress[]; 
+  level: Level; 
+  isReview: boolean; 
+  isRead: boolean;  
+  nextLevel: () => void; 
+}) {
   const [lessonsInProgress, setLessonsInProgress] = useState<LessonInProgress[]>(lessons);
   const [countLessons, setCountLessons] = useState<number>(1);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0]
   );
   const [challengeFail, setChallengeFail] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLessonsInProgress(lessons);
+    setCurrentLesson(lessonsInProgress[0]);
+  }, [level, lessons]);
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
@@ -93,6 +106,17 @@ export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonIn
       // If level is a review it ends after 10 words have been introduced
       || lessonsInProgress.filter((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass).length >= 10 
     : lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) ;
+
+    useEffect(() => {
+      // Delay before calling nextLevel function (e.g., 2 seconds)
+
+      if (isLevelComplete) {
+        const timeoutId = setTimeout(() => {
+          nextLevel(); // Call nextLevel function after the delay
+        }, 2000);
+        return () => clearTimeout(timeoutId); // Clear the timeout if the component unmounts
+      }
+    }, [isLevelComplete]);
 
   return (
     <>
