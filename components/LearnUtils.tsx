@@ -46,13 +46,27 @@ function selectNextLesson(lessons: LessonInProgress[]) {
   return ;
 }
 
-export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonInProgress[]; level: Level; isReview: boolean; isRead: boolean }) {
+export function Lessons(
+{ lessons, level, isReview, isRead, nextLevel
+}: { 
+  lessons: LessonInProgress[]; 
+  level: Level; 
+  isReview: boolean; 
+  isRead: boolean;  
+  nextLevel: () => void; 
+}) {
   const [lessonsInProgress, setLessonsInProgress] = useState<LessonInProgress[]>(lessons);
   const [countLessons, setCountLessons] = useState<number>(1);
   const [currentLesson, setCurrentLesson] = useState<LessonInProgress>(
     lessonsInProgress[0]
   );
   const [challengeFail, setChallengeFail] = useState<boolean>(false);
+  const [completionMessages] = useState<string[]>(["Level completed - Congratulations!", "Crushing it!", "Nicely done!"]);
+
+  useEffect(() => {
+    setLessonsInProgress(lessons);
+    setCurrentLesson(lessonsInProgress[0]);
+  }, [level, lessons]);
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
     // Increment the number of successes for the old lesson
@@ -94,16 +108,27 @@ export function Lessons({ lessons, level, isReview, isRead}: { lessons: LessonIn
       || lessonsInProgress.filter((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass).length >= 10 
     : lessonsInProgress.every((lesson) => lesson.numberOfSuccesses >= lesson.numberOfSuccessesToPass) ;
 
+    useEffect(() => {
+      // Delay before calling nextLevel function (e.g., 2 seconds)
+
+      if (isLevelComplete) {
+        const timeoutId = setTimeout(() => {
+          nextLevel(); // Call nextLevel function after the delay
+        }, 2000);
+        return () => clearTimeout(timeoutId); // Clear the timeout if the component unmounts
+      }
+    }, [isLevelComplete]);
+
   return (
     <>
       <LevelProgressBar lessonsInProgress={lessonsInProgress} isReview={isReview} />
       {isLevelComplete ? (
         <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
-          Level completed!
+          {completionMessages[Math.floor(Math.random() * completionMessages.length)]}
         </div>
       ) : challengeFail ? (
         <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
-          Challenge failed!
+          Keep practicing and try again!
         </div>
       ) : (
         <IndividualLesson
@@ -134,7 +159,8 @@ export function IndividualLesson({
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
   const [inputText, setInputText] = useState<string>("");
   const [livesRemaining, setLivesRemaining] = useState<number>(5); // Initialize lives remaining to 3
-
+  const [correctMessages] = useState<string[]>(["Correct!", "Excellent!", "Nice!", "Keep going!"]);
+  const [incorrectMessages] = useState<string[]>(["Incorrect!", "Oops, that’s not correct!", "Not quite!", "Try again!"]);
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
   const audio = new Audio(AudioFile);
@@ -175,7 +201,8 @@ export function IndividualLesson({
 
     // Check if the last input was space bar or newline
     if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
-      setPromptText("Correct!");
+      const randomIndex = Math.floor(Math.random() * correctMessages.length);
+      setPromptText(correctMessages[randomIndex]);
       audio.play();
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -198,7 +225,8 @@ export function IndividualLesson({
           return newLives; // Remove this line
         });
       } else {
-        setPromptText("Incorrect!");
+        const randomIndex = Math.floor(Math.random() * incorrectMessages.length);
+        setPromptText(incorrectMessages[randomIndex]);
       }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1500));

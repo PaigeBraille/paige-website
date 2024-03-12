@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { Wrapper } from "../../components/Wrapper";
 import Heading from "../../components/Heading";
 import Login from "../../components/Login"; // Import the Login component
@@ -11,6 +11,7 @@ import { Lessons } from "../../components/LearnUtils";
 import { LESSONS } from "../../components/LessonMapping";
 import { CHAPTERS } from "../../components/ChapterMapping";
 import ToolsSection from "../../components/ToolsSection";
+import next from "next";
 
 export interface Lesson {
   prompt: string;
@@ -42,10 +43,13 @@ function ChapterList() {
   const [isReview, setIsReview] = useState(false);
   const [isRead, setIsRead] = useState(false);
   // Set initial value to null to default to all collapsed, or any index to default to that question being open
-  const [activeChapter, setActiveChapter] = useState<null | number>(0);
+  const [activeChapter, setActiveChapter] = useState<number | null>(0);
+  // Set initial value to null to default to all collapsed, or any index to default to that question being open
+  const [indexLevel, setIndexLevel] = useState<[number | null, number | null]>([0, null]);
 
   const handleClick = (index: number) => {
-    setActiveChapter(index === activeChapter ? null : index);
+    setActiveChapter(index);
+    console.log(activeChapter);
   };
   return (
     <>
@@ -82,11 +86,11 @@ function ChapterList() {
                   }`}
                 >
                   <ul>
-                    {c.levels.map((level) => (
+                    {c.levels.map((level, levelIndex) => (
                       <li key={level.name}>
                         {level.name.includes("Challenge") ?
                           <button 
-                            onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false)} }
+                            onClick={() =>  { setSelectedLevel(CHAPTERS[index].levels[levelIndex]);setIndexLevel([index,levelIndex]); setIsReview(false); setIsRead(false)} }
                             className="text-center text-white font-bold bg-paigedarkblue hover:bg-blue-700 rounded-md py-4 px-4 mt-2 w-full"
                           >
                             {level.name}
@@ -98,14 +102,14 @@ function ChapterList() {
                             </div>
                             <div>
                               <button
-                                onClick={() =>  { setSelectedLevel(level); setIsReview(false); setIsRead(false); level.read = [];} }
+                                onClick={() =>  { setSelectedLevel(CHAPTERS[index].levels[levelIndex]); setIndexLevel([index,levelIndex]); setIsReview(false); setIsRead(false); level.read = [];} }
                                 className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                               >
                                 Write
                               </button>
                               {level.read ? 
                                 <button
-                                  onClick={() => { setSelectedLevel(level); setIsReview(false); setIsRead(true);} }
+                                  onClick={() => { setSelectedLevel(CHAPTERS[index].levels[levelIndex]);setIndexLevel([index,levelIndex]); setIsReview(false); setIsRead(true);} }
                                   className={` text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700  ${
                                     level.read.length >= (level.lessons.length*3) ? "" : "opacity-50 cursor-not-allowed"
                                   }`}
@@ -117,7 +121,7 @@ function ChapterList() {
                               : null}
                               {level.review ? 
                                 <button
-                                  onClick={() => { setSelectedLevel(level); setIsReview(true); setIsRead(false)} }
+                                  onClick={() => { setSelectedLevel(CHAPTERS[index].levels[levelIndex]); setIndexLevel([index,levelIndex]); setIsReview(true); setIsRead(false)} }
                                   className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                                 >
                                   Review
@@ -136,51 +140,96 @@ function ChapterList() {
           <ToolsSection />
         </div>
       )}
-      {selectedLevel && (
+      { selectedLevel && (
         <Level
           level={selectedLevel}
           setSelectedLevel={setSelectedLevel}
           isReview={isReview}
           isRead={isRead}
+          indexLevel={indexLevel}
+          setIndexLevel={setIndexLevel}
         />
       )}
     </>
   );
 }
 
+
 function Level({
   level,
   setSelectedLevel,
   isReview,
   isRead,
+  indexLevel,
+  setIndexLevel
 }: {
   level: Level;
   setSelectedLevel: React.Dispatch<React.SetStateAction<Level | null>>;
   isReview: boolean;
   isRead: boolean;
+  indexLevel: [number | null, number | null];
+  setIndexLevel: React.Dispatch<React.SetStateAction<[number | null, number | null]>>;
 }) {
 
-  const lessons: Lesson[] = isReview ? (level.review || []) : isRead? (level.read || []) : level.lessons;
-
-  const lessonInProgress: LessonInProgress[] = lessons.map((lesson) => ({
+  const [lessons, setLessons] = useState<Lesson[]>(isReview ? (level.review || []) : isRead ? (level.read || []) : level.lessons);
+  const [lessonInProgress, setLessonInProgress] = useState<LessonInProgress[]>(lessons.map((lesson) => ({
     ...lesson,
     numberOfSuccesses: 0,
     isFirstAppearance: true,
-  }));
+  })));
+
+  useEffect(() => {
+    // Update lessonInProgress when lessons change
+    setLessonInProgress(lessons.map((lesson) => ({
+      ...lesson,
+      numberOfSuccesses: 0,
+      isFirstAppearance: true,
+    })));
+  }, [lessons]);
 
   const goBack = () => {
     setSelectedLevel(null);
   };
 
+  const nextLevel = () => {
+    if(indexLevel[0] !== null && indexLevel[1] !== null){
+      var j = indexLevel[1] + 1;
+      console.log("Here");
+      if((CHAPTERS[indexLevel[0]].levels).length < j + 1){
+        console.log("End");
+        j = 0;
+        var i = indexLevel[0] + 1;
+        setIndexLevel([i, j]);
+        setSelectedLevel(CHAPTERS[i].levels[j]);
+        setLessons(CHAPTERS[i].levels[j].lessons);
+      } else {
+        console.log("Next");
+        setIndexLevel([indexLevel[0], j]);
+        setSelectedLevel(CHAPTERS[indexLevel[0]].levels[j]);
+        setLessons(CHAPTERS[indexLevel[0]].levels[j].lessons);
+        setLessonInProgress(CHAPTERS[indexLevel[0]].levels[j].lessons.map((lesson) => ({
+          ...lesson,
+          numberOfSuccesses: 0,
+          isFirstAppearance: true,
+        })))
+      }
+    }
+  };
+
   return (
     <div className="py-6 md:py-12 px-4">
-      <button onClick={goBack} className="text-left text-primary text-xs font-light">
+      <div className="flex justify-between">
+        <button onClick={goBack} className="text-left text-primary text-xs font-light">
           ← Go back
-      </button>
+        </button>
+        <button onClick={nextLevel} className="text-left text-primary text-xs font-light">
+          Next Level → 
+        </button>
+      </div>
       <Heading css="text-center text-primary">
         {`${level.name.includes("Challenge") ? level.name : isReview ? level.name + " review" : level.name + " - " + level.description}`}
       </Heading>
-      <Lessons lessons={lessonInProgress} level={level} isReview={isReview} isRead={isRead}/>
+      <Lessons lessons={lessonInProgress} level={level} isReview={isReview} isRead={isRead} nextLevel={nextLevel}/>
     </div>
   );
 }
