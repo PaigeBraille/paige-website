@@ -61,6 +61,7 @@ export function Lessons(
     lessonsInProgress[0]
   );
   const [challengeFail, setChallengeFail] = useState<boolean>(false);
+  const [completionMessages] = useState<string[]>(["Level completed - Congratulations!", "Crushing it!", "Nicely done!"]);
 
   useEffect(() => {
     setLessonsInProgress(lessons);
@@ -123,11 +124,11 @@ export function Lessons(
       <LevelProgressBar lessonsInProgress={lessonsInProgress} isReview={isReview} />
       {isLevelComplete ? (
         <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
-          Level completed!
+          {completionMessages[Math.floor(Math.random() * completionMessages.length)]}
         </div>
       ) : challengeFail ? (
         <div className="text-center leading-tight text-2xl text-paigedarkgrey p-2" aria-live="assertive">
-          Challenge failed!
+          Keep practicing and try again!
         </div>
       ) : (
         <IndividualLesson
@@ -158,7 +159,8 @@ export function IndividualLesson({
   const [promptText, setPromptText] = useState<string>(lesson.prompt);
   const [inputText, setInputText] = useState<string>("");
   const [livesRemaining, setLivesRemaining] = useState<number>(5); // Initialize lives remaining to 3
-
+  const [correctMessages] = useState<string[]>(["Correct!", "Excellent!", "Nice!", "Keep going!"]);
+  const [incorrectMessages] = useState<string[]>(["Incorrect!", "Oops, that’s not correct!", "Not quite!", "Try again!"]);
   const [showHint, setShowHint] = useState<boolean>(lesson.isFirstAppearance);
 
   const audio = new Audio(AudioFile);
@@ -199,7 +201,8 @@ export function IndividualLesson({
 
     // Check if the last input was space bar or newline
     if (lastInputWasSpaceOrNewline && newAsciiString === lesson.correctInputMatch) {
-      setPromptText("Correct!");
+      const randomIndex = Math.floor(Math.random() * correctMessages.length);
+      setPromptText(correctMessages[randomIndex]);
       audio.play();
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -222,7 +225,8 @@ export function IndividualLesson({
           return newLives; // Remove this line
         });
       } else {
-        setPromptText("Incorrect!");
+        const randomIndex = Math.floor(Math.random() * incorrectMessages.length);
+        setPromptText(incorrectMessages[randomIndex]);
       }
       // await 500ms before moving on to the next lesson
       await new Promise((resolve) => setTimeout(resolve, 1500));
