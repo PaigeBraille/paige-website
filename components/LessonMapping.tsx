@@ -1479,12 +1479,283 @@ export const LESSONS: Lesson[] = [
     correctInputMatch: "yrvs",
     numberOfSuccessesToPass: 3,
   },
-  // REVIEW
-  {
-    prompt: "lad",
-    hint: "",
-    correctInputMatch: "lad",
-    numberOfSuccessesToPass: 3,
-  },
 ];
 
+export const REVIEW: Lesson[] = [
+    // REVIEW
+    // Numbers
+    // Level 1 
+    {
+      prompt: "2121",
+      hint: "",
+      correctInputMatch: "#baba",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "11",
+      hint: "",
+      correctInputMatch: "#aa",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "1211",
+      hint: "",
+      correctInputMatch: "#abaa",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "3223",
+      hint: "",
+      correctInputMatch: "#cbbc",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "3212",
+      hint: "",
+      correctInputMatch: "#cbab",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "332",
+      hint: "",
+      correctInputMatch: "#ccb",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "32",
+      hint: "",
+      correctInputMatch: "#cb",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "311",
+      hint: "",
+      correctInputMatch: "#caa",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "2232",
+      hint: "",
+      correctInputMatch: "#bbcb",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "132",
+      hint: "",
+      correctInputMatch: "#acb",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "2111",
+      hint: "",
+      correctInputMatch: "#baaa",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "3312",
+      hint: "",
+      correctInputMatch: "#ccab",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "21",
+      hint: "",
+      correctInputMatch: "#ba",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "321",
+      hint: "",
+      correctInputMatch: "#cba",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "121",
+      hint: "",
+      correctInputMatch: "#aba",
+      numberOfSuccessesToPass: 1,
+    },
+    // Level 2
+    {
+      prompt: "4322",
+      hint: "",
+      correctInputMatch: "#dcbb",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "1241",
+      hint: "",
+      correctInputMatch: "#abda",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "5412",
+      hint: "",
+      correctInputMatch: "#edab",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "5354",
+      hint: "",
+      correctInputMatch: "#eced",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "6464",
+      hint: "",
+      correctInputMatch: "#fdfd",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "5665",
+      hint: "",
+      correctInputMatch: "#effe",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "6464",
+      hint: "",
+      correctInputMatch: "#fdfd",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "2316",
+      hint: "",
+      correctInputMatch: "#bcaf",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "316",
+      hint: "",
+      correctInputMatch: "#caf",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "365",
+      hint: "",
+      correctInputMatch: "#cfe",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "153",
+      hint: "",
+      correctInputMatch: "#aec",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "54",
+      hint: "",
+      correctInputMatch: "#ed",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "11",
+      hint: "",
+      correctInputMatch: "#aa",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "2145",
+      hint: "",
+      correctInputMatch: "#bade",
+      numberOfSuccessesToPass: 1,
+    },
+    {
+      prompt: "6514",
+      hint: "",
+      correctInputMatch: "#fead",
+      numberOfSuccessesToPass: 1,
+    }, 
+  
+      // Level 3
+    {
+      prompt: "6993",
+      hint: "",
+      correctInputMatch: "#fiic",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "224",
+      hint: "",
+      correctInputMatch: "#bbd",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "7560",
+      hint: "",
+      correctInputMatch: "#gefj",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "8924",
+      hint: "",
+      correctInputMatch: "#hibd",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "9564",
+      hint: "",
+      correctInputMatch: "#iefd",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "9163",
+      hint: "",
+      correctInputMatch: "#iafc",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "3971",
+      hint: "",
+      correctInputMatch: "#ciga",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "28",
+      hint: "",
+      correctInputMatch: "#bh",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "49",
+      hint: "",
+      correctInputMatch: "#di",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "114",
+      hint: "",
+      correctInputMatch: "#aad",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "317",
+      hint: "",
+      correctInputMatch: "#cag",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "910",
+      hint: "",
+      correctInputMatch: "#iaj",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "5577",
+      hint: "",
+      correctInputMatch: "#eegg",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "8400",
+      hint: "",
+      correctInputMatch: "#hdjj",
+      numberOfSuccessesToPass: 1
+    },
+    {
+      prompt: "9823",
+      hint: "",
+      correctInputMatch: "#ihbc",
+      numberOfSuccessesToPass: 1
+    }
+];
