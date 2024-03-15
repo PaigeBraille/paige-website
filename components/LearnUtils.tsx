@@ -83,6 +83,7 @@ export function Lessons({
   }, [level, lessons, isReview, isRead]);
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
+    console.log("Here");
     // Increment the number of successes for the old lesson
     const updatedLessonsInProgress = lessonsInProgress.map((prevLesson) =>
       prevLesson.prompt === lesson.prompt
@@ -221,7 +222,7 @@ export function IndividualLesson({
     if (isRead) {
       setPromptText("Write letter " + countLessons);
     } else {
-      if (lesson.isFirstAppearance){
+      if (lesson.isFirstAppearance && !isReview){
           // Update showHint when lesson.isFirstAppearance changes
           setShowHint(lesson.isFirstAppearance);
       } else {
@@ -264,7 +265,9 @@ export function IndividualLesson({
       setPromptText(correctMessages[randomIndex]);
       audio.play();
       // await 500ms before moving on to the next lesson
+      console.log("Before");
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("After");
       setInputText("");
       onCompletion();
     } else if (
