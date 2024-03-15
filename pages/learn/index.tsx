@@ -79,7 +79,7 @@ function ChapterList() {
                 onClick={() => handleClickS(index)}
                 aria-label={s.name}
               >
-                <div className="flex felx-row">
+                <div className="flex felx-row" aria-hidden="true">
                   {s.image}
                   <h3 className="inline-flex text-3xl md:text-3xl font-bold leading-tight tracking-tight text-white my-4">
                     {s.name}

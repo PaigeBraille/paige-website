@@ -27,7 +27,7 @@ export function CompatibilitySection1() {
               Learn more
             </a>
           </div>
-          <NextSense className="block sm:inline-flex w-20 h-20 my-6 md:w-44 md:h-44 md:my-auto md:mr-20" alt="NextSense logo." />
+          <NextSense className="block sm:inline-flex w-20 h-20 my-6 md:w-44 md:h-44 md:my-auto md:mr-20" aria-label="NextSense logo." />
         </div>
       </div>
     </section>
@@ -87,7 +87,7 @@ export function CompatibilitySection3() {
               Learn more
             </a>
           </div>
-          <Duxbury className="block sm:inline-flex w-20 h-20 my-6 md:w-44 md:h-44 md:my-auto md:mr-20"  alt="Duxbury logo."  />
+          <Duxbury className="block sm:inline-flex w-20 h-20 my-6 md:w-44 md:h-44 md:my-auto md:mr-20"  aria-label="Duxbury logo."  />
         </div>
       </div>
     </section>
