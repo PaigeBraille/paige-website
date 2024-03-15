@@ -65,12 +65,20 @@ export default function Translate() {
 
   const onTextChange = (newAsciiString: string) => {
     setInputText(newAsciiString);
-    translateAndUpdate(
-      newAsciiString,
-      selectedTable,
-      setPrintText,
-      setSpokenFeedback,
-    );
+
+  // Check if the last character of newAsciiString is a space or newline
+  const lastCharIsSpaceOrNewline = newAsciiString.endsWith(' ') || newAsciiString.endsWith('\n');
+  console.log('Last character is space or newline:', lastCharIsSpaceOrNewline);
+
+    // Call translateAndUpdate only if the last character is a space or newline
+    if (lastCharIsSpaceOrNewline || newAsciiString == "") {
+      translateAndUpdate(
+        newAsciiString,
+        selectedTable,
+        setPrintText,
+        setSpokenFeedback,
+      );
+    }
   };
 
   return (
@@ -119,7 +127,7 @@ export default function Translate() {
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <div className="w-full sm:w-1/2 p-4">
-            <h2 className="tracking-tight leading-tight mb-2" >Braille</h2>
+            <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
             <BrailleTextBox
               InputKeyMap={keys}
               onChange={onTextChange}
@@ -134,7 +142,6 @@ export default function Translate() {
               value={printText}
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
               aria-live="off"
-              aria-hidden="true"
               readOnly={true}
               disabled
             />

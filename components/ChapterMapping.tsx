@@ -140,7 +140,7 @@ const PUNCTUATION: Level[] = [
   },
   {
     name: "Level 4",
-    description: 'interrogation mark, opening and closing quotation mark',
+    description: 'question mark, opening and closing quotation mark',
     lessons: [LESSONS[43], LESSONS[44], LESSONS[45]],
     read: [],
   },
