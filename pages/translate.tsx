@@ -143,7 +143,6 @@ export default function Translate() {
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
               aria-live="off"
               readOnly={true}
-              disabled
             />
           </div>
         </div>
