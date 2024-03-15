@@ -7,9 +7,7 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
   return (
     <footer className="bg-zinc-700 text-white text-xs w-full p-4 lg:p-8 leading-tight flex flex-wrap">
       <div className="w-full md:w-1/4 text-center md:text-left pb-4 md:pr-4">
-        <Link href="/">
-          <Logo className="inline-block h-auto" alt="Paige Logo" />
-        </Link>
+        <Logo className="inline-block h-auto" alt="Paige logo" />
         <p className="mb-4">
           Contact us at:{" "}
           <a className="text-white" href="mailto: hello@paigebraille.com">

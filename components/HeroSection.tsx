@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="basis-3/5 min-w-1/2">
         <Image
           src={HeroImage}
-          alt="Paige Connect web app showing translated braille."
+          alt="Braille writer with Paige Connect connected to a laptop. The laptop screen shows translated braille."
           className="max-h-72 object-contain overflow-clip"
           height={500}
           priority

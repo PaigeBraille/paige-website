@@ -1,6 +1,6 @@
 ---
 title: Sean Randall
-alt: "New College Worcester logo."
+alt: "Paige Connect displayed on a desk with user manual and packaging."
 date: "08-03-2023"
 coverImage: "/testimonial-imgs/sean.jpeg"
 excerpt: '"Paige Connect is such a simple idea. It really just does one thing, but in doing it well, Paige Connect will open doors to education, potentially for thousands of people."'
