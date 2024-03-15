@@ -1,5 +1,9 @@
-import { LESSONS} from "@/components/LessonMapping";
-import { Lesson, Level, Chapter } from "../pages/learn";
+import { LESSONS, REVIEW} from "@/components/LessonMapping";
+import { Lesson, Level, Chapter, Section } from "../pages/learn";
+import Rookie from "../public/svg/rookie.svg";
+import Explorer from "../public/svg/explorer.svg";
+import Champion from "../public/svg/champion.svg";
+import Legendary from "../public/svg/legendary.svg";
 
 const generateReviewLessons = (reviewStrings: string[]): Lesson[] => {
   const numberOfSuccessesToPass = 1;
@@ -86,18 +90,21 @@ const NUMBERS: Level[] = [
     name: "Level 1",
     description: "1, 2, 3",
     lessons: [ LESSONS[26], LESSONS[27], LESSONS[28]],
+    review: [ REVIEW[0], REVIEW[1], REVIEW[2], REVIEW[3], REVIEW[4], REVIEW[5], REVIEW[6], REVIEW[7], REVIEW[8], REVIEW[9], REVIEW[10], REVIEW[11], REVIEW[12], REVIEW[13], REVIEW[14]],
     read: [],
   },
   {
     name: "Level 2",
     description: "4, 5, 6",
     lessons: [ LESSONS[29], LESSONS[30], LESSONS[31]],
+    review: [ REVIEW[15], REVIEW[16], REVIEW[17], REVIEW[18], REVIEW[19], REVIEW[20], REVIEW[21], REVIEW[22], REVIEW[23], REVIEW[24], REVIEW[25], REVIEW[26], REVIEW[27], REVIEW[28], REVIEW[29]],
     read: [],
   },
   {
     name: "Level 3",
     description: "7, 8, 9, 0",
     lessons: [ LESSONS[32], LESSONS[33], LESSONS[34], LESSONS[35]],
+    review: [ REVIEW[30], REVIEW[31], REVIEW[32], REVIEW[33], REVIEW[34], REVIEW[35], REVIEW[36], REVIEW[37], REVIEW[38], REVIEW[39], REVIEW[40], REVIEW[41], REVIEW[42], REVIEW[43], REVIEW[44]],
     read: [],
   },
   {
@@ -523,4 +530,33 @@ export const CHAPTERS:Chapter[] = [
       name: "Short forms",
       levels: SHORT_FORMS,
     },
+];
+
+
+export const SECTIONS:Section[] = [
+  {
+    name: "Rookie",
+    image: <Rookie title="Rookie section" className="w-12 mr-4" />,
+    color: "primary",
+    chapters: [CHAPTERS[0], CHAPTERS[1], CHAPTERS[2], CHAPTERS[3]],
+  },
+  {
+    name: "Explorer",
+    image: <Explorer title="Explorer section" className="w-12 mr-4"  />,
+    color: "paigedarkblue",
+    chapters: [CHAPTERS[4], CHAPTERS[5], CHAPTERS[6]],
+  },
+  {
+    name: "Champion",
+    image: <Champion title="Champion section" className="w-12 mr-4"  />,
+    color: "green-900",
+    chapters: [CHAPTERS[7], CHAPTERS[8], CHAPTERS[9]],
+  },
+  {
+    name: "Legendary",
+    image: <Legendary title="Legendary" className="w-12 mr-4"  />,
+    color: "paigeyellow",
+    chapters: [CHAPTERS[10], CHAPTERS[11], CHAPTERS[12]],
+  },
+
 ];

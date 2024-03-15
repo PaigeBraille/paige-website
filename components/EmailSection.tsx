@@ -14,7 +14,7 @@ export default function NewsletterSection(props: {
           </a>
         </h2>
       </div>
-      <Graphic4 className="overflow-visible inline-flex h-48 xl:h-64 xl:absolute xl:right-6 xl:-bottom-0" />
+      <Graphic4 className="overflow-visible inline-flex h-48 xl:h-64 xl:absolute xl:right-6 xl:-bottom-0" aria-hidden="true" aria-label="Illustration of Paige Connect being delivered to you." />
     </div>
   );
 }
