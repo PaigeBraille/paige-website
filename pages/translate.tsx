@@ -27,19 +27,11 @@ export default function Translate() {
   });
   // Used to store the spoken feedback, the text which gets read to aria assertive
   const [spokenFeedback, setSpokenFeedback] = useState<string>("");
-
-
   const spokenFeedbackRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Focus on the spoken feedback element when the component mounts
-    if (spokenFeedbackRef.current) {
-      spokenFeedbackRef.current.focus();
-    }
-  }, []);
-
   const handleTableChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTable(event.target.value);
+    const selectedValue = event.target.value;
+    setSelectedTable(selectedValue);
   };
 
   const handleSaveKeys = (newKeys: string[]) => {
@@ -93,6 +85,7 @@ export default function Translate() {
             value={selectedTable}
             className="border rounded p-2 my-4 md:my-0 max-w-[300px]"
             style={{ WebkitAppearance: "none" }}
+            aria-label="Select a table"
           >
             <option value="en-ueb-g1.ctb">English (Grade 1)</option>
             <option value="en-ueb-g2.ctb">English (Grade 2)</option>
@@ -126,7 +119,7 @@ export default function Translate() {
         </div>
         <div className="flex flex-col md:flex-row justify-between py-4 md:py-6">
           <div className="w-full sm:w-1/2 p-4">
-            <h2 className="tracking-tight leading-tight mb-2">Braille</h2>
+            <h2 className="tracking-tight leading-tight mb-2" >Braille</h2>
             <BrailleTextBox
               InputKeyMap={keys}
               onChange={onTextChange}
@@ -140,20 +133,24 @@ export default function Translate() {
               cols={25}
               value={printText}
               className="rounded border border-paigedarkgrey outline-primary p-2 w-full"
-              //aria-live="assertive"
+              aria-live="off"
+              aria-hidden="true"
+              readOnly={true}
+              disabled
             />
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between p-4 py-2 md:py-4">
           <div>
-            <div className="tracking-tight font-bold leading-tight py-2 md:py-0">
+            <div className="tracking-tight font-bold leading-tight py-2 md:py-0 ">
               Spoken feedback:
             </div>
-            <div aria-live="assertive"  ref={spokenFeedbackRef} id="spoken-feedback">{spokenFeedback}</div>
+            <div aria-live="assertive">{spokenFeedback}</div>
           </div>
           <button
             onClick={handleCopy}
             className="p-2 h-8 w-8 bg-primary text-white rounded"
+            aria-label="Copy"
           >
             <Copy title="Copy" className="w-4 h-4" />
           </button>

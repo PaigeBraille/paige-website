@@ -155,6 +155,10 @@ export const BrailleTextBox = ({
       value={unicodeGlyphString}
       onChange={() => {}}
       className="rounded border font-braille border-paigedarkgrey outline-primary p-2 w-full"
+      aria-hidden="true"
+      aria-live="off"
+      readOnly={true}
+      disabled
     />
   );
 };
