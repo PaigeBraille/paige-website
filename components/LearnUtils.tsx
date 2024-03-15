@@ -221,7 +221,12 @@ export function IndividualLesson({
     if (isRead) {
       setPromptText("Write letter " + countLessons);
     } else {
-      setPromptText(lesson.prompt);
+      if (lesson.isFirstAppearance){
+          // Update showHint when lesson.isFirstAppearance changes
+          setShowHint(lesson.isFirstAppearance);
+      } else {
+          setPromptText(lesson.prompt);
+      }
     }
   }, [lesson.prompt, lesson.numberOfSuccesses, lesson, isRead, isReview]);
 
