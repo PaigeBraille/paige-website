@@ -80,6 +80,7 @@ export function Lessons({
   useEffect(() => {
     setLessonsInProgress(lessons);
     setCurrentLesson(lessons[0]);
+    setCountLessons(1);
   }, [level, lessons, isReview, isRead]);
 
   const handleLessonCompletion = (lesson: LessonInProgress) => {
