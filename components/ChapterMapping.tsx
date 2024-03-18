@@ -536,25 +536,25 @@ export const CHAPTERS:Chapter[] = [
 export const SECTIONS:Section[] = [
   {
     name: "Rookie",
-    image: <Rookie title="Rookie section" className="w-12 mr-4" />,
+    image: <Rookie title="Rookie section" className="w-8 md:w-12 mr-4" />,
     color: "primary",
     chapters: [CHAPTERS[0], CHAPTERS[1], CHAPTERS[2], CHAPTERS[3]],
   },
   {
     name: "Explorer",
-    image: <Explorer title="Explorer section" className="w-12 mr-4"  />,
+    image: <Explorer title="Explorer section" className="w-8 md:w-12 mr-4"  />,
     color: "paigedarkblue",
     chapters: [CHAPTERS[4], CHAPTERS[5], CHAPTERS[6]],
   },
   {
     name: "Champion",
-    image: <Champion title="Champion section" className="w-12 mr-4"  />,
+    image: <Champion title="Champion section" className="w-8 md:w-12 mr-4"  />,
     color: "green-900",
     chapters: [CHAPTERS[7], CHAPTERS[8], CHAPTERS[9]],
   },
   {
     name: "Legendary",
-    image: <Legendary title="Legendary" className="w-12 mr-4"  />,
+    image: <Legendary title="Legendary" className="w-8 md:w-12 mr-4"  />,
     color: "paigeyellow",
     chapters: [CHAPTERS[10], CHAPTERS[11], CHAPTERS[12]],
   },

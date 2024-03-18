@@ -88,6 +88,11 @@ const Footer = (props: { links: NavLinkInfo[] }) => {
               Careers
             </Link>
           </li>
+          <li className="mt-2">
+            <Link href="/history" className="hover:underline">
+              History
+            </Link>
+          </li>
           {/* <li className="mt-2">
             <Link href="/buy" className="hover:underline">
               FAQ
