@@ -81,7 +81,7 @@ function ChapterList() {
               >
                 <div className="flex felx-row" aria-hidden="true">
                   {s.image}
-                  <h3 className="inline-flex text-3xl md:text-3xl font-bold leading-tight tracking-tight text-white my-4">
+                  <h3 className="inline-flex text-xl md:text-2xl font-bold leading-tight tracking-tight text-white my-4">
                     {s.name}
                   </h3>
                 </div>
