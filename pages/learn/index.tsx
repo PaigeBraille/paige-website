@@ -335,6 +335,7 @@ function Level({
             if (isReview) {
               console.log("Write");
               setIsReview(false);
+              setIsRead(false);
               setIndexLevel([indexLevel[0], j]);
               setSelectedLevel(CHAPTERS[indexLevel[0]].levels[j]);
               setLessons(CHAPTERS[indexLevel[0]].levels[j].lessons);
