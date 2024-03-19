@@ -320,71 +320,79 @@ function Level({
 
   const nextLevel = () => {
     if (indexLevel[0] !== null && indexLevel[1] !== null) {
-      if (level.read && level.review) {
+      if (level.read || level.review) {
         var j = indexLevel[1] + 1;
-        if (level.read && level.review) {
-          if (CHAPTERS[indexLevel[0]].levels.length < j + 1) {
-            console.log("End");
-            j = 0;
-            var i = indexLevel[0] + 1;
-            setIndexLevel([i, j]);
-            setSelectedLevel(CHAPTERS[i].levels[j]);
-            setLessons(CHAPTERS[i].levels[j].lessons);
-          } else {
-            console.log("Next");
-            if (isReview) {
-              console.log("Write");
-              setIsReview(false);
-              setIsRead(false);
-              setIndexLevel([indexLevel[0], j]);
-              setSelectedLevel(CHAPTERS[indexLevel[0]].levels[j]);
-              setLessons(CHAPTERS[indexLevel[0]].levels[j].lessons);
-              setLessonInProgress(
-                CHAPTERS[indexLevel[0]].levels[j].lessons.map((lesson) => ({
+        if (CHAPTERS[indexLevel[0]].levels.length < j + 1) {
+          console.log("End");
+          j = 0;
+          var i = indexLevel[0] + 1;
+          setIndexLevel([i, j]);
+          setSelectedLevel(CHAPTERS[i].levels[j]);
+          setLessons(CHAPTERS[i].levels[j].lessons);
+        } else {
+          console.log("Next");
+          if (
+            isReview ||
+            (isRead && !level.review) ||
+            (!level.review &&
+              level.read &&
+              !(level.read.length >= level.lessons.length * 3))
+          ) {
+            console.log("Write");
+            setIsReview(false);
+            setIsRead(false);
+            setIndexLevel([indexLevel[0], j]);
+            setSelectedLevel(CHAPTERS[indexLevel[0]].levels[j]);
+            setLessons(CHAPTERS[indexLevel[0]].levels[j].lessons);
+            setLessonInProgress(
+              CHAPTERS[indexLevel[0]].levels[j].lessons.map((lesson) => ({
+                ...lesson,
+                numberOfSuccesses: 0,
+                isFirstAppearance: true,
+              })),
+            );
+          } else if (
+            level.review &&
+            (isRead ||
+              (level.read && !(level.read.length >= level.lessons.length * 3)))
+          ) {
+            console.log("Review");
+            setIsReview(true);
+            setIsRead(false);
+            setIndexLevel([indexLevel[0], indexLevel[1]]);
+            setSelectedLevel(CHAPTERS[indexLevel[0]].levels[indexLevel[1]]);
+            setLessons(
+              CHAPTERS[indexLevel[0]].levels[indexLevel[1]].review || [],
+            );
+            setLessonInProgress(
+              CHAPTERS[indexLevel[0]].levels[indexLevel[1]].lessons.map(
+                (lesson) => ({
                   ...lesson,
                   numberOfSuccesses: 0,
                   isFirstAppearance: true,
-                })),
-              );
-            } else if (
-              isRead ||
-              !(level.read.length >= level.lessons.length * 3)
-            ) {
-              console.log("Review");
-              setIsReview(true);
-              setIsRead(false);
-              setIndexLevel([indexLevel[0], indexLevel[1]]);
-              setSelectedLevel(CHAPTERS[indexLevel[0]].levels[indexLevel[1]]);
-              setLessons(
-                CHAPTERS[indexLevel[0]].levels[indexLevel[1]].review || [],
-              );
-              setLessonInProgress(
-                CHAPTERS[indexLevel[0]].levels[indexLevel[1]].lessons.map(
-                  (lesson) => ({
-                    ...lesson,
-                    numberOfSuccesses: 0,
-                    isFirstAppearance: true,
-                  }),
-                ),
-              );
-            } else if (level.read.length >= level.lessons.length * 3) {
-              console.log("Read");
-              setIsRead(true);
-              setIndexLevel([indexLevel[0], indexLevel[1]]);
-              setSelectedLevel(CHAPTERS[indexLevel[0]].levels[indexLevel[1]]);
-              setLessons(
-                CHAPTERS[indexLevel[0]].levels[indexLevel[1]].read || [],
-              );
-              setLessonInProgress(
-                CHAPTERS[indexLevel[0]].levels[indexLevel[1]].lessons.map(
-                  (lesson) => ({
-                    ...lesson,
-                    numberOfSuccesses: 0,
-                    isFirstAppearance: true,
-                  }),
-                ),
-              );
-            }
+                }),
+              ),
+            );
+          } else if (
+            level.read &&
+            level.read.length >= level.lessons.length * 3
+          ) {
+            console.log("Read");
+            setIsRead(true);
+            setIndexLevel([indexLevel[0], indexLevel[1]]);
+            setSelectedLevel(CHAPTERS[indexLevel[0]].levels[indexLevel[1]]);
+            setLessons(
+              CHAPTERS[indexLevel[0]].levels[indexLevel[1]].read || [],
+            );
+            setLessonInProgress(
+              CHAPTERS[indexLevel[0]].levels[indexLevel[1]].lessons.map(
+                (lesson) => ({
+                  ...lesson,
+                  numberOfSuccesses: 0,
+                  isFirstAppearance: true,
+                }),
+              ),
+            );
           }
         }
       } else {
