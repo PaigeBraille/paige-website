@@ -132,6 +132,7 @@ export default function Translate() {
               InputKeyMap={keys}
               onChange={onTextChange}
               value={inputText}
+              aria-live="off"
             />
           </div>
           <div className="w-full sm:w-1/2 p-4">
