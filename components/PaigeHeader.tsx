@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX, faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Logo from "../public/svg/Paige_logo.svg";
 
 // Register font awesome icons
 library.add(faBars);
 library.add(faX);
+library.add(faUser);
 
 export type NavLinkInfo = {
   name: string;
@@ -44,8 +45,12 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
     <section className="bg-white flex justify-top flex-col max-w-5xl mx-auto">
       <nav className="px-4 md:px-8">
         <div className="flex flex-wrap items-center justify-between">
-          <Link href="/" className="flex items-center text-primary pr-2" aria-label="Home">
-            <Logo/>
+          <Link
+            href="/"
+            className="flex items-center text-primary pr-2"
+            aria-label="Home"
+          >
+            <Logo />
           </Link>
           <button
             type="button"
@@ -73,6 +78,16 @@ export default function PaigeHeader(props: { links: NavLinkInfo[] }) {
               {props.links.map((l) => {
                 return <NavLink {...l} key={l.name} />;
               })}
+              <Link
+                href="/dashboard"
+                className="text-sm sm:text-xs block md:py-2 text-primary rounded md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 cursor-pointer font-light"
+              >
+                <FontAwesomeIcon
+                  icon={faUser}
+                  size="lg"
+                  className="mr-2 cursor-pointer"
+                />
+              </Link>
             </ul>
           </div>
         </div>
