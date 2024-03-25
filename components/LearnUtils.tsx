@@ -136,7 +136,7 @@ export function Lessons({
     // Delay before calling nextLevel function (e.g., 2 seconds)
 
     if (isLevelComplete) {
-      addCompletedLessonToUser(level.name, auth);
+      addCompletedLessonToUser(`${level.name}${level.description}`, auth);
       const timeoutId = setTimeout(() => {
         nextLevel(); // Call nextLevel function after the delay
       }, 2000);

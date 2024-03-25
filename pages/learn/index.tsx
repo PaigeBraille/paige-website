@@ -181,7 +181,9 @@ function ChapterList() {
                                 <div className="relative flex justify-between bg-primary rounded-md py-2 px-4 mt-2 gap-6 ">
                                   <div className="font-bold text-white  py-2 px-4">
                                     {level.name + " - " + level.description}
-                                    {completedLessons.includes(level.name) && (
+                                    {completedLessons.includes(
+                                      `${level.name}${level.description}`,
+                                    ) && (
                                       <FontAwesomeIcon
                                         icon={faCheck}
                                         size="lg"
