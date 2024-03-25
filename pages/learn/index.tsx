@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import { Wrapper } from "../../components/Wrapper";
 import Heading from "../../components/Heading";
 import Login from "../../components/Login"; // Import the Login component
@@ -12,6 +12,9 @@ import { LESSONS } from "../../components/LessonMapping";
 import { CHAPTERS, SECTIONS } from "../../components/ChapterMapping";
 import ToolsSection from "../../components/ToolsSection";
 
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { auth, getUserCompletedLessons } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 export interface Lesson {
   prompt: string;
   hint: string;
@@ -58,6 +61,8 @@ function ChapterList() {
     null,
   ]);
 
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+
   const handleClickC = (index: number) => {
     setActiveChapter(index === activeChapter ? null : index);
     console.log(activeChapter);
@@ -67,6 +72,35 @@ function ChapterList() {
     setActiveSection(index === activeSection ? null : index);
     console.log(activeSection);
   };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userDetails = await getUserCompletedLessons(user.uid);
+        const completedLessonsIds = userDetails.completedLessons.map(
+          (lesson) => lesson.id,
+        );
+        setCompletedLessons(completedLessonsIds);
+      } else {
+        setCompletedLessons([]);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("fetching data");
+      if (!auth.currentUser) {
+        return;
+      }
+      const userDetails = await getUserCompletedLessons(auth.currentUser.uid);
+      const completedLessonsIds = userDetails.completedLessons.map(
+        (lesson) => lesson.id,
+      );
+      setCompletedLessons(completedLessonsIds);
+    };
+    fetchData();
+  }, [selectedLevel, auth.currentUser]);
 
   return (
     <>
@@ -102,152 +136,119 @@ function ChapterList() {
                 }`}
               >
                 <ul className="flex flex-col">
-                  {CHAPTERS.map((c, index) => {
-                    // Check if c.name exists in s.chapters
-                    const chapterExists = s.chapters.some(
-                      (chapter) => chapter.name === c.name,
-                    );
-                    if (chapterExists) {
-                      return (
-                        <li
-                          key={c.name}
-                          className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey mx-4"
-                        >
-                          <div
-                            className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
-                            onClick={() => handleClickC(index)}
-                            aria-label={c.name}
-                          >
-                            <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
-                              {c.name}
-                            </h3>
-                            <span className="text-gray-600 inline-flex text-xl md:text-2xl">
-                              {index === activeChapter ? (
-                                <FontAwesomeIcon
-                                  icon={faChevronDown}
-                                  size="xs"
-                                />
+                  {CHAPTERS.map((c, index) => (
+                    <li
+                      key={c.name}
+                      className="flex items-start flex-col py-4 gap-2 border-b border-paigedarkgrey"
+                    >
+                      <div
+                        className="flex flex-row justify-between cursor-pointer w-full gap-4 items-center"
+                        onClick={() => handleClickC(index)}
+                        aria-label={c.name}
+                      >
+                        <h3 className="inline-flex text-xl md:text-xl font-bold leading-tight tracking-tight">
+                          {c.name}
+                        </h3>
+                        {index === activeChapter ? (
+                          <FontAwesomeIcon icon={faChevronDown} size="xs" />
+                        ) : (
+                          <FontAwesomeIcon icon={faChevronLeft} size="xs" />
+                        )}
+                      </div>
+                      <div
+                        key={c.name}
+                        className={`text-sm  ${
+                          index === activeChapter
+                            ? "flex w-full flex-col gap-2 visible"
+                            : "hidden"
+                        }`}
+                      >
+                        <ul>
+                          {c.levels.map((level) => (
+                            <li key={level.name}>
+                              {level.name.includes("Challenge") ? (
+                                <button
+                                  onClick={() => {
+                                    setSelectedLevel(level);
+                                    setIsReview(false);
+                                    setIsRead(false);
+                                  }}
+                                  className="text-center text-white font-bold bg-paigedarkblue hover:bg-blue-700 rounded-md py-4 px-4 mt-2 w-full"
+                                >
+                                  {level.name}
+                                </button>
                               ) : (
-                                <FontAwesomeIcon
-                                  icon={faChevronLeft}
-                                  size="xs"
-                                />
-                              )}
-                            </span>
-                          </div>
-                          <div
-                            key={c.name}
-                            className={`text-sm  ${
-                              index === activeChapter
-                                ? "flex w-full flex-col gap-2 visible"
-                                : "hidden"
-                            }`}
-                          >
-                            <ul>
-                              {c.levels.map((level, levelIndex) => (
-                                <li key={level.name}>
-                                  {level.name.includes("Challenge") ? (
+                                <div className="relative flex justify-between bg-primary rounded-md py-2 px-4 mt-2 gap-6 ">
+                                  <div className="font-bold text-white  py-2 px-4">
+                                    {level.name + " - " + level.description}
+                                    {completedLessons.includes(
+                                      `${level.name}${level.description}`,
+                                    ) && (
+                                      <FontAwesomeIcon
+                                        icon={faCheck}
+                                        size="lg"
+                                        className="text-green-500 ml-2 font-semibold"
+                                      />
+                                    )}
+                                  </div>
+                                  <div>
                                     <button
                                       onClick={() => {
-                                        setSelectedLevel(
-                                          CHAPTERS[index].levels[levelIndex],
-                                        );
-                                        setIndexLevel([index, levelIndex]);
+                                        setSelectedLevel(level);
                                         setIsReview(false);
                                         setIsRead(false);
+                                        level.read = [];
                                       }}
-                                      className="text-center text-white font-bold bg-paigedarkblue hover:bg-blue-700 rounded-md py-4 px-4 mt-2 w-full"
+                                      className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
                                     >
-                                      {level.name}
+                                      Write
                                     </button>
-                                  ) : (
-                                    <div className="relative flex justify-between bg-primary rounded-md py-2 px-4 mt-2 gap-6 ">
-                                      <div className="font-bold text-white  py-2 px-4">
-                                        {level.name + " - " + level.description}
-                                      </div>
-                                      <div>
-                                        <button
-                                          onClick={() => {
-                                            setSelectedLevel(
-                                              CHAPTERS[index].levels[
-                                                levelIndex
-                                              ],
-                                            );
-                                            setIndexLevel([index, levelIndex]);
-                                            setIsReview(false);
-                                            setIsRead(false);
-                                            level.read = [];
-                                          }}
-                                          className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
-                                        >
-                                          Write
-                                        </button>
-                                        {level.read ? (
-                                          <button
-                                            onClick={() => {
-                                              setSelectedLevel(
-                                                CHAPTERS[index].levels[
-                                                  levelIndex
-                                                ],
-                                              );
-                                              setIndexLevel([
-                                                index,
-                                                levelIndex,
-                                              ]);
-                                              setIsReview(false);
-                                              setIsRead(true);
-                                            }}
-                                            className={` text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700  ${
-                                              level.read.length >=
-                                              level.lessons.length * 3
-                                                ? ""
-                                                : "opacity-50 cursor-not-allowed"
-                                            }`}
-                                            disabled={
-                                              level.read.length <
-                                              level.lessons.length * 3
-                                            }
-                                            aria-disabled={
-                                              level.read.length <
-                                              level.lessons.length * 3
-                                            }
-                                          >
-                                            Read
-                                          </button>
-                                        ) : null}
-                                        {level.review ? (
-                                          <button
-                                            onClick={() => {
-                                              setSelectedLevel(
-                                                CHAPTERS[index].levels[
-                                                  levelIndex
-                                                ],
-                                              );
-                                              setIndexLevel([
-                                                index,
-                                                levelIndex,
-                                              ]);
-                                              setIsReview(true);
-                                              setIsRead(false);
-                                            }}
-                                            className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
-                                          >
-                                            Review
-                                          </button>
-                                        ) : null}
-                                      </div>
-                                    </div>
-                                  )}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
+                                    {level.read ? (
+                                      <button
+                                        onClick={() => {
+                                          setSelectedLevel(level);
+                                          setIsReview(false);
+                                          setIsRead(true);
+                                        }}
+                                        className={` text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700  ${
+                                          level.read.length >=
+                                          level.lessons.length * 3
+                                            ? ""
+                                            : "opacity-50 cursor-not-allowed"
+                                        }`}
+                                        disabled={
+                                          level.read.length <
+                                          level.lessons.length * 3
+                                        }
+                                        aria-disabled={
+                                          level.read.length <
+                                          level.lessons.length * 3
+                                        }
+                                      >
+                                        Read
+                                      </button>
+                                    ) : null}
+                                    {level.review ? (
+                                      <button
+                                        onClick={() => {
+                                          setSelectedLevel(level);
+                                          setIsReview(true);
+                                          setIsRead(false);
+                                        }}
+                                        className="text-white font-bold rounded-md py-2 px-4 bg-primary hover:bg-blue-700"
+                                      >
+                                        Review
+                                      </button>
+                                    ) : null}
+                                  </div>
+                                </div>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
