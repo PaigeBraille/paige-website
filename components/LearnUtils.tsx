@@ -6,6 +6,7 @@ import HintOff from "../public/svg/hint-off.svg";
 import Heart from "../public/svg/heart.svg";
 import ProgressBar from "./ProgressBar";
 import { LessonInProgress, Level } from "../pages/learn";
+import { addCompletedLessonToUser, auth } from "@/lib/firebase";
 
 function LevelProgressBar({
   lessonsInProgress,
@@ -135,6 +136,7 @@ export function Lessons({
     // Delay before calling nextLevel function (e.g., 2 seconds)
 
     if (isLevelComplete) {
+      addCompletedLessonToUser(level.name, auth);
       const timeoutId = setTimeout(() => {
         nextLevel(); // Call nextLevel function after the delay
       }, 2000);
@@ -158,13 +160,14 @@ export function Lessons({
               Math.floor(Math.random() * completionMessages.length)
             ]
           }
+          Level completed!
         </div>
       ) : challengeFail ? (
         <div
           className="text-center leading-tight text-2xl text-paigedarkgrey p-2"
           aria-live="assertive"
         >
-          Keep practicing and try again!
+          Challenge failed!
         </div>
       ) : (
         <IndividualLesson
@@ -223,11 +226,11 @@ export function IndividualLesson({
     if (isRead) {
       setPromptText("Write letter " + countLessons);
     } else {
-      if (lesson.isFirstAppearance && !isReview){
-          // Update showHint when lesson.isFirstAppearance changes
-          setShowHint(lesson.isFirstAppearance);
+      if (lesson.isFirstAppearance && !isReview) {
+        // Update showHint when lesson.isFirstAppearance changes
+        setShowHint(lesson.isFirstAppearance);
       } else {
-          setPromptText(lesson.prompt);
+        setPromptText(lesson.prompt);
       }
     }
   }, [lesson.prompt, lesson.numberOfSuccesses, lesson, isRead, isReview]);
