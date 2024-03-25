@@ -55,7 +55,10 @@ function ChapterList() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const userDetails = await getUserCompletedLessons(user.uid);
-        setCompletedLessons(userDetails.completedLessons);
+        const completedLessonsIds = userDetails.completedLessons.map(
+          (lesson) => lesson.id,
+        );
+        setCompletedLessons(completedLessonsIds);
       } else {
         setCompletedLessons([]);
       }
@@ -70,7 +73,10 @@ function ChapterList() {
         return;
       }
       const userDetails = await getUserCompletedLessons(auth.currentUser.uid);
-      setCompletedLessons(userDetails.completedLessons);
+      const completedLessonsIds = userDetails.completedLessons.map(
+        (lesson) => lesson.id,
+      );
+      setCompletedLessons(completedLessonsIds);
     };
     fetchData();
   }, [selectedLevel, auth.currentUser]);

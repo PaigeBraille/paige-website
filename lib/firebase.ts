@@ -19,7 +19,10 @@ export const db = getFirestore(app);
 export default app;
 
 export type firestoreUser = {
-  completedLessons: string[];
+  completedLessons: {
+    id: string;
+    completedAt: string;
+  }[];
 };
 
 export const getUserCompletedLessons = async (
@@ -35,7 +38,7 @@ export const getUserCompletedLessons = async (
     };
   } else {
     console.log("No such document!, thus making doc");
-    const emptyCompletedLessons: string[] = [];
+    const emptyCompletedLessons: firestoreUser["completedLessons"] = [];
     await setDoc(docRef, { completedLessons: emptyCompletedLessons });
     return {
       completedLessons: emptyCompletedLessons,
@@ -56,16 +59,20 @@ export const addCompletedLessonToUser = async (
 
   console.log("User is logged in");
   const userId = user.uid;
-  const cityRef = doc(db, "users", userId);
-  const docSnap = await getDoc(cityRef);
+  const docRef = doc(db, "users", userId);
+  const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     console.log("Document data:", docSnap.data());
     const data = docSnap.data();
-    const completedLessons = data.completedLessons || [];
-    if (completedLessons.includes(completedLessonId)) {
+    const completedLessons: firestoreUser["completedLessons"] =
+      data.completedLessons || [];
+    if (completedLessons.some((lesson) => lesson.id === completedLessonId)) {
       return;
     }
-    completedLessons.push(completedLessonId);
-    await setDoc(cityRef, { completedLessons }, { merge: true });
+    completedLessons.push({
+      id: completedLessonId,
+      completedAt: new Date().toISOString(),
+    });
+    await setDoc(docRef, { completedLessons }, { merge: true });
   }
 };
