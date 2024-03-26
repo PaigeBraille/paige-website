@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Wrapper } from "../components/Wrapper";
 import Heading from "../components/Heading";
-import { asciiBraille } from "../components/BrailleMapping";
-import { translateAndUpdate } from "../components/TranslationUtils";
+import { backTranslateAndUpdate } from "../components/TranslationUtils";
 import Copy from "../public/svg/Copy.svg";
 import KeySelect from "../components/KeySelect";
 import { BrailleTextBox, InputKeyMap } from "@/components/BrailleTextBox";
@@ -72,7 +71,7 @@ export default function Translate() {
 
     // Call translateAndUpdate only if the last character is a space or newline
     if (lastCharIsSpaceOrNewline || newAsciiString == "") {
-      translateAndUpdate(
+      backTranslateAndUpdate(
         newAsciiString,
         selectedTable,
         setPrintText,

@@ -9,8 +9,7 @@ interface BacktranslationResult {
   text: string;
 }
 
-// Function to translate ASCII Braille to print
-export const translateToPrint = async (
+export const translate = async (
   asciiBraille: string,
   tableName: string,
 ): Promise<string | null> => {
@@ -41,8 +40,7 @@ export const translateToPrint = async (
   }
 };
 
-// Function to backtranslate Braille to ASCII
-export const backtranslateToASCII = async (
+export const backtranslate = async (
   braille: string,
   tableName: string,
 ): Promise<string | null> => {
@@ -73,7 +71,7 @@ export const backtranslateToASCII = async (
   }
 };
 
-export const translateAndUpdate = async (
+export const backTranslateAndUpdate = async (
   inputText: string,
   selectedTable: string,
   setPrintText: React.Dispatch<React.SetStateAction<string>>,
@@ -85,7 +83,7 @@ export const translateAndUpdate = async (
     // Translate each line independently
     const translatedLines = await Promise.all(
       lines.map(async (line) => {
-        return await backtranslateToASCII(line, selectedTable);
+        return await backtranslate(line, selectedTable);
       }),
     );
 

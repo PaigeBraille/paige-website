@@ -8,7 +8,7 @@ type BrailleMapping = {
 };
 
 // Initialize and declare the ASCII to Braille map
-export const asciiBraille: BrailleMapping = {
+export const brailleMap: BrailleMapping = {
   "0": { braille: "⠴", keyMapping: 52 },
   "1": { braille: "⠂", keyMapping: 2 },
   "2": { braille: "⠆", keyMapping: 6 },

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { asciiBraille } from "./BrailleMapping";
+import { brailleMap } from "./BrailleMapping";
 
 export type InputKeyMap = {
   "lower-left": string;
@@ -46,7 +46,7 @@ export const BrailleTextBox = ({
     onChange(value);
     const brailleText = value
       .split("")
-      .map((char) => asciiBraille[char]?.braille || char) // Use Braille mapping
+      .map((char) => brailleMap[char]?.braille || char) // Use Braille mapping
       .join("");
     setUnicodeGlyphString(brailleText);
   }, [value, onChange]);
@@ -130,7 +130,7 @@ export const BrailleTextBox = ({
         (value) => !value,
       );
       if (allKeysUnpressed && paigePressed !== 0) {
-        const updatedText = value + protocolAscii(paigePressed);
+        const updatedText = value + keyToUnicode(paigePressed);
         onChange(updatedText);
         setPaigePressed(0);
       }
@@ -139,13 +139,13 @@ export const BrailleTextBox = ({
     handleKeyPress();
   }, [keyPressedMap]);
 
-  const protocolAscii = (keyMapping: number): string => {
-    const entry = Object.entries(asciiBraille).find(
+  const keyToUnicode = (keyMapping: number): string => {
+    const entry = Object.entries(brailleMap).find(
       ([_key, value]) => value.keyMapping === keyMapping,
     );
     if (!entry) return "";
-    const [key] = entry;
-    return key;
+    const [, { braille }] = entry; // Destructure the braille property from the found entry
+    return braille; // Return the braille Unicode
   };
 
   return (
